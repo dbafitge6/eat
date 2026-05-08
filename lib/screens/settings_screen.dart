@@ -9,6 +9,7 @@ import '../services/database_service.dart';
 import '../services/notification_service.dart';
 import '../services/purchase_service.dart';
 import '../services/ad_service.dart';
+import '../services/ai_search_service.dart';
 import '../models/user_profile.dart';
 import 'premium_screen.dart';
 
@@ -23,6 +24,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
   UserProfile? _profile;
   bool _notificationsEnabled = false;
   bool _loading = true;
+  final _apiKeyCtrl = TextEditingController();
+  bool _apiKeyObscured = true;
 
   @override
   void initState() {
@@ -30,11 +33,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
     _load();
   }
 
+  @override
+  void dispose() {
+    _apiKeyCtrl.dispose();
+    super.dispose();
+  }
+
   Future<void> _load() async {
     final profile = await DatabaseService.instance.getUserProfile();
+    final apiKey = await AiSearchService.instance.getApiKey();
     if (!mounted) return;
     setState(() {
       _profile = profile;
+      _apiKeyCtrl.text = apiKey ?? '';
       _loading = false;
     });
   }
@@ -118,6 +129,53 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   title: const Text('古いデータを削除'),
                   subtitle: const Text('3ヶ月以上前のデータを削除'),
                   onTap: _deleteOldData,
+                ),
+                const Divider(),
+                const _SectionHeader('AI検索'),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Anthropic APIキーを登録するとAIで食品の栄養素を自動取得できます。',
+                        style: TextStyle(fontSize: 12, color: Colors.grey),
+                      ),
+                      const SizedBox(height: 8),
+                      TextField(
+                        controller: _apiKeyCtrl,
+                        obscureText: _apiKeyObscured,
+                        decoration: InputDecoration(
+                          labelText: 'Anthropic APIキー',
+                          hintText: 'sk-ant-...',
+                          border: const OutlineInputBorder(),
+                          suffixIcon: IconButton(
+                            icon: Icon(_apiKeyObscured
+                                ? Icons.visibility_off
+                                : Icons.visibility),
+                            onPressed: () => setState(
+                                () => _apiKeyObscured = !_apiKeyObscured),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          onPressed: () async {
+                            await AiSearchService.instance
+                                .saveApiKey(_apiKeyCtrl.text.trim());
+                            if (mounted) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(content: Text('APIキーを保存しました')),
+                              );
+                            }
+                          },
+                          child: const Text('保存'),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 const Divider(),
                 const _SectionHeader('プロフィール'),

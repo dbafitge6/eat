@@ -5,6 +5,7 @@ import '../models/meal_entry.dart';
 import '../models/my_food.dart';
 import '../services/food_search_service.dart';
 import '../services/database_service.dart';
+import '../services/ai_search_service.dart';
 
 class FoodSearchScreen extends StatefulWidget {
   final String date;
@@ -27,6 +28,7 @@ class _FoodSearchScreenState extends State<FoodSearchScreen>
   List<Food> _builtinResults = [];
   List<MyFood> _myFoodResults = [];
   bool _searching = false;
+  bool _aiSearching = false;
 
   @override
   void initState() {
@@ -111,9 +113,11 @@ class _FoodSearchScreenState extends State<FoodSearchScreen>
                 _BuiltinList(
                   results: _builtinResults,
                   searching: _searching,
+                  aiSearching: _aiSearching,
                   query: _searchCtrl.text,
                   onSelect: _showPortionDialog,
                   onWebSearch: _openWebSearch,
+                  onAiSearch: _doAiSearch,
                 ),
                 _MyFoodList(
                   results: _myFoodResults,
@@ -271,6 +275,153 @@ class _FoodSearchScreenState extends State<FoodSearchScreen>
     }
   }
 
+  Future<void> _doAiSearch(String query) async {
+    final apiKey = await AiSearchService.instance.getApiKey();
+    if (!mounted) return;
+    if (apiKey == null || apiKey.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('設定 → AI検索 でAPIキーを登録してください')),
+      );
+      return;
+    }
+    setState(() => _aiSearching = true);
+    final result = await AiSearchService.instance.search(query);
+    if (!mounted) return;
+    setState(() => _aiSearching = false);
+    if (result == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('AI検索に失敗しました。APIキーをご確認ください')),
+      );
+      return;
+    }
+    await _showAiResultDialog(result);
+  }
+
+  Future<void> _showAiResultDialog(AiFoodResult aiResult) async {
+    double grams = 100;
+    bool saveToMyFood = false;
+
+    final result = await showDialog<MealEntry>(
+      context: context,
+      builder: (ctx) => StatefulBuilder(
+        builder: (ctx, ss) => AlertDialog(
+          title: Row(
+            children: [
+              const Icon(Icons.auto_awesome, size: 18),
+              const SizedBox(width: 8),
+              Expanded(child: Text(aiResult.name, overflow: TextOverflow.ellipsis)),
+            ],
+          ),
+          content: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.amber.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: const Text(
+                    '⚠️ AIによる推定値です。正確な数値は公式サイトをご確認ください。',
+                    style: TextStyle(fontSize: 11, color: Colors.orange),
+                  ),
+                ),
+                const SizedBox(height: 12),
+                Text(
+                  '${(aiResult.kcal * grams / 100).round()} kcal',
+                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  'P: ${(aiResult.protein * grams / 100).toStringAsFixed(1)}g  '
+                  'F: ${(aiResult.fat * grams / 100).toStringAsFixed(1)}g  '
+                  'C: ${(aiResult.carb * grams / 100).toStringAsFixed(1)}g',
+                  style: const TextStyle(color: Colors.grey),
+                ),
+                const SizedBox(height: 16),
+                Text('${grams.round()} g',
+                    style: const TextStyle(fontWeight: FontWeight.bold)),
+                Slider(
+                  value: grams,
+                  min: 5,
+                  max: 500,
+                  divisions: 99,
+                  onChanged: (v) => ss(() => grams = v),
+                ),
+                Wrap(
+                  spacing: 6,
+                  children: [50, 100, 150, 200, 300].map((g) {
+                    return ActionChip(
+                      label: Text('$g g'),
+                      onPressed: () => ss(() => grams = g.toDouble()),
+                    );
+                  }).toList(),
+                ),
+                CheckboxListTile(
+                  title: const Text('マイ食品に保存', style: TextStyle(fontSize: 13)),
+                  value: saveToMyFood,
+                  onChanged: (v) => ss(() => saveToMyFood = v ?? false),
+                  controlAffinity: ListTileControlAffinity.leading,
+                  dense: true,
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(ctx),
+              child: const Text('キャンセル'),
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                final r = grams / 100;
+                if (saveToMyFood) {
+                  final myFood = MyFood(
+                    name: aiResult.name,
+                    kcalPer100g: aiResult.kcal,
+                    proteinPer100g: aiResult.protein,
+                    fatPer100g: aiResult.fat,
+                    carbPer100g: aiResult.carb,
+                    fiberPer100g: aiResult.fiber,
+                    sodiumPer100g: aiResult.sodium,
+                    calciumPer100g: 0,
+                    ironPer100g: 0,
+                    note: 'AI推定値',
+                  );
+                  await DatabaseService.instance.insertMyFood(myFood);
+                }
+                Navigator.pop(
+                  ctx,
+                  MealEntry(
+                    date: widget.date,
+                    mealType: widget.mealType,
+                    foodId: 'ai_${DateTime.now().millisecondsSinceEpoch}',
+                    foodName: aiResult.name,
+                    grams: grams,
+                    kcal: aiResult.kcal * r,
+                    protein: aiResult.protein * r,
+                    fat: aiResult.fat * r,
+                    carb: aiResult.carb * r,
+                    fiber: aiResult.fiber * r,
+                    sodium: aiResult.sodium * r,
+                    calcium: 0,
+                    iron: 0,
+                    isCustom: true,
+                  ),
+                );
+              },
+              child: const Text('追加'),
+            ),
+          ],
+        ),
+      ),
+    );
+    if (result != null && mounted) {
+      Navigator.pop(context, result);
+    }
+  }
+
   Future<void> _openWebSearch(String query) async {
     final entry = await Navigator.push<MealEntry>(
       context,
@@ -373,22 +524,35 @@ class _FoodSearchScreenState extends State<FoodSearchScreen>
 class _BuiltinList extends StatelessWidget {
   final List<Food> results;
   final bool searching;
+  final bool aiSearching;
   final String query;
   final void Function(Food) onSelect;
   final void Function(String) onWebSearch;
+  final void Function(String) onAiSearch;
 
   const _BuiltinList({
     required this.results,
     required this.searching,
+    required this.aiSearching,
     required this.query,
     required this.onSelect,
     required this.onWebSearch,
+    required this.onAiSearch,
   });
 
   @override
   Widget build(BuildContext context) {
-    if (searching) {
-      return const Center(child: CircularProgressIndicator());
+    if (searching || aiSearching) {
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const CircularProgressIndicator(),
+            const SizedBox(height: 12),
+            Text(aiSearching ? 'AIが調べています...' : ''),
+          ],
+        ),
+      );
     }
     if (results.isEmpty && query.isNotEmpty) {
       return Center(
@@ -398,13 +562,23 @@ class _BuiltinList extends StatelessWidget {
             const Text('データベースに見つかりませんでした'),
             const SizedBox(height: 16),
             ElevatedButton.icon(
+              onPressed: () => onAiSearch(query),
+              icon: const Icon(Icons.auto_awesome),
+              label: const Text('AIで調べる'),
+            ),
+            const SizedBox(height: 8),
+            ElevatedButton.icon(
               onPressed: () => onWebSearch(query),
               icon: const Icon(Icons.search),
               label: const Text('Webで検索する'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.grey.shade600,
+                foregroundColor: Colors.white,
+              ),
             ),
             const SizedBox(height: 8),
             const Text(
-              '⚠️ Web検索の結果は参考値です',
+              '⚠️ AI・Web検索の結果は参考値です',
               style: TextStyle(fontSize: 11, color: Colors.grey),
             ),
           ],
