@@ -1,0 +1,41 @@
+import 'package:flutter/material.dart';
+import 'today_screen.dart';
+import 'week_screen.dart';
+import 'calendar_screen.dart';
+import 'weight_screen.dart';
+
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int _index = 0;
+
+  final _screens = const [
+    TodayScreen(),
+    WeekScreen(),
+    CalendarScreen(),
+    WeightScreen(),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: _screens[_index],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _index,
+        onTap: (i) => setState(() => _index = i),
+        type: BottomNavigationBarType.fixed,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.restaurant), label: '今日'),
+          BottomNavigationBarItem(icon: Icon(Icons.bar_chart), label: '週間'),
+          BottomNavigationBarItem(icon: Icon(Icons.calendar_month), label: 'カレンダー'),
+          BottomNavigationBarItem(icon: Icon(Icons.monitor_weight), label: '体重'),
+        ],
+      ),
+    );
+  }
+}
