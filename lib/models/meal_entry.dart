@@ -69,5 +69,5 @@ class MealEntry {
         'is_custom': isCustom ? 1 : 0,
       };
 
-  static const mealNames = ['朝食', '昼食', '夕食', '間食①', '間食②', '夜食'];
+  static const mealNames = ['食事1', '食事2', '食事3', '食事4', '食事5', '食事6'];
 }

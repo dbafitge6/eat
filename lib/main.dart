@@ -3,17 +3,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'screens/onboarding_screen.dart';
 import 'screens/home_screen.dart';
 import 'themes/app_theme.dart';
-import 'services/notification_service.dart';
 import 'services/database_service.dart';
 import 'services/ad_service.dart';
-import 'services/purchase_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await DatabaseService.instance.db;
   await AdService.instance.init();
-  await PurchaseService.instance.init();
-  await NotificationService.instance.init();
   runApp(const EatApp());
 }
 
@@ -28,7 +24,8 @@ class EatApp extends StatefulWidget {
 }
 
 class _EatAppState extends State<EatApp> {
-  AppThemeType _themeType = AppThemeType.light;
+  AppThemeType _themeType = AppThemeType.purpleViolet;
+  AppThemeType get currentTheme => _themeType;
   bool _onboardingDone = false;
   bool _loading = true;
 
@@ -43,7 +40,7 @@ class _EatAppState extends State<EatApp> {
     final themeIndex = prefs.getInt('theme') ?? 1;
     final onboarding = prefs.getBool('onboarding_done') ?? false;
     setState(() {
-      _themeType = AppThemeType.values[themeIndex.clamp(0, 2)];
+      _themeType = AppThemeType.values[themeIndex.clamp(0, 9)];
       _onboardingDone = onboarding;
       _loading = false;
     });

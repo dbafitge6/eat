@@ -131,6 +131,12 @@ class DatabaseService {
     return d.insert('meal_entries', entry.toMap());
   }
 
+  Future<void> updateMeal(MealEntry entry) async {
+    final d = await db;
+    await d.update('meal_entries', entry.toMap(),
+        where: 'id = ?', whereArgs: [entry.id]);
+  }
+
   Future<void> deleteMeal(int id) async {
     final d = await db;
     await d.delete('meal_entries', where: 'id = ?', whereArgs: [id]);

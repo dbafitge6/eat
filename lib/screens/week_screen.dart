@@ -3,7 +3,6 @@ import 'package:fl_chart/fl_chart.dart';
 import '../models/meal_entry.dart';
 import '../services/database_service.dart';
 import '../services/share_service.dart';
-import '../services/ad_service.dart';
 import '../models/user_profile.dart';
 import '../utils/date_utils.dart' as du;
 
@@ -57,14 +56,6 @@ class _WeekScreenState extends State<WeekScreen> {
       weeklyKcal: _weeklyTotal,
       weeklyTarget: _weeklyTarget,
     );
-    if (AdService.instance.showAds) {
-      await AdService.instance.grantAdFree(const Duration(hours: 24));
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('シェアありがとう！24時間広告なし')),
-        );
-      }
-    }
   }
 
   @override

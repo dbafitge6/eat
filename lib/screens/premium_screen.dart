@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../services/purchase_service.dart';
-import '../services/ad_service.dart';
 
 class PremiumScreen extends StatefulWidget {
   const PremiumScreen({super.key});
@@ -174,78 +173,3 @@ class _FeatureRow extends StatelessWidget {
   }
 }
 
-// 食事記録後のシェア/広告ダイアログ
-Future<void> showMealAddedDialog(BuildContext context,
-    {required String mealName, required double kcal}) async {
-  if (!AdService.instance.showAds) return;
-
-  await showDialog(
-    context: context,
-    barrierDismissible: false,
-    builder: (ctx) => AlertDialog(
-      title: const Text('記録しました！'),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(mealName,
-              style: const TextStyle(fontWeight: FontWeight.bold)),
-          Text('${kcal.round()} kcal',
-              style: const TextStyle(fontSize: 24, color: Colors.grey)),
-          const SizedBox(height: 16),
-          const Text('広告を非表示にするには:',
-              style: TextStyle(fontSize: 12, color: Colors.grey)),
-        ],
-      ),
-      actions: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            ElevatedButton.icon(
-              onPressed: () async {
-                Navigator.pop(ctx);
-                await _shareMeal(context, mealName, kcal);
-                await AdService.instance
-                    .grantAdFree(const Duration(hours: 24));
-                if (context.mounted) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('シェアありがとう！24時間広告なしです')),
-                  );
-                }
-              },
-              icon: const Icon(Icons.share),
-              label: const Text('SNSでシェア → 24時間広告なし'),
-            ),
-            const SizedBox(height: 8),
-            OutlinedButton.icon(
-              onPressed: () async {
-                Navigator.pop(ctx);
-                final rewarded =
-                    await AdService.instance.showRewarded(context);
-                if (rewarded && context.mounted) {
-                  await AdService.instance
-                      .grantAdFree(const Duration(hours: 1));
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('1時間広告なしです')),
-                  );
-                }
-              },
-              icon: const Icon(Icons.play_circle_outline),
-              label: const Text('動画広告を見る → 1時間広告なし'),
-            ),
-            const SizedBox(height: 8),
-            TextButton(
-              onPressed: () => Navigator.pop(ctx),
-              child: const Text('閉じる'),
-            ),
-          ],
-        ),
-      ],
-    ),
-  );
-}
-
-Future<void> _shareMeal(
-    BuildContext context, String mealName, double kcal) async {
-  // Share機能はshare_plusで実装
-  // この関数は今_shareTextとして別途実装
-}

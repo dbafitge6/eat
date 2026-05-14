@@ -52,9 +52,11 @@
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>食事の写真を記録するために写真へのアクセスを使用します</string>
 	<key>NSCameraUsageDescription</key>
-	<string>バーコードをスキャンして食品を検索するためにカメラを使用します</string>
+	<string>バーコードスキャンおよび食事の写真撮影に使用します</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>食事のシェア画像を保存するために使用します</string>
 	<key>GADApplicationIdentifier</key>
-	<string>ca-app-pub-3940256099942544~1458002511</string>
+	<string>ca-app-pub-9251250149426348~6992050845</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

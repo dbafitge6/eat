@@ -6,12 +6,9 @@ import 'package:path/path.dart' as p;
 import '../themes/app_theme.dart';
 import '../main.dart';
 import '../services/database_service.dart';
+import '../services/gemini_service.dart';
 import '../services/notification_service.dart';
-import '../services/purchase_service.dart';
-import '../services/ad_service.dart';
-import '../services/ai_search_service.dart';
 import '../models/user_profile.dart';
-import 'premium_screen.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -24,8 +21,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   UserProfile? _profile;
   bool _notificationsEnabled = false;
   bool _loading = true;
-  final _apiKeyCtrl = TextEditingController();
-  bool _apiKeyObscured = true;
+  String _geminiApiKey = '';
 
   @override
   void initState() {
@@ -35,17 +31,76 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   void dispose() {
-    _apiKeyCtrl.dispose();
     super.dispose();
+  }
+
+  Future<void> _showApiKeyDialog() async {
+    final ctrl = TextEditingController(text: _geminiApiKey);
+    bool obscure = true;
+    await showDialog(
+      context: context,
+      builder: (ctx) => StatefulBuilder(
+        builder: (ctx, ss) => AlertDialog(
+          title: const Text('Gemini APIキー'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TextField(
+                controller: ctrl,
+                obscureText: obscure,
+                decoration: InputDecoration(
+                  hintText: 'AIza...',
+                  border: const OutlineInputBorder(),
+                  suffixIcon: IconButton(
+                    icon: Icon(obscure ? Icons.visibility : Icons.visibility_off),
+                    onPressed: () => ss(() => obscure = !obscure),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 8),
+              const Text(
+                'Google AI Studio（aistudio.google.com）で無料取得できます。\nキーはこの端末にのみ保存されます。',
+                style: TextStyle(fontSize: 11, color: Colors.grey),
+              ),
+            ],
+          ),
+          actions: [
+            if (_geminiApiKey.isNotEmpty)
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(ctx);
+                  GeminiService.instance.saveApiKey('');
+                  setState(() => _geminiApiKey = '');
+                },
+                child: const Text('削除', style: TextStyle(color: Colors.red)),
+              ),
+            TextButton(
+              onPressed: () => Navigator.pop(ctx),
+              child: const Text('キャンセル'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                final key = ctrl.text.trim();
+                Navigator.pop(ctx);
+                GeminiService.instance.saveApiKey(key);
+                setState(() => _geminiApiKey = key);
+              },
+              child: const Text('保存'),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   Future<void> _load() async {
     final profile = await DatabaseService.instance.getUserProfile();
-    final apiKey = await AiSearchService.instance.getApiKey();
+    final apiKey = await GeminiService.instance.getApiKey();
     if (!mounted) return;
     setState(() {
       _profile = profile;
-      _apiKeyCtrl.text = apiKey ?? '';
+      _geminiApiKey = apiKey ?? '';
       _loading = false;
     });
   }
@@ -61,45 +116,58 @@ class _SettingsScreenState extends State<SettingsScreen> {
               children: [
                 const _SectionHeader('テーマ'),
                 ...AppThemeType.values.map((t) {
+                  final current = appState?.currentTheme ?? AppThemeType.purpleViolet;
+                  final isSelected = current == t;
                   return ListTile(
+                    leading: Container(
+                      width: 32,
+                      height: 32,
+                      decoration: BoxDecoration(
+                        gradient: AppThemes.accentGradient(t),
+                        shape: BoxShape.circle,
+                        border: isSelected
+                            ? Border.all(color: Colors.white, width: 2.5)
+                            : null,
+                      ),
+                    ),
                     title: Text(AppThemes.themeNames[t.index]),
-                    trailing: appState != null
-                        ? null
+                    subtitle: Text(
+                      AppThemes.themeKeywords[t.index],
+                      style: const TextStyle(fontSize: 12, color: Colors.grey),
+                    ),
+                    trailing: isSelected
+                        ? const Icon(Icons.check_circle, color: Colors.white)
                         : null,
-                    onTap: () => appState?.setTheme(t),
+                    onTap: () {
+                      appState?.setTheme(t);
+                      setState(() {});
+                    },
                   );
                 }),
                 const Divider(),
-                const _SectionHeader('プレミアム'),
+                const _SectionHeader('AI食品検索'),
                 ListTile(
-                  leading: Icon(
-                    PurchaseService.instance.isPremium
-                        ? Icons.star
-                        : Icons.star_border,
-                    color: Colors.amber,
+                  leading: const Icon(Icons.auto_awesome),
+                  title: const Text('Gemini APIキー'),
+                  subtitle: Text(
+                    _geminiApiKey.isEmpty
+                        ? '未設定（AI提案は使用できません）'
+                        : '設定済み ✓',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: _geminiApiKey.isEmpty ? Colors.grey : Colors.greenAccent,
+                    ),
                   ),
-                  title: Text(PurchaseService.instance.isPremium
-                      ? 'プレミアム会員'
-                      : 'プレミアムに登録する'),
-                  subtitle: Text(PurchaseService.instance.isPremium
-                      ? '広告なし・全機能利用可能'
-                      : '¥500/月 広告なし・全機能'),
-                  trailing: !PurchaseService.instance.isPremium
-                      ? const Icon(Icons.chevron_right)
-                      : null,
-                  onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (_) => const PremiumScreen()),
+                  trailing: const Icon(Icons.edit, size: 18),
+                  onTap: _showApiKeyDialog,
+                ),
+                const Padding(
+                  padding: EdgeInsets.fromLTRB(16, 0, 16, 8),
+                  child: Text(
+                    'Google AI Studio（aistudio.google.com）で無料取得できます。入力するとAI食品提案機能が使えます。',
+                    style: TextStyle(fontSize: 11, color: Colors.grey),
                   ),
                 ),
-                if (!AdService.instance.showAds &&
-                    !PurchaseService.instance.isPremium)
-                  const ListTile(
-                    leading: Icon(Icons.block, color: Colors.green),
-                    title: Text('広告非表示中'),
-                    subtitle: Text('シェアや動画視聴のお礼'),
-                  ),
                 const Divider(),
                 const _SectionHeader('水分リマインダー'),
                 SwitchListTile(
@@ -129,53 +197,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   title: const Text('古いデータを削除'),
                   subtitle: const Text('3ヶ月以上前のデータを削除'),
                   onTap: _deleteOldData,
-                ),
-                const Divider(),
-                const _SectionHeader('AI検索'),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        'Anthropic APIキーを登録するとAIで食品の栄養素を自動取得できます。',
-                        style: TextStyle(fontSize: 12, color: Colors.grey),
-                      ),
-                      const SizedBox(height: 8),
-                      TextField(
-                        controller: _apiKeyCtrl,
-                        obscureText: _apiKeyObscured,
-                        decoration: InputDecoration(
-                          labelText: 'Anthropic APIキー',
-                          hintText: 'sk-ant-...',
-                          border: const OutlineInputBorder(),
-                          suffixIcon: IconButton(
-                            icon: Icon(_apiKeyObscured
-                                ? Icons.visibility_off
-                                : Icons.visibility),
-                            onPressed: () => setState(
-                                () => _apiKeyObscured = !_apiKeyObscured),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          onPressed: () async {
-                            await AiSearchService.instance
-                                .saveApiKey(_apiKeyCtrl.text.trim());
-                            if (mounted) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(content: Text('APIキーを保存しました')),
-                              );
-                            }
-                          },
-                          child: const Text('保存'),
-                        ),
-                      ),
-                    ],
-                  ),
                 ),
                 const Divider(),
                 const _SectionHeader('プロフィール'),
