@@ -31,13 +31,12 @@ class _PremiumScreenState extends State<PremiumScreen> {
               ),
             ),
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 4),
           const Center(
             child: Text('プレミアム会員',
-                style:
-                    TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
           ),
-          const SizedBox(height: 32),
+          const SizedBox(height: 24),
           if (isPremium) ...[
             Card(
               color: Colors.green.withValues(alpha: 0.1),
@@ -54,10 +53,9 @@ class _PremiumScreenState extends State<PremiumScreen> {
               ),
             ),
           ] else ...[
-            _FeatureRow(Icons.block, '広告なし', '完全広告なし'),
-            _FeatureRow(Icons.star, '全機能利用', 'すべての機能が使い放題'),
-            _FeatureRow(Icons.support, '優先サポート', '問い合わせを優先対応'),
-            const SizedBox(height: 32),
+            // Free vs Premium comparison
+            _CompareSection(primary: primary),
+            const SizedBox(height: 28),
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
@@ -77,7 +75,7 @@ class _PremiumScreenState extends State<PremiumScreen> {
                 ],
               ),
             ),
-            const SizedBox(height: 24),
+            const SizedBox(height: 20),
             SizedBox(
               width: double.infinity,
               height: 52,
@@ -101,7 +99,7 @@ class _PremiumScreenState extends State<PremiumScreen> {
                 child: const Text('購入を復元する'),
               ),
             ),
-            const SizedBox(height: 24),
+            const SizedBox(height: 20),
             const Text(
               '・サブスクリプションは自動更新されます\n'
               '・解約はApp Storeのサブスクリプション管理から行えます\n'
@@ -133,43 +131,119 @@ class _PremiumScreenState extends State<PremiumScreen> {
     final success = await PurchaseService.instance.restore();
     if (!mounted) return;
     setState(() => _loading = false);
-    if (success) {
-      ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('購入を復元しました！')));
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('復元する購入が見つかりませんでした')));
-    }
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(success ? '購入を復元しました！' : '復元する購入が見つかりませんでした')));
   }
 }
 
-class _FeatureRow extends StatelessWidget {
-  final IconData icon;
-  final String title;
-  final String subtitle;
-
-  const _FeatureRow(this.icon, this.title, this.subtitle);
+class _CompareSection extends StatelessWidget {
+  final Color primary;
+  const _CompareSection({required this.primary});
 
   @override
   Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          children: [
+            const Expanded(
+              child: Text('機能',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+                  textAlign: TextAlign.left),
+            ),
+            SizedBox(
+              width: 64,
+              child: Text('無料',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 13,
+                      color: Colors.grey[600]),
+                  textAlign: TextAlign.center),
+            ),
+            SizedBox(
+              width: 72,
+              child: Text('プレミアム',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 13,
+                      color: primary),
+                  textAlign: TextAlign.center),
+            ),
+          ],
+        ),
+        const Divider(height: 16),
+        ..._rows(primary),
+      ],
+    );
+  }
+
+  static List<Widget> _rows(Color primary) {
+    final items = [
+      ('食事記録', '1日3回', '無制限'),
+      ('文科省DBで食品検索', 'あり', 'あり'),
+      ('AI食品検索', '1日5回', '無制限'),
+      ('外食メニュー提案', '1日3回', '無制限'),
+      ('体重・水分記録', 'あり', 'あり'),
+      ('基本グラフ', 'あり', 'あり'),
+      ('AI栄養相談', 'なし', 'あり'),
+      ('週間レポート詳細', 'なし', 'あり'),
+      ('CSVエクスポート', 'なし', 'あり'),
+      ('SNSシェア', 'なし', 'あり'),
+      ('テーマ変更', 'なし', 'あり'),
+      ('サプリ通知', '2件まで', '無制限'),
+    ];
+    return items
+        .map((item) => _CompareRow(
+            label: item.$1,
+            free: item.$2,
+            premium: item.$3,
+            accent: primary))
+        .toList();
+  }
+}
+
+class _CompareRow extends StatelessWidget {
+  final String label;
+  final String free;
+  final String premium;
+  final Color accent;
+
+  const _CompareRow(
+      {required this.label,
+      required this.free,
+      required this.premium,
+      required this.accent});
+
+  @override
+  Widget build(BuildContext context) {
+    final isPremiumOnly = free == 'なし';
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.symmetric(vertical: 6),
       child: Row(
         children: [
-          Icon(icon, color: Theme.of(context).colorScheme.primary),
-          const SizedBox(width: 16),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(title,
-                  style: const TextStyle(fontWeight: FontWeight.bold)),
-              Text(subtitle,
-                  style: const TextStyle(color: Colors.grey, fontSize: 12)),
-            ],
+          Expanded(
+            child: Text(label,
+                style: const TextStyle(fontSize: 13)),
+          ),
+          SizedBox(
+            width: 64,
+            child: Text(free,
+                style: TextStyle(
+                    fontSize: 12,
+                    color: isPremiumOnly ? Colors.grey[400] : Colors.grey[700]),
+                textAlign: TextAlign.center),
+          ),
+          SizedBox(
+            width: 72,
+            child: Text(premium,
+                style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                    color: accent),
+                textAlign: TextAlign.center),
           ),
         ],
       ),
     );
   }
 }
-

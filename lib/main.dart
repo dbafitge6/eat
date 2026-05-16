@@ -5,11 +5,17 @@ import 'screens/home_screen.dart';
 import 'themes/app_theme.dart';
 import 'services/database_service.dart';
 import 'services/ad_service.dart';
+import 'services/notification_service.dart';
+import 'services/diet_type_service.dart';
+import 'services/purchase_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await DatabaseService.instance.db;
   await AdService.instance.init();
+  await NotificationService.instance.init();
+  await DietTypeService.instance.load();
+  await PurchaseService.instance.init();
   runApp(const EatApp());
 }
 

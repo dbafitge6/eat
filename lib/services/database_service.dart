@@ -7,6 +7,7 @@ import '../models/my_food.dart';
 import '../models/my_set.dart';
 import '../models/user_profile.dart';
 import '../models/calendar_event.dart';
+import '../models/exercise_entry.dart';
 import 'dart:convert';
 
 class DatabaseService {
@@ -25,7 +26,26 @@ class DatabaseService {
     final path = join(await getDatabasesPath(), 'eat.db');
     return openDatabase(
       path,
-      version: 1,
+      version: 3,
+      onUpgrade: (db, oldV, newV) async {
+        if (oldV < 2) {
+          await db.execute('''
+            CREATE TABLE IF NOT EXISTS exercise_entries (
+              id INTEGER PRIMARY KEY AUTOINCREMENT,
+              date TEXT NOT NULL,
+              name TEXT NOT NULL,
+              type INTEGER NOT NULL,
+              duration_min INTEGER NOT NULL,
+              kcal_burned REAL NOT NULL
+            )
+          ''');
+        }
+        if (oldV < 3) {
+          await db.execute(
+            'ALTER TABLE user_profile ADD COLUMN diet_intensity INTEGER NOT NULL DEFAULT 1',
+          );
+        }
+      },
       onCreate: (db, v) async {
         await db.execute('''
           CREATE TABLE meal_entries (
@@ -102,6 +122,16 @@ class DatabaseService {
             date TEXT NOT NULL,
             title TEXT NOT NULL,
             note TEXT
+          )
+        ''');
+        await db.execute('''
+          CREATE TABLE exercise_entries (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            date TEXT NOT NULL,
+            name TEXT NOT NULL,
+            type INTEGER NOT NULL,
+            duration_min INTEGER NOT NULL,
+            kcal_burned REAL NOT NULL
           )
         ''');
       },
@@ -276,6 +306,65 @@ class DatabaseService {
   Future<void> deleteEvent(int id) async {
     final d = await db;
     await d.delete('calendar_events', where: 'id = ?', whereArgs: [id]);
+  }
+
+  // ─── Exercise ────────────────────────────────────────────────────────────────
+
+  Future<List<ExerciseEntry>> getExercisesForDate(String date) async {
+    final d = await db;
+    final rows = await d.query('exercise_entries',
+        where: 'date = ?', whereArgs: [date], orderBy: 'id');
+    return rows.map(ExerciseEntry.fromMap).toList();
+  }
+
+  Future<int> insertExercise(ExerciseEntry entry) async {
+    final d = await db;
+    return d.insert('exercise_entries', entry.toMap());
+  }
+
+  Future<void> deleteExercise(int id) async {
+    final d = await db;
+    await d.delete('exercise_entries', where: 'id = ?', whereArgs: [id]);
+  }
+
+  Future<double> getTotalExerciseKcalForDate(String date) async {
+    final d = await db;
+    final rows = await d.query('exercise_entries',
+        columns: ['SUM(kcal_burned) as total'],
+        where: 'date = ?', whereArgs: [date]);
+    return (rows.first['total'] as num?)?.toDouble() ?? 0.0;
+  }
+
+  // ─── Streak ──────────────────────────────────────────────────────────────────
+
+  Future<int> getStreak() async {
+    final d = await db;
+    final rows = await d.rawQuery(
+        'SELECT DISTINCT date FROM meal_entries ORDER BY date DESC');
+    if (rows.isEmpty) return 0;
+
+    final dates = rows.map((r) => r['date'] as String).toSet();
+    final today = DateTime.now();
+    String _fmt(DateTime dt) =>
+        '${dt.year}-${dt.month.toString().padLeft(2, '0')}-${dt.day.toString().padLeft(2, '0')}';
+
+    DateTime start = today;
+    if (!dates.contains(_fmt(today))) {
+      final yesterday = today.subtract(const Duration(days: 1));
+      if (!dates.contains(_fmt(yesterday))) return 0;
+      start = yesterday;
+    }
+
+    int streak = 0;
+    for (int i = 0; i < 365; i++) {
+      final check = start.subtract(Duration(days: i));
+      if (dates.contains(_fmt(check))) {
+        streak++;
+      } else {
+        break;
+      }
+    }
+    return streak;
   }
 
   // ─── CSV Export ─────────────────────────────────────────────────────────────

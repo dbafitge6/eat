@@ -8,6 +8,10 @@ import '../models/my_food.dart';
 import '../services/food_search_service.dart';
 import '../services/gemini_service.dart';
 import '../services/database_service.dart';
+import '../services/limit_service.dart';
+import '../services/purchase_service.dart';
+import '../screens/premium_screen.dart';
+import '../widgets/pfc_balance_bar.dart';
 
 class FoodSearchScreen extends StatefulWidget {
   final String date;
@@ -92,6 +96,14 @@ class _FoodSearchScreenState extends State<FoodSearchScreen>
     });
     _debounceTimer = Timer(const Duration(milliseconds: 1000), () async {
       if (!mounted) return;
+      final canSearch = await LimitService.instance.canSearchAI();
+      if (!mounted) return;
+      if (!canSearch) {
+        setState(() => _aiSearching = false);
+        _showAILimitDialog();
+        return;
+      }
+      await LimitService.instance.incrementAICount();
       final results = await GeminiService.instance.searchFood(q);
       if (!mounted) return;
       setState(() {
@@ -106,6 +118,29 @@ class _FoodSearchScreenState extends State<FoodSearchScreen>
     return Scaffold(
       appBar: AppBar(
         title: const Text('食品を選択'),
+        actions: [
+          if (!PurchaseService.instance.isPremium)
+            Padding(
+              padding: const EdgeInsets.only(right: 12),
+              child: FutureBuilder<int>(
+                future: LimitService.instance.aiCountRemaining(),
+                builder: (_, snap) {
+                  final remaining = snap.data ?? LimitService.freeAISearchLimit;
+                  return Chip(
+                    label: Text('AI $remaining回',
+                        style: TextStyle(
+                            fontSize: 11,
+                            color: remaining <= 1
+                                ? Colors.white
+                                : null)),
+                    backgroundColor:
+                        remaining <= 1 ? Colors.orange : null,
+                    visualDensity: VisualDensity.compact,
+                  );
+                },
+              ),
+            ),
+        ],
         bottom: TabBar(
           controller: _tabController,
           tabs: const [
@@ -164,6 +199,31 @@ class _FoodSearchScreenState extends State<FoodSearchScreen>
                 ),
               ],
             ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showAILimitDialog() {
+    if (!mounted) return;
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('AI検索の上限に達しました'),
+        content: Text(
+            '無料プランではAI食品検索は1日${LimitService.freeAISearchLimit}回までです。\nプレミアムにアップグレードすると無制限に使えます。'),
+        actions: [
+          TextButton(
+              onPressed: () => Navigator.pop(ctx),
+              child: const Text('閉じる')),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(ctx);
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (_) => const PremiumScreen()));
+            },
+            child: const Text('プレミアムを見る'),
           ),
         ],
       ),
@@ -578,8 +638,15 @@ class _BuiltinList extends StatelessWidget {
         if (hasBuiltin) ...[
           ...results.map((f) => ListTile(
             title: Text(f.name),
-            subtitle: Text(
-                '${f.kcal.round()} kcal / 100g  P:${f.protein.toStringAsFixed(1)}g'),
+            subtitle: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('${f.kcal.round()} kcal / 100g  P:${f.protein.toStringAsFixed(1)}g'),
+                const SizedBox(height: 4),
+                PFCBalanceBar(protein: f.protein, fat: f.fat, carb: f.carb),
+              ],
+            ),
+            isThreeLine: true,
             trailing: IconButton(
               icon: const Icon(Icons.favorite_border, size: 20, color: Colors.pinkAccent),
               onPressed: () => onFavorite(f),
@@ -646,8 +713,15 @@ class _BuiltinList extends StatelessWidget {
                 child: const Icon(Icons.auto_awesome, color: Colors.white, size: 18),
               ),
               title: Text(f.name),
-              subtitle: Text(
-                  '${f.kcal.round()} kcal / 100g  P:${f.protein.toStringAsFixed(1)}g  ※AI推定値'),
+              subtitle: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('${f.kcal.round()} kcal / 100g  P:${f.protein.toStringAsFixed(1)}g  ※AI推定値'),
+                  const SizedBox(height: 4),
+                  PFCBalanceBar(protein: f.protein, fat: f.fat, carb: f.carb),
+                ],
+              ),
+              isThreeLine: true,
               trailing: IconButton(
                 icon: const Icon(Icons.favorite_border, size: 20, color: Colors.pinkAccent),
                 onPressed: () => onFavorite(f),

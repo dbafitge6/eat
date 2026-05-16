@@ -11,6 +11,8 @@ enum AppThemeType {
   sunsetRedPurple,
   neonCyber,
   goldBronze,
+  lightMode,
+  darkMode,
 }
 
 class AppThemes {
@@ -29,6 +31,8 @@ class AppThemes {
     'Sunset Red Purple 🌇',
     'Neon Cyber 💎',
     'ゴールドブロンズ 👑',
+    'ライト ☀️',
+    'ダーク 🌙',
   ];
 
   static const themeKeywords = [
@@ -42,20 +46,23 @@ class AppThemes {
     '夕焼け、情熱',
     'サイバーパンク、未来',
     'ラグジュアリー',
+    'シンプル、明るい',
+    'シンプル、落ち着き',
   ];
 
-  // accent primary colors for each theme (used in settings UI)
   static const accentColors = [
-    Color(0xFF667eea), // A
-    Color(0xFFf093fb), // B
-    Color(0xFF43e97b), // C
-    Color(0xFFfa709a), // D
-    Color(0xFF30cfd0), // E
-    Color(0xFFffd4c2), // F
-    Color(0xFFd4d4d4), // G
-    Color(0xFFff6b6b), // H
-    Color(0xFF00f5ff), // I
-    Color(0xFFf4d03f), // J
+    Color(0xFF667eea),
+    Color(0xFFf093fb),
+    Color(0xFF43e97b),
+    Color(0xFFfa709a),
+    Color(0xFF30cfd0),
+    Color(0xFFffd4c2),
+    Color(0xFFd4d4d4),
+    Color(0xFFff6b6b),
+    Color(0xFF00f5ff),
+    Color(0xFFf4d03f),
+    Color(0xFF4285F4), // light
+    Color(0xFF555555), // dark
   ];
 
   static final _gradients = <Gradient>[
@@ -79,6 +86,10 @@ class AppThemes {
     const LinearGradient(colors: [Color(0xFF00f5ff), Color(0xFFff00ff)], begin: Alignment.topLeft, end: Alignment.bottomRight),
     // J: Gold Bronze
     const LinearGradient(colors: [Color(0xFFf4d03f), Color(0xFFc87941)], begin: Alignment.topLeft, end: Alignment.bottomRight),
+    // K: Light
+    const LinearGradient(colors: [Color(0xFF4285F4), Color(0xFF34A853)], begin: Alignment.topLeft, end: Alignment.bottomRight),
+    // L: Dark
+    const LinearGradient(colors: [Color(0xFF555555), Color(0xFF222222)], begin: Alignment.topLeft, end: Alignment.bottomRight),
   ];
 
   static final _themes = <ThemeData>[
@@ -102,6 +113,10 @@ class AppThemes {
     _build(bg: const Color(0xFF0f0f1f), card: const Color(0xFF161626), primary: const Color(0xFF00f5ff), secondary: const Color(0xFFff00ff)),
     // J: Gold Bronze
     _build(bg: const Color(0xFF231c12), card: const Color(0xFF2c2318), primary: const Color(0xFFf4d03f), secondary: const Color(0xFFc87941)),
+    // K: Light
+    _buildLight(bg: const Color(0xFFF5F5F5), card: Colors.white, primary: const Color(0xFF4285F4), secondary: const Color(0xFF34A853)),
+    // L: Dark
+    _build(bg: const Color(0xFF111111), card: const Color(0xFF1E1E1E), primary: const Color(0xFF888888), secondary: const Color(0xFF555555)),
   ];
 
   static ThemeData _build({
@@ -128,6 +143,45 @@ class AppThemes {
           fontWeight: FontWeight.bold,
         ),
         iconTheme: const IconThemeData(color: Colors.white),
+      ),
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        backgroundColor: card,
+        selectedItemColor: primary,
+        unselectedItemColor: Colors.grey,
+      ),
+      tabBarTheme: TabBarThemeData(
+        labelColor: primary,
+        unselectedLabelColor: Colors.grey,
+        indicatorColor: primary,
+      ),
+      useMaterial3: true,
+    );
+  }
+
+  static ThemeData _buildLight({
+    required Color bg,
+    required Color card,
+    required Color primary,
+    required Color secondary,
+  }) {
+    return ThemeData(
+      brightness: Brightness.light,
+      colorScheme: ColorScheme.light(
+        primary: primary,
+        secondary: secondary,
+        surface: card,
+      ),
+      scaffoldBackgroundColor: bg,
+      cardColor: card,
+      appBarTheme: AppBarTheme(
+        backgroundColor: bg,
+        elevation: 0,
+        titleTextStyle: const TextStyle(
+          color: Color(0xFF1a1a1a),
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+        ),
+        iconTheme: const IconThemeData(color: Color(0xFF1a1a1a)),
       ),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
         backgroundColor: card,

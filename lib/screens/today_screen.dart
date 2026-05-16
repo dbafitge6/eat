@@ -12,12 +12,18 @@ import '../services/meal_photo_service.dart';
 import '../widgets/meal_share_card.dart';
 import '../utils/date_utils.dart' as du;
 import 'food_search_screen.dart';
-import 'barcode_screen.dart';
 import 'my_set_screen.dart';
 import 'settings_screen.dart';
 import 'nutrient_screen.dart';
 import 'photo_filter_screen.dart';
 import '../services/ad_service.dart';
+import '../models/exercise_entry.dart';
+import '../services/functional_ingredient_service.dart';
+import 'ai_chat_screen.dart';
+import 'restaurant_screen.dart';
+import 'premium_screen.dart';
+import '../services/purchase_service.dart';
+import 'package:fl_chart/fl_chart.dart';
 
 class TodayScreen extends StatefulWidget {
   const TodayScreen({super.key});
@@ -29,8 +35,10 @@ class TodayScreen extends StatefulWidget {
 class _TodayScreenState extends State<TodayScreen> {
   final String _today = du.todayString();
   List<MealEntry> _meals = [];
+  List<ExerciseEntry> _exercises = [];
   UserProfile? _profile;
   int _waterMl = 0;
+  int _streak = 0;
   bool _loading = true;
   Map<int, File?> _mealPhotos = {};
   int _visibleMealCount = 1;
@@ -84,8 +92,10 @@ class _TodayScreenState extends State<TodayScreen> {
   Future<void> _load() async {
     final db = DatabaseService.instance;
     final meals = await db.getMealsForDate(_today);
+    final exercises = await db.getExercisesForDate(_today);
     final profile = await db.getUserProfile();
     final water = await db.getTotalWaterForDate(_today);
+    final streak = await db.getStreak();
     final photos = <int, File?>{};
     for (int i = 0; i < 6; i++) {
       photos[i] = await MealPhotoService.getPhoto(_today, i);
@@ -98,8 +108,10 @@ class _TodayScreenState extends State<TodayScreen> {
     if (!mounted) return;
     setState(() {
       _meals = meals;
+      _exercises = exercises;
       _profile = profile;
       _waterMl = water;
+      _streak = streak;
       _mealPhotos = photos;
       _visibleMealCount = visibleCount;
       _loading = false;
@@ -138,6 +150,19 @@ class _TodayScreenState extends State<TodayScreen> {
           ),
         ),
         actions: [
+          _GlassIconButton(
+            icon: Icons.auto_awesome,
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => AiChatScreen(
+                  todayMeals: _meals,
+                  profile: _profile,
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(width: 8),
           _GlassIconButton(
             icon: Icons.share_outlined,
             onTap: _shareDaySummary,
@@ -185,9 +210,19 @@ class _TodayScreenState extends State<TodayScreen> {
                     primary: primary,
                     secondary: secondary,
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 12),
 
-                  // Quick Stats: water + meal count
+                  // PFC Balance Chart
+                  _PFCChart(
+                    protein: _totalProtein,
+                    fat: _totalFat,
+                    carb: _totalCarb,
+                    primary: primary,
+                    secondary: secondary,
+                  ),
+                  const SizedBox(height: 12),
+
+                  // Quick Stats: water + streak
                   Row(
                     children: [
                       Expanded(
@@ -202,28 +237,57 @@ class _TodayScreenState extends State<TodayScreen> {
                       ),
                       const SizedBox(width: 12),
                       Expanded(
-                        child: _MealCountCard(
-                          count: _visibleMealCount,
+                        child: _StreakCard(
+                          streak: _streak,
                           primary: primary,
                           secondary: secondary,
                         ),
                       ),
                     ],
                   ),
+                  const SizedBox(height: 12),
+
+                  // Exercise Card
+                  _ExerciseCard(
+                    exercises: _exercises,
+                    primary: primary,
+                    secondary: secondary,
+                    weightKg: _profile?.weightKg ?? 60,
+                    today: _today,
+                    onChanged: _load,
+                  ),
+                  const SizedBox(height: 12),
+
+                  // Advice Card
+                  _AdviceCard(
+                    totalKcal: _totalKcal,
+                    targetKcal: target.toDouble(),
+                    totalProtein: _totalProtein,
+                    totalFat: _totalFat,
+                    totalCarb: _totalCarb,
+                    streak: _streak,
+                    primary: primary,
+                    secondary: secondary,
+                    onChatTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => AiChatScreen(
+                          todayMeals: _meals,
+                          profile: _profile,
+                        ),
+                      ),
+                    ),
+                  ),
                   const SizedBox(height: 28),
 
                   // Meals section header
-                  Row(
-                    children: [
-                      const Text(
-                        '今日の食事',
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
+                  const Text(
+                    '今日の食事',
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white,
+                    ),
                   ),
                   const SizedBox(height: 14),
 
@@ -267,8 +331,14 @@ class _TodayScreenState extends State<TodayScreen> {
                     _GlassCard(
                       padding: const EdgeInsets.symmetric(vertical: 18),
                       child: GestureDetector(
-                        onTap: () =>
-                            setState(() => _visibleMealCount++),
+                        onTap: () {
+                          if (!PurchaseService.instance.isPremium &&
+                              _visibleMealCount >= 3) {
+                            _showPremiumGate('4食目以降の追加はプレミアム機能です');
+                            return;
+                          }
+                          setState(() => _visibleMealCount++);
+                        },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -280,6 +350,12 @@ class _TodayScreenState extends State<TodayScreen> {
                                   color: Colors.white54,
                                   fontWeight: FontWeight.w600),
                             ),
+                            if (!PurchaseService.instance.isPremium &&
+                                _visibleMealCount >= 3) ...[
+                              const SizedBox(width: 6),
+                              const Icon(Icons.lock_outline,
+                                  size: 14, color: Colors.white38),
+                            ],
                           ],
                         ),
                       ),
@@ -308,11 +384,6 @@ class _TodayScreenState extends State<TodayScreen> {
             onTap: () { Navigator.pop(ctx); _openFoodSearch(mealType); },
           ),
           _BottomSheetTile(
-            icon: Icons.qr_code_scanner,
-            label: 'バーコードスキャン',
-            onTap: () { Navigator.pop(ctx); _openBarcode(mealType); },
-          ),
-          _BottomSheetTile(
             icon: Icons.favorite_outline,
             label: 'マイ食品から選ぶ',
             onTap: () { Navigator.pop(ctx); _openMyFood(mealType); },
@@ -321,6 +392,11 @@ class _TodayScreenState extends State<TodayScreen> {
             icon: Icons.playlist_add,
             label: 'マイセットから選ぶ',
             onTap: () { Navigator.pop(ctx); _openMySet(mealType); },
+          ),
+          _BottomSheetTile(
+            icon: Icons.restaurant_outlined,
+            label: '外食メニューを探す',
+            onTap: () { Navigator.pop(ctx); _openRestaurant(mealType); },
           ),
         ],
       ),
@@ -337,7 +413,115 @@ class _TodayScreenState extends State<TodayScreen> {
     if (result != null) {
       await DatabaseService.instance.insertMeal(result);
       await _load();
+      _showMealRecordedFeedback(result);
     }
+  }
+
+  void _showMealRecordedFeedback(MealEntry entry) {
+    if (!mounted) return;
+    final ingredients = FunctionalIngredientService.detectFromFoodName(entry.foodName);
+    if (ingredients.isNotEmpty) {
+      _showIngredientSheet(entry.foodName, ingredients);
+    } else {
+      _showTriviaSnackbar();
+    }
+  }
+
+  void _showTriviaSnackbar() {
+    final tips = [
+      '食後30分のウォーキングで血糖値スパイクを抑えられます 🚶',
+      'たんぱく質は筋肉だけでなく肌・髪の材料にもなります ✨',
+      '野菜から食べると血糖値の急上昇を防げます 🥗',
+      '水分補給は代謝アップにも効果的です 💧',
+      '腸活には発酵食品＋食物繊維の組み合わせが効果的 🌱',
+      '色の濃い野菜ほど栄養価が高い傾向があります 🥦',
+    ];
+    final tip = tips[DateTime.now().second % tips.length];
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(tip),
+        duration: const Duration(seconds: 3),
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      ),
+    );
+  }
+
+  void _showIngredientSheet(String foodName, List<FunctionalIngredient> ingredients) {
+    if (!mounted) return;
+    final primary = Theme.of(context).colorScheme.primary;
+    final secondary = Theme.of(context).colorScheme.secondary;
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      builder: (ctx) => Container(
+        decoration: const BoxDecoration(
+          color: Color(0xFF1a1a2e),
+          borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+        ),
+        padding: const EdgeInsets.fromLTRB(20, 16, 20, 32),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: Container(
+                width: 36, height: 4,
+                decoration: BoxDecoration(color: Colors.white24, borderRadius: BorderRadius.circular(2)),
+              ),
+            ),
+            const SizedBox(height: 16),
+            Row(
+              children: [
+                Icon(Icons.science_outlined, color: primary, size: 18),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text('$foodName の機能性成分',
+                      style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: Colors.white)),
+                ),
+              ],
+            ),
+            const SizedBox(height: 16),
+            ...ingredients.map((ing) => Padding(
+              padding: const EdgeInsets.only(bottom: 14),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Text(ing.emoji, style: const TextStyle(fontSize: 20)),
+                      const SizedBox(width: 8),
+                      Text(ing.name,
+                          style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: primary)),
+                    ],
+                  ),
+                  const SizedBox(height: 4),
+                  Text(ing.effect,
+                      style: const TextStyle(fontSize: 13, color: Colors.white70, height: 1.4)),
+                  if (ing.synergyFoods.isNotEmpty) ...[
+                    const SizedBox(height: 6),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Icon(Icons.link, size: 13, color: secondary),
+                        const SizedBox(width: 4),
+                        Expanded(
+                          child: Text(
+                            '相乗効果: ${ing.synergyFoods.join('・')}',
+                            style: TextStyle(fontSize: 11, color: secondary),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ],
+              ),
+            )),
+          ],
+        ),
+      ),
+    );
   }
 
   Future<void> _openMyFood(int mealType) async {
@@ -354,19 +538,7 @@ class _TodayScreenState extends State<TodayScreen> {
     if (result != null) {
       await DatabaseService.instance.insertMeal(result);
       await _load();
-    }
-  }
-
-  Future<void> _openBarcode(int mealType) async {
-    final result = await Navigator.push<MealEntry>(
-      context,
-      MaterialPageRoute(
-        builder: (_) => BarcodeScannerScreen(date: _today, mealType: mealType),
-      ),
-    );
-    if (result != null) {
-      await DatabaseService.instance.insertMeal(result);
-      await _load();
+      _showMealRecordedFeedback(result);
     }
   }
 
@@ -485,6 +657,20 @@ class _TodayScreenState extends State<TodayScreen> {
     }
   }
 
+  Future<void> _openRestaurant(int mealType) async {
+    final result = await Navigator.push<MealEntry>(
+      context,
+      MaterialPageRoute(
+        builder: (_) => RestaurantScreen(date: _today, mealType: mealType),
+      ),
+    );
+    if (result != null) {
+      await DatabaseService.instance.insertMeal(result);
+      await _load();
+      _showMealRecordedFeedback(result);
+    }
+  }
+
   Future<void> _openMySet(int mealType) async {
     await Navigator.push(
       context,
@@ -538,10 +724,38 @@ class _TodayScreenState extends State<TodayScreen> {
   }
 
   Future<void> _shareDaySummary() async {
+    if (!PurchaseService.instance.isPremium) {
+      _showPremiumGate('SNSシェアはプレミアム機能です');
+      return;
+    }
     await ShareService.shareDaySummary(
       meals: _meals,
       targetKcal: _profile?.targetKcal ?? 2000,
       waterMl: _waterMl,
+    );
+  }
+
+  void _showPremiumGate(String message) {
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('プレミアム機能'),
+        content: Text(message),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: const Text('キャンセル'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(ctx);
+              Navigator.push(ctx,
+                  MaterialPageRoute(builder: (_) => const PremiumScreen()));
+            },
+            child: const Text('プレミアムを見る'),
+          ),
+        ],
+      ),
     );
   }
 
@@ -750,6 +964,10 @@ class _TodayScreenState extends State<TodayScreen> {
   }
 
   Future<void> _shareWithPhoto(int mealType) async {
+    if (!PurchaseService.instance.isPremium) {
+      _showPremiumGate('SNSシェアはプレミアム機能です');
+      return;
+    }
     final photo = _mealPhotos[mealType];
     if (photo == null || !mounted) return;
     final entries = _meals.where((m) => m.mealType == mealType).toList();
@@ -1136,6 +1354,476 @@ class _MealCountCard extends StatelessWidget {
                 style: TextStyle(fontSize: 11, color: Colors.white54),
               ),
             ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// ─── PFC Chart ─────────────────────────────────────────────────
+
+class _PFCChart extends StatelessWidget {
+  final double protein;
+  final double fat;
+  final double carb;
+  final Color primary;
+  final Color secondary;
+
+  const _PFCChart({
+    required this.protein,
+    required this.fat,
+    required this.carb,
+    required this.primary,
+    required this.secondary,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final pKcal = protein * 4;
+    final fKcal = fat * 9;
+    final cKcal = carb * 4;
+    final total = pKcal + fKcal + cKcal;
+    final mid = Color.lerp(primary, secondary, 0.5)!;
+
+    final isEmpty = total < 1;
+    final sections = isEmpty
+        ? [PieChartSectionData(value: 1, color: Colors.white12, radius: 18, title: '')]
+        : [
+            PieChartSectionData(
+              value: pKcal,
+              color: primary,
+              radius: 18,
+              title: '',
+            ),
+            PieChartSectionData(
+              value: fKcal,
+              color: mid,
+              radius: 18,
+              title: '',
+            ),
+            PieChartSectionData(
+              value: cKcal,
+              color: secondary,
+              radius: 18,
+              title: '',
+            ),
+          ];
+
+    return _GlassCard(
+      padding: const EdgeInsets.all(16),
+      child: Row(
+        children: [
+          SizedBox(
+            width: 80,
+            height: 80,
+            child: PieChart(
+              PieChartData(
+                sections: sections,
+                centerSpaceRadius: 26,
+                sectionsSpace: 2,
+              ),
+            ),
+          ),
+          const SizedBox(width: 20),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text('PFCバランス',
+                    style: TextStyle(fontSize: 12, color: Colors.white54)),
+                const SizedBox(height: 8),
+                _PFCRow('P たんぱく質', protein, pKcal, total, primary),
+                const SizedBox(height: 4),
+                _PFCRow('F 脂質', fat, fKcal, total, mid),
+                const SizedBox(height: 4),
+                _PFCRow('C 炭水化物', carb, cKcal, total, secondary),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _PFCRow extends StatelessWidget {
+  final String label;
+  final double grams;
+  final double kcal;
+  final double total;
+  final Color color;
+
+  const _PFCRow(this.label, this.grams, this.kcal, this.total, this.color);
+
+  @override
+  Widget build(BuildContext context) {
+    final pct = total > 0 ? (kcal / total * 100).round() : 0;
+    return Row(
+      children: [
+        Container(width: 8, height: 8, decoration: BoxDecoration(color: color, shape: BoxShape.circle)),
+        const SizedBox(width: 6),
+        Expanded(child: Text(label, style: const TextStyle(fontSize: 11, color: Colors.white70))),
+        Text('${grams.round()}g', style: const TextStyle(fontSize: 11, color: Colors.white60)),
+        const SizedBox(width: 6),
+        Text('$pct%', style: TextStyle(fontSize: 11, color: color, fontWeight: FontWeight.w600)),
+      ],
+    );
+  }
+}
+
+// ─── Streak Card ───────────────────────────────────────────────
+
+class _StreakCard extends StatelessWidget {
+  final int streak;
+  final Color primary;
+  final Color secondary;
+
+  const _StreakCard({
+    required this.streak,
+    required this.primary,
+    required this.secondary,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return _GlassCard(
+      padding: const EdgeInsets.all(16),
+      child: Row(
+        children: [
+          Container(
+            width: 44,
+            height: 44,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(colors: [primary, secondary]),
+              borderRadius: BorderRadius.circular(13),
+            ),
+            child: const Icon(Icons.local_fire_department, color: Colors.white, size: 22),
+          ),
+          const SizedBox(width: 10),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                '$streak日',
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                ),
+              ),
+              const Text('継続中', style: TextStyle(fontSize: 11, color: Colors.white54)),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// ─── Exercise Card ─────────────────────────────────────────────
+
+class _ExerciseCard extends StatelessWidget {
+  final List<ExerciseEntry> exercises;
+  final Color primary;
+  final Color secondary;
+  final double weightKg;
+  final String today;
+  final VoidCallback onChanged;
+
+  const _ExerciseCard({
+    required this.exercises,
+    required this.primary,
+    required this.secondary,
+    required this.weightKg,
+    required this.today,
+    required this.onChanged,
+  });
+
+  Future<void> _addExercise(BuildContext context) async {
+    final nameCtrl = TextEditingController();
+    int type = 0;
+    int duration = 30;
+
+    await showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (ctx) => StatefulBuilder(
+        builder: (ctx, ss) {
+          final kcal = ExerciseEntry.estimateKcal(type, duration, weightKg);
+          return Padding(
+            padding: EdgeInsets.only(bottom: MediaQuery.of(ctx).viewInsets.bottom),
+            child: Container(
+              decoration: const BoxDecoration(
+                color: Color(0xFF1a1a2e),
+                borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+              ),
+              padding: const EdgeInsets.fromLTRB(20, 16, 20, 32),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Center(
+                    child: Container(
+                      width: 36, height: 4,
+                      decoration: BoxDecoration(color: Colors.white24, borderRadius: BorderRadius.circular(2)),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  const Text('運動を記録', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: Colors.white)),
+                  const SizedBox(height: 16),
+                  TextField(
+                    controller: nameCtrl,
+                    autofocus: true,
+                    style: const TextStyle(color: Colors.white),
+                    decoration: InputDecoration(
+                      hintText: '例: ランニング、筋トレ',
+                      hintStyle: const TextStyle(color: Colors.white38),
+                      filled: true,
+                      fillColor: Colors.white.withValues(alpha: 0.07),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide.none,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  SegmentedButton<int>(
+                    segments: ExerciseEntry.typeNames.asMap().entries.map((e) =>
+                      ButtonSegment(value: e.key, label: Text(e.value, style: const TextStyle(fontSize: 11)))
+                    ).toList(),
+                    selected: {type},
+                    onSelectionChanged: (s) => ss(() => type = s.first),
+                    style: ButtonStyle(
+                      backgroundColor: WidgetStateProperty.resolveWith((states) =>
+                        states.contains(WidgetState.selected) ? primary.withValues(alpha: 0.8) : Colors.white.withValues(alpha: 0.07)
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Row(
+                    children: [
+                      const Text('時間: ', style: TextStyle(color: Colors.white70)),
+                      Text('$duration分', style: TextStyle(color: primary, fontWeight: FontWeight.w700)),
+                    ],
+                  ),
+                  Slider(
+                    value: duration.toDouble(),
+                    min: 5,
+                    max: 120,
+                    divisions: 23,
+                    activeColor: primary,
+                    onChanged: (v) => ss(() => duration = v.round()),
+                  ),
+                  Text(
+                    '推定消費: ${kcal.round()} kcal',
+                    style: TextStyle(color: secondary, fontSize: 13),
+                  ),
+                  const SizedBox(height: 16),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: primary,
+                        foregroundColor: Colors.white,
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                      ),
+                      onPressed: () async {
+                        final name = nameCtrl.text.trim().isEmpty
+                            ? ExerciseEntry.typeNames[type]
+                            : nameCtrl.text.trim();
+                        final entry = ExerciseEntry(
+                          date: today,
+                          name: name,
+                          type: type,
+                          durationMin: duration,
+                          kcalBurned: ExerciseEntry.estimateKcal(type, duration, weightKg),
+                        );
+                        await DatabaseService.instance.insertExercise(entry);
+                        if (ctx.mounted) Navigator.pop(ctx);
+                        onChanged();
+                      },
+                      child: const Text('記録する', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final totalKcal = exercises.fold(0.0, (s, e) => s + e.kcalBurned);
+
+    return _GlassCard(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Container(
+                width: 36,
+                height: 36,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(colors: [primary, secondary]),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: const Icon(Icons.directions_run, color: Colors.white, size: 20),
+              ),
+              const SizedBox(width: 10),
+              const Expanded(
+                child: Text('運動', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: Colors.white)),
+              ),
+              if (totalKcal > 0)
+                Text('-${totalKcal.round()} kcal',
+                    style: TextStyle(fontSize: 13, color: secondary, fontWeight: FontWeight.w600)),
+              const SizedBox(width: 8),
+              GestureDetector(
+                onTap: () => _addExercise(context),
+                child: Container(
+                  width: 28,
+                  height: 28,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withValues(alpha: 0.1),
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Icon(Icons.add, color: Colors.white70, size: 16),
+                ),
+              ),
+            ],
+          ),
+          if (exercises.isNotEmpty) ...[
+            const SizedBox(height: 10),
+            ...exercises.map((e) => Padding(
+              padding: const EdgeInsets.only(bottom: 4),
+              child: Row(
+                children: [
+                  const SizedBox(width: 4),
+                  Icon(Icons.fitness_center, size: 14, color: Colors.white38),
+                  const SizedBox(width: 6),
+                  Expanded(
+                    child: Text(
+                      '${e.name}  ${e.durationMin}分',
+                      style: const TextStyle(fontSize: 13, color: Colors.white70),
+                    ),
+                  ),
+                  Text('-${e.kcalBurned.round()} kcal',
+                      style: const TextStyle(fontSize: 12, color: Colors.white38)),
+                  const SizedBox(width: 8),
+                  GestureDetector(
+                    onTap: () async {
+                      await DatabaseService.instance.deleteExercise(e.id!);
+                      onChanged();
+                    },
+                    child: const Icon(Icons.close, size: 14, color: Colors.white24),
+                  ),
+                ],
+              ),
+            )),
+          ] else ...[
+            const SizedBox(height: 6),
+            const Text('タップ + で運動を追加', style: TextStyle(fontSize: 12, color: Colors.white38)),
+          ],
+        ],
+      ),
+    );
+  }
+}
+
+// ─── Advice Card ───────────────────────────────────────────────
+
+class _AdviceCard extends StatelessWidget {
+  final double totalKcal;
+  final double targetKcal;
+  final double totalProtein;
+  final double totalFat;
+  final double totalCarb;
+  final int streak;
+  final Color primary;
+  final Color secondary;
+  final VoidCallback onChatTap;
+
+  const _AdviceCard({
+    required this.totalKcal,
+    required this.targetKcal,
+    required this.totalProtein,
+    required this.totalFat,
+    required this.totalCarb,
+    required this.streak,
+    required this.primary,
+    required this.secondary,
+    required this.onChatTap,
+  });
+
+  ({String emoji, String message, bool isPositive}) _buildAdvice() {
+    if (totalKcal < 1) {
+      return (emoji: '📝', message: '今日はまだ食事が記録されていません。記録を始めましょう！', isPositive: false);
+    }
+    final ratio = totalKcal / targetKcal;
+    final totalMacroKcal = totalProtein * 4 + totalFat * 9 + totalCarb * 4;
+    final proteinRatio = totalMacroKcal > 0 ? (totalProtein * 4) / totalMacroKcal : 0;
+    final fatRatio = totalMacroKcal > 0 ? (totalFat * 9) / totalMacroKcal : 0;
+
+    if (streak >= 7) {
+      return (emoji: '🔥', message: '$streak日連続記録中！継続は力なりです。', isPositive: true);
+    }
+    if (ratio > 1.15) {
+      return (emoji: '⚠️', message: 'カロリーオーバーです。次の食事は軽めにしてみましょう。', isPositive: false);
+    }
+    if (ratio >= 0.85 && ratio <= 1.15) {
+      if (proteinRatio < 0.15) {
+        return (emoji: '💪', message: 'カロリーはいい感じ！たんぱく質をもう少し増やすとより良いです。', isPositive: true);
+      }
+      if (fatRatio > 0.40) {
+        return (emoji: '🥗', message: 'カロリーはいい感じ！脂質が多めなので、野菜も一緒に食べましょう。', isPositive: true);
+      }
+      return (emoji: '✨', message: 'PFCバランスも良好です！今日は完璧な食事です。', isPositive: true);
+    }
+    if (ratio < 0.5) {
+      return (emoji: '🍽️', message: 'カロリーが少なめです。しっかり食べてエネルギーを補給しましょう。', isPositive: false);
+    }
+    if (proteinRatio < 0.15) {
+      return (emoji: '🥩', message: 'たんぱく質が少なめです。肉・魚・豆腐を意識してみましょう。', isPositive: false);
+    }
+    return (emoji: '👍', message: '順調に記録できています。この調子で続けましょう！', isPositive: true);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final advice = _buildAdvice();
+    return _GlassCard(
+      padding: const EdgeInsets.fromLTRB(16, 14, 16, 14),
+      child: Row(
+        children: [
+          Text(advice.emoji, style: const TextStyle(fontSize: 28)),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Text(
+              advice.message,
+              style: const TextStyle(fontSize: 13, color: Colors.white, height: 1.4),
+            ),
+          ),
+          const SizedBox(width: 8),
+          GestureDetector(
+            onTap: onChatTap,
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(colors: [primary.withValues(alpha: 0.7), secondary.withValues(alpha: 0.7)]),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: const Text(
+                'AI相談',
+                style: TextStyle(fontSize: 11, color: Colors.white, fontWeight: FontWeight.w600),
+              ),
+            ),
           ),
         ],
       ),
