@@ -46,7 +46,7 @@ class _EatAppState extends State<EatApp> {
     final themeIndex = prefs.getInt('theme') ?? 1;
     final onboarding = prefs.getBool('onboarding_done') ?? false;
     setState(() {
-      _themeType = AppThemeType.values[themeIndex.clamp(0, 9)];
+      _themeType = AppThemeType.values[themeIndex.clamp(0, AppThemeType.values.length - 1)];
       _onboardingDone = onboarding;
       _loading = false;
     });
