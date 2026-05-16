@@ -114,7 +114,7 @@ class AppThemes {
     // J: Gold Bronze
     _build(bg: const Color(0xFF231c12), card: const Color(0xFF2c2318), primary: const Color(0xFFf4d03f), secondary: const Color(0xFFc87941)),
     // K: Light
-    _buildLight(bg: const Color(0xFFF5F5F5), card: Colors.white, primary: const Color(0xFF4285F4), secondary: const Color(0xFF34A853)),
+    _buildLight(bg: const Color(0xFFF0F4F7), card: Colors.white, primary: const Color(0xFF4285F4), secondary: const Color(0xFF34A853)),
     // L: Dark
     _build(bg: const Color(0xFF111111), card: const Color(0xFF1E1E1E), primary: const Color(0xFF888888), secondary: const Color(0xFF555555)),
   ];
@@ -170,6 +170,7 @@ class AppThemes {
         primary: primary,
         secondary: secondary,
         surface: card,
+        onSurface: const Color(0xFF1a1a1a),
       ),
       scaffoldBackgroundColor: bg,
       cardColor: card,

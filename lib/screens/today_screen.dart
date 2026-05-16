@@ -281,12 +281,14 @@ class _TodayScreenState extends State<TodayScreen> {
                   const SizedBox(height: 28),
 
                   // Meals section header
-                  const Text(
+                  Text(
                     '今日の食事',
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.w700,
-                      color: Colors.white,
+                      color: Theme.of(context).brightness == Brightness.light
+                          ? const Color(0xFF1a1a1a)
+                          : Colors.white,
                     ),
                   ),
                   const SizedBox(height: 14),
@@ -1062,6 +1064,9 @@ class _HeroSection extends StatelessWidget {
     final progress = (totalKcal / targetKcal).clamp(0.0, 1.0);
     final remaining = targetKcal - totalKcal;
     final isOver = remaining < 0;
+    final isLight = Theme.of(context).brightness == Brightness.light;
+    final textColor = isLight ? const Color(0xFF1a1a1a) : Colors.white;
+    final subColor = isLight ? const Color(0xFF666666) : Colors.white60;
 
     return Column(
       children: [
@@ -1079,10 +1084,10 @@ class _HeroSection extends StatelessWidget {
               children: [
                 Text(
                   totalKcal.round().toString(),
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 48,
                     fontWeight: FontWeight.w800,
-                    color: Colors.white,
+                    color: textColor,
                     height: 1,
                     letterSpacing: -2,
                   ),
@@ -1090,9 +1095,9 @@ class _HeroSection extends StatelessWidget {
                 const SizedBox(height: 4),
                 Text(
                   '/ ${targetKcal.round()} kcal',
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 13,
-                    color: Colors.white54,
+                    color: subColor,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -1101,9 +1106,9 @@ class _HeroSection extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 16),
-        const Text(
+        Text(
           '今日の摂取カロリー',
-          style: TextStyle(fontSize: 14, color: Colors.white60),
+          style: TextStyle(fontSize: 14, color: subColor),
         ),
         const SizedBox(height: 4),
         ShaderMask(
@@ -2090,6 +2095,7 @@ class _GlassCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isLight = Theme.of(context).brightness == Brightness.light;
     return ClipRRect(
       borderRadius: BorderRadius.circular(20),
       child: BackdropFilter(
@@ -2097,9 +2103,15 @@ class _GlassCard extends StatelessWidget {
         child: Container(
           padding: padding,
           decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: 0.07),
+            color: isLight
+                ? Colors.black.withValues(alpha: 0.60)
+                : Colors.white.withValues(alpha: 0.07),
             borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: Colors.white.withValues(alpha: 0.12)),
+            border: Border.all(
+              color: isLight
+                  ? Colors.black.withValues(alpha: 0.08)
+                  : Colors.white.withValues(alpha: 0.12),
+            ),
           ),
           child: child,
         ),
