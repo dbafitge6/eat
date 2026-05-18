@@ -30,7 +30,7 @@ class EatApp extends StatefulWidget {
 }
 
 class _EatAppState extends State<EatApp> {
-  AppThemeType _themeType = AppThemeType.purpleViolet;
+  AppThemeType _themeType = AppThemeType.darkMode;
   AppThemeType get currentTheme => _themeType;
   bool _onboardingDone = false;
   bool _loading = true;
@@ -43,7 +43,7 @@ class _EatAppState extends State<EatApp> {
 
   Future<void> _load() async {
     final prefs = await SharedPreferences.getInstance();
-    final themeIndex = prefs.getInt('theme') ?? 1;
+    final themeIndex = prefs.getInt('theme') ?? AppThemeType.darkMode.index;
     final onboarding = prefs.getBool('onboarding_done') ?? false;
     setState(() {
       _themeType = AppThemeType.values[themeIndex.clamp(0, AppThemeType.values.length - 1)];

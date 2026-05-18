@@ -8,7 +8,9 @@ import '../models/my_set.dart';
 import '../models/user_profile.dart';
 import '../models/calendar_event.dart';
 import '../models/exercise_entry.dart';
+import '../models/day_photo.dart';
 import 'dart:convert';
+import 'dart:io';
 
 class DatabaseService {
   static final DatabaseService _instance = DatabaseService._();
@@ -26,7 +28,7 @@ class DatabaseService {
     final path = join(await getDatabasesPath(), 'eat.db');
     return openDatabase(
       path,
-      version: 3,
+      version: 5,
       onUpgrade: (db, oldV, newV) async {
         if (oldV < 2) {
           await db.execute('''
@@ -40,10 +42,24 @@ class DatabaseService {
             )
           ''');
         }
-        if (oldV < 3) {
-          await db.execute(
-            'ALTER TABLE user_profile ADD COLUMN diet_intensity INTEGER NOT NULL DEFAULT 1',
-          );
+        if (oldV < 4) {
+          // user_profile に diet_intensity が無いケース（v3 onCreate のバグで欠落していた）を補修
+          final cols = await db.rawQuery('PRAGMA table_info(user_profile)');
+          final hasDietIntensity = cols.any((c) => c['name'] == 'diet_intensity');
+          if (!hasDietIntensity) {
+            await db.execute(
+              'ALTER TABLE user_profile ADD COLUMN diet_intensity INTEGER NOT NULL DEFAULT 1',
+            );
+          }
+        }
+        if (oldV < 5) {
+          await db.execute('''
+            CREATE TABLE IF NOT EXISTS day_photos (
+              id INTEGER PRIMARY KEY AUTOINCREMENT,
+              date TEXT NOT NULL,
+              path TEXT NOT NULL
+            )
+          ''');
         }
       },
       onCreate: (db, v) async {
@@ -112,6 +128,7 @@ class DatabaseService {
             sex INTEGER NOT NULL,
             activity_level INTEGER NOT NULL,
             goal INTEGER NOT NULL,
+            diet_intensity INTEGER NOT NULL DEFAULT 1,
             target_kcal REAL NOT NULL,
             target_water_ml REAL NOT NULL
           )
@@ -132,6 +149,13 @@ class DatabaseService {
             type INTEGER NOT NULL,
             duration_min INTEGER NOT NULL,
             kcal_burned REAL NOT NULL
+          )
+        ''');
+        await db.execute('''
+          CREATE TABLE day_photos (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            date TEXT NOT NULL,
+            path TEXT NOT NULL
           )
         ''');
       },
@@ -365,6 +389,44 @@ class DatabaseService {
       }
     }
     return streak;
+  }
+
+  // ─── DayPhotos ───────────────────────────────────────────────────────────────
+
+  Future<List<DayPhoto>> getPhotosForDate(String date) async {
+    final d = await db;
+    final rows = await d.query('day_photos',
+        where: 'date = ?', whereArgs: [date], orderBy: 'id');
+    return rows.map(DayPhoto.fromMap).toList();
+  }
+
+  Future<int> insertPhoto(DayPhoto photo) async {
+    final d = await db;
+    return d.insert('day_photos', photo.toMap());
+  }
+
+  Future<void> deletePhoto(int id) async {
+    final d = await db;
+    final rows =
+        await d.query('day_photos', where: 'id = ?', whereArgs: [id]);
+    if (rows.isNotEmpty) {
+      final file = File(rows.first['path'] as String);
+      if (await file.exists()) await file.delete();
+    }
+    await d.delete('day_photos', where: 'id = ?', whereArgs: [id]);
+  }
+
+  Future<void> deletePhotosBeforeMonth(int year, int month) async {
+    final cutoff =
+        '$year-${month.toString().padLeft(2, '0')}-01';
+    final d = await db;
+    final rows = await d.query('day_photos',
+        where: 'date < ?', whereArgs: [cutoff]);
+    for (final row in rows) {
+      final file = File(row['path'] as String);
+      if (await file.exists()) await file.delete();
+    }
+    await d.delete('day_photos', where: 'date < ?', whereArgs: [cutoff]);
   }
 
   // ─── CSV Export ─────────────────────────────────────────────────────────────

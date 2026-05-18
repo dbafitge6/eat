@@ -177,38 +177,9 @@ class _WeightScreenState extends State<WeightScreen> {
   }
 
   Future<void> _showAddWeightDialog() async {
-    double weight = _latestWeight;
     final result = await showDialog<double>(
       context: context,
-      builder: (ctx) => StatefulBuilder(
-        builder: (ctx, ss) => AlertDialog(
-          title: const Text('体重を記録'),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text('${weight.toStringAsFixed(1)} kg',
-                  style: const TextStyle(
-                      fontSize: 32, fontWeight: FontWeight.bold)),
-              Slider(
-                value: weight,
-                min: 30,
-                max: 200,
-                divisions: 340,
-                onChanged: (v) => ss(() => weight = v),
-              ),
-            ],
-          ),
-          actions: [
-            TextButton(
-                onPressed: () => Navigator.pop(ctx),
-                child: const Text('キャンセル')),
-            ElevatedButton(
-              onPressed: () => Navigator.pop(ctx, weight),
-              child: const Text('記録'),
-            ),
-          ],
-        ),
-      ),
+      builder: (ctx) => _WeightInputDialog(initialWeight: _latestWeight),
     );
     if (result != null) {
       final h = _profile?.heightCm ?? 170;
@@ -220,5 +191,71 @@ class _WeightScreenState extends State<WeightScreen> {
       ));
       await _load();
     }
+  }
+}
+
+class _WeightInputDialog extends StatefulWidget {
+  final double initialWeight;
+  const _WeightInputDialog({required this.initialWeight});
+
+  @override
+  State<_WeightInputDialog> createState() => _WeightInputDialogState();
+}
+
+class _WeightInputDialogState extends State<_WeightInputDialog> {
+  late final TextEditingController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController(
+      text: widget.initialWeight.toStringAsFixed(1),
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: const Text('体重を記録'),
+      content: TextField(
+        controller: _controller,
+        autofocus: true,
+        keyboardType: const TextInputType.numberWithOptions(decimal: true),
+        textInputAction: TextInputAction.done,
+        textAlign: TextAlign.center,
+        style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+        decoration: const InputDecoration(
+          suffixText: 'kg',
+          suffixStyle: TextStyle(fontSize: 18),
+        ),
+        onSubmitted: (v) {
+          final parsed = double.tryParse(v);
+          if (parsed != null && parsed >= 20 && parsed <= 300) {
+            Navigator.pop(context, parsed);
+          }
+        },
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(context),
+          child: const Text('キャンセル'),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            final parsed = double.tryParse(_controller.text);
+            if (parsed != null && parsed >= 20 && parsed <= 300) {
+              Navigator.pop(context, parsed);
+            }
+          },
+          child: const Text('記録'),
+        ),
+      ],
+    );
   }
 }
