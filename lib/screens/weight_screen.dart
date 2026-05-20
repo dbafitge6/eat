@@ -126,40 +126,18 @@ class _WeightScreenState extends State<WeightScreen> {
                       ),
                     ),
                   ),
-                if (_entries.length >= 2) ...[
+                if (_entries.isNotEmpty) ...[
                   const SizedBox(height: 16),
-                  SizedBox(
-                    height: 180,
-                    child: LineChart(
-                      LineChartData(
-                        gridData: const FlGridData(show: false),
-                        borderData: FlBorderData(show: false),
-                        titlesData: FlTitlesData(
-                          leftTitles: const AxisTitles(
-                              sideTitles: SideTitles(showTitles: false)),
-                          rightTitles: const AxisTitles(
-                              sideTitles: SideTitles(showTitles: false)),
-                          topTitles: const AxisTitles(
-                              sideTitles: SideTitles(showTitles: false)),
-                          bottomTitles: const AxisTitles(
-                              sideTitles: SideTitles(showTitles: false)),
+                  Card(
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(8, 16, 16, 8),
+                      child: SizedBox(
+                        height: 220,
+                        child: _WeightChart(
+                          entries: _entries,
+                          targetWeight: _profile?.weightKg,
+                          primary: primary,
                         ),
-                        lineBarsData: [
-                          LineChartBarData(
-                            spots: List.generate(_entries.length, (i) {
-                              return FlSpot(
-                                  i.toDouble(), _entries[i].weight);
-                            }),
-                            isCurved: true,
-                            color: primary,
-                            barWidth: 2,
-                            dotData: const FlDotData(show: false),
-                            belowBarData: BarAreaData(
-                              show: true,
-                              color: primary.withOpacity(0.1),
-                            ),
-                          ),
-                        ],
                       ),
                     ),
                   ),
@@ -191,6 +169,134 @@ class _WeightScreenState extends State<WeightScreen> {
       ));
       await _load();
     }
+  }
+}
+
+class _WeightChart extends StatelessWidget {
+  final List<WeightEntry> entries;
+  final double? targetWeight;
+  final Color primary;
+
+  const _WeightChart({
+    required this.entries,
+    required this.primary,
+    this.targetWeight,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final spots = List.generate(entries.length, (i) =>
+        FlSpot(i.toDouble(), entries[i].weight));
+
+    final weights = entries.map((e) => e.weight).toList();
+    final minW = weights.reduce((a, b) => a < b ? a : b);
+    final maxW = weights.reduce((a, b) => a > b ? a : b);
+    final minY = (minW - 2).floorToDouble();
+    final maxY = (maxW + 2).ceilToDouble();
+
+    final extraLines = <HorizontalLine>[];
+    if (targetWeight != null &&
+        targetWeight! >= minY &&
+        targetWeight! <= maxY) {
+      extraLines.add(HorizontalLine(
+        y: targetWeight!,
+        color: Colors.orange.withValues(alpha: 0.6),
+        strokeWidth: 1,
+        dashArray: [6, 4],
+        label: HorizontalLineLabel(
+          show: true,
+          alignment: Alignment.topRight,
+          labelResolver: (_) => '目標 ${targetWeight!.toStringAsFixed(1)}kg',
+          style: const TextStyle(fontSize: 10, color: Colors.orange),
+        ),
+      ));
+    }
+
+    final step = entries.length <= 10 ? 1 : (entries.length / 5).ceil();
+
+    return LineChart(
+      LineChartData(
+        minY: minY,
+        maxY: maxY,
+        gridData: FlGridData(
+          show: true,
+          drawVerticalLine: false,
+          getDrawingHorizontalLine: (_) => FlLine(
+            color: Colors.grey.withValues(alpha: 0.15),
+            strokeWidth: 1,
+          ),
+        ),
+        borderData: FlBorderData(show: false),
+        extraLinesData: ExtraLinesData(horizontalLines: extraLines),
+        titlesData: FlTitlesData(
+          topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+          rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+          leftTitles: AxisTitles(
+            sideTitles: SideTitles(
+              showTitles: true,
+              reservedSize: 40,
+              getTitlesWidget: (value, meta) {
+                if (value == meta.min || value == meta.max) return const SizedBox();
+                return Text(
+                  '${value.toStringAsFixed(1)}',
+                  style: const TextStyle(fontSize: 10, color: Colors.grey),
+                );
+              },
+            ),
+          ),
+          bottomTitles: AxisTitles(
+            sideTitles: SideTitles(
+              showTitles: true,
+              reservedSize: 24,
+              interval: step.toDouble(),
+              getTitlesWidget: (value, meta) {
+                final i = value.toInt();
+                if (i < 0 || i >= entries.length) return const SizedBox();
+                if (i % step != 0) return const SizedBox();
+                final parts = entries[i].date.split('-');
+                final label = parts.length >= 3 ? '${parts[1]}/${parts[2]}' : entries[i].date;
+                return Padding(
+                  padding: const EdgeInsets.only(top: 4),
+                  child: Text(label, style: const TextStyle(fontSize: 9, color: Colors.grey)),
+                );
+              },
+            ),
+          ),
+        ),
+        lineTouchData: LineTouchData(
+          touchTooltipData: LineTouchTooltipData(
+            getTooltipItems: (spots) => spots.map((s) {
+              final i = s.spotIndex;
+              final entry = entries[i];
+              return LineTooltipItem(
+                '${entry.date.substring(5)}\n${entry.weight.toStringAsFixed(1)} kg',
+                TextStyle(color: primary, fontSize: 12, fontWeight: FontWeight.bold),
+              );
+            }).toList(),
+          ),
+        ),
+        lineBarsData: [
+          LineChartBarData(
+            spots: spots,
+            isCurved: true,
+            color: primary,
+            barWidth: 2.5,
+            dotData: FlDotData(
+              show: true,
+              getDotPainter: (spot, percent, bar, index) => FlDotCirclePainter(
+                radius: 3,
+                color: primary,
+                strokeWidth: 0,
+              ),
+            ),
+            belowBarData: BarAreaData(
+              show: true,
+              color: primary.withValues(alpha: 0.08),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
 

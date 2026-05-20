@@ -7,6 +7,7 @@ import '../models/meal_entry.dart';
 import '../models/user_profile.dart';
 import '../models/water_entry.dart';
 import '../services/database_service.dart';
+import '../services/gemini_service.dart';
 import '../services/share_service.dart';
 import '../services/meal_photo_service.dart';
 import '../widgets/meal_share_card.dart';
@@ -303,6 +304,7 @@ class _TodayScreenState extends State<TodayScreen> {
                       child: _MealSection(
                         mealType: mealType,
                         entries: entries,
+                        date: _today,
                         photoFile: _mealPhotos[mealType],
                         primary: primary,
                         secondary: secondary,
@@ -726,10 +728,6 @@ class _TodayScreenState extends State<TodayScreen> {
   }
 
   Future<void> _shareDaySummary() async {
-    if (!PurchaseService.instance.isPremium) {
-      _showPremiumGate('SNSシェアはプレミアム機能です');
-      return;
-    }
     await ShareService.shareDaySummary(
       meals: _meals,
       targetKcal: _profile?.targetKcal ?? 2000,
@@ -966,10 +964,6 @@ class _TodayScreenState extends State<TodayScreen> {
   }
 
   Future<void> _shareWithPhoto(int mealType) async {
-    if (!PurchaseService.instance.isPremium) {
-      _showPremiumGate('SNSシェアはプレミアム機能です');
-      return;
-    }
     final photo = _mealPhotos[mealType];
     if (photo == null || !mounted) return;
     final entries = _meals.where((m) => m.mealType == mealType).toList();
@@ -1838,7 +1832,7 @@ class _AdviceCard extends StatelessWidget {
 
 // ─── Meal Section ──────────────────────────────────────────────
 
-class _MealSection extends StatelessWidget {
+class _MealSection extends StatefulWidget {
   final int mealType;
   final List<MealEntry> entries;
   final File? photoFile;
@@ -1848,6 +1842,7 @@ class _MealSection extends StatelessWidget {
   final VoidCallback? onCopy;
   final VoidCallback onCameraAdd;
   final VoidCallback? onSharePhoto;
+  final String date;
   final VoidCallback? onConfirm;
   final bool confirmed;
   final VoidCallback? onRemove;
@@ -1863,6 +1858,7 @@ class _MealSection extends StatelessWidget {
     required this.onDelete,
     required this.onCameraAdd,
     required this.onEdit,
+    required this.date,
     this.photoFile,
     this.onCopy,
     this.onSharePhoto,
@@ -1872,9 +1868,75 @@ class _MealSection extends StatelessWidget {
   });
 
   @override
+  State<_MealSection> createState() => _MealSectionState();
+}
+
+class _MealSectionState extends State<_MealSection> {
+  String? _comment;
+  bool _commentExpanded = false;
+  bool _commentLoading = false;
+
+  String get _commentKey => 'ai_comment_${widget.date}_${widget.mealType}';
+
+  @override
+  void initState() {
+    super.initState();
+    _loadCachedComment();
+  }
+
+  @override
+  void didUpdateWidget(_MealSection old) {
+    super.didUpdateWidget(old);
+    if (old.entries.length != widget.entries.length) {
+      _loadCachedComment();
+    }
+  }
+
+  Future<void> _loadCachedComment() async {
+    final prefs = await SharedPreferences.getInstance();
+    final cached = prefs.getString(_commentKey);
+    if (cached != null && mounted) {
+      setState(() => _comment = cached);
+    }
+  }
+
+  Future<void> _toggleComment() async {
+    if (_commentExpanded) {
+      setState(() => _commentExpanded = false);
+      return;
+    }
+    if (_comment != null) {
+      setState(() => _commentExpanded = true);
+      return;
+    }
+    setState(() {
+      _commentExpanded = true;
+      _commentLoading = true;
+    });
+    final result = await GeminiService.instance.generateMealComment(
+      widget.entries,
+      widget.mealType,
+    );
+    if (!mounted) return;
+    if (result != null) {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString(_commentKey, result);
+      setState(() {
+        _comment = result;
+        _commentLoading = false;
+      });
+    } else {
+      setState(() {
+        _commentExpanded = false;
+        _commentLoading = false;
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final mealName = MealEntry.mealNames[mealType];
-    final totalKcal = entries.fold(0.0, (s, e) => s + e.kcal);
+    final mealName = MealEntry.mealNames[widget.mealType];
+    final totalKcal = widget.entries.fold(0.0, (s, e) => s + e.kcal);
 
     return _GlassCard(
       padding: const EdgeInsets.all(16),
@@ -1884,9 +1946,9 @@ class _MealSection extends StatelessWidget {
           // Header row
           Row(
             children: [
-              if (onRemove != null)
+              if (widget.onRemove != null)
                 GestureDetector(
-                  onTap: onRemove,
+                  onTap: widget.onRemove,
                   child: const Padding(
                     padding: EdgeInsets.only(right: 8),
                     child: Icon(Icons.remove_circle_outline,
@@ -1902,45 +1964,61 @@ class _MealSection extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 8),
-              if (entries.isNotEmpty)
+              if (widget.entries.isNotEmpty)
                 Text(
                   '${totalKcal.round()} kcal',
                   style: const TextStyle(color: Colors.white38, fontSize: 12),
                 ),
               const Spacer(),
+              // AI comment button
+              if (widget.entries.isNotEmpty) ...[
+                GestureDetector(
+                  onTap: _toggleComment,
+                  child: _commentLoading
+                      ? const SizedBox(
+                          width: 16, height: 16,
+                          child: CircularProgressIndicator(strokeWidth: 1.5, color: Colors.white38))
+                      : Icon(
+                          _commentExpanded ? Icons.chat_bubble : Icons.chat_bubble_outline,
+                          size: 17,
+                          color: _commentExpanded ? widget.primary : Colors.white38,
+                        ),
+                ),
+                const SizedBox(width: 12),
+              ],
               // Action icons
               GestureDetector(
-                onTap: onCameraAdd,
+                onTap: widget.onCameraAdd,
                 child: Icon(
-                  photoFile != null
+                  widget.photoFile != null
                       ? Icons.photo_camera
                       : Icons.add_a_photo_outlined,
                   size: 17,
-                  color: photoFile != null ? primary : Colors.white38,
+                  color: widget.photoFile != null ? widget.primary : Colors.white38,
                 ),
               ),
-              if (onSharePhoto != null) ...[
+              if (widget.onSharePhoto != null) ...[
                 const SizedBox(width: 12),
                 GestureDetector(
-                  onTap: onSharePhoto,
-                  child: Icon(Icons.ios_share, size: 17, color: primary),
+                  onTap: widget.onSharePhoto,
+                  child: Icon(Icons.ios_share, size: 17, color: widget.primary),
                 ),
               ],
-              if (onCopy != null) ...[
+              if (widget.onCopy != null) ...[
                 const SizedBox(width: 12),
                 GestureDetector(
-                  onTap: onCopy,
+                  onTap: widget.onCopy,
                   child: const Icon(Icons.copy, size: 16, color: Colors.white38),
                 ),
               ],
               const SizedBox(width: 12),
               GestureDetector(
-                onTap: onAdd,
+                onTap: widget.onAdd,
                 child: Container(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(colors: [primary, secondary]),
+                    gradient: LinearGradient(colors: [widget.primary, widget.secondary]),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: const Row(
@@ -1961,17 +2039,17 @@ class _MealSection extends StatelessWidget {
           ),
 
           // Photo thumbnail
-          if (photoFile != null)
+          if (widget.photoFile != null)
             Padding(
               padding: const EdgeInsets.only(top: 12),
               child: GestureDetector(
-                onTap: onCameraAdd,
+                onTap: widget.onCameraAdd,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12),
                   child: Stack(
                     children: [
                       Image.file(
-                        photoFile!,
+                        widget.photoFile!,
                         height: 140,
                         width: double.infinity,
                         fit: BoxFit.cover,
@@ -1998,16 +2076,16 @@ class _MealSection extends StatelessWidget {
             ),
 
           // Food entries
-          if (entries.isNotEmpty) ...[
+          if (widget.entries.isNotEmpty) ...[
             const SizedBox(height: 10),
             const Divider(color: Colors.white10, height: 1),
-            ...entries.map((e) => Padding(
+            ...widget.entries.map((e) => Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: Row(
                 children: [
                   Expanded(
                     child: GestureDetector(
-                      onLongPress: () => onEdit(e),
+                      onLongPress: () => widget.onEdit(e),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -2032,7 +2110,7 @@ class _MealSection extends StatelessWidget {
                   ),
                   const SizedBox(width: 8),
                   GestureDetector(
-                    onTap: () => onDelete(e.id!),
+                    onTap: () => widget.onDelete(e.id!),
                     child: const Icon(Icons.cancel,
                         size: 18, color: Colors.white24),
                   ),
@@ -2041,14 +2119,39 @@ class _MealSection extends StatelessWidget {
             )),
           ],
 
+          // AI comment bubble
+          if (_commentExpanded && _comment != null) ...[
+            const SizedBox(height: 10),
+            GestureDetector(
+              onTap: _toggleComment,
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                decoration: BoxDecoration(
+                  color: widget.primary.withValues(alpha: 0.15),
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(4),
+                    topRight: Radius.circular(12),
+                    bottomLeft: Radius.circular(12),
+                    bottomRight: Radius.circular(12),
+                  ),
+                  border: Border.all(color: widget.primary.withValues(alpha: 0.3), width: 0.8),
+                ),
+                child: Text(
+                  _comment!,
+                  style: const TextStyle(fontSize: 12, color: Colors.white70, height: 1.5),
+                ),
+              ),
+            ),
+          ],
+
           // Confirm button
-          if (onConfirm != null) ...[
+          if (widget.onConfirm != null) ...[
             const SizedBox(height: 8),
             SizedBox(
               width: double.infinity,
-              child: confirmed
+              child: widget.confirmed
                   ? OutlinedButton.icon(
-                      onPressed: onConfirm,
+                      onPressed: widget.onConfirm,
                       icon: const Icon(Icons.check_circle,
                           size: 15, color: Colors.greenAccent),
                       label: const Text('確定済み　再確認する',
@@ -2061,11 +2164,11 @@ class _MealSection extends StatelessWidget {
                   : DecoratedBox(
                       decoration: BoxDecoration(
                         gradient:
-                            LinearGradient(colors: [primary, secondary]),
+                            LinearGradient(colors: [widget.primary, widget.secondary]),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: ElevatedButton(
-                        onPressed: onConfirm,
+                        onPressed: widget.onConfirm,
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.transparent,
                           shadowColor: Colors.transparent,

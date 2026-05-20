@@ -2,6 +2,9 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../config/api_config.dart';
 import '../models/food.dart';
+import '../models/meal_entry.dart';
+import '../models/meal_plan.dart';
+import '../utils/pfc_score.dart';
 
 class GeminiService {
   static final GeminiService instance = GeminiService._();
@@ -128,7 +131,11 @@ $pageText
 
     final body = jsonEncode({
       'contents': contents,
-      'generationConfig': {'temperature': 0.7, 'maxOutputTokens': 1024},
+      'generationConfig': {
+        'temperature': 0.7,
+        'maxOutputTokens': 2048,
+        'thinkingConfig': {'thinkingBudget': 0},
+      },
     });
     final response = await http.post(
       uri,
@@ -151,6 +158,90 @@ $pageText
         .map((p) => p['text']?.toString() ?? '')
         .join('');
     return textParts.isEmpty ? null : textParts;
+  }
+
+  // 1週間献立生成
+  Future<List<MealPlan>?> generateMealPlan({
+    required List<Map<String, dynamic>> schedule,
+    required List<String> allergies,
+    required String dislikedFoods,
+    required double targetKcal,
+    required String weekStart,
+    DietType dietType = DietType.calorie,
+  }) async {
+    final apiKey = await getApiKey();
+    if (apiKey == null) return null;
+    if (schedule.isEmpty) return [];
+
+    const weekdayNames = ['月', '火', '水', '木', '金', '土', '日'];
+    final scheduleLines = schedule.map((s) {
+      final date = s['date'] as String;
+      final mealType = s['meal_type'] as int;
+      final dt = DateTime.parse(date);
+      final dayName = weekdayNames[dt.weekday - 1];
+      final mealName = ['朝食', '昼食', '夕食'][mealType];
+      return '$date（$dayName）$mealName';
+    }).join('\n');
+
+    final allergyText = allergies.isEmpty ? 'なし' : allergies.join('、');
+    final dislikedText = dislikedFoods.isEmpty ? 'なし' : dislikedFoods;
+
+    final dietInstruction = dietType == DietType.keto
+        ? '''- ダイエット種別: ケトジェニック（糖質制限）
+- 1食あたりの糖質（carb）は10g以下に抑える
+- 脂質を積極的に使い、全カロリーの60〜75%を脂質で摂る
+- タンパク質は全カロリーの20〜30%、卵・肉・魚・チーズを中心に使う
+- ご飯・パン・麺・根菜・砂糖を使わない（高糖質食材禁止）'''
+        : '''- ダイエット種別: カロリー制限ダイエット
+- 【絶対厳守】1食あたりの合計カロリー（dishesのkcal合計）は350kcal以下にすること
+- 朝食は250kcal以下、昼食・夕食は350kcal以下を上限とする
+- 揚げ物・炒め物・バター調理は一切使わない。蒸し・茹で・焼き・生を使う
+- 主食（ご飯・パン・麺）は1食80g以下に抑えるか、完全に省いてよい
+- 鶏むね・ささみ・白身魚・豆腐・卵・納豆・きのこ・葉物野菜を中心に使う
+- たんぱく質は1食15g以上を目標にする（筋肉維持のため）
+- 脂質の多い食材（豚バラ・サーモン・チーズ・マヨネーズ・ごま油多量）は使わない''';
+
+    final prompt = '''
+以下の条件で献立を生成してください。
+
+【条件】
+$dietInstruction
+- 目標カロリー: ${targetKcal.round()} kcal/日
+- アレルギー食材（必ず除外）: $allergyText
+- 苦手食材（できれば除外）: $dislikedText
+- 文科省食品データベースにある一般的な食材を優先
+- 和食・洋食・中華をバランスよく
+
+【生成する食事】
+$scheduleLines
+
+JSON配列のみを返してください（説明文・コードブロック不要）：
+[{"date":"YYYY-MM-DD","meal_type":0,"title":"食事タイトル","dishes":[{"name":"食材名","grams":150,"kcal":200,"protein":5,"fat":3,"carb":35}]}]
+meal_type: 0=朝食, 1=昼食, 2=夕食
+''';
+
+    try {
+      final text = await _generate(apiKey, prompt);
+      if (text == null) return null;
+      final jsonStr = _extractJsonArray(text);
+      if (jsonStr == null) return null;
+      final list = jsonDecode(jsonStr) as List;
+      return list.map((item) {
+        final m = item as Map<String, dynamic>;
+        final dishes = (m['dishes'] as List? ?? [])
+            .map((d) => MealPlanDish.fromJson(d as Map<String, dynamic>))
+            .toList();
+        return MealPlan(
+          weekStart: weekStart,
+          date: m['date'] as String,
+          mealType: (m['meal_type'] as num).toInt(),
+          title: m['title']?.toString() ?? '',
+          dishes: dishes,
+        );
+      }).toList();
+    } catch (_) {
+      return null;
+    }
   }
 
   // 外食メニュー提案
@@ -228,6 +319,41 @@ $pageText
     if (value is double) return value;
     if (value is int) return value.toDouble();
     return double.tryParse(value.toString()) ?? 0.0;
+  }
+
+  // 食事AIコメント生成
+  Future<String?> generateMealComment(List<MealEntry> entries, int mealType) async {
+    final apiKey = await getApiKey();
+    if (apiKey == null) return null;
+    if (entries.isEmpty) return null;
+
+    final mealName = ['朝食', '昼食', '夕食', '間食', '夜食', '補食'][mealType.clamp(0, 5)];
+    final totalKcal = entries.fold(0.0, (s, e) => s + e.kcal);
+    final totalProtein = entries.fold(0.0, (s, e) => s + e.protein);
+    final totalFat = entries.fold(0.0, (s, e) => s + e.fat);
+    final totalCarb = entries.fold(0.0, (s, e) => s + e.carb);
+    final foodList = entries.map((e) => '${e.foodName}(${e.grams.round()}g)').join('、');
+
+    final prompt = '''
+以下の$mealNameの内容について、ダイエット・健康管理アプリのAIコーチとして短いコメントをしてください。
+
+【食事内容】
+$foodList
+カロリー: ${totalKcal.round()}kcal / タンパク質: ${totalProtein.toStringAsFixed(1)}g / 脂質: ${totalFat.toStringAsFixed(1)}g / 炭水化物: ${totalCarb.toStringAsFixed(1)}g
+
+【ルール】
+- 2〜3文で簡潔に
+- ポジティブな点を1つ褒める
+- 改善点があれば1つだけやさしく提案する
+- 絵文字を1〜2個使う
+- 日本語のみ、JSON不要、テキストだけ返す
+''';
+
+    try {
+      return await _generate(apiKey, prompt);
+    } catch (_) {
+      return null;
+    }
   }
 }
 

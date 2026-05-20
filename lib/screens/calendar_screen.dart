@@ -10,7 +10,9 @@ import '../models/day_photo.dart';
 import '../services/database_service.dart';
 import '../services/meal_photo_service.dart';
 import '../models/user_profile.dart';
+import '../models/meal_plan.dart';
 import '../utils/date_utils.dart' as du;
+import 'meal_plan_screen.dart';
 
 class CalendarScreen extends StatefulWidget {
   const CalendarScreen({super.key});
@@ -28,6 +30,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
   List<CalendarEvent> _selectedEvents = [];
   List<DayPhoto> _selectedPhotos = [];
   Map<int, File> _mealPhotos = {};
+  List<MealPlan> _selectedMealPlans = [];
   UserProfile? _profile;
 
   @override
@@ -64,6 +67,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
     final meals = await db.getMealsForDate(dateStr);
     final events = await db.getEventsForDate(dateStr);
     final photos = await db.getPhotosForDate(dateStr);
+    final mealPlans = await db.getMealPlansForDate(dateStr);
     final mealPhotos = <int, File>{};
     for (var i = 0; i < 6; i++) {
       final f = await MealPhotoService.getPhoto(dateStr, i);
@@ -75,6 +79,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
       _selectedMeals = meals;
       _selectedEvents = events;
       _selectedPhotos = photos;
+      _selectedMealPlans = mealPlans;
       _mealPhotos = mealPhotos;
     });
   }
@@ -93,7 +98,20 @@ class _CalendarScreenState extends State<CalendarScreen> {
   Widget build(BuildContext context) {
     final primary = Theme.of(context).colorScheme.primary;
     return Scaffold(
-      appBar: AppBar(title: const Text('カレンダー')),
+      appBar: AppBar(
+        title: const Text('カレンダー'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.restaurant_menu),
+            tooltip: '1週間献立',
+            onPressed: () async {
+              await Navigator.push(context,
+                  MaterialPageRoute(builder: (_) => const MealPlanScreen()));
+              _loadSelected(_selected);
+            },
+          ),
+        ],
+      ),
       body: Column(
         children: [
           TableCalendar(
@@ -156,6 +174,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
               events: _selectedEvents,
               photos: _selectedPhotos,
               mealPhotos: _mealPhotos,
+              mealPlans: _selectedMealPlans,
               onAddEvent: _addEvent,
               onDeleteEvent: _deleteEvent,
               onAddPhoto: _addPhoto,
@@ -307,6 +326,7 @@ class _SelectedDayContent extends StatelessWidget {
   final List<CalendarEvent> events;
   final List<DayPhoto> photos;
   final Map<int, File> mealPhotos;
+  final List<MealPlan> mealPlans;
   final VoidCallback onAddEvent;
   final Future<void> Function(int) onDeleteEvent;
   final VoidCallback onAddPhoto;
@@ -319,6 +339,7 @@ class _SelectedDayContent extends StatelessWidget {
     required this.events,
     required this.photos,
     required this.mealPhotos,
+    required this.mealPlans,
     required this.onAddEvent,
     required this.onDeleteEvent,
     required this.onAddPhoto,
@@ -415,6 +436,40 @@ class _SelectedDayContent extends StatelessWidget {
             ),
           ),
         const Divider(),
+        if (mealPlans.isNotEmpty) ...[
+          const Text('AI献立', style: TextStyle(color: Colors.grey, fontSize: 12)),
+          ...mealPlans.map((p) => Container(
+                margin: const EdgeInsets.only(bottom: 6),
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.blueAccent.withValues(alpha: 0.4)),
+                  borderRadius: BorderRadius.circular(8),
+                  color: Colors.blueAccent.withValues(alpha: 0.05),
+                ),
+                child: Row(
+                  children: [
+                    Text(MealPlan.mealIcons[p.mealType], style: const TextStyle(fontSize: 14)),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('${MealPlan.mealNames[p.mealType]}・${p.title}',
+                              style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
+                          Text(p.dishes.map((d) => d.name).join('・'),
+                              style: const TextStyle(fontSize: 11, color: Colors.grey),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis),
+                        ],
+                      ),
+                    ),
+                    Text('${p.totalKcal.round()}kcal',
+                        style: const TextStyle(fontSize: 11, color: Colors.blueAccent)),
+                  ],
+                ),
+              )),
+          const Divider(),
+        ],
         if (meals.isEmpty && mealPhotos.isEmpty)
           const Text('食事記録なし', style: TextStyle(color: Colors.grey))
         else ...[

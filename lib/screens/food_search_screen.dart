@@ -33,19 +33,20 @@ class _FoodSearchScreenState extends State<FoodSearchScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   final _searchCtrl = TextEditingController();
+  final _searchFocus = FocusNode();
   List<Food> _builtinResults = [];
-  List<Food> _aiResults = [];
   List<MyFood> _myFoodResults = [];
   bool _searching = false;
-  bool _aiSearching = false;
-  Timer? _debounceTimer;
 
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 2, vsync: this, initialIndex: widget.initialTab);
+    _tabController = TabController(length: 3, vsync: this, initialIndex: widget.initialTab);
     FoodSearchService.instance.init();
     _loadAllMyFoods();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _searchFocus.requestFocus();
+    });
   }
 
   Future<void> _loadAllMyFoods() async {
@@ -56,9 +57,9 @@ class _FoodSearchScreenState extends State<FoodSearchScreen>
 
   @override
   void dispose() {
-    _debounceTimer?.cancel();
     _tabController.dispose();
     _searchCtrl.dispose();
+    _searchFocus.dispose();
     super.dispose();
   }
 
@@ -76,41 +77,12 @@ class _FoodSearchScreenState extends State<FoodSearchScreen>
 
   void _onSearchChanged(String q) {
     if (q.isEmpty) {
-      _debounceTimer?.cancel();
-      setState(() {
-        _builtinResults = [];
-        _aiResults = [];
-        _aiSearching = false;
-      });
+      setState(() => _builtinResults = []);
       _loadAllMyFoods();
       return;
     }
-
     _search(q);
-
-    // AI検索: 入力時点でスピナーを出し、1秒後に実行
-    _debounceTimer?.cancel();
-    setState(() {
-      _aiResults = [];
-      _aiSearching = true;
-    });
-    _debounceTimer = Timer(const Duration(milliseconds: 1000), () async {
-      if (!mounted) return;
-      final canSearch = await LimitService.instance.canSearchAI();
-      if (!mounted) return;
-      if (!canSearch) {
-        setState(() => _aiSearching = false);
-        _showAILimitDialog();
-        return;
-      }
-      await LimitService.instance.incrementAICount();
-      final results = await GeminiService.instance.searchFood(q);
-      if (!mounted) return;
-      setState(() {
-        _aiResults = results;
-        _aiSearching = false;
-      });
-    });
+    setState(() {});
   }
 
   @override
@@ -118,33 +90,11 @@ class _FoodSearchScreenState extends State<FoodSearchScreen>
     return Scaffold(
       appBar: AppBar(
         title: const Text('食品を選択'),
-        actions: [
-          if (!PurchaseService.instance.isPremium)
-            Padding(
-              padding: const EdgeInsets.only(right: 12),
-              child: FutureBuilder<int>(
-                future: LimitService.instance.aiCountRemaining(),
-                builder: (_, snap) {
-                  final remaining = snap.data ?? LimitService.freeAISearchLimit;
-                  return Chip(
-                    label: Text('AI $remaining回',
-                        style: TextStyle(
-                            fontSize: 11,
-                            color: remaining <= 1
-                                ? Colors.white
-                                : null)),
-                    backgroundColor:
-                        remaining <= 1 ? Colors.orange : null,
-                    visualDensity: VisualDensity.compact,
-                  );
-                },
-              ),
-            ),
-        ],
         bottom: TabBar(
           controller: _tabController,
           tabs: const [
             Tab(text: 'データベース'),
+            Tab(text: 'ブラウザ'),
             Tab(text: 'マイ食品'),
           ],
         ),
@@ -155,6 +105,7 @@ class _FoodSearchScreenState extends State<FoodSearchScreen>
             padding: const EdgeInsets.all(12),
             child: TextField(
               controller: _searchCtrl,
+              focusNode: _searchFocus,
               autofocus: true,
               decoration: InputDecoration(
                 hintText: '食品名を入力',
@@ -181,16 +132,20 @@ class _FoodSearchScreenState extends State<FoodSearchScreen>
           Expanded(
             child: TabBarView(
               controller: _tabController,
+              physics: const NeverScrollableScrollPhysics(),
               children: [
                 _BuiltinList(
                   results: _builtinResults,
-                  aiResults: _aiResults,
                   searching: _searching,
-                  aiSearching: _aiSearching,
                   query: _searchCtrl.text,
                   onSelect: _showPortionDialog,
-                  onWebSearch: _openWebSearch,
                   onFavorite: _saveToMyFood,
+                ),
+                _BrowserTabContent(
+                  query: _searchCtrl.text,
+                  date: widget.date,
+                  mealType: widget.mealType,
+                  onResult: (entry) => Navigator.pop(context, entry),
                 ),
                 _MyFoodList(
                   results: _myFoodResults,
@@ -199,31 +154,6 @@ class _FoodSearchScreenState extends State<FoodSearchScreen>
                 ),
               ],
             ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  void _showAILimitDialog() {
-    if (!mounted) return;
-    showDialog(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        title: const Text('AI検索の上限に達しました'),
-        content: Text(
-            '無料プランではAI食品検索は1日${LimitService.freeAISearchLimit}回までです。\nプレミアムにアップグレードすると無制限に使えます。'),
-        actions: [
-          TextButton(
-              onPressed: () => Navigator.pop(ctx),
-              child: const Text('閉じる')),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pop(ctx);
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (_) => const PremiumScreen()));
-            },
-            child: const Text('プレミアムを見る'),
           ),
         ],
       ),
@@ -423,23 +353,6 @@ class _FoodSearchScreenState extends State<FoodSearchScreen>
     }
   }
 
-  Future<void> _openWebSearch(String query) async {
-    final entry = await Navigator.push<MealEntry>(
-      context,
-      MaterialPageRoute(
-        builder: (_) => WebSearchScreen(
-          query: '$query カロリー 栄養素',
-          date: widget.date,
-          mealType: widget.mealType,
-          foodName: query,
-        ),
-      ),
-    );
-    if (entry != null && mounted) {
-      Navigator.pop(context, entry);
-    }
-  }
-
   Future<void> _showAddMyFoodOptions() async {
     await showModalBottomSheet(
       context: context,
@@ -528,22 +441,22 @@ class _FoodSearchScreenState extends State<FoodSearchScreen>
                   controller: kcalCtrl,
                   decoration:
                       const InputDecoration(labelText: 'カロリー (kcal/100g) *'),
-                  keyboardType: TextInputType.number),
+                  keyboardType: const TextInputType.numberWithOptions(decimal: true)),
               TextField(
                   controller: proteinCtrl,
                   decoration: const InputDecoration(
                       labelText: 'たんぱく質 (g/100g)'),
-                  keyboardType: TextInputType.number),
+                  keyboardType: const TextInputType.numberWithOptions(decimal: true)),
               TextField(
                   controller: fatCtrl,
                   decoration:
                       const InputDecoration(labelText: '脂質 (g/100g)'),
-                  keyboardType: TextInputType.number),
+                  keyboardType: const TextInputType.numberWithOptions(decimal: true)),
               TextField(
                   controller: carbCtrl,
                   decoration:
                       const InputDecoration(labelText: '炭水化物 (g/100g)'),
-                  keyboardType: TextInputType.number),
+                  keyboardType: const TextInputType.numberWithOptions(decimal: true)),
               TextField(
                   controller: noteCtrl,
                   decoration: const InputDecoration(
@@ -593,22 +506,16 @@ class _FoodSearchScreenState extends State<FoodSearchScreen>
 
 class _BuiltinList extends StatelessWidget {
   final List<Food> results;
-  final List<Food> aiResults;
   final bool searching;
-  final bool aiSearching;
   final String query;
   final void Function(Food) onSelect;
-  final void Function(String) onWebSearch;
   final void Function(Food) onFavorite;
 
   const _BuiltinList({
     required this.results,
-    required this.aiResults,
     required this.searching,
-    required this.aiSearching,
     required this.query,
     required this.onSelect,
-    required this.onWebSearch,
     required this.onFavorite,
   });
 
@@ -620,22 +527,19 @@ class _BuiltinList extends StatelessWidget {
 
     final hasQuery = query.isNotEmpty;
     final hasBuiltin = results.isNotEmpty;
-    final hasAi = aiResults.isNotEmpty;
 
     return ListView(
       children: [
-        // DB not found メッセージ
         if (!hasBuiltin && hasQuery)
           Padding(
-            padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+            padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
             child: Text(
-              'データベースに見つかりませんでした',
+              'データベースに見つかりませんでした\nブラウザタブで検索してみてください',
               style: TextStyle(color: Colors.grey.shade500, fontSize: 13),
             ),
           ),
 
-        // DB results
-        if (hasBuiltin) ...[
+        if (hasBuiltin)
           ...results.map((f) => ListTile(
             title: Text(f.name),
             subtitle: Column(
@@ -654,99 +558,263 @@ class _BuiltinList extends StatelessWidget {
             ),
             onTap: () => onSelect(f),
           )),
-        ],
+      ],
+    );
+  }
+}
 
-        // Web search button when DB empty
-        if (!hasBuiltin && hasQuery) ...[
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: ElevatedButton.icon(
-              onPressed: () => onWebSearch(query),
-              icon: const Icon(Icons.search),
-              label: const Text('Webで検索する'),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.grey.shade600,
-                foregroundColor: Colors.white,
-              ),
-            ),
-          ),
-        ],
+class _BrowserTabContent extends StatefulWidget {
+  final String query;
+  final String date;
+  final int mealType;
+  final void Function(MealEntry) onResult;
 
-        // AI results section
-        if (hasQuery) ...[
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 12, 16, 4),
-            child: Row(
-              children: [
-                const Text(
-                  'AI提案',
-                  style: TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.grey,
+  const _BrowserTabContent({
+    required this.query,
+    required this.date,
+    required this.mealType,
+    required this.onResult,
+  });
+
+  @override
+  State<_BrowserTabContent> createState() => _BrowserTabContentState();
+}
+
+class _BrowserTabContentState extends State<_BrowserTabContent> {
+  late final WebViewController _webCtrl;
+  bool _loading = false;
+  Timer? _debounce;
+
+  late final TextEditingController _nameCtrl;
+  final _kcalCtrl = TextEditingController();
+  final _proteinCtrl = TextEditingController();
+  final _fatCtrl = TextEditingController();
+  final _carbCtrl = TextEditingController();
+  final _gramsCtrl = TextEditingController(text: '100');
+  bool _saveToMyFood = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _nameCtrl = TextEditingController(text: widget.query);
+    _webCtrl = WebViewController()
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..setNavigationDelegate(NavigationDelegate(
+        onPageFinished: (_) => setState(() => _loading = false),
+      ));
+    if (widget.query.isNotEmpty) _loadUrl(widget.query);
+  }
+
+  @override
+  void didUpdateWidget(_BrowserTabContent old) {
+    super.didUpdateWidget(old);
+    if (old.query != widget.query) {
+      _nameCtrl.text = widget.query;
+      _debounce?.cancel();
+      if (widget.query.isNotEmpty) {
+        _debounce = Timer(const Duration(milliseconds: 800), () => _loadUrl(widget.query));
+      }
+    }
+  }
+
+  void _loadUrl(String q) {
+    setState(() => _loading = true);
+    _webCtrl.loadRequest(Uri.parse(
+        'https://www.google.com/search?q=${Uri.encodeComponent('$q カロリー 栄養素')}'));
+  }
+
+  @override
+  void dispose() {
+    _debounce?.cancel();
+    _nameCtrl.dispose();
+    _kcalCtrl.dispose();
+    _proteinCtrl.dispose();
+    _fatCtrl.dispose();
+    _carbCtrl.dispose();
+    _gramsCtrl.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (widget.query.isEmpty) {
+      return const Center(
+        child: Text('食品名を入力してください', style: TextStyle(color: Colors.grey)),
+      );
+    }
+    return Column(
+      children: [
+        // WebView（上60%）
+        Expanded(
+          flex: 6,
+          child: Stack(
+            children: [
+              WebViewWidget(controller: _webCtrl),
+              if (_loading) const Center(child: CircularProgressIndicator()),
+              Positioned(
+                top: 8,
+                left: 8,
+                child: SafeArea(
+                  child: Material(
+                    color: Colors.black54,
+                    borderRadius: BorderRadius.circular(20),
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(20),
+                      onTap: () => _webCtrl.goBack(),
+                      child: const Padding(
+                        padding: EdgeInsets.all(8),
+                        child: Icon(Icons.arrow_back_ios_new, color: Colors.white, size: 18),
+                      ),
+                    ),
                   ),
                 ),
-                const SizedBox(width: 8),
-                if (aiSearching)
-                  const SizedBox(
-                    width: 14,
-                    height: 14,
-                    child: CircularProgressIndicator(strokeWidth: 2),
+              ),
+            ],
+          ),
+        ),
+        Container(height: 1, color: Theme.of(context).dividerColor),
+        // 入力フォーム（下40%）
+        Expanded(
+          flex: 4,
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.fromLTRB(12, 8, 12, 12),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TextField(
+                  controller: _nameCtrl,
+                  decoration: const InputDecoration(
+                    labelText: '食品名', isDense: true, border: OutlineInputBorder(),
                   ),
+                ),
+                const SizedBox(height: 8),
+                Row(children: [
+                  Expanded(
+                    child: TextField(
+                      controller: _kcalCtrl,
+                      decoration: const InputDecoration(
+                        labelText: 'kcal *', isDense: true, border: OutlineInputBorder(),
+                      ),
+                      keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                      onChanged: (_) => setState(() {}),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: TextField(
+                      controller: _proteinCtrl,
+                      decoration: const InputDecoration(
+                        labelText: 'たんぱく質g', isDense: true, border: OutlineInputBorder(),
+                      ),
+                      keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                    ),
+                  ),
+                ]),
+                const SizedBox(height: 8),
+                Row(children: [
+                  Expanded(
+                    child: TextField(
+                      controller: _fatCtrl,
+                      decoration: const InputDecoration(
+                        labelText: '脂質g', isDense: true, border: OutlineInputBorder(),
+                      ),
+                      keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: TextField(
+                      controller: _carbCtrl,
+                      decoration: const InputDecoration(
+                        labelText: '炭水化物g', isDense: true, border: OutlineInputBorder(),
+                      ),
+                      keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                    ),
+                  ),
+                ]),
+                const SizedBox(height: 8),
+                Row(children: [
+                  Expanded(
+                    child: TextField(
+                      controller: _gramsCtrl,
+                      decoration: const InputDecoration(
+                        labelText: 'グラム数', suffixText: 'g',
+                        isDense: true, border: OutlineInputBorder(),
+                      ),
+                      keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Wrap(
+                      spacing: 4,
+                      children: [100, 150, 200].map((g) => ActionChip(
+                        label: Text('$g'),
+                        onPressed: () => setState(() => _gramsCtrl.text = g.toString()),
+                        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                        visualDensity: VisualDensity.compact,
+                      )).toList(),
+                    ),
+                  ),
+                ]),
+                const SizedBox(height: 6),
+                Row(children: [
+                  Expanded(
+                    child: CheckboxListTile(
+                      title: const Text('マイ食品に保存', style: TextStyle(fontSize: 12)),
+                      value: _saveToMyFood,
+                      onChanged: (v) => setState(() => _saveToMyFood = v ?? false),
+                      controlAffinity: ListTileControlAffinity.leading,
+                      dense: true,
+                      contentPadding: EdgeInsets.zero,
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: _kcalCtrl.text.isEmpty ? null : _record,
+                    child: const Text('記録する'),
+                  ),
+                ]),
               ],
             ),
           ),
-          if (hasAi)
-            ...aiResults.map((f) => ListTile(
-              leading: Container(
-                width: 36,
-                height: 36,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Theme.of(context).colorScheme.primary,
-                      Theme.of(context).colorScheme.secondary,
-                    ],
-                  ),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: const Icon(Icons.auto_awesome, color: Colors.white, size: 18),
-              ),
-              title: Text(f.name),
-              subtitle: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('${f.kcal.round()} kcal / 100g  P:${f.protein.toStringAsFixed(1)}g  ※AI推定値'),
-                  const SizedBox(height: 4),
-                  PFCBalanceBar(protein: f.protein, fat: f.fat, carb: f.carb),
-                ],
-              ),
-              isThreeLine: true,
-              trailing: IconButton(
-                icon: const Icon(Icons.favorite_border, size: 20, color: Colors.pinkAccent),
-                onPressed: () => onFavorite(f),
-                tooltip: 'マイ食品に登録',
-              ),
-              onTap: () => onSelect(f),
-            )),
-          if (!hasAi && !aiSearching)
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-              child: Text(
-                '設定画面でGemini APIキーを登録するとAI提案が表示されます',
-                style: TextStyle(fontSize: 11, color: Colors.grey),
-              ),
-            ),
-          const Padding(
-            padding: EdgeInsets.fromLTRB(16, 4, 16, 8),
-            child: Text(
-              '※ AI提案の数値は推定値です。正確な情報は公式サイトをご確認ください。',
-              style: TextStyle(fontSize: 10, color: Colors.grey),
-            ),
-          ),
-        ],
+        ),
       ],
     );
+  }
+
+  Future<void> _record() async {
+    final name = _nameCtrl.text.isEmpty ? widget.query : _nameCtrl.text;
+    final grams = double.tryParse(_gramsCtrl.text) ?? 100;
+    final kcal = double.tryParse(_kcalCtrl.text) ?? 0;
+    final protein = double.tryParse(_proteinCtrl.text) ?? 0;
+    final fat = double.tryParse(_fatCtrl.text) ?? 0;
+    final carb = double.tryParse(_carbCtrl.text) ?? 0;
+
+    if (_saveToMyFood) {
+      final ratio = grams > 0 ? 100 / grams : 1.0;
+      await DatabaseService.instance.insertMyFood(MyFood(
+        name: name,
+        kcalPer100g: kcal * ratio,
+        proteinPer100g: protein * ratio,
+        fatPer100g: fat * ratio,
+        carbPer100g: carb * ratio,
+        fiberPer100g: 0, sodiumPer100g: 0, calciumPer100g: 0, ironPer100g: 0,
+        note: '⚠️参考値',
+      ));
+    }
+
+    widget.onResult(MealEntry(
+      date: widget.date,
+      mealType: widget.mealType,
+      foodId: 'web_${DateTime.now().millisecondsSinceEpoch}',
+      foodName: name,
+      grams: grams,
+      kcal: kcal,
+      protein: protein,
+      fat: fat,
+      carb: carb,
+      fiber: 0, sodium: 0, calcium: 0, iron: 0,
+    ));
   }
 }
 
@@ -1105,7 +1173,7 @@ class _WebSearchScreenState extends State<WebSearchScreen> {
                           isDense: true,
                           border: OutlineInputBorder(),
                         ),
-                        keyboardType: TextInputType.number,
+                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
                       ),
                     ),
                   ]),
@@ -1120,7 +1188,7 @@ class _WebSearchScreenState extends State<WebSearchScreen> {
                           isDense: true,
                           border: OutlineInputBorder(),
                         ),
-                        keyboardType: TextInputType.number,
+                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
                       ),
                     ),
                     const SizedBox(width: 8),
@@ -1132,7 +1200,7 @@ class _WebSearchScreenState extends State<WebSearchScreen> {
                           isDense: true,
                           border: OutlineInputBorder(),
                         ),
-                        keyboardType: TextInputType.number,
+                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
                       ),
                     ),
                   ]),
