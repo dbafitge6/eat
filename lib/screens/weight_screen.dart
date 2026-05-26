@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../models/weight_entry.dart';
 import '../models/user_profile.dart';
 import '../services/database_service.dart';
@@ -126,6 +127,8 @@ class _WeightScreenState extends State<WeightScreen> {
                       ),
                     ),
                   ),
+                const SizedBox(height: 8),
+                _CitationCard(),
                 if (_entries.isNotEmpty) ...[
                   const SizedBox(height: 16),
                   Card(
@@ -169,6 +172,53 @@ class _WeightScreenState extends State<WeightScreen> {
       ));
       await _load();
     }
+  }
+}
+
+class _CitationCard extends StatelessWidget {
+  Future<void> _open(String url) async {
+    final uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) await launchUrl(uri, mode: LaunchMode.externalApplication);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text('参考文献',
+                style: TextStyle(fontSize: 12, color: Colors.grey, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 8),
+            GestureDetector(
+              onTap: () => _open('https://www.who.int/news-room/fact-sheets/detail/obesity-and-overweight'),
+              child: const Text(
+                '• BMI基準: WHO「Obesity and overweight」',
+                style: TextStyle(fontSize: 12, color: Colors.blue, decoration: TextDecoration.underline),
+              ),
+            ),
+            const SizedBox(height: 4),
+            GestureDetector(
+              onTap: () => _open('https://pubmed.ncbi.nlm.nih.gov/2305711/'),
+              child: const Text(
+                '• 基礎代謝: Mifflin-St Jeor式 (1990)',
+                style: TextStyle(fontSize: 12, color: Colors.blue, decoration: TextDecoration.underline),
+              ),
+            ),
+            const SizedBox(height: 4),
+            GestureDetector(
+              onTap: () => _open('https://www.mhlw.go.jp/content/001213449.pdf'),
+              child: const Text(
+                '• 目標カロリー: 厚生労働省「日本人の食事摂取基準(2025年版)」',
+                style: TextStyle(fontSize: 12, color: Colors.blue, decoration: TextDecoration.underline),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
 
