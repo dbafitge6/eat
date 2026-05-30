@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../models/meal_entry.dart';
 
 class NutrientScreen extends StatefulWidget {
@@ -267,6 +268,33 @@ class _TabDetail extends StatelessWidget {
           '※ データベースに登録されている食品のみ集計されます',
           style: TextStyle(fontSize: 11, color: Colors.grey),
         ),
+        const SizedBox(height: 12),
+        const Divider(),
+        const SizedBox(height: 8),
+        const Text('参考文献', style: TextStyle(fontSize: 11, color: Colors.grey)),
+        const SizedBox(height: 6),
+        GestureDetector(
+          onTap: () async {
+            final uri = Uri.parse('https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/kenkou/eiyou/syokuji_kijyun.html');
+            if (await canLaunchUrl(uri)) launchUrl(uri, mode: LaunchMode.externalApplication);
+          },
+          child: const Text(
+            '・厚生労働省「日本人の食事摂取基準」',
+            style: TextStyle(fontSize: 11, color: Colors.blue, decoration: TextDecoration.underline),
+          ),
+        ),
+        const SizedBox(height: 4),
+        GestureDetector(
+          onTap: () async {
+            final uri = Uri.parse('https://fooddb.mext.go.jp/');
+            if (await canLaunchUrl(uri)) launchUrl(uri, mode: LaunchMode.externalApplication);
+          },
+          child: const Text(
+            '・文部科学省 食品成分データベース',
+            style: TextStyle(fontSize: 11, color: Colors.blue, decoration: TextDecoration.underline),
+          ),
+        ),
+        const SizedBox(height: 16),
       ],
     );
   }

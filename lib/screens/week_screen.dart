@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:fl_chart/fl_chart.dart';
 import '../models/meal_entry.dart';
 import '../models/weight_entry.dart';
@@ -208,14 +209,30 @@ class _WeekScreenState extends State<WeekScreen> {
                               color: primary.withValues(alpha: 0.1),
                               borderRadius: BorderRadius.circular(8),
                             ),
-                            child: Row(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Icon(Icons.trending_down, size: 16, color: primary),
-                                const SizedBox(width: 6),
-                                Expanded(
-                                  child: Text(
-                                    _prediction,
-                                    style: TextStyle(fontSize: 13, color: primary, fontWeight: FontWeight.w600),
+                                Row(
+                                  children: [
+                                    Icon(Icons.trending_down, size: 16, color: primary),
+                                    const SizedBox(width: 6),
+                                    Expanded(
+                                      child: Text(
+                                        _prediction,
+                                        style: TextStyle(fontSize: 13, color: primary, fontWeight: FontWeight.w600),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 4),
+                                GestureDetector(
+                                  onTap: () async {
+                                    final uri = Uri.parse('https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/kenkou/eiyou/syokuji_kijyun.html');
+                                    if (await canLaunchUrl(uri)) launchUrl(uri, mode: LaunchMode.externalApplication);
+                                  },
+                                  child: const Text(
+                                    '※ 1kg≈7,700kcal（出典: 厚生労働省「日本人の食事摂取基準」）',
+                                    style: TextStyle(fontSize: 10, color: Colors.blue, decoration: TextDecoration.underline),
                                   ),
                                 ),
                               ],

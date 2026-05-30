@@ -1062,11 +1062,25 @@ class _IntensitySelectionSheetState extends State<_IntensitySelectionSheet> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(16, 4, 16, 8),
+              padding: const EdgeInsets.fromLTRB(16, 4, 16, 4),
               child: Text(
                 '※ 運動習慣や体質によって実際の増減幅は変わります。活動レベルも合わせて設定してください。',
                 style: TextStyle(fontSize: 11, color: Colors.grey.shade500),
                 textAlign: TextAlign.center,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
+              child: GestureDetector(
+                onTap: () async {
+                  final uri = Uri.parse('https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/kenkou/eiyou/syokuji_kijyun.html');
+                  if (await canLaunchUrl(uri)) launchUrl(uri, mode: LaunchMode.externalApplication);
+                },
+                child: const Text(
+                  '出典: 厚生労働省「日本人の食事摂取基準」',
+                  style: TextStyle(fontSize: 10, color: Colors.blue, decoration: TextDecoration.underline),
+                  textAlign: TextAlign.center,
+                ),
               ),
             ),
             Padding(

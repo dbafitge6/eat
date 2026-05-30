@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../models/meal_entry.dart';
 import '../models/user_profile.dart';
 import '../models/water_entry.dart';
@@ -522,6 +523,31 @@ class _TodayScreenState extends State<TodayScreen> {
                 ],
               ),
             )),
+            const Divider(height: 24),
+            const Text('参考文献', style: TextStyle(fontSize: 11, color: Colors.grey)),
+            const SizedBox(height: 6),
+            GestureDetector(
+              onTap: () async {
+                final uri = Uri.parse('https://www.nibiohn.go.jp/eiken/info/kikan.html');
+                if (await canLaunchUrl(uri)) launchUrl(uri, mode: LaunchMode.externalApplication);
+              },
+              child: const Text(
+                '・国立健康・栄養研究所「機能性成分データベース」',
+                style: TextStyle(fontSize: 11, color: Colors.blue, decoration: TextDecoration.underline),
+              ),
+            ),
+            const SizedBox(height: 4),
+            GestureDetector(
+              onTap: () async {
+                final uri = Uri.parse('https://fooddb.mext.go.jp/');
+                if (await canLaunchUrl(uri)) launchUrl(uri, mode: LaunchMode.externalApplication);
+              },
+              child: const Text(
+                '・文部科学省 食品成分データベース',
+                style: TextStyle(fontSize: 11, color: Colors.blue, decoration: TextDecoration.underline),
+              ),
+            ),
+            const SizedBox(height: 8),
           ],
         ),
       ),
