@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'dart:io';
 import 'dart:convert';
 import 'package:path_provider/path_provider.dart';
@@ -44,14 +45,25 @@ class _SettingsScreenState extends State<SettingsScreen> {
   int get _maxSupp => PurchaseService.instance.isPremium ? 999 : _maxFreeSupp;
   DietType _dietType = DietTypeService.instance.current;
 
+  // アレルギー・苦手食材
+  List<String> _selectedAllergies = [];
+  late final TextEditingController _allergyCustomCtrl;
+  late final TextEditingController _dislikedFoodsCtrl;
+  static const _allergyOptions = ['卵', '乳製品', '小麦', 'えび', 'かに', '落花生', 'そば', 'ナッツ類'];
+  static const _feedbackEmail = 'fitge6dbal13@gmail.com';
+
   @override
   void initState() {
     super.initState();
+    _allergyCustomCtrl = TextEditingController();
+    _dislikedFoodsCtrl = TextEditingController();
     _load();
   }
 
   @override
   void dispose() {
+    _allergyCustomCtrl.dispose();
+    _dislikedFoodsCtrl.dispose();
     super.dispose();
   }
 
@@ -86,14 +98,20 @@ class _SettingsScreenState extends State<SettingsScreen> {
       catch (_) { return null; }
     }).whereType<_SupplementReminder>().toList();
     final waterInterval = prefs.getInt(_waterIntervalKey) ?? 60;
+    final selectedAllergies = prefs.getStringList('user_allergies') ?? [];
+    final allergyCustom = prefs.getString('user_allergies_custom') ?? '';
+    final dislikedFoods = prefs.getString('user_disliked_foods') ?? '';
     if (!mounted) return;
     setState(() {
       _profile = profile;
       _notificationsEnabled = notifEnabled;
       _waterIntervalMinutes = waterInterval;
       _supplements = supps;
+      _selectedAllergies = selectedAllergies;
       _loading = false;
     });
+    _allergyCustomCtrl.text = allergyCustom;
+    _dislikedFoodsCtrl.text = dislikedFoods;
   }
 
   @override
@@ -467,6 +485,70 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
                 ],
                 const Divider(),
+                const _SectionHeader('アレルギー・苦手食材'),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text('アレルギー', style: TextStyle(fontSize: 13)),
+                      const SizedBox(height: 8),
+                      Wrap(
+                        spacing: 8,
+                        runSpacing: 4,
+                        children: _allergyOptions.map((a) {
+                          final selected = _selectedAllergies.contains(a);
+                          return FilterChip(
+                            label: Text(a, style: const TextStyle(fontSize: 12)),
+                            selected: selected,
+                            onSelected: (v) async {
+                              setState(() {
+                                if (v) {
+                                  _selectedAllergies.add(a);
+                                } else {
+                                  _selectedAllergies.remove(a);
+                                }
+                              });
+                              final prefs = await SharedPreferences.getInstance();
+                              await prefs.setStringList('user_allergies', _selectedAllergies);
+                            },
+                          );
+                        }).toList(),
+                      ),
+                      const SizedBox(height: 12),
+                      TextField(
+                        controller: _allergyCustomCtrl,
+                        decoration: const InputDecoration(
+                          labelText: 'その他のアレルギー',
+                          hintText: '例: キウイ、バナナ（読点区切り）',
+                          isDense: true,
+                          border: OutlineInputBorder(),
+                        ),
+                        onChanged: (v) async {
+                          final prefs = await SharedPreferences.getInstance();
+                          await prefs.setString('user_allergies_custom', v);
+                        },
+                      ),
+                      const SizedBox(height: 12),
+                      const Text('苦手食材', style: TextStyle(fontSize: 13)),
+                      const SizedBox(height: 8),
+                      TextField(
+                        controller: _dislikedFoodsCtrl,
+                        decoration: const InputDecoration(
+                          labelText: '苦手な食材（できれば除外）',
+                          hintText: '例: セロリ、パクチー',
+                          isDense: true,
+                          border: OutlineInputBorder(),
+                        ),
+                        onChanged: (v) async {
+                          final prefs = await SharedPreferences.getInstance();
+                          await prefs.setString('user_disliked_foods', v);
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+                const Divider(),
                 const _SectionHeader('アプリについて'),
                 const ListTile(
                   title: Text('バージョン'),
@@ -476,6 +558,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   title: const Text('プライバシーポリシー'),
                   trailing: const Icon(Icons.open_in_new),
                   onTap: () {},
+                ),
+                ListTile(
+                  leading: const Icon(Icons.feedback_outlined),
+                  title: const Text('フィードバック'),
+                  subtitle: const Text('ご意見・ご要望はこちら'),
+                  trailing: const Icon(Icons.open_in_new, size: 16),
+                  onTap: _sendFeedback,
                 ),
               ],
             ),
@@ -600,6 +689,20 @@ class _SettingsScreenState extends State<SettingsScreen> {
       );
       await DatabaseService.instance.saveUserProfile(newProfile);
       setState(() => _profile = newProfile);
+    }
+  }
+
+  Future<void> _sendFeedback() async {
+    final uri = Uri(
+      scheme: 'mailto',
+      path: _feedbackEmail,
+      query: Uri.encodeFull('subject=eat. フィードバック&body=バージョン: 1.0.0\n\nフィードバック内容:\n'),
+    );
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    } else if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('メールアプリを開けませんでした')));
     }
   }
 
@@ -1301,6 +1404,32 @@ class _DietSelectionSheetState extends State<_DietSelectionSheet> {
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                     ),
                     child: const Text('この方法で始める', style: TextStyle(fontSize: 16)),
+                  ),
+                  const SizedBox(height: 20),
+                  const Divider(),
+                  const SizedBox(height: 8),
+                  const Text('参考文献', style: TextStyle(fontSize: 11, color: Colors.grey)),
+                  const SizedBox(height: 6),
+                  GestureDetector(
+                    onTap: () async {
+                      final uri = Uri.parse('https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/kenkou/eiyou/syokuji_kijyun.html');
+                      if (await canLaunchUrl(uri)) launchUrl(uri, mode: LaunchMode.externalApplication);
+                    },
+                    child: const Text(
+                      '・厚生労働省「日本人の食事摂取基準」',
+                      style: TextStyle(fontSize: 11, color: Colors.blue, decoration: TextDecoration.underline),
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  GestureDetector(
+                    onTap: () async {
+                      final uri = Uri.parse('https://fooddb.mext.go.jp/');
+                      if (await canLaunchUrl(uri)) launchUrl(uri, mode: LaunchMode.externalApplication);
+                    },
+                    child: const Text(
+                      '・文部科学省 食品成分データベース',
+                      style: TextStyle(fontSize: 11, color: Colors.blue, decoration: TextDecoration.underline),
+                    ),
                   ),
                   const SizedBox(height: 24),
                 ],
