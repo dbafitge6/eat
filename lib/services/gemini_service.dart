@@ -97,9 +97,13 @@ $pageText
   Future<Map<String, double>?> extractNutritionFromImage(String imagePath) async {
     try {
       final apiKey = await getApiKey();
-      if (apiKey == null) return null;
+      if (apiKey == null) {
+        debugPrint('[NutritionScan] APIキーなし');
+        return null;
+      }
 
       final imageBytes = await File(imagePath).readAsBytes();
+      debugPrint('[NutritionScan] 画像サイズ: ${imageBytes.length} bytes');
       final base64Image = base64Encode(imageBytes);
 
       final uri = Uri.parse('$_endpoint?key=$apiKey');
@@ -135,11 +139,18 @@ $pageText
         body: body,
       ).timeout(const Duration(seconds: 30));
 
-      if (response.statusCode != 200) return null;
+      debugPrint('[NutritionScan] HTTPステータス: ${response.statusCode}');
+      if (response.statusCode != 200) {
+        debugPrint('[NutritionScan] エラーレスポンス: ${response.body.substring(0, response.body.length.clamp(0, 300))}');
+        return null;
+      }
 
       final json = jsonDecode(response.body) as Map<String, dynamic>;
       final candidates = json['candidates'] as List?;
-      if (candidates == null || candidates.isEmpty) return null;
+      if (candidates == null || candidates.isEmpty) {
+        debugPrint('[NutritionScan] candidatesなし');
+        return null;
+      }
       final content = candidates[0]['content'] as Map?;
       final parts = content?['parts'] as List?;
       if (parts == null) return null;
@@ -148,21 +159,27 @@ $pageText
           .where((p) => p['thought'] != true)
           .map((p) => p['text']?.toString() ?? '')
           .join('');
+      debugPrint('[NutritionScan] Geminiレスポンス: $text');
       if (text.isEmpty) return null;
 
       final cleaned = text.replaceAll(RegExp(r'```[a-z]*\n?'), '').replaceAll('```', '').trim();
       final start = cleaned.indexOf('{');
       final end = cleaned.lastIndexOf('}');
-      if (start == -1 || end == -1) return null;
+      if (start == -1 || end == -1) {
+        debugPrint('[NutritionScan] JSONが見つからない');
+        return null;
+      }
 
       final result = jsonDecode(cleaned.substring(start, end + 1)) as Map<String, dynamic>;
+      debugPrint('[NutritionScan] 解析結果: $result');
       return {
         'kcal': _toDouble(result['kcal']),
         'protein': _toDouble(result['protein']),
         'fat': _toDouble(result['fat']),
         'carb': _toDouble(result['carb']),
       };
-    } catch (_) {
+    } catch (e) {
+      debugPrint('[NutritionScan] 例外: $e');
       return null;
     }
   }

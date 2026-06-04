@@ -9,7 +9,8 @@ class NutritionScanService {
     final picker = ImagePicker();
     final photo = await picker.pickImage(
       source: ImageSource.camera,
-      imageQuality: 90,
+      imageQuality: 60,
+      maxWidth: 1280,
     );
     if (photo == null) return null;
     return GeminiService.instance.extractNutritionFromImage(photo.path);
