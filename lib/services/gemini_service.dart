@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:http/http.dart' as http;
 import '../config/api_config.dart';
 import '../models/food.dart';
@@ -87,6 +88,79 @@ $pageText
         'protein': _toDouble(json['protein']),
         'fat': _toDouble(json['fat']),
         'carb': _toDouble(json['carb']),
+      };
+    } catch (_) {
+      return null;
+    }
+  }
+
+  Future<Map<String, double>?> extractNutritionFromImage(String imagePath) async {
+    try {
+      final apiKey = await getApiKey();
+      if (apiKey == null) return null;
+
+      final imageBytes = await File(imagePath).readAsBytes();
+      final base64Image = base64Encode(imageBytes);
+
+      final uri = Uri.parse('$_endpoint?key=$apiKey');
+      final body = jsonEncode({
+        'contents': [
+          {
+            'parts': [
+              {
+                'inlineData': {'mimeType': 'image/jpeg', 'data': base64Image}
+              },
+              {
+                'text': '''この食品ラベルの栄養成分を抽出してください。
+ルール:
+- 100gあたりの値に換算して返す（1食分・1枚分などの記載があれば100gに換算する）
+- JSON形式のみ返す。説明文不要
+- 形式: {"kcal": 数値, "protein": 数値, "fat": 数値, "carb": 数値}
+- 見つからない項目は0
+- エネルギー＝kcal、たんぱく質＝protein、脂質＝fat、炭水化物＝carb'''
+              }
+            ]
+          }
+        ],
+        'generationConfig': {
+          'temperature': 0.1,
+          'maxOutputTokens': 256,
+          'thinkingConfig': {'thinkingBudget': 0},
+        },
+      });
+
+      final response = await http.post(
+        uri,
+        headers: {'Content-Type': 'application/json'},
+        body: body,
+      ).timeout(const Duration(seconds: 30));
+
+      if (response.statusCode != 200) return null;
+
+      final json = jsonDecode(response.body) as Map<String, dynamic>;
+      final candidates = json['candidates'] as List?;
+      if (candidates == null || candidates.isEmpty) return null;
+      final content = candidates[0]['content'] as Map?;
+      final parts = content?['parts'] as List?;
+      if (parts == null) return null;
+      final text = parts
+          .whereType<Map>()
+          .where((p) => p['thought'] != true)
+          .map((p) => p['text']?.toString() ?? '')
+          .join('');
+      if (text.isEmpty) return null;
+
+      final cleaned = text.replaceAll(RegExp(r'```[a-z]*\n?'), '').replaceAll('```', '').trim();
+      final start = cleaned.indexOf('{');
+      final end = cleaned.lastIndexOf('}');
+      if (start == -1 || end == -1) return null;
+
+      final result = jsonDecode(cleaned.substring(start, end + 1)) as Map<String, dynamic>;
+      return {
+        'kcal': _toDouble(result['kcal']),
+        'protein': _toDouble(result['protein']),
+        'fat': _toDouble(result['fat']),
+        'carb': _toDouble(result['carb']),
       };
     } catch (_) {
       return null;
