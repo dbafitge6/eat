@@ -28,7 +28,6 @@ dependencies:
   in_app_purchase: ^3.2.0
   flutter_timezone: ^1.0.8
   url_launcher: ^6.3.0
-  google_mlkit_text_recognition: ^0.13.1
 
 dev_dependencies:
   flutter_test:
