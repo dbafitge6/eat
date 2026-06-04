@@ -12,6 +12,7 @@ import '../services/limit_service.dart';
 import '../services/purchase_service.dart';
 import '../screens/premium_screen.dart';
 import '../widgets/pfc_balance_bar.dart';
+import '../services/nutrition_db_service.dart';
 
 class FoodSearchScreen extends StatefulWidget {
   final String date;
@@ -37,6 +38,7 @@ class _FoodSearchScreenState extends State<FoodSearchScreen>
   List<Food> _builtinResults = [];
   List<MyFood> _myFoodResults = [];
   bool _searching = false;
+  Map<String, dynamic>? _cravingHint;
 
   @override
   void initState() {
@@ -77,12 +79,16 @@ class _FoodSearchScreenState extends State<FoodSearchScreen>
 
   void _onSearchChanged(String q) {
     if (q.isEmpty) {
-      setState(() => _builtinResults = []);
+      setState(() {
+        _builtinResults = [];
+        _cravingHint = null;
+      });
       _loadAllMyFoods();
       return;
     }
     _search(q);
-    setState(() {});
+    final craving = NutritionDbService.instance.getCravingByFoodName(q);
+    setState(() => _cravingHint = craving);
   }
 
   @override
@@ -129,6 +135,7 @@ class _FoodSearchScreenState extends State<FoodSearchScreen>
               onChanged: _onSearchChanged,
             ),
           ),
+          if (_cravingHint != null) _CravingHintBanner(craving: _cravingHint!),
           Expanded(
             child: TabBarView(
               controller: _tabController,
@@ -1486,5 +1493,66 @@ class _MyFoodWebSearchScreenState extends State<MyFoodWebSearchScreen> {
       ),
     );
     Navigator.pop(context);
+  }
+}
+
+class _CravingHintBanner extends StatelessWidget {
+  final Map<String, dynamic> craving;
+
+  const _CravingHintBanner({required this.craving});
+
+  @override
+  Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final cs = Theme.of(context).colorScheme;
+    final textColor = isDark ? Colors.white : const Color(0xFF1a1a1a);
+
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            cs.primary.withValues(alpha: 0.12),
+            cs.secondary.withValues(alpha: 0.06),
+          ],
+        ),
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(color: cs.primary.withValues(alpha: 0.25)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              const Text('💡 ', style: TextStyle(fontSize: 14)),
+              Text(
+                '無性に食べたくなっていませんか？',
+                style: TextStyle(
+                  fontSize: 13,
+                  fontWeight: FontWeight.w700,
+                  color: cs.primary,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 4),
+          Text(
+            craving['body_message'] as String? ?? '',
+            style: TextStyle(fontSize: 12, color: textColor),
+          ),
+          const SizedBox(height: 3),
+          Text(
+            craving['explanation'] as String? ?? '',
+            style: TextStyle(
+              fontSize: 11,
+              color: isDark
+                  ? Colors.white.withValues(alpha: 0.55)
+                  : Colors.black.withValues(alpha: 0.45),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

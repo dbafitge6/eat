@@ -24,6 +24,10 @@ import 'ai_chat_screen.dart';
 import 'restaurant_screen.dart';
 import 'premium_screen.dart';
 import '../services/purchase_service.dart';
+import '../widgets/body_status_widget.dart';
+import '../widgets/missing_nutrients_widget.dart';
+import 'symptom_search_screen.dart';
+import 'food_photo_screen.dart';
 import 'package:fl_chart/fl_chart.dart';
 
 class TodayScreen extends StatefulWidget {
@@ -279,6 +283,71 @@ class _TodayScreenState extends State<TodayScreen> {
                       ),
                     ),
                   ),
+                  const SizedBox(height: 16),
+
+                  // Body Status
+                  BodyStatusWidget(meals: _meals),
+                  const SizedBox(height: 12),
+
+                  // Missing Nutrients
+                  MissingNutrientsWidget(meals: _meals),
+                  const SizedBox(height: 12),
+
+                  // Symptom Search Button
+                  GestureDetector(
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => SymptomSearchScreen(todayMeals: _meals),
+                      ),
+                    ),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 12),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            primary.withValues(alpha: 0.15),
+                            secondary.withValues(alpha: 0.08),
+                          ],
+                        ),
+                        borderRadius: BorderRadius.circular(14),
+                        border: Border.all(
+                          color: primary.withValues(alpha: 0.25),
+                        ),
+                      ),
+                      child: Row(
+                        children: [
+                          const Text('🩺', style: TextStyle(fontSize: 20)),
+                          const SizedBox(width: 10),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  '体の不調から食材を探す',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w700,
+                                    color: primary,
+                                  ),
+                                ),
+                                Text(
+                                  '疲れ・眠れない・目の疲れ など',
+                                  style: TextStyle(
+                                    fontSize: 11,
+                                    color: primary.withValues(alpha: 0.7),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Icon(Icons.chevron_right,
+                              color: primary.withValues(alpha: 0.6)),
+                        ],
+                      ),
+                    ),
+                  ),
                   const SizedBox(height: 28),
 
                   // Meals section header
@@ -401,6 +470,23 @@ class _TodayScreenState extends State<TodayScreen> {
             icon: Icons.restaurant_outlined,
             label: '外食メニューを探す',
             onTap: () { Navigator.pop(ctx); _openRestaurant(mealType); },
+          ),
+          _BottomSheetTile(
+            icon: Icons.camera_enhance_outlined,
+            label: '写真からAIで認識',
+            onTap: () {
+              Navigator.pop(ctx);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => FoodPhotoScreen(
+                    date: _today,
+                    mealType: mealType,
+                    onMealAdded: _load,
+                  ),
+                ),
+              );
+            },
           ),
         ],
       ),

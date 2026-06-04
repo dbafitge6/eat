@@ -1,4 +1,7 @@
 import 'dart:convert';
+import 'dart:io';
+import 'dart:typed_data';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import '../config/api_config.dart';
 import '../models/food.dart';
@@ -321,6 +324,93 @@ meal_type: 0=朝食, 1=昼食, 2=夕食
     return double.tryParse(value.toString()) ?? 0.0;
   }
 
+  // 画像付きリクエスト（Vision）
+  Future<String?> _generateWithImage(
+      String apiKey, String prompt, String base64Image) async {
+    final uri = Uri.parse('$_endpoint?key=$apiKey');
+    final body = jsonEncode({
+      'contents': [
+        {
+          'parts': [
+            {'text': prompt},
+            {
+              'inline_data': {
+                'mime_type': 'image/jpeg',
+                'data': base64Image,
+              }
+            }
+          ]
+        }
+      ],
+      'generationConfig': {
+        'temperature': 0.2,
+        'maxOutputTokens': 2048,
+        'thinkingConfig': {'thinkingBudget': 0},
+      },
+    });
+    final response = await http.post(
+      uri,
+      headers: {'Content-Type': 'application/json'},
+      body: body,
+    ).timeout(const Duration(seconds: 30));
+
+    if (response.statusCode != 200) {
+      throw Exception('HTTP ${response.statusCode}: ${response.body}');
+    }
+    final json = jsonDecode(response.body) as Map<String, dynamic>;
+    final candidates = json['candidates'] as List?;
+    if (candidates == null || candidates.isEmpty) return null;
+    final content = candidates[0]['content'] as Map?;
+    final parts = content?['parts'] as List?;
+    if (parts == null) return null;
+    final textParts = parts
+        .whereType<Map>()
+        .where((p) => p['thought'] != true)
+        .map((p) => p['text']?.toString() ?? '')
+        .join('');
+    return textParts.isEmpty ? null : textParts;
+  }
+
+  // 写真から食材を認識する
+  Future<List<RecognizedFood>> recognizeFoodsFromImage(File imageFile) async {
+    final apiKey = await getApiKey();
+    if (apiKey == null) return [];
+
+    final bytes = await compute(_readFileBytes, imageFile.path);
+    final base64Image = base64Encode(bytes);
+
+    const prompt = '''
+この食事の写真から、含まれている食材を全て識別してください。
+必ずJSON配列のみを返してください（説明文・コードブロック記号は不要）。
+
+[{"name":"食材名（日本語）","confidence":0.0~1.0,"estimated_amount_g":推定グラム数}]
+
+ルール:
+- 複合料理は個々の食材に分解してください（例：野菜炒め→キャベツ、もやし、ニンジン）
+- 確信度0.4以上のものを全て含めてください
+- 食材名は文科省食品データベースに近い一般的な日本語名で
+- estimated_amount_gは見た目から推定してください（見えない食材は50gとしてください）
+''';
+
+    try {
+      final text = await _generateWithImage(apiKey, prompt, base64Image);
+      if (text == null) return [];
+      final jsonStr = _extractJsonArray(text);
+      if (jsonStr == null) return [];
+      final list = jsonDecode(jsonStr) as List;
+      return list.map((item) {
+        final m = item as Map<String, dynamic>;
+        return RecognizedFood(
+          name: m['name']?.toString() ?? '',
+          confidence: _toDouble(m['confidence']),
+          estimatedAmountG: _toDouble(m['estimated_amount_g']).clamp(10, 500),
+        );
+      }).where((f) => f.name.isNotEmpty).toList();
+    } catch (_) {
+      return [];
+    }
+  }
+
   // 食事AIコメント生成
   Future<String?> generateMealComment(List<MealEntry> entries, int mealType) async {
     final apiKey = await getApiKey();
@@ -355,6 +445,30 @@ $foodList
       return null;
     }
   }
+}
+
+Uint8List _readFileBytes(String path) => File(path).readAsBytesSync();
+
+class RecognizedFood {
+  String name;
+  double confidence;
+  double estimatedAmountG;
+  bool isConfirmed;
+  double estimatedKcal;
+  double estimatedProtein;
+  double estimatedFat;
+  double estimatedCarb;
+
+  RecognizedFood({
+    required this.name,
+    required this.confidence,
+    required this.estimatedAmountG,
+    this.isConfirmed = true,
+    this.estimatedKcal = 100,
+    this.estimatedProtein = 5,
+    this.estimatedFat = 3,
+    this.estimatedCarb = 10,
+  });
 }
 
 class RestaurantMenuItem {

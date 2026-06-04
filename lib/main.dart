@@ -8,6 +8,7 @@ import 'services/ad_service.dart';
 import 'services/notification_service.dart';
 import 'services/diet_type_service.dart';
 import 'services/purchase_service.dart';
+import 'services/nutrition_db_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,6 +17,7 @@ void main() async {
   await NotificationService.instance.init();
   await DietTypeService.instance.load();
   await PurchaseService.instance.init();
+  await NutritionDbService.instance.initialize();
   runApp(const EatApp());
 }
 
