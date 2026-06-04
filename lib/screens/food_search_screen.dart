@@ -7,7 +7,6 @@ import '../models/meal_entry.dart';
 import '../models/my_food.dart';
 import '../services/food_search_service.dart';
 import '../services/gemini_service.dart';
-import '../services/nutrition_scan_service.dart';
 import '../services/database_service.dart';
 import '../services/limit_service.dart';
 import '../services/purchase_service.dart';
@@ -593,64 +592,6 @@ class _BrowserTabContentState extends State<_BrowserTabContent> {
   final _carbCtrl = TextEditingController();
   final _gramsCtrl = TextEditingController(text: '100');
   bool _saveToMyFood = false;
-  bool _scanning = false;
-
-  Future<void> _scanLabel() async {
-    setState(() => _scanning = true);
-    Map<String, double>? nutrition;
-    try {
-      nutrition = await NutritionScanService.instance.scanFromCamera();
-    } finally {
-      if (mounted) setState(() => _scanning = false);
-    }
-    if (!mounted) return;
-    if (nutrition == null || (nutrition['kcal'] ?? 0) == 0) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('栄養成分を読み取れませんでした。明るい場所でラベル全体を撮影してください。')),
-      );
-      return;
-    }
-    // 確認ダイアログを表示
-    final confirmed = await showDialog<bool>(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        title: const Text('読み取り結果'),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Text('以下の値をフォームに入力しますか？\n(100gあたり)', style: TextStyle(fontSize: 12, color: Colors.grey)),
-            const SizedBox(height: 12),
-            _scanResultRow('カロリー', '${(nutrition!['kcal'] ?? 0).round()} kcal'),
-            _scanResultRow('たんぱく質', '${(nutrition['protein'] ?? 0).toStringAsFixed(1)} g'),
-            _scanResultRow('脂質', '${(nutrition['fat'] ?? 0).toStringAsFixed(1)} g'),
-            _scanResultRow('炭水化物', '${(nutrition['carb'] ?? 0).toStringAsFixed(1)} g'),
-          ],
-        ),
-        actions: [
-          TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('やり直す')),
-          ElevatedButton(onPressed: () => Navigator.pop(ctx, true), child: const Text('入力する')),
-        ],
-      ),
-    );
-    if (confirmed != true || !mounted) return;
-    setState(() {
-      _kcalCtrl.text = (nutrition!['kcal'] ?? 0).round().toString();
-      _proteinCtrl.text = (nutrition['protein'] ?? 0).toStringAsFixed(1);
-      _fatCtrl.text = (nutrition['fat'] ?? 0).toStringAsFixed(1);
-      _carbCtrl.text = (nutrition['carb'] ?? 0).toStringAsFixed(1);
-    });
-  }
-
-  Widget _scanResultRow(String label, String value) => Padding(
-    padding: const EdgeInsets.symmetric(vertical: 3),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(label, style: const TextStyle(color: Colors.grey)),
-        Text(value, style: const TextStyle(fontWeight: FontWeight.bold)),
-      ],
-    ),
-  );
 
   @override
   void initState() {
@@ -740,28 +681,11 @@ class _BrowserTabContentState extends State<_BrowserTabContent> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: TextField(
-                        controller: _nameCtrl,
-                        decoration: const InputDecoration(
-                          labelText: '食品名', isDense: true, border: OutlineInputBorder(),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    SizedBox(
-                      height: 36,
-                      child: ElevatedButton.icon(
-                        onPressed: _scanning ? null : _scanLabel,
-                        icon: _scanning
-                            ? const SizedBox(width: 14, height: 14, child: CircularProgressIndicator(strokeWidth: 2))
-                            : const Icon(Icons.document_scanner, size: 16),
-                        label: const Text('ラベル読取', style: TextStyle(fontSize: 12)),
-                      ),
-                    ),
-                  ],
+                TextField(
+                  controller: _nameCtrl,
+                  decoration: const InputDecoration(
+                    labelText: '食品名', isDense: true, border: OutlineInputBorder(),
+                  ),
                 ),
                 const SizedBox(height: 8),
                 Row(children: [
@@ -974,63 +898,6 @@ class _WebSearchScreenState extends State<WebSearchScreen> {
   bool _saveToMyFood = false;
   bool _extracting = false;
 
-  Future<void> _scanLabel() async {
-    setState(() => _extracting = true);
-    Map<String, double>? nutrition;
-    try {
-      nutrition = await NutritionScanService.instance.scanFromCamera();
-    } finally {
-      if (mounted) setState(() => _extracting = false);
-    }
-    if (!mounted) return;
-    if (nutrition == null || (nutrition['kcal'] ?? 0) == 0) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('栄養成分を読み取れませんでした。明るい場所でラベル全体を撮影してください。')),
-      );
-      return;
-    }
-    final confirmed = await showDialog<bool>(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        title: const Text('読み取り結果'),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Text('以下の値をフォームに入力しますか？\n(100gあたり)', style: TextStyle(fontSize: 12, color: Colors.grey)),
-            const SizedBox(height: 12),
-            _buildRow('カロリー', '${(nutrition!['kcal'] ?? 0).round()} kcal'),
-            _buildRow('たんぱく質', '${(nutrition['protein'] ?? 0).toStringAsFixed(1)} g'),
-            _buildRow('脂質', '${(nutrition['fat'] ?? 0).toStringAsFixed(1)} g'),
-            _buildRow('炭水化物', '${(nutrition['carb'] ?? 0).toStringAsFixed(1)} g'),
-          ],
-        ),
-        actions: [
-          TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('やり直す')),
-          ElevatedButton(onPressed: () => Navigator.pop(ctx, true), child: const Text('入力する')),
-        ],
-      ),
-    );
-    if (confirmed != true || !mounted) return;
-    setState(() {
-      _kcalCtrl.text = (nutrition!['kcal'] ?? 0).round().toString();
-      _proteinCtrl.text = (nutrition['protein'] ?? 0).toStringAsFixed(1);
-      _fatCtrl.text = (nutrition['fat'] ?? 0).toStringAsFixed(1);
-      _carbCtrl.text = (nutrition['carb'] ?? 0).toStringAsFixed(1);
-      _aiPrefilled = true;
-    });
-  }
-
-  Widget _buildRow(String label, String value) => Padding(
-    padding: const EdgeInsets.symmetric(vertical: 3),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(label, style: const TextStyle(color: Colors.grey)),
-        Text(value, style: const TextStyle(fontWeight: FontWeight.bold)),
-      ],
-    ),
-  );
-
   @override
   void initState() {
     super.initState();
@@ -1209,11 +1076,6 @@ class _WebSearchScreenState extends State<WebSearchScreen> {
                   child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white)),
             )
           else ...[
-            IconButton(
-              icon: const Icon(Icons.document_scanner),
-              tooltip: '栄養成分ラベルをスキャン',
-              onPressed: _scanLabel,
-            ),
             IconButton(
               icon: const Icon(Icons.auto_awesome),
               tooltip: '食品名でAI推定',
