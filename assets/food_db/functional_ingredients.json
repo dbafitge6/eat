@@ -1,0 +1,616 @@
+{
+  "functional_ingredients": [
+    {
+      "id": "catechin",
+      "name": "カテキン",
+      "category": "ポリフェノール",
+      "body_effects": ["抗酸化", "抗菌・抗ウイルス", "脂肪燃焼促進", "血糖値上昇抑制"],
+      "deficiency_symptoms": ["酸化ストレスの増加", "脂肪が燃えにくい"],
+      "best_combinations": [
+        {
+          "partner": "ビタミンC",
+          "effect": "抗酸化力が相乗的に高まる",
+          "reason": "ビタミンCがカテキンの酸化を防ぎ効果を持続させる"
+        }
+      ],
+      "body_parts": ["immune", "gut"],
+      "top_foods": ["緑茶", "抹茶", "ほうじ茶"],
+      "craving_signal": null,
+      "notes": "食後に飲むと血糖値スパイクを抑える効果が期待されます"
+    },
+    {
+      "id": "anthocyanin",
+      "name": "アントシアニン",
+      "category": "ポリフェノール",
+      "body_effects": ["視力保護", "抗酸化", "抗炎症", "血流改善"],
+      "deficiency_symptoms": ["目の疲れ・かすみ", "酸化ストレスの増加"],
+      "best_combinations": [
+        {
+          "partner": "ビタミンE",
+          "effect": "抗酸化効果が高まる",
+          "reason": "異なる抗酸化成分が協調して働く"
+        }
+      ],
+      "body_parts": ["eye", "immune"],
+      "top_foods": ["ブルーベリー", "なす", "黒豆", "ぶどう", "紫キャベツ"],
+      "craving_signal": null,
+      "notes": "ロドプシンの再合成を助け、暗所での視力回復をサポートするとされます"
+    },
+    {
+      "id": "isoflavone",
+      "name": "イソフラボン",
+      "category": "ポリフェノール",
+      "body_effects": ["女性ホルモン様作用", "骨密度維持", "更年期症状緩和", "抗酸化"],
+      "deficiency_symptoms": ["更年期症状", "骨密度低下"],
+      "best_combinations": [
+        {
+          "partner": "カルシウム",
+          "effect": "骨粗しょう症予防効果が高まる",
+          "reason": "イソフラボンが骨からのカルシウム流出を抑制する"
+        }
+      ],
+      "body_parts": ["bone", "skin"],
+      "top_foods": ["豆腐", "納豆", "味噌", "豆乳", "きなこ"],
+      "craving_signal": null,
+      "notes": "エストロゲンに似た構造を持ち、閉経後の女性に特に効果的とされます"
+    },
+    {
+      "id": "resveratrol",
+      "name": "レスベラトロール",
+      "category": "ポリフェノール",
+      "body_effects": ["抗酸化", "抗炎症", "長寿遺伝子（サーチュイン）活性化", "心血管保護"],
+      "deficiency_symptoms": ["酸化ストレスの増加"],
+      "best_combinations": [
+        {
+          "partner": "ケルセチン",
+          "effect": "抗酸化・抗炎症効果が高まる",
+          "reason": "ポリフェノール同士が相乗的に機能する"
+        }
+      ],
+      "body_parts": ["immune", "skin"],
+      "top_foods": ["赤ワイン", "ぶどう（特に皮）", "ピーナッツ", "ブルーベリー"],
+      "craving_signal": null,
+      "notes": "ぶどうの皮に多く含まれます。赤ワイン1杯で約1〜2mg摂取できるとされます"
+    },
+    {
+      "id": "curcumin",
+      "name": "クルクミン",
+      "category": "ポリフェノール",
+      "body_effects": ["強力な抗炎症作用", "抗酸化", "肝機能サポート", "脳保護"],
+      "deficiency_symptoms": ["慢性炎症の悪化"],
+      "best_combinations": [
+        {
+          "partner": "黒コショウ（ピペリン）",
+          "effect": "吸収率が最大20倍になるとされる",
+          "reason": "ピペリンがクルクミンの分解を抑制する"
+        }
+      ],
+      "body_parts": ["immune", "brain"],
+      "top_foods": ["ターメリック（ウコン）", "カレー粉"],
+      "craving_signal": null,
+      "notes": "吸収率が低いため油・黒コショウとの組み合わせが重要です"
+    },
+    {
+      "id": "hesperidin",
+      "name": "ヘスペリジン",
+      "category": "ポリフェノール",
+      "body_effects": ["血流改善", "毛細血管強化", "抗アレルギー", "むくみ解消"],
+      "deficiency_symptoms": ["毛細血管が弱くなる", "むくみやすい"],
+      "best_combinations": [
+        {
+          "partner": "ビタミンC",
+          "effect": "毛細血管強化効果が高まる",
+          "reason": "ビタミンCとヘスペリジンが協調して血管壁を強くする"
+        }
+      ],
+      "body_parts": ["skin", "immune"],
+      "top_foods": ["みかん（特に薄皮・白い筋）", "グレープフルーツ", "レモン"],
+      "craving_signal": null,
+      "notes": "みかんの白い筋に特に多く含まれます"
+    },
+    {
+      "id": "cacao_polyphenol",
+      "name": "カカオポリフェノール",
+      "category": "ポリフェノール",
+      "body_effects": ["抗酸化", "血圧降下", "脳血流改善", "腸内環境改善"],
+      "deficiency_symptoms": ["酸化ストレスの増加"],
+      "best_combinations": [
+        {
+          "partner": "ビタミンC",
+          "effect": "抗酸化効果が高まる",
+          "reason": "異なる抗酸化成分が協調して働く"
+        }
+      ],
+      "body_parts": ["brain", "immune"],
+      "top_foods": ["ダークチョコレート（カカオ70%以上）", "ココア"],
+      "craving_signal": "chocolate",
+      "notes": "カカオ分70%以上のチョコレートに特に多く含まれます"
+    },
+    {
+      "id": "quercetin",
+      "name": "フラボノイド（ケルセチン）",
+      "category": "ポリフェノール",
+      "body_effects": ["抗酸化", "抗炎症", "抗アレルギー", "血圧降下"],
+      "deficiency_symptoms": ["炎症が起こりやすい", "アレルギー症状悪化"],
+      "best_combinations": [
+        {
+          "partner": "ビタミンC",
+          "effect": "抗酸化・抗炎症効果が高まる",
+          "reason": "ビタミンCがケルセチンの吸収を助ける"
+        }
+      ],
+      "body_parts": ["immune"],
+      "top_foods": ["玉ねぎ", "りんご", "ケール", "ブロッコリー", "緑茶"],
+      "craving_signal": null,
+      "notes": "玉ねぎは加熱しても比較的よく残ります"
+    },
+    {
+      "id": "lycopene",
+      "name": "リコピン",
+      "category": "カロテノイド",
+      "body_effects": ["抗酸化", "紫外線ダメージ軽減", "生活習慣病予防", "前立腺健康サポート"],
+      "deficiency_symptoms": ["肌の酸化ダメージ"],
+      "best_combinations": [
+        {
+          "partner": "油",
+          "effect": "吸収率が約4倍になるとされる",
+          "reason": "脂溶性のため油と一緒に摂ると吸収されやすい"
+        }
+      ],
+      "body_parts": ["skin", "immune"],
+      "top_foods": ["トマト", "スイカ", "グレープフルーツ", "パパイヤ"],
+      "craving_signal": null,
+      "notes": "加熱調理すると吸収率がさらに上がります"
+    },
+    {
+      "id": "lutein",
+      "name": "ルテイン",
+      "category": "カロテノイド",
+      "body_effects": ["黄斑変性予防", "ブルーライトダメージ軽減", "白内障予防", "目の疲労軽減"],
+      "deficiency_symptoms": ["目の疲れ・かすみ", "眩しさを感じやすい"],
+      "best_combinations": [
+        {
+          "partner": "ゼアキサンチン",
+          "effect": "目の保護効果が最大化される",
+          "reason": "ルテインとゼアキサンチンは黄斑に集積し協調して機能する"
+        }
+      ],
+      "body_parts": ["eye"],
+      "top_foods": ["ほうれん草", "ケール", "卵黄", "ブロッコリー", "とうもろこし"],
+      "craving_signal": null,
+      "notes": "10mg/日の摂取が目の健康に効果的とされます"
+    },
+    {
+      "id": "zeaxanthin",
+      "name": "ゼアキサンチン",
+      "category": "カロテノイド",
+      "body_effects": ["黄斑変性予防", "目の酸化ダメージ軽減", "視力保護"],
+      "deficiency_symptoms": ["目の疲れ", "かすみ目"],
+      "best_combinations": [
+        {
+          "partner": "ルテイン",
+          "effect": "目の保護効果が高まる",
+          "reason": "両者が黄斑に集積し協調して機能する"
+        }
+      ],
+      "body_parts": ["eye"],
+      "top_foods": ["とうもろこし", "卵黄", "パプリカ（オレンジ）", "かぼちゃ"],
+      "craving_signal": null,
+      "notes": "ルテインとセットで摂ることが推奨されます"
+    },
+    {
+      "id": "astaxanthin",
+      "name": "アスタキサンチン",
+      "category": "カロテノイド",
+      "body_effects": ["強力な抗酸化（ビタミンEの約6000倍とされる）", "眼精疲労軽減", "筋肉疲労回復", "紫外線対策"],
+      "deficiency_symptoms": ["目の疲れ", "肌の酸化ダメージ", "筋肉疲労が取れにくい"],
+      "best_combinations": [
+        {
+          "partner": "ビタミンE",
+          "effect": "抗酸化効果が相乗的に高まる",
+          "reason": "異なる部位の抗酸化成分が協調して働く"
+        }
+      ],
+      "body_parts": ["eye", "skin", "muscle"],
+      "top_foods": ["サーモン", "えび", "かに", "いくら", "タイ"],
+      "craving_signal": null,
+      "notes": "脂溶性のため油と一緒に摂ると吸収率が上がります"
+    },
+    {
+      "id": "beta_carotene",
+      "name": "βカロテン",
+      "category": "カロテノイド",
+      "body_effects": ["体内でビタミンAに変換", "抗酸化", "免疫機能サポート", "皮膚・粘膜の健康"],
+      "deficiency_symptoms": ["夜盲症", "皮膚の乾燥", "免疫力低下"],
+      "best_combinations": [
+        {
+          "partner": "油",
+          "effect": "吸収率が大幅に上がる",
+          "reason": "脂溶性のため油と一緒に摂ると吸収されやすい"
+        }
+      ],
+      "body_parts": ["eye", "skin", "immune"],
+      "top_foods": ["ニンジン", "かぼちゃ", "ほうれん草", "小松菜", "モロヘイヤ"],
+      "craving_signal": null,
+      "notes": "体内でビタミンAに変換されますが、必要量のみ変換されるため過剰症のリスクが低いとされます"
+    },
+    {
+      "id": "allicin",
+      "name": "アリシン",
+      "category": "含硫化合物",
+      "body_effects": ["強力な抗菌・抗ウイルス", "免疫強化", "ビタミンB1の吸収促進（アリチアミン）", "血栓予防"],
+      "deficiency_symptoms": ["疲れが取れにくい", "免疫力低下"],
+      "best_combinations": [
+        {
+          "partner": "ビタミンB1",
+          "effect": "疲労回復効果が大幅に高まる",
+          "reason": "アリシンがB1と結合しアリチアミンを形成、吸収率が格段に上がる"
+        }
+      ],
+      "body_parts": ["immune"],
+      "top_foods": ["にんにく", "玉ねぎ", "ニラ", "長ネギ"],
+      "craving_signal": null,
+      "notes": "切った後10分程度おいてから調理すると生成量が増えます"
+    },
+    {
+      "id": "sulforaphane",
+      "name": "スルフォラファン",
+      "category": "含硫化合物",
+      "body_effects": ["解毒酵素の活性化", "抗がん作用", "抗酸化", "ピロリ菌抑制"],
+      "deficiency_symptoms": ["解毒機能の低下"],
+      "best_combinations": [
+        {
+          "partner": "ビタミンC",
+          "effect": "抗酸化・抗炎症効果が高まる",
+          "reason": "異なる抗酸化経路で協調して機能する"
+        }
+      ],
+      "body_parts": ["immune", "gut"],
+      "top_foods": ["ブロッコリー（特に新芽）", "キャベツ", "カリフラワー", "わさび"],
+      "craving_signal": null,
+      "notes": "ブロッコリースプラウトに特に多く含まれます。加熱しすぎると分解されます"
+    },
+    {
+      "id": "isothiocyanate",
+      "name": "イソチオシアネート",
+      "category": "含硫化合物",
+      "body_effects": ["抗菌・抗がん作用", "解毒促進", "血栓予防"],
+      "deficiency_symptoms": [],
+      "best_combinations": [
+        {
+          "partner": "油",
+          "effect": "辛味成分の刺激が和らぎ食べやすくなる",
+          "reason": "脂溶性成分のため"
+        }
+      ],
+      "body_parts": ["immune"],
+      "top_foods": ["わさび", "大根", "からし", "ルッコラ"],
+      "craving_signal": null,
+      "notes": "すりおろしてから少し置くことで成分が増えます"
+    },
+    {
+      "id": "imidapeptide",
+      "name": "イミダペプチド",
+      "category": "ペプチド",
+      "body_effects": ["脳疲労回復", "抗酸化", "持久力向上", "活性酸素除去"],
+      "deficiency_symptoms": ["脳の疲れが取れない", "集中力が続かない", "慢性的な疲労"],
+      "best_combinations": [
+        {
+          "partner": "ビタミンC",
+          "effect": "抗酸化効果が高まる",
+          "reason": "ビタミンCが活性酸素除去を補助する"
+        }
+      ],
+      "body_parts": ["brain", "muscle"],
+      "top_foods": ["鶏むね肉", "マグロ（尾の部分）", "カツオ"],
+      "craving_signal": null,
+      "notes": "200mg/日が効果的とされます。鶏むね肉100gで約200mg摂取できるとされます"
+    },
+    {
+      "id": "epa",
+      "name": "EPA（エイコサペンタエン酸）",
+      "category": "オメガ3脂肪酸",
+      "body_effects": ["抗炎症", "中性脂肪低下", "血栓予防", "血流改善"],
+      "deficiency_symptoms": ["炎症が起こりやすい", "血液がドロドロになりやすい"],
+      "best_combinations": [
+        {
+          "partner": "DHA",
+          "effect": "心血管・脳への効果が最大化される",
+          "reason": "EPAとDHAは協調して血液・神経系をサポートする"
+        }
+      ],
+      "body_parts": ["immune", "brain"],
+      "top_foods": ["さば", "いわし", "さんま", "サーモン", "まぐろ"],
+      "craving_signal": "fish",
+      "notes": "加熱調理より刺身など生食の方が損失が少ないとされます"
+    },
+    {
+      "id": "dha",
+      "name": "DHA（ドコサヘキサエン酸）",
+      "category": "オメガ3脂肪酸",
+      "body_effects": ["脳の発達・機能維持", "記憶力・学習能力サポート", "視力維持", "抗炎症"],
+      "deficiency_symptoms": ["集中力・記憶力の低下", "脳の疲れ", "気分の落ち込み"],
+      "best_combinations": [
+        {
+          "partner": "EPA",
+          "effect": "脳・心血管への効果が高まる",
+          "reason": "DHAとEPAは協調して神経系・心血管系をサポートする"
+        }
+      ],
+      "body_parts": ["brain", "eye"],
+      "top_foods": ["マグロ（大トロ）", "サーモン", "さば", "いわし", "ぶり"],
+      "craving_signal": "fish",
+      "notes": "脳の神経細胞膜の主要成分。妊娠中・授乳中は特に重要とされます"
+    },
+    {
+      "id": "carnitine",
+      "name": "カルニチン",
+      "category": "アミノ酸誘導体",
+      "body_effects": ["脂肪をエネルギーに変換", "疲労回復", "心臓機能サポート", "筋肉の持久力向上"],
+      "deficiency_symptoms": ["脂肪が燃えにくい", "疲れやすい", "スタミナ不足"],
+      "best_combinations": [
+        {
+          "partner": "ビタミンC",
+          "effect": "カルニチン合成が促進される",
+          "reason": "ビタミンCがカルニチン生合成に必要な酵素の補因子"
+        }
+      ],
+      "body_parts": ["muscle"],
+      "top_foods": ["ラム肉", "牛肉", "豚肉", "鶏肉", "牛乳"],
+      "craving_signal": "lamb",
+      "notes": "ラム肉は牛肉の約2倍のカルニチンを含むとされます"
+    },
+    {
+      "id": "collagen",
+      "name": "コラーゲン",
+      "category": "タンパク質",
+      "body_effects": ["皮膚の弾力維持", "関節の軟骨保護", "骨の強度維持", "腸壁の健康"],
+      "deficiency_symptoms": ["肌のたるみ・シワ", "関節の痛み", "骨が弱くなる"],
+      "best_combinations": [
+        {
+          "partner": "ビタミンC",
+          "effect": "コラーゲン合成が促進される",
+          "reason": "ビタミンCがコラーゲン生成に必須の酵素の補因子"
+        }
+      ],
+      "body_parts": ["skin", "bone"],
+      "top_foods": ["鶏皮", "豚足", "手羽先", "軟骨", "魚の皮"],
+      "craving_signal": null,
+      "notes": "経口摂取したコラーゲンが直接肌に届くかは議論中ですが、ペプチド形態での吸収は報告されています"
+    },
+    {
+      "id": "glucosamine",
+      "name": "グルコサミン",
+      "category": "アミノ糖",
+      "body_effects": ["関節軟骨の維持・修復", "関節痛の緩和", "腸壁の修復サポート"],
+      "deficiency_symptoms": ["関節の痛み・こわばり", "軟骨の摩耗"],
+      "best_combinations": [
+        {
+          "partner": "コンドロイチン",
+          "effect": "関節保護効果が高まる",
+          "reason": "グルコサミンとコンドロイチンが協調して軟骨を維持する"
+        }
+      ],
+      "body_parts": ["bone"],
+      "top_foods": ["えび（殻）", "かに（殻）", "きのこ類"],
+      "craving_signal": null,
+      "notes": "関節の保護効果は個人差があり、継続摂取が重要とされます"
+    },
+    {
+      "id": "chondroitin",
+      "name": "コンドロイチン",
+      "category": "多糖類",
+      "body_effects": ["軟骨の水分保持", "関節の潤滑", "関節痛緩和"],
+      "deficiency_symptoms": ["関節の痛み", "軟骨の乾燥・摩耗"],
+      "best_combinations": [
+        {
+          "partner": "グルコサミン",
+          "effect": "関節保護効果が高まる",
+          "reason": "グルコサミンとコンドロイチンが協調して軟骨を維持する"
+        }
+      ],
+      "body_parts": ["bone"],
+      "top_foods": ["鶏軟骨", "サメ軟骨", "豚耳", "魚の皮"],
+      "craving_signal": null,
+      "notes": "関節保護目的の場合は1200mg/日程度が有効とされます"
+    },
+    {
+      "id": "gaba",
+      "name": "GABA（γ-アミノ酪酸）",
+      "category": "アミノ酸",
+      "body_effects": ["リラックス効果", "睡眠の質改善", "血圧降下", "ストレス緩和"],
+      "deficiency_symptoms": ["眠れない", "イライラしやすい", "ストレスに弱い"],
+      "best_combinations": [
+        {
+          "partner": "テアニン",
+          "effect": "リラックス・睡眠改善効果が高まる",
+          "reason": "両者がリラックス系の神経伝達を促進する"
+        }
+      ],
+      "body_parts": ["brain", "sleep"],
+      "top_foods": ["発芽玄米", "トマト", "発酵食品（ぬか漬けなど）", "チョコレート"],
+      "craving_signal": null,
+      "notes": "100mg/日程度で睡眠改善・リラックス効果が期待されます"
+    },
+    {
+      "id": "theanine",
+      "name": "テアニン",
+      "category": "アミノ酸",
+      "body_effects": ["リラックス効果（α波増加）", "集中力向上", "睡眠の質改善", "カフェインの過剰反応を和らげる"],
+      "deficiency_symptoms": ["集中力が続かない", "緊張しやすい"],
+      "best_combinations": [
+        {
+          "partner": "カフェイン",
+          "effect": "集中力が上がりつつリラックスできる",
+          "reason": "カフェインの覚醒作用をテアニンが和らげ、集中・リラックスを両立させる"
+        }
+      ],
+      "body_parts": ["brain", "sleep"],
+      "top_foods": ["緑茶（特に玉露・抹茶）"],
+      "craving_signal": "green_tea",
+      "notes": "緑茶に含まれるテアニンがコーヒーより緑茶が「落ち着く」理由とされます"
+    },
+    {
+      "id": "beta_glucan",
+      "name": "βグルカン",
+      "category": "多糖類",
+      "body_effects": ["免疫活性化", "血糖値上昇抑制", "コレステロール低下", "腸内環境改善"],
+      "deficiency_symptoms": ["免疫力低下", "血糖値が上がりやすい"],
+      "best_combinations": [
+        {
+          "partner": "乳酸菌",
+          "effect": "腸内環境改善・免疫強化効果が高まる",
+          "reason": "βグルカンが善玉菌のエサになり、腸内免疫を強化する"
+        }
+      ],
+      "body_parts": ["immune", "gut"],
+      "top_foods": ["きのこ類（しいたけ・まいたけ・えのき）", "オートミール", "大麦"],
+      "craving_signal": null,
+      "notes": "まいたけのβグルカンは特に免疫活性効果が高いとされます"
+    },
+    {
+      "id": "fucoidan",
+      "name": "フコイダン",
+      "category": "多糖類",
+      "body_effects": ["免疫活性化", "抗腫瘍作用", "抗炎症", "胃の粘膜保護"],
+      "deficiency_symptoms": ["免疫力低下"],
+      "best_combinations": [
+        {
+          "partner": "βグルカン",
+          "effect": "免疫強化効果が高まる",
+          "reason": "異なる経路で免疫細胞を活性化する"
+        }
+      ],
+      "body_parts": ["immune", "gut"],
+      "top_foods": ["もずく", "めかぶ", "昆布", "わかめ（特にヌルヌル部分）"],
+      "craving_signal": null,
+      "notes": "海藻のヌルヌル成分がフコイダンです"
+    },
+    {
+      "id": "lactic_acid_bacteria",
+      "name": "乳酸菌",
+      "category": "プロバイオティクス",
+      "body_effects": ["腸内環境改善", "免疫機能強化", "下痢・便秘改善", "アレルギー緩和"],
+      "deficiency_symptoms": ["腸内環境の乱れ", "免疫力低下", "便秘・下痢"],
+      "best_combinations": [
+        {
+          "partner": "食物繊維（プレバイオティクス）",
+          "effect": "腸内での乳酸菌の定着・増殖が促進される",
+          "reason": "食物繊維が乳酸菌のエサになる（シンバイオティクス効果）"
+        }
+      ],
+      "body_parts": ["gut", "immune"],
+      "top_foods": ["ヨーグルト", "味噌", "ぬか漬け", "キムチ", "チーズ"],
+      "craving_signal": "dairy",
+      "notes": "継続的な摂取が重要。腸内定着には個人差があります"
+    },
+    {
+      "id": "nattokinase",
+      "name": "ナットウキナーゼ",
+      "category": "酵素",
+      "body_effects": ["血栓溶解作用", "血流改善", "血圧低下", "動脈硬化予防"],
+      "deficiency_symptoms": ["血液がドロドロになりやすい"],
+      "best_combinations": [
+        {
+          "partner": "ビタミンK2",
+          "effect": "血管の健康が保たれる",
+          "reason": "納豆にはナットウキナーゼとビタミンK2が両方含まれる"
+        }
+      ],
+      "body_parts": ["immune"],
+      "top_foods": ["納豆"],
+      "craving_signal": null,
+      "notes": "ワルファリン服用中の方は納豆を避ける必要があります"
+    },
+    {
+      "id": "capsaicin",
+      "name": "カプサイシン",
+      "category": "アルカロイド",
+      "body_effects": ["体温上昇・脂肪燃焼促進", "食欲増進", "鎮痛作用", "代謝促進"],
+      "deficiency_symptoms": ["代謝が上がりにくい"],
+      "best_combinations": [
+        {
+          "partner": "ビタミンB1",
+          "effect": "エネルギー産生が促進される",
+          "reason": "カプサイシンの代謝促進とB1のエネルギー産生が相乗する"
+        }
+      ],
+      "body_parts": ["muscle"],
+      "top_foods": ["唐辛子", "一味・七味", "キムチ", "タバスコ"],
+      "craving_signal": "spicy",
+      "notes": "過剰摂取は胃腸への刺激になるため注意が必要です"
+    },
+    {
+      "id": "gingerol",
+      "name": "ジンゲロール",
+      "category": "フェノール化合物",
+      "body_effects": ["抗酸化", "抗炎症", "血流改善（体を温める）", "吐き気・乗り物酔い緩和"],
+      "deficiency_symptoms": ["冷え性", "体が温まりにくい"],
+      "best_combinations": [
+        {
+          "partner": "ショウガオール（加熱で変換）",
+          "effect": "体を温める効果が高まる",
+          "reason": "加熱・乾燥でジンゲロールがショウガオールに変換され保温効果が増す"
+        }
+      ],
+      "body_parts": ["immune"],
+      "top_foods": ["生姜", "しょうが湯", "生姜湯"],
+      "craving_signal": null,
+      "notes": "生食は吐き気予防に、加熱は体を温める目的に向いているとされます"
+    },
+    {
+      "id": "chlorogenic_acid",
+      "name": "クロロゲン酸",
+      "category": "ポリフェノール",
+      "body_effects": ["抗酸化", "血糖値上昇抑制", "脂肪吸収抑制", "血圧降下"],
+      "deficiency_symptoms": ["血糖値が上がりやすい"],
+      "best_combinations": [
+        {
+          "partner": "カフェイン",
+          "effect": "代謝・脂肪燃焼効果が高まる",
+          "reason": "コーヒーにはカフェインとクロロゲン酸が共存し相乗効果がある"
+        }
+      ],
+      "body_parts": ["immune"],
+      "top_foods": ["コーヒー", "ごぼう", "じゃがいも"],
+      "craving_signal": "coffee",
+      "notes": "食前のコーヒーが血糖値スパイク抑制に効果的とされます"
+    },
+    {
+      "id": "lactoferrin",
+      "name": "ラクトフェリン",
+      "category": "糖タンパク質",
+      "body_effects": ["免疫強化", "抗菌・抗ウイルス", "腸内環境改善", "抗炎症"],
+      "deficiency_symptoms": ["免疫力低下", "感染しやすい"],
+      "best_combinations": [
+        {
+          "partner": "乳酸菌",
+          "effect": "腸内免疫が強化される",
+          "reason": "ラクトフェリンと乳酸菌が腸内免疫を協調してサポートする"
+        }
+      ],
+      "body_parts": ["immune", "gut"],
+      "top_foods": ["牛初乳", "牛乳", "チーズ"],
+      "craving_signal": "dairy",
+      "notes": "加熱に弱いため生乳や低温殺菌乳での摂取が効果的とされます"
+    },
+    {
+      "id": "fructooligosaccharide",
+      "name": "フラクトオリゴ糖",
+      "category": "プレバイオティクス",
+      "body_effects": ["腸内善玉菌の増殖促進", "便秘改善", "免疫機能サポート", "カルシウム吸収促進"],
+      "deficiency_symptoms": ["腸内環境の乱れ", "便秘"],
+      "best_combinations": [
+        {
+          "partner": "乳酸菌",
+          "effect": "腸内環境改善効果が大幅に高まる",
+          "reason": "フラクトオリゴ糖が乳酸菌のエサになりシンバイオティクス効果"
+        }
+      ],
+      "body_parts": ["gut"],
+      "top_foods": ["玉ねぎ", "ごぼう", "アスパラガス", "バナナ", "はちみつ"],
+      "craving_signal": null,
+      "notes": "1日3〜8gの摂取が腸内環境改善に効果的とされます"
+    }
+  ]
+}

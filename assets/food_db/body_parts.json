@@ -1,0 +1,68 @@
+{
+  "body_parts": [
+    {
+      "id": "eye",
+      "name": "目",
+      "emoji": "👁",
+      "related_nutrients": ["vitamin_a", "lutein", "zeaxanthin", "astaxanthin", "anthocyanin", "dha"],
+      "deficiency_message": "目の疲れが出やすくなっているかもしれません",
+      "sufficient_message": "目の健康が保たれています"
+    },
+    {
+      "id": "brain",
+      "name": "脳",
+      "emoji": "🧠",
+      "related_nutrients": ["imidapeptide", "dha", "gaba", "theanine", "vitamin_b12", "iron", "curcumin", "carbohydrate"],
+      "deficiency_message": "集中力が落ちやすい状態かもしれません",
+      "sufficient_message": "脳のコンディションが整っています"
+    },
+    {
+      "id": "muscle",
+      "name": "筋肉",
+      "emoji": "💪",
+      "related_nutrients": ["protein", "vitamin_d", "magnesium", "carnitine", "imidapeptide", "epa", "carbohydrate", "iron"],
+      "deficiency_message": "筋肉の回復が遅れやすい状態かもしれません",
+      "sufficient_message": "筋肉の修復・強化をサポートできています"
+    },
+    {
+      "id": "bone",
+      "name": "骨・関節",
+      "emoji": "🦴",
+      "related_nutrients": ["calcium", "vitamin_d", "vitamin_k", "magnesium", "phosphorus", "glucosamine", "chondroitin", "collagen", "isoflavone"],
+      "deficiency_message": "骨・関節への栄養が不足気味かもしれません",
+      "sufficient_message": "骨・関節の強度が維持されています"
+    },
+    {
+      "id": "immune",
+      "name": "免疫",
+      "emoji": "🛡️",
+      "related_nutrients": ["vitamin_c", "vitamin_d", "zinc", "beta_glucan", "lactoferrin", "allicin", "selenium", "vitamin_a"],
+      "deficiency_message": "免疫力が落ちやすい状態かもしれません",
+      "sufficient_message": "免疫システムが整っています"
+    },
+    {
+      "id": "sleep",
+      "name": "睡眠",
+      "emoji": "😴",
+      "related_nutrients": ["gaba", "theanine", "magnesium", "vitamin_b6", "tryptophan"],
+      "deficiency_message": "睡眠の質が下がりやすい状態かもしれません",
+      "sufficient_message": "良質な睡眠をサポートできています"
+    },
+    {
+      "id": "skin",
+      "name": "肌",
+      "emoji": "✨",
+      "related_nutrients": ["vitamin_c", "vitamin_e", "lycopene", "collagen", "zinc", "astaxanthin", "beta_carotene", "biotin", "vitamin_a"],
+      "deficiency_message": "肌の回復力が落ちているかもしれません",
+      "sufficient_message": "肌の健康が保たれています"
+    },
+    {
+      "id": "gut",
+      "name": "腸",
+      "emoji": "🌿",
+      "related_nutrients": ["dietary_fiber", "lactic_acid_bacteria", "fructooligosaccharide", "fucoidan", "beta_glucan", "lactoferrin"],
+      "deficiency_message": "腸内環境が乱れやすい状態かもしれません",
+      "sufficient_message": "腸内環境が整っています"
+    }
+  ]
+}

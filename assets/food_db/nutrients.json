@@ -1,0 +1,574 @@
+{
+  "nutrients": [
+    {
+      "id": "vitamin_a",
+      "name": "ビタミンA",
+      "category": "脂溶性ビタミン",
+      "daily_recommended_mg": 0.9,
+      "unit": "mg RAE",
+      "body_effects": ["視力維持", "皮膚・粘膜の健康", "免疫機能サポート", "成長促進"],
+      "deficiency_symptoms": ["夜盲症", "皮膚の乾燥", "免疫力低下", "目の乾き"],
+      "excess_risk": "脂溶性のため過剰摂取に注意。頭痛・吐き気・肝障害のリスクあり",
+      "best_combinations": [
+        {
+          "partner": "脂質",
+          "effect": "吸収率が大幅に上がる",
+          "reason": "脂溶性ビタミンのため油と一緒に摂ると吸収されやすい"
+        }
+      ],
+      "body_parts": ["eye", "skin", "immune"],
+      "top_foods": ["レバー", "ニンジン", "ほうれん草", "かぼちゃ", "うなぎ"]
+    },
+    {
+      "id": "vitamin_d",
+      "name": "ビタミンD",
+      "category": "脂溶性ビタミン",
+      "daily_recommended_mg": 0.0085,
+      "unit": "μg",
+      "body_effects": ["カルシウム吸収促進", "骨の強化", "免疫調節", "筋肉機能サポート"],
+      "deficiency_symptoms": ["骨軟化症", "免疫力低下", "疲労感", "気分の落ち込み"],
+      "excess_risk": "過剰摂取で高カルシウム血症のリスクあり",
+      "best_combinations": [
+        {
+          "partner": "カルシウム",
+          "effect": "カルシウムの吸収率が上がる",
+          "reason": "ビタミンDが腸でのカルシウム吸収を促進する"
+        }
+      ],
+      "body_parts": ["bone", "immune", "muscle"],
+      "top_foods": ["サーモン", "いわし", "さんま", "卵黄", "きのこ類"]
+    },
+    {
+      "id": "vitamin_e",
+      "name": "ビタミンE",
+      "category": "脂溶性ビタミン",
+      "daily_recommended_mg": 6.5,
+      "unit": "mg",
+      "body_effects": ["抗酸化作用", "血行促進", "細胞膜保護", "老化予防"],
+      "deficiency_symptoms": ["筋力低下", "神経障害", "免疫低下", "貧血"],
+      "excess_risk": "過剰摂取で出血傾向のリスクがある可能性があります",
+      "best_combinations": [
+        {
+          "partner": "ビタミンC",
+          "effect": "抗酸化力が相乗的に高まる",
+          "reason": "ビタミンCがビタミンEを再生させる"
+        }
+      ],
+      "body_parts": ["skin", "immune"],
+      "top_foods": ["アーモンド", "ひまわり油", "アボカド", "かぼちゃ", "ほうれん草"]
+    },
+    {
+      "id": "vitamin_k",
+      "name": "ビタミンK",
+      "category": "脂溶性ビタミン",
+      "daily_recommended_mg": 0.15,
+      "unit": "mg",
+      "body_effects": ["血液凝固", "骨の形成サポート", "動脈の石灰化防止"],
+      "deficiency_symptoms": ["出血しやすい", "骨密度低下", "傷が治りにくい"],
+      "excess_risk": "通常の食事では過剰摂取のリスクは低い",
+      "best_combinations": [
+        {
+          "partner": "ビタミンD",
+          "effect": "骨形成効果が高まる",
+          "reason": "ビタミンDとKが協調してカルシウムを骨に定着させる"
+        }
+      ],
+      "body_parts": ["bone"],
+      "top_foods": ["納豆", "ほうれん草", "小松菜", "ブロッコリー", "キャベツ"]
+    },
+    {
+      "id": "vitamin_b1",
+      "name": "ビタミンB1",
+      "category": "水溶性ビタミン",
+      "daily_recommended_mg": 1.4,
+      "unit": "mg",
+      "body_effects": ["糖質をエネルギーに変換", "神経機能の維持", "疲労回復", "集中力サポート"],
+      "deficiency_symptoms": ["疲れやすい", "集中力低下", "食欲不振", "むくみ"],
+      "excess_risk": "水溶性のため過剰分は排出される。ほぼ無害",
+      "best_combinations": [
+        {
+          "partner": "アリシン",
+          "effect": "疲労回復効果が高まる",
+          "reason": "ニンニクのアリシンがB1の吸収・利用効率を大幅に高める"
+        }
+      ],
+      "body_parts": ["brain", "muscle"],
+      "top_foods": ["豚肉", "玄米", "大豆", "うなぎ", "ごま"]
+    },
+    {
+      "id": "vitamin_b2",
+      "name": "ビタミンB2",
+      "category": "水溶性ビタミン",
+      "daily_recommended_mg": 1.6,
+      "unit": "mg",
+      "body_effects": ["エネルギー産生", "細胞の成長促進", "皮膚・粘膜の健康維持", "脂質代謝"],
+      "deficiency_symptoms": ["口内炎", "肌荒れ", "目の充血", "疲れやすい"],
+      "excess_risk": "水溶性のため過剰分は排出される",
+      "best_combinations": [
+        {
+          "partner": "ビタミンB6",
+          "effect": "エネルギー代謝が効率よく進む",
+          "reason": "B群はチームで働くため複数同時摂取が効果的"
+        }
+      ],
+      "body_parts": ["skin", "muscle"],
+      "top_foods": ["レバー", "うなぎ", "卵", "納豆", "牛乳"]
+    },
+    {
+      "id": "vitamin_b6",
+      "name": "ビタミンB6",
+      "category": "水溶性ビタミン",
+      "daily_recommended_mg": 1.4,
+      "unit": "mg",
+      "body_effects": ["タンパク質代謝", "神経伝達物質の合成", "免疫機能サポート", "PMS症状緩和"],
+      "deficiency_symptoms": ["イライラ", "うつ気分", "口内炎", "貧血"],
+      "excess_risk": "大量摂取で末梢神経障害のリスクがある可能性があります",
+      "best_combinations": [
+        {
+          "partner": "タンパク質",
+          "effect": "タンパク質の利用効率が上がる",
+          "reason": "B6はアミノ酸代謝に必須の補酵素"
+        }
+      ],
+      "body_parts": ["brain", "immune", "sleep"],
+      "top_foods": ["マグロ", "鶏むね肉", "バナナ", "さつまいも", "ごま"]
+    },
+    {
+      "id": "vitamin_b12",
+      "name": "ビタミンB12",
+      "category": "水溶性ビタミン",
+      "daily_recommended_mg": 0.0024,
+      "unit": "μg",
+      "body_effects": ["神経機能の維持", "赤血球の生成", "DNA合成", "疲労回復"],
+      "deficiency_symptoms": ["貧血", "手足のしびれ", "記憶力低下", "集中力低下"],
+      "excess_risk": "水溶性のため過剰分は排出される。ほぼ無害",
+      "best_combinations": [
+        {
+          "partner": "葉酸",
+          "effect": "貧血予防・神経保護効果が高まる",
+          "reason": "B12と葉酸は協調して赤血球を生成する"
+        }
+      ],
+      "body_parts": ["brain", "immune"],
+      "top_foods": ["あさり", "レバー", "さんま", "牛肉", "卵"]
+    },
+    {
+      "id": "vitamin_c",
+      "name": "ビタミンC",
+      "category": "水溶性ビタミン",
+      "daily_recommended_mg": 100,
+      "unit": "mg",
+      "body_effects": ["免疫強化", "コラーゲン生成", "抗酸化", "鉄の吸収促進"],
+      "deficiency_symptoms": ["疲れやすい", "肌荒れ", "風邪を引きやすい", "歯茎の出血"],
+      "excess_risk": "水溶性のため排出される。大量摂取で下痢の可能性",
+      "best_combinations": [
+        {
+          "partner": "鉄分",
+          "effect": "鉄の吸収率が上がる",
+          "reason": "ビタミンCが非ヘム鉄を還元し吸収しやすくする"
+        }
+      ],
+      "body_parts": ["immune", "skin"],
+      "top_foods": ["パプリカ", "ブロッコリー", "キウイ", "いちご", "レモン"]
+    },
+    {
+      "id": "niacin",
+      "name": "ナイアシン",
+      "category": "水溶性ビタミン",
+      "daily_recommended_mg": 15,
+      "unit": "mg",
+      "body_effects": ["エネルギー産生", "皮膚・粘膜の健康維持", "神経機能サポート", "コレステロール管理"],
+      "deficiency_symptoms": ["皮膚炎", "下痢", "認知機能低下", "疲労"],
+      "excess_risk": "サプリ大量摂取でフラッシング（皮膚紅潮）や肝障害のリスクあり",
+      "best_combinations": [
+        {
+          "partner": "ビタミンB2",
+          "effect": "エネルギー代謝が促進される",
+          "reason": "B群はチームで機能する"
+        }
+      ],
+      "body_parts": ["skin", "brain"],
+      "top_foods": ["鶏むね肉", "マグロ", "牛肉", "落花生", "マッシュルーム"]
+    },
+    {
+      "id": "folate",
+      "name": "葉酸",
+      "category": "水溶性ビタミン",
+      "daily_recommended_mg": 0.24,
+      "unit": "μg",
+      "body_effects": ["細胞分裂サポート", "赤血球生成", "胎児の神経管発達", "動脈硬化予防"],
+      "deficiency_symptoms": ["貧血", "疲れやすい", "口内炎", "気分の落ち込み"],
+      "excess_risk": "通常の食事での過剰摂取はほぼ無害",
+      "best_combinations": [
+        {
+          "partner": "ビタミンB12",
+          "effect": "貧血予防効果が高まる",
+          "reason": "葉酸とB12は協調して正常な赤血球を作る"
+        }
+      ],
+      "body_parts": ["brain", "immune"],
+      "top_foods": ["ほうれん草", "ブロッコリー", "アスパラガス", "レバー", "枝豆"]
+    },
+    {
+      "id": "pantothenic_acid",
+      "name": "パントテン酸",
+      "category": "水溶性ビタミン",
+      "daily_recommended_mg": 5,
+      "unit": "mg",
+      "body_effects": ["エネルギー産生", "副腎機能サポート", "ストレス耐性", "皮膚・粘膜の健康"],
+      "deficiency_symptoms": ["疲れやすい", "手足のしびれ", "頭痛", "免疫力低下"],
+      "excess_risk": "水溶性のため過剰分は排出される",
+      "best_combinations": [
+        {
+          "partner": "ビタミンC",
+          "effect": "抗ストレス効果が高まる",
+          "reason": "副腎ホルモン合成にどちらも必要"
+        }
+      ],
+      "body_parts": ["immune", "skin"],
+      "top_foods": ["レバー", "卵", "納豆", "アボカド", "鶏肉"]
+    },
+    {
+      "id": "biotin",
+      "name": "ビオチン",
+      "category": "水溶性ビタミン",
+      "daily_recommended_mg": 0.05,
+      "unit": "μg",
+      "body_effects": ["皮膚・爪・髪の健康", "糖質・脂質代謝", "神経機能サポート"],
+      "deficiency_symptoms": ["脱毛", "皮膚炎", "爪が割れやすい", "疲れやすい"],
+      "excess_risk": "水溶性のため過剰分は排出される",
+      "best_combinations": [
+        {
+          "partner": "ビタミンB群",
+          "effect": "エネルギー代謝が効率化される",
+          "reason": "B群はチームで機能する"
+        }
+      ],
+      "body_parts": ["skin"],
+      "top_foods": ["卵", "レバー", "ナッツ類", "大豆", "さつまいも"]
+    },
+    {
+      "id": "calcium",
+      "name": "カルシウム",
+      "category": "多量ミネラル",
+      "daily_recommended_mg": 800,
+      "unit": "mg",
+      "body_effects": ["骨・歯の形成", "筋肉収縮", "神経伝達", "血液凝固"],
+      "deficiency_symptoms": ["骨粗しょう症", "筋肉のけいれん", "イライラ", "骨折しやすい"],
+      "excess_risk": "過剰摂取で腎結石・便秘のリスクがある可能性があります",
+      "best_combinations": [
+        {
+          "partner": "ビタミンD",
+          "effect": "吸収率が大幅に上がる",
+          "reason": "ビタミンDが腸でのカルシウム吸収を促進する"
+        }
+      ],
+      "body_parts": ["bone", "muscle"],
+      "top_foods": ["牛乳", "チーズ", "小松菜", "ひじき", "桜えび"]
+    },
+    {
+      "id": "magnesium",
+      "name": "マグネシウム",
+      "category": "多量ミネラル",
+      "daily_recommended_mg": 370,
+      "unit": "mg",
+      "body_effects": ["筋肉のリラックス", "エネルギー産生", "神経の安定", "血糖コントロール"],
+      "deficiency_symptoms": ["筋肉のけいれん", "不眠", "イライラ", "疲れやすい"],
+      "excess_risk": "食事からの過剰摂取はほぼ無害。サプリ大量摂取で下痢",
+      "best_combinations": [
+        {
+          "partner": "カルシウム",
+          "effect": "骨の形成と筋肉機能が最適化される",
+          "reason": "Ca:Mg=2:1が理想的なバランスとされる"
+        }
+      ],
+      "body_parts": ["bone", "muscle", "sleep"],
+      "top_foods": ["アーモンド", "大豆", "玄米", "ほうれん草", "バナナ"]
+    },
+    {
+      "id": "potassium",
+      "name": "カリウム",
+      "category": "多量ミネラル",
+      "daily_recommended_mg": 3000,
+      "unit": "mg",
+      "body_effects": ["血圧調整", "むくみ解消", "筋肉機能", "心臓機能サポート"],
+      "deficiency_symptoms": ["むくみ", "筋力低下", "疲れやすい", "高血圧"],
+      "excess_risk": "腎機能が正常なら過剰摂取のリスクは低い",
+      "best_combinations": [
+        {
+          "partner": "ナトリウム制限",
+          "effect": "血圧降下効果が高まる",
+          "reason": "カリウムとナトリウムはバランスで機能する"
+        }
+      ],
+      "body_parts": ["muscle"],
+      "top_foods": ["バナナ", "アボカド", "ほうれん草", "さつまいも", "納豆"]
+    },
+    {
+      "id": "sodium",
+      "name": "ナトリウム",
+      "category": "多量ミネラル",
+      "daily_recommended_mg": 600,
+      "unit": "mg",
+      "body_effects": ["体液バランス調整", "神経伝達", "筋肉収縮", "栄養素の吸収"],
+      "deficiency_symptoms": ["筋肉のけいれん", "頭痛", "倦怠感", "低血圧"],
+      "excess_risk": "過剰摂取で高血圧・浮腫・腎臓への負担リスク",
+      "best_combinations": [
+        {
+          "partner": "カリウム",
+          "effect": "ミネラルバランスが整う",
+          "reason": "カリウムがナトリウムの排出を促進する"
+        }
+      ],
+      "body_parts": ["muscle"],
+      "top_foods": ["食塩", "醤油", "味噌", "梅干し", "チーズ"]
+    },
+    {
+      "id": "phosphorus",
+      "name": "リン",
+      "category": "多量ミネラル",
+      "daily_recommended_mg": 1000,
+      "unit": "mg",
+      "body_effects": ["骨・歯の形成", "エネルギー産生（ATP）", "細胞膜の構成", "pH調整"],
+      "deficiency_symptoms": ["骨軟化", "筋力低下", "疲れやすい"],
+      "excess_risk": "過剰摂取でカルシウム吸収阻害・骨密度低下のリスク",
+      "best_combinations": [
+        {
+          "partner": "カルシウム",
+          "effect": "骨形成が促進される",
+          "reason": "Ca:P=1:1が理想的とされる"
+        }
+      ],
+      "body_parts": ["bone"],
+      "top_foods": ["チーズ", "レバー", "魚介類", "牛乳", "ナッツ"]
+    },
+    {
+      "id": "iron",
+      "name": "鉄分",
+      "category": "微量ミネラル",
+      "daily_recommended_mg": 10.5,
+      "unit": "mg",
+      "body_effects": ["赤血球生成（ヘモグロビン）", "酸素運搬", "エネルギー産生", "免疫機能"],
+      "deficiency_symptoms": ["貧血", "疲れやすい", "息切れ", "集中力低下", "顔色が悪い"],
+      "excess_risk": "過剰摂取で酸化ストレス・肝障害のリスクがある可能性があります",
+      "best_combinations": [
+        {
+          "partner": "ビタミンC",
+          "effect": "非ヘム鉄の吸収率が2〜3倍上がる",
+          "reason": "ビタミンCが鉄を吸収しやすい形に変換する"
+        }
+      ],
+      "body_parts": ["brain", "immune"],
+      "top_foods": ["レバー", "赤身肉", "ほうれん草", "小松菜", "あさり"]
+    },
+    {
+      "id": "zinc",
+      "name": "亜鉛",
+      "category": "微量ミネラル",
+      "daily_recommended_mg": 11,
+      "unit": "mg",
+      "body_effects": ["免疫機能", "味覚・嗅覚の維持", "皮膚の健康", "タンパク質合成", "創傷治癒"],
+      "deficiency_symptoms": ["味覚障害", "免疫力低下", "肌荒れ", "抜け毛", "傷が治りにくい"],
+      "excess_risk": "過剰摂取で銅の吸収阻害・免疫機能低下のリスク",
+      "best_combinations": [
+        {
+          "partner": "ビタミンC",
+          "effect": "免疫機能の強化効果が高まる",
+          "reason": "ビタミンCと亜鉛は協調して免疫細胞をサポートする"
+        }
+      ],
+      "body_parts": ["immune", "skin"],
+      "top_foods": ["牡蠣", "牛肉", "豚レバー", "ナッツ", "チーズ"]
+    },
+    {
+      "id": "copper",
+      "name": "銅",
+      "category": "微量ミネラル",
+      "daily_recommended_mg": 0.9,
+      "unit": "mg",
+      "body_effects": ["鉄の代謝補助", "コラーゲン生成", "抗酸化（スーパーオキシドジスムターゼ）", "神経機能"],
+      "deficiency_symptoms": ["貧血", "骨が弱くなる", "免疫力低下"],
+      "excess_risk": "過剰摂取で肝障害のリスクがある可能性があります",
+      "best_combinations": [
+        {
+          "partner": "鉄分",
+          "effect": "鉄の利用効率が高まる",
+          "reason": "銅が鉄をヘモグロビンに取り込むのを助ける"
+        }
+      ],
+      "body_parts": ["immune"],
+      "top_foods": ["牡蠣", "レバー", "カシューナッツ", "ごま", "大豆"]
+    },
+    {
+      "id": "manganese",
+      "name": "マンガン",
+      "category": "微量ミネラル",
+      "daily_recommended_mg": 4,
+      "unit": "mg",
+      "body_effects": ["骨の形成", "抗酸化作用", "糖質・脂質代謝", "神経機能サポート"],
+      "deficiency_symptoms": ["骨の脆弱化", "生殖機能低下"],
+      "excess_risk": "通常の食事での過剰摂取はまれ",
+      "best_combinations": [
+        {
+          "partner": "カルシウム",
+          "effect": "骨形成が促進される",
+          "reason": "マンガンは骨の形成に関わる酵素の補因子"
+        }
+      ],
+      "body_parts": ["bone"],
+      "top_foods": ["玄米", "ほうれん草", "緑茶", "生姜", "ナッツ"]
+    },
+    {
+      "id": "iodine",
+      "name": "ヨウ素",
+      "category": "微量ミネラル",
+      "daily_recommended_mg": 0.13,
+      "unit": "μg",
+      "body_effects": ["甲状腺ホルモン合成", "代謝促進", "成長・発達サポート"],
+      "deficiency_symptoms": ["甲状腺腫", "代謝低下", "疲れやすい", "体重増加"],
+      "excess_risk": "過剰摂取で甲状腺機能異常のリスク。海藻の食べすぎに注意",
+      "best_combinations": [
+        {
+          "partner": "セレン",
+          "effect": "甲状腺機能が最適に保たれる",
+          "reason": "セレンが甲状腺ホルモンの活性化を助ける"
+        }
+      ],
+      "body_parts": ["immune"],
+      "top_foods": ["昆布", "わかめ", "ひじき", "あじ", "牛乳"]
+    },
+    {
+      "id": "selenium",
+      "name": "セレン",
+      "category": "微量ミネラル",
+      "daily_recommended_mg": 0.055,
+      "unit": "μg",
+      "body_effects": ["抗酸化（グルタチオンペルオキシダーゼ）", "甲状腺機能サポート", "免疫機能", "がん予防"],
+      "deficiency_symptoms": ["筋力低下", "免疫力低下", "甲状腺機能異常"],
+      "excess_risk": "過剰摂取で脱毛・爪の変形・神経障害のリスクがある可能性があります",
+      "best_combinations": [
+        {
+          "partner": "ビタミンE",
+          "effect": "抗酸化効果が高まる",
+          "reason": "セレンとビタミンEは協調して細胞を酸化ダメージから守る"
+        }
+      ],
+      "body_parts": ["immune"],
+      "top_foods": ["魚介類", "肉類", "卵", "ブラジルナッツ", "玄米"]
+    },
+    {
+      "id": "chromium",
+      "name": "クロム",
+      "category": "微量ミネラル",
+      "daily_recommended_mg": 0.035,
+      "unit": "μg",
+      "body_effects": ["インスリン感受性の改善", "血糖値コントロール", "脂質代謝サポート"],
+      "deficiency_symptoms": ["血糖コントロール悪化", "体重増加傾向"],
+      "excess_risk": "通常の食事での過剰摂取はまれ",
+      "best_combinations": [
+        {
+          "partner": "ビタミンB3（ナイアシン）",
+          "effect": "インスリン感受性が高まる",
+          "reason": "クロムとナイアシンがGTFを形成しインスリン機能をサポート"
+        }
+      ],
+      "body_parts": ["muscle"],
+      "top_foods": ["肉類", "魚介類", "全粒穀物", "ブロッコリー", "きのこ"]
+    },
+    {
+      "id": "molybdenum",
+      "name": "モリブデン",
+      "category": "微量ミネラル",
+      "daily_recommended_mg": 0.025,
+      "unit": "μg",
+      "body_effects": ["解毒作用（亜硫酸塩の分解）", "尿酸代謝", "鉄の代謝補助"],
+      "deficiency_symptoms": ["頻脈", "頭痛（まれ）"],
+      "excess_risk": "通常の食事での過剰摂取はまれ",
+      "best_combinations": [
+        {
+          "partner": "鉄分",
+          "effect": "鉄の代謝が促進される",
+          "reason": "モリブデンが鉄の利用を助ける酵素の補因子として機能する"
+        }
+      ],
+      "body_parts": ["immune"],
+      "top_foods": ["大豆", "レバー", "穀物", "ナッツ", "緑葉野菜"]
+    },
+    {
+      "id": "protein",
+      "name": "タンパク質",
+      "category": "エネルギー産生栄養素",
+      "daily_recommended_mg": 65000,
+      "unit": "g",
+      "body_effects": ["筋肉の構成・修復", "酵素・ホルモン合成", "免疫抗体の生成", "皮膚・髪・爪の材料"],
+      "deficiency_symptoms": ["筋力低下", "免疫力低下", "傷が治りにくい", "抜け毛", "浮腫"],
+      "excess_risk": "腎臓に負担がかかる可能性があります。水分摂取を意識する",
+      "best_combinations": [
+        {
+          "partner": "ビタミンB6",
+          "effect": "タンパク質の利用効率が上がる",
+          "reason": "B6がアミノ酸代謝の補酵素として機能する"
+        }
+      ],
+      "body_parts": ["muscle", "skin", "immune"],
+      "top_foods": ["鶏むね肉", "卵", "大豆製品", "魚", "牛肉"]
+    },
+    {
+      "id": "fat",
+      "name": "脂質",
+      "category": "エネルギー産生栄養素",
+      "daily_recommended_mg": 60000,
+      "unit": "g",
+      "body_effects": ["エネルギー源", "細胞膜の構成", "脂溶性ビタミンの吸収", "ホルモン合成"],
+      "deficiency_symptoms": ["エネルギー不足", "脂溶性ビタミン欠乏", "肌の乾燥", "ホルモンバランス乱れ"],
+      "excess_risk": "過剰摂取で肥満・動脈硬化・生活習慣病のリスク",
+      "best_combinations": [
+        {
+          "partner": "脂溶性ビタミン（A・D・E・K）",
+          "effect": "ビタミンの吸収率が大幅に上がる",
+          "reason": "脂溶性ビタミンは脂質と一緒でないと吸収されにくい"
+        }
+      ],
+      "body_parts": ["brain", "skin"],
+      "top_foods": ["アボカド", "ナッツ", "オリーブオイル", "青魚", "卵"]
+    },
+    {
+      "id": "carbohydrate",
+      "name": "炭水化物",
+      "category": "エネルギー産生栄養素",
+      "daily_recommended_mg": 300000,
+      "unit": "g",
+      "body_effects": ["脳・筋肉のエネルギー源", "集中力維持", "運動パフォーマンス"],
+      "deficiency_symptoms": ["集中力低下", "疲れやすい", "筋肉の分解", "気分の落ち込み"],
+      "excess_risk": "過剰摂取で血糖値スパイク・肥満・糖尿病リスク",
+      "best_combinations": [
+        {
+          "partner": "ビタミンB1",
+          "effect": "糖質がエネルギーに効率よく変換される",
+          "reason": "B1は糖質代謝の補酵素として必須"
+        }
+      ],
+      "body_parts": ["brain", "muscle"],
+      "top_foods": ["ご飯", "パン", "麺類", "芋類", "果物"]
+    },
+    {
+      "id": "dietary_fiber",
+      "name": "食物繊維",
+      "category": "エネルギー産生栄養素",
+      "daily_recommended_mg": 21000,
+      "unit": "g",
+      "body_effects": ["腸内環境改善", "血糖値上昇を緩やか", "コレステロール低下", "便秘解消"],
+      "deficiency_symptoms": ["便秘", "腸内環境の悪化", "血糖値が上がりやすい"],
+      "excess_risk": "過剰摂取でミネラル吸収阻害・お腹の張りの可能性",
+      "best_combinations": [
+        {
+          "partner": "乳酸菌",
+          "effect": "腸内環境が大幅に改善される",
+          "reason": "食物繊維が善玉菌のエサ（プレバイオティクス）になる"
+        }
+      ],
+      "body_parts": ["gut"],
+      "top_foods": ["ごぼう", "こんにゃく", "オートミール", "豆類", "キャベツ"]
+    }
+  ]
+}

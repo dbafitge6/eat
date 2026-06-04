@@ -1,0 +1,132 @@
+{
+  "cravings": [
+    {
+      "id": "craving_lamb",
+      "food": "ラム肉",
+      "functional_ingredient": "carnitine",
+      "body_message": "脂肪をエネルギーに変える力が落ちているかもしれません",
+      "explanation": "カルニチンは脂肪燃焼に必須の成分。体がエネルギー不足を感じているサインかもしれません",
+      "related_deficiency": ["carnitine", "iron"]
+    },
+    {
+      "id": "craving_chocolate",
+      "food": "チョコレート",
+      "functional_ingredient": "magnesium",
+      "body_message": "マグネシウムが不足しているかもしれません",
+      "explanation": "チョコへの強い欲求はマグネシウム不足のサインとして知られています。ストレスが高い時も同様です",
+      "related_deficiency": ["magnesium", "cacao_polyphenol"]
+    },
+    {
+      "id": "craving_meat",
+      "food": "肉全般",
+      "functional_ingredient": "protein",
+      "body_message": "タンパク質または鉄分が不足しているかもしれません",
+      "explanation": "筋肉の修復や血液生成にタンパク質・鉄分が必要なサインかもしれません",
+      "related_deficiency": ["protein", "iron"]
+    },
+    {
+      "id": "craving_sour",
+      "food": "すっぱいもの",
+      "functional_ingredient": "vitamin_c",
+      "body_message": "ビタミンCが不足しているかもしれません",
+      "explanation": "疲労時や風邪気味のときにすっぱいものが食べたくなるのは体のSOSとも言われています",
+      "related_deficiency": ["vitamin_c"]
+    },
+    {
+      "id": "craving_salty",
+      "food": "塩辛いもの",
+      "functional_ingredient": "sodium",
+      "body_message": "ミネラルバランスが乱れているかもしれません",
+      "explanation": "大量の汗をかいた後や極度の疲労時にミネラル補給を体が求めているサインかもしれません",
+      "related_deficiency": ["sodium", "potassium", "magnesium"]
+    },
+    {
+      "id": "craving_sweet",
+      "food": "甘いもの",
+      "functional_ingredient": "carbohydrate",
+      "body_message": "脳・体がエネルギー不足になっているかもしれません",
+      "explanation": "強い疲労やストレスのとき、脳が素早いエネルギー補給を求めるサインかもしれません。クロムやマグネシウム不足との関連も",
+      "related_deficiency": ["carbohydrate", "chromium", "magnesium"]
+    },
+    {
+      "id": "craving_fatty",
+      "food": "脂っこいもの",
+      "functional_ingredient": "fat",
+      "body_message": "脂溶性ビタミンやエネルギーが不足しているかもしれません",
+      "explanation": "脂質への強い欲求は、脂溶性ビタミン（A・D・E・K）の吸収不足や長期的なカロリー不足のサインかもしれません",
+      "related_deficiency": ["fat", "vitamin_a", "vitamin_d", "vitamin_e"]
+    },
+    {
+      "id": "craving_fish",
+      "food": "生魚・刺身",
+      "functional_ingredient": "dha",
+      "body_message": "DHAやEPAが不足しているかもしれません",
+      "explanation": "脳や目がオメガ3脂肪酸を必要としているサインかもしれません。集中力の低下や気分の落ち込みと関連することも",
+      "related_deficiency": ["dha", "epa", "protein"]
+    },
+    {
+      "id": "craving_dairy",
+      "food": "乳製品（牛乳・チーズ・ヨーグルト）",
+      "functional_ingredient": "calcium",
+      "body_message": "カルシウムまたは乳酸菌が不足しているかもしれません",
+      "explanation": "骨や筋肉がカルシウムを必要としているサイン、または腸内環境が乳酸菌を求めているサインかもしれません",
+      "related_deficiency": ["calcium", "lactic_acid_bacteria", "protein"]
+    },
+    {
+      "id": "craving_carbonated",
+      "food": "炭酸飲料",
+      "functional_ingredient": "calcium",
+      "body_message": "カルシウムまたは消化器系のサポートが必要かもしれません",
+      "explanation": "炭酸への欲求は消化促進を体が求めているサインとも言われています。糖分の取りすぎに注意",
+      "related_deficiency": ["calcium", "magnesium"]
+    },
+    {
+      "id": "craving_coffee",
+      "food": "コーヒー",
+      "functional_ingredient": "chlorogenic_acid",
+      "body_message": "脳のエネルギーが不足しているか、慢性的な疲労状態かもしれません",
+      "explanation": "カフェインへの強い依存は慢性疲労や副腎疲労のサインかもしれません。クロロゲン酸の抗酸化効果も求めている可能性が",
+      "related_deficiency": ["vitamin_b1", "iron", "magnesium"]
+    },
+    {
+      "id": "craving_green_tea",
+      "food": "緑茶・お茶",
+      "functional_ingredient": "theanine",
+      "body_message": "リラックスやストレス解消を体が求めているかもしれません",
+      "explanation": "テアニンのリラックス効果を体が必要としているサインかもしれません",
+      "related_deficiency": ["theanine", "magnesium"]
+    },
+    {
+      "id": "craving_seaweed",
+      "food": "海藻・わかめ",
+      "functional_ingredient": "iodine",
+      "body_message": "ヨウ素やミネラルが不足しているかもしれません",
+      "explanation": "甲状腺が必要とするヨウ素や各種ミネラルを体が求めているサインかもしれません",
+      "related_deficiency": ["iodine", "fucoidan", "magnesium", "calcium"]
+    },
+    {
+      "id": "craving_spicy",
+      "food": "辛いもの",
+      "functional_ingredient": "capsaicin",
+      "body_message": "代謝を上げたい・体が温まりたいサインかもしれません",
+      "explanation": "カプサイシンは体温上昇・代謝促進効果があります。血行が悪いときや代謝が落ちているときに欲しくなることも",
+      "related_deficiency": ["capsaicin", "gingerol"]
+    },
+    {
+      "id": "craving_cold",
+      "food": "冷たいもの",
+      "functional_ingredient": "iron",
+      "body_message": "鉄分が不足している可能性があります（氷食症）",
+      "explanation": "氷や冷たいものへの強い欲求（氷食症）は鉄欠乏性貧血のサインとして医学的に知られています",
+      "related_deficiency": ["iron", "vitamin_b12", "folate"]
+    },
+    {
+      "id": "craving_fermented",
+      "food": "発酵食品（味噌・納豆・漬物）",
+      "functional_ingredient": "lactic_acid_bacteria",
+      "body_message": "腸内環境が乱れているかもしれません",
+      "explanation": "腸の善玉菌が不足していて、発酵食品を本能的に求めているサインかもしれません",
+      "related_deficiency": ["lactic_acid_bacteria", "dietary_fiber", "vitamin_b12"]
+    }
+  ]
+}

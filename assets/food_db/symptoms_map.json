@@ -1,0 +1,180 @@
+{
+  "symptoms": [
+    {
+      "id": "fatigue_general",
+      "symptom": "疲れやすい・だるい",
+      "tags": ["疲労", "エネルギー"],
+      "possible_deficiencies": ["vitamin_b1", "iron", "magnesium", "vitamin_c", "protein"],
+      "recommended_foods": ["豚肉", "レバー", "ほうれん草", "アーモンド", "卵"],
+      "advice": "特に豚肉のビタミンB1は糖質をエネルギーに変える鍵です"
+    },
+    {
+      "id": "fatigue_brain",
+      "symptom": "脳が疲れやすい・頭がぼーっとする",
+      "tags": ["疲労", "集中力", "脳"],
+      "possible_deficiencies": ["imidapeptide", "dha", "iron", "vitamin_b12", "carbohydrate"],
+      "recommended_foods": ["鶏むね肉", "サーモン", "ほうれん草", "レバー", "ご飯"],
+      "advice": "特に鶏むね肉のイミダペプチドは脳疲労回復に効果的とされます"
+    },
+    {
+      "id": "poor_sleep",
+      "symptom": "眠りが浅い・寝つきが悪い",
+      "tags": ["睡眠", "リラックス"],
+      "possible_deficiencies": ["gaba", "magnesium", "theanine", "vitamin_b6"],
+      "recommended_foods": ["発芽玄米", "バナナ", "緑茶", "ほうれん草", "アーモンド"],
+      "advice": "就寝前のGABAやテアニンが睡眠の質を改善する可能性があります"
+    },
+    {
+      "id": "eye_fatigue",
+      "symptom": "目が疲れやすい・かすむ",
+      "tags": ["目", "疲労"],
+      "possible_deficiencies": ["lutein", "anthocyanin", "astaxanthin", "vitamin_a", "dha"],
+      "recommended_foods": ["ほうれん草", "ブルーベリー", "サーモン", "ニンジン", "卵黄"],
+      "advice": "ルテインは目のブルーライトダメージを軽減する可能性があります"
+    },
+    {
+      "id": "weak_immunity",
+      "symptom": "風邪を引きやすい・免疫が弱い",
+      "tags": ["免疫", "風邪"],
+      "possible_deficiencies": ["vitamin_c", "vitamin_d", "zinc", "beta_glucan", "selenium"],
+      "recommended_foods": ["パプリカ", "ブロッコリー", "きのこ類", "牡蠣", "サーモン"],
+      "advice": "ビタミンCと亜鉛を同時に摂ると免疫への効果が高まる可能性があります"
+    },
+    {
+      "id": "skin_rough",
+      "symptom": "肌荒れ・肌のくすみ",
+      "tags": ["肌", "美容"],
+      "possible_deficiencies": ["vitamin_c", "collagen", "zinc", "astaxanthin", "vitamin_a"],
+      "recommended_foods": ["キウイ", "サーモン", "牡蠣", "トマト", "ニンジン"],
+      "advice": "ビタミンCはコラーゲン生成に必須の栄養素です"
+    },
+    {
+      "id": "concentration",
+      "symptom": "集中できない・やる気が出ない",
+      "tags": ["集中力", "脳", "メンタル"],
+      "possible_deficiencies": ["dha", "imidapeptide", "iron", "vitamin_b12", "theanine"],
+      "recommended_foods": ["マグロ", "鶏むね肉", "レバー", "緑茶", "バナナ"],
+      "advice": "DHAは脳の神経細胞膜の主要成分で、集中力・記憶力をサポートする可能性があります"
+    },
+    {
+      "id": "irritable",
+      "symptom": "イライラする・情緒不安定",
+      "tags": ["メンタル", "ストレス"],
+      "possible_deficiencies": ["magnesium", "vitamin_b6", "gaba", "calcium"],
+      "recommended_foods": ["アーモンド", "バナナ", "発芽玄米", "ほうれん草", "牛乳"],
+      "advice": "マグネシウムは「天然の精神安定剤」とも呼ばれ、神経の興奮を鎮める可能性があります"
+    },
+    {
+      "id": "edema",
+      "symptom": "むくみやすい",
+      "tags": ["むくみ", "水分"],
+      "possible_deficiencies": ["potassium", "vitamin_b1", "protein", "hesperidin"],
+      "recommended_foods": ["バナナ", "アボカド", "豆腐", "きゅうり", "みかん"],
+      "advice": "カリウムはナトリウムの排出を促し、むくみ解消をサポートする可能性があります"
+    },
+    {
+      "id": "cold_sensitivity",
+      "symptom": "冷え性・体が温まらない",
+      "tags": ["冷え", "血流"],
+      "possible_deficiencies": ["iron", "gingerol", "capsaicin", "epa", "vitamin_e"],
+      "recommended_foods": ["生姜", "唐辛子", "レバー", "さば", "アーモンド"],
+      "advice": "生姜のジンゲロールは血流改善に効果的とされます。加熱調理でショウガオールに変わり体を温める効果が高まります"
+    },
+    {
+      "id": "constipation",
+      "symptom": "便秘がち",
+      "tags": ["腸", "消化"],
+      "possible_deficiencies": ["dietary_fiber", "lactic_acid_bacteria", "magnesium", "fructooligosaccharide"],
+      "recommended_foods": ["ごぼう", "ヨーグルト", "オートミール", "アーモンド", "バナナ"],
+      "advice": "食物繊維と乳酸菌を同時に摂ることで腸内環境改善効果が高まる可能性があります"
+    },
+    {
+      "id": "digestive_issues",
+      "symptom": "胃腸の不調・お腹が弱い",
+      "tags": ["腸", "胃", "消化"],
+      "possible_deficiencies": ["lactic_acid_bacteria", "fucoidan", "dietary_fiber", "zinc"],
+      "recommended_foods": ["ヨーグルト", "もずく", "めかぶ", "山芋", "豆腐"],
+      "advice": "もずくやめかぶのフコイダンは胃の粘膜を保護する可能性があります"
+    },
+    {
+      "id": "muscle_soreness",
+      "symptom": "筋肉痛が長引く・疲労回復が遅い",
+      "tags": ["筋肉", "疲労回復"],
+      "possible_deficiencies": ["imidapeptide", "astaxanthin", "protein", "magnesium", "vitamin_d"],
+      "recommended_foods": ["鶏むね肉", "サーモン", "卵", "アーモンド", "まいたけ"],
+      "advice": "イミダペプチドは筋肉内の活性酸素を除去し、疲労回復をサポートする可能性があります"
+    },
+    {
+      "id": "joint_pain",
+      "symptom": "骨・関節が痛む・こわばる",
+      "tags": ["骨", "関節"],
+      "possible_deficiencies": ["glucosamine", "chondroitin", "collagen", "vitamin_d", "calcium", "epa"],
+      "recommended_foods": ["鶏軟骨", "えび", "サーモン", "牛乳", "ほうれん草"],
+      "advice": "グルコサミンとコンドロイチンは関節軟骨の維持をサポートする可能性があります"
+    },
+    {
+      "id": "hair_loss",
+      "symptom": "抜け毛が増えた・髪が細くなった",
+      "tags": ["髪", "美容"],
+      "possible_deficiencies": ["biotin", "zinc", "iron", "protein", "vitamin_b6"],
+      "recommended_foods": ["卵", "牡蠣", "レバー", "ナッツ類", "大豆製品"],
+      "advice": "ビオチンは髪の健康維持に重要な栄養素で、卵に多く含まれます"
+    },
+    {
+      "id": "anemia",
+      "symptom": "貧血気味・顔色が悪い・息切れ",
+      "tags": ["貧血", "血液"],
+      "possible_deficiencies": ["iron", "vitamin_b12", "folate", "vitamin_c", "copper"],
+      "recommended_foods": ["レバー", "あさり", "ほうれん草", "牛赤身肉", "パプリカ"],
+      "advice": "鉄分とビタミンCを同時に摂ると鉄の吸収率が大幅に上がります"
+    },
+    {
+      "id": "mood_low",
+      "symptom": "気分が落ちやすい・気力がわかない",
+      "tags": ["メンタル", "うつ気分"],
+      "possible_deficiencies": ["vitamin_d", "dha", "vitamin_b12", "folate", "magnesium"],
+      "recommended_foods": ["サーモン", "さば", "レバー", "ほうれん草", "まいたけ"],
+      "advice": "ビタミンDは気分の調整に関与するとされ、日光浴と食事での摂取が効果的です"
+    },
+    {
+      "id": "weight_gain",
+      "symptom": "体重が増えやすい・脂肪が燃えにくい",
+      "tags": ["体重", "代謝"],
+      "possible_deficiencies": ["carnitine", "vitamin_b1", "iodine", "capsaicin", "catechin"],
+      "recommended_foods": ["ラム肉", "豚肉", "緑茶", "唐辛子", "わかめ"],
+      "advice": "カルニチンは脂肪をエネルギーに変える働きをサポートし、ラム肉に特に多く含まれます"
+    },
+    {
+      "id": "low_stamina",
+      "symptom": "スタミナ不足・すぐ息切れする",
+      "tags": ["スタミナ", "持久力"],
+      "possible_deficiencies": ["iron", "imidapeptide", "epa", "carnitine", "vitamin_b12"],
+      "recommended_foods": ["鶏むね肉", "マグロ", "あさり", "ラム肉", "さば"],
+      "advice": "イミダペプチドは渡り鳥が長距離を飛べる理由の成分で、持久力向上をサポートするとされます"
+    },
+    {
+      "id": "dry_eyes_skin",
+      "symptom": "目・皮膚の乾燥が気になる",
+      "tags": ["乾燥", "肌", "目"],
+      "possible_deficiencies": ["vitamin_a", "vitamin_e", "dha", "collagen", "fat"],
+      "recommended_foods": ["ニンジン", "アーモンド", "サーモン", "アボカド", "卵"],
+      "advice": "ビタミンAは皮膚・粘膜の健康維持に必須の栄養素です"
+    },
+    {
+      "id": "stress_high",
+      "symptom": "ストレスが強い・緊張しやすい",
+      "tags": ["ストレス", "メンタル"],
+      "possible_deficiencies": ["magnesium", "vitamin_c", "gaba", "theanine", "pantothenic_acid"],
+      "recommended_foods": ["アーモンド", "パプリカ", "緑茶", "発芽玄米", "アボカド"],
+      "advice": "緑茶のテアニンはリラックス効果（α波増加）が報告されており、コーヒーより緑茶が「落ち着く」理由とされます"
+    },
+    {
+      "id": "poor_memory",
+      "symptom": "記憶力・物覚えが悪くなった",
+      "tags": ["記憶力", "脳", "認知"],
+      "possible_deficiencies": ["dha", "vitamin_b12", "imidapeptide", "resveratrol", "curcumin"],
+      "recommended_foods": ["マグロ", "さば", "レバー", "赤ワイン（適量）", "ターメリック"],
+      "advice": "DHAは脳の神経細胞膜に多く含まれ、記憶力・学習能力のサポートに関与するとされます"
+    }
+  ]
+}
