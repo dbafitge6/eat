@@ -1,0 +1,230 @@
+{
+  "鶏むね肉": {
+    "functional_ingredients": ["imidapeptide"],
+    "nutrients": ["vitamin_b6", "zinc"]
+  },
+  "鶏胸肉": {
+    "functional_ingredients": ["imidapeptide"],
+    "nutrients": ["vitamin_b6", "zinc"]
+  },
+  "鶏ささみ": {
+    "functional_ingredients": ["imidapeptide"],
+    "nutrients": ["vitamin_b6", "zinc"]
+  },
+  "チキン": {
+    "functional_ingredients": ["imidapeptide"],
+    "nutrients": ["vitamin_b6", "zinc"]
+  },
+  "手羽先": {
+    "functional_ingredients": ["collagen", "imidapeptide"],
+    "nutrients": ["vitamin_b6", "calcium"]
+  },
+  "サーモン": {
+    "functional_ingredients": ["dha", "epa", "astaxanthin"],
+    "nutrients": ["vitamin_d", "vitamin_b12"]
+  },
+  "鮭": {
+    "functional_ingredients": ["dha", "epa", "astaxanthin"],
+    "nutrients": ["vitamin_d", "vitamin_b12"]
+  },
+  "マグロ": {
+    "functional_ingredients": ["dha", "epa", "imidapeptide"],
+    "nutrients": ["vitamin_b12", "iron"]
+  },
+  "まぐろ": {
+    "functional_ingredients": ["dha", "epa", "imidapeptide"],
+    "nutrients": ["vitamin_b12", "iron"]
+  },
+  "イワシ": {
+    "functional_ingredients": ["dha", "epa", "coq10"],
+    "nutrients": ["vitamin_d", "calcium", "iron"]
+  },
+  "いわし": {
+    "functional_ingredients": ["dha", "epa", "coq10"],
+    "nutrients": ["vitamin_d", "calcium", "iron"]
+  },
+  "サバ": {
+    "functional_ingredients": ["dha", "epa"],
+    "nutrients": ["vitamin_b12", "vitamin_d"]
+  },
+  "さば": {
+    "functional_ingredients": ["dha", "epa"],
+    "nutrients": ["vitamin_b12", "vitamin_d"]
+  },
+  "アジ": {
+    "functional_ingredients": ["dha", "epa"],
+    "nutrients": ["vitamin_b12", "calcium"]
+  },
+  "ほうれん草": {
+    "functional_ingredients": ["lutein"],
+    "nutrients": ["iron", "vitamin_k", "vitamin_c", "magnesium", "potassium"]
+  },
+  "ケール": {
+    "functional_ingredients": ["lutein"],
+    "nutrients": ["vitamin_k", "vitamin_c", "calcium"]
+  },
+  "ブロッコリー": {
+    "functional_ingredients": ["quercetin", "coq10"],
+    "nutrients": ["vitamin_c", "vitamin_k", "iron"]
+  },
+  "トマト": {
+    "functional_ingredients": ["lycopene", "gaba"],
+    "nutrients": ["vitamin_c", "potassium"]
+  },
+  "にんじん": {
+    "functional_ingredients": ["lutein"],
+    "nutrients": ["vitamin_a", "potassium"]
+  },
+  "かぼちゃ": {
+    "functional_ingredients": [],
+    "nutrients": ["vitamin_a", "vitamin_e", "potassium"]
+  },
+  "玉ねぎ": {
+    "functional_ingredients": ["quercetin"],
+    "nutrients": ["vitamin_c", "potassium"]
+  },
+  "卵": {
+    "functional_ingredients": ["lutein", "collagen"],
+    "nutrients": ["vitamin_a", "vitamin_b12", "vitamin_d", "iron", "zinc"]
+  },
+  "納豆": {
+    "functional_ingredients": ["gaba", "lactic_acid_bacteria"],
+    "nutrients": ["vitamin_k", "iron", "calcium", "magnesium"]
+  },
+  "豆腐": {
+    "functional_ingredients": [],
+    "nutrients": ["calcium", "magnesium", "iron"]
+  },
+  "ヨーグルト": {
+    "functional_ingredients": ["lactic_acid_bacteria"],
+    "nutrients": ["calcium", "vitamin_b12"]
+  },
+  "チーズ": {
+    "functional_ingredients": ["lactic_acid_bacteria"],
+    "nutrients": ["calcium", "vitamin_b12", "zinc"]
+  },
+  "牛乳": {
+    "functional_ingredients": [],
+    "nutrients": ["calcium", "vitamin_b12", "vitamin_d"]
+  },
+  "緑茶": {
+    "functional_ingredients": ["catechin", "gaba"],
+    "nutrients": ["vitamin_c", "vitamin_k"]
+  },
+  "抹茶": {
+    "functional_ingredients": ["catechin"],
+    "nutrients": ["vitamin_c", "vitamin_k", "iron"]
+  },
+  "しいたけ": {
+    "functional_ingredients": ["beta_glucan"],
+    "nutrients": ["vitamin_d", "potassium"]
+  },
+  "えのき": {
+    "functional_ingredients": ["beta_glucan"],
+    "nutrients": ["vitamin_b1", "potassium"]
+  },
+  "まいたけ": {
+    "functional_ingredients": ["beta_glucan"],
+    "nutrients": ["vitamin_d", "potassium"]
+  },
+  "きのこ": {
+    "functional_ingredients": ["beta_glucan"],
+    "nutrients": ["vitamin_d", "potassium"]
+  },
+  "牛肉": {
+    "functional_ingredients": ["carnitine", "coq10"],
+    "nutrients": ["iron", "zinc", "vitamin_b12"]
+  },
+  "豚肉": {
+    "functional_ingredients": ["coq10", "carnitine"],
+    "nutrients": ["vitamin_b1", "zinc", "iron"]
+  },
+  "豚バラ": {
+    "functional_ingredients": ["coq10"],
+    "nutrients": ["vitamin_b1", "zinc"]
+  },
+  "レバー": {
+    "functional_ingredients": ["coq10"],
+    "nutrients": ["vitamin_a", "iron", "vitamin_b12", "zinc"]
+  },
+  "ラム肉": {
+    "functional_ingredients": ["carnitine"],
+    "nutrients": ["iron", "zinc", "vitamin_b12"]
+  },
+  "エビ": {
+    "functional_ingredients": ["astaxanthin", "glucosamine"],
+    "nutrients": ["zinc", "calcium"]
+  },
+  "カニ": {
+    "functional_ingredients": ["astaxanthin", "glucosamine"],
+    "nutrients": ["zinc", "calcium"]
+  },
+  "ブルーベリー": {
+    "functional_ingredients": ["lutein"],
+    "nutrients": ["vitamin_c", "vitamin_e"]
+  },
+  "りんご": {
+    "functional_ingredients": ["quercetin"],
+    "nutrients": ["vitamin_c", "potassium"]
+  },
+  "バナナ": {
+    "functional_ingredients": ["gaba"],
+    "nutrients": ["vitamin_b6", "potassium", "magnesium"]
+  },
+  "アボカド": {
+    "functional_ingredients": [],
+    "nutrients": ["vitamin_e", "vitamin_k", "potassium", "magnesium"]
+  },
+  "ナッツ": {
+    "functional_ingredients": [],
+    "nutrients": ["vitamin_e", "magnesium", "zinc"]
+  },
+  "アーモンド": {
+    "functional_ingredients": [],
+    "nutrients": ["vitamin_e", "magnesium", "calcium"]
+  },
+  "くるみ": {
+    "functional_ingredients": ["dha"],
+    "nutrients": ["vitamin_e", "magnesium"]
+  },
+  "玄米": {
+    "functional_ingredients": ["gaba"],
+    "nutrients": ["vitamin_b1", "magnesium", "iron"]
+  },
+  "オートミール": {
+    "functional_ingredients": ["beta_glucan"],
+    "nutrients": ["vitamin_b1", "iron", "magnesium"]
+  },
+  "キムチ": {
+    "functional_ingredients": ["lactic_acid_bacteria"],
+    "nutrients": ["vitamin_c", "potassium"]
+  },
+  "味噌": {
+    "functional_ingredients": ["lactic_acid_bacteria"],
+    "nutrients": ["iron", "calcium", "potassium"]
+  },
+  "チョコレート": {
+    "functional_ingredients": ["quercetin"],
+    "nutrients": ["magnesium", "iron", "zinc"]
+  },
+  "カカオ": {
+    "functional_ingredients": ["quercetin"],
+    "nutrients": ["magnesium", "iron", "zinc"]
+  },
+  "レモン": {
+    "functional_ingredients": [],
+    "nutrients": ["vitamin_c", "potassium"]
+  },
+  "みかん": {
+    "functional_ingredients": [],
+    "nutrients": ["vitamin_c", "potassium"]
+  },
+  "いちご": {
+    "functional_ingredients": [],
+    "nutrients": ["vitamin_c", "potassium"]
+  },
+  "キウイ": {
+    "functional_ingredients": [],
+    "nutrients": ["vitamin_c", "vitamin_k", "potassium"]
+  }
+}

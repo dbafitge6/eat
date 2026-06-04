@@ -10,6 +10,7 @@ import '../services/gemini_service.dart';
 import '../services/database_service.dart';
 import '../services/limit_service.dart';
 import '../services/purchase_service.dart';
+import '../services/nutrition_db_service.dart';
 import '../screens/premium_screen.dart';
 import '../widgets/pfc_balance_bar.dart';
 
@@ -37,6 +38,7 @@ class _FoodSearchScreenState extends State<FoodSearchScreen>
   List<Food> _builtinResults = [];
   List<MyFood> _myFoodResults = [];
   bool _searching = false;
+  CravingInfo? _cravingMatch;
 
   @override
   void initState() {
@@ -77,12 +79,16 @@ class _FoodSearchScreenState extends State<FoodSearchScreen>
 
   void _onSearchChanged(String q) {
     if (q.isEmpty) {
-      setState(() => _builtinResults = []);
+      setState(() {
+        _builtinResults = [];
+        _cravingMatch = null;
+      });
       _loadAllMyFoods();
       return;
     }
     _search(q);
-    setState(() {});
+    final craving = NutritionDbService.instance.matchCraving(q);
+    setState(() => _cravingMatch = craving);
   }
 
   @override
@@ -129,6 +135,9 @@ class _FoodSearchScreenState extends State<FoodSearchScreen>
               onChanged: _onSearchChanged,
             ),
           ),
+          // Craving banner
+          if (_cravingMatch != null)
+            _CravingBanner(craving: _cravingMatch!),
           Expanded(
             child: TabBarView(
               controller: _tabController,
@@ -1486,5 +1495,58 @@ class _MyFoodWebSearchScreenState extends State<MyFoodWebSearchScreen> {
       ),
     );
     Navigator.pop(context);
+  }
+}
+
+// ─── Craving Banner ───────────────────────────────────────────────────────────
+
+class _CravingBanner extends StatelessWidget {
+  final CravingInfo craving;
+
+  const _CravingBanner({required this.craving});
+
+  @override
+  Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
+    return Container(
+      margin: const EdgeInsets.fromLTRB(12, 0, 12, 8),
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: cs.primary.withValues(alpha: 0.12),
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(color: cs.primary.withValues(alpha: 0.3)),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(craving.emoji, style: const TextStyle(fontSize: 22)),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '体の声: ${craving.nutrient}が欲しいサインかも',
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w700,
+                    color: cs.primary,
+                  ),
+                ),
+                const SizedBox(height: 3),
+                Text(
+                  craving.message,
+                  style: const TextStyle(
+                    fontSize: 11,
+                    color: Colors.white70,
+                    height: 1.4,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

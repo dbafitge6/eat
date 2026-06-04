@@ -21,7 +21,11 @@ import 'photo_filter_screen.dart';
 import '../services/ad_service.dart';
 import '../models/exercise_entry.dart';
 import '../services/functional_ingredient_service.dart';
+import '../widgets/body_status_widget.dart';
+import '../widgets/missing_nutrients_widget.dart';
 import 'ai_chat_screen.dart';
+import 'symptom_screen.dart';
+import 'photo_meal_screen.dart';
 import 'restaurant_screen.dart';
 import 'premium_screen.dart';
 import '../services/purchase_service.dart';
@@ -153,6 +157,34 @@ class _TodayScreenState extends State<TodayScreen> {
         ),
         actions: [
           _GlassIconButton(
+            icon: Icons.camera_alt_outlined,
+            onTap: () async {
+              final result = await Navigator.push<bool>(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => PhotoMealScreen(
+                    mealType: 0,
+                    date: _today,
+                  ),
+                ),
+              );
+              if (result == true) await _load();
+            },
+          ),
+          const SizedBox(width: 8),
+          _GlassIconButton(
+            icon: Icons.sick_outlined,
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => SymptomScreen(
+                  todayFoodNames: _meals.map((m) => m.foodName).toList(),
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(width: 8),
+          _GlassIconButton(
             icon: Icons.auto_awesome,
             onTap: () => Navigator.push(
               context,
@@ -279,6 +311,18 @@ class _TodayScreenState extends State<TodayScreen> {
                         ),
                       ),
                     ),
+                  ),
+                  const SizedBox(height: 12),
+
+                  // Body status widget
+                  BodyStatusWidget(
+                    foodNames: _meals.map((m) => m.foodName).toList(),
+                  ),
+                  const SizedBox(height: 12),
+
+                  // Missing nutrients widget
+                  MissingNutrientsWidget(
+                    todayFoodNames: _meals.map((m) => m.foodName).toList(),
                   ),
                   const SizedBox(height: 28),
 

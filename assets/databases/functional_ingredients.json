@@ -1,0 +1,137 @@
+{
+  "imidapeptide": {
+    "id": "imidapeptide",
+    "name": "イミダペプチド",
+    "emoji": "⚡",
+    "effect": "疲労回復・抗酸化をサポートします。鶏むね肉に豊富に含まれ、持続的な疲労感の軽減に役立つ可能性があります。",
+    "foods": ["鶏むね肉", "マグロ", "カツオ"],
+    "synergy": "ビタミンCと一緒に摂ると効果的と言われています",
+    "body_parts": ["brain", "muscles"]
+  },
+  "dha": {
+    "id": "dha",
+    "name": "DHA",
+    "emoji": "🧠",
+    "effect": "脳・神経機能の維持をサポートし、記憶力向上や中性脂肪の低下に役立つ可能性があります。",
+    "foods": ["サーモン", "マグロ", "イワシ", "サバ"],
+    "synergy": "ビタミンEと一緒に摂ると酸化を防ぐとされています",
+    "body_parts": ["brain", "eyes"]
+  },
+  "epa": {
+    "id": "epa",
+    "name": "EPA",
+    "emoji": "❤️",
+    "effect": "血液のサラサラをサポートし、抗炎症作用が期待されています。",
+    "foods": ["イワシ", "サバ", "サーモン", "アジ"],
+    "synergy": "玉ねぎやにんにくと組み合わせると相乗効果が期待できます",
+    "body_parts": ["immune", "muscles"]
+  },
+  "gaba": {
+    "id": "gaba",
+    "name": "GABA",
+    "emoji": "😌",
+    "effect": "リラックスや睡眠の質向上をサポートします。血圧への作用も研究されています。",
+    "foods": ["発芽玄米", "納豆", "トマト", "緑茶"],
+    "synergy": "トリプトファンを含む食品と一緒に摂ると睡眠サポートに効果的と言われています",
+    "body_parts": ["sleep", "brain"]
+  },
+  "lactic_acid_bacteria": {
+    "id": "lactic_acid_bacteria",
+    "name": "乳酸菌",
+    "emoji": "🦠",
+    "effect": "腸内環境の改善と免疫機能のサポートに役立つ可能性があります。",
+    "foods": ["ヨーグルト", "チーズ", "漬物", "キムチ"],
+    "synergy": "食物繊維やオリゴ糖と組み合わせると腸内で増殖しやすくなります",
+    "body_parts": ["gut", "immune"]
+  },
+  "catechin": {
+    "id": "catechin",
+    "name": "カテキン",
+    "emoji": "🍵",
+    "effect": "抗酸化・抗菌作用が期待され、体脂肪の低下をサポートする可能性があります。",
+    "foods": ["緑茶", "抹茶", "紅茶", "ウーロン茶"],
+    "synergy": "レモンなどビタミンCと一緒に摂ると吸収率が上がると言われています",
+    "body_parts": ["immune", "gut"]
+  },
+  "lycopene": {
+    "id": "lycopene",
+    "name": "リコピン",
+    "emoji": "🍅",
+    "effect": "強力な抗酸化作用が期待され、生活習慣のサポートに役立つ可能性があります。",
+    "foods": ["トマト", "スイカ", "グレープフルーツ"],
+    "synergy": "オリーブオイルなど油と一緒に摂ると吸収率が高まります",
+    "body_parts": ["skin", "immune"]
+  },
+  "lutein": {
+    "id": "lutein",
+    "name": "ルテイン",
+    "emoji": "👁",
+    "effect": "目の疲れ軽減やブルーライト対策をサポートする可能性があります。",
+    "foods": ["ほうれん草", "ケール", "卵黄", "ブロッコリー"],
+    "synergy": "油と一緒に摂ると吸収率が高まります",
+    "body_parts": ["eyes"]
+  },
+  "astaxanthin": {
+    "id": "astaxanthin",
+    "name": "アスタキサンチン",
+    "emoji": "🦐",
+    "effect": "強力な抗酸化作用が期待され、目や筋肉の疲労回復をサポートする可能性があります。",
+    "foods": ["サーモン", "エビ", "カニ", "イクラ"],
+    "synergy": "ビタミンEと組み合わせると相乗効果が期待できます",
+    "body_parts": ["eyes", "muscles", "skin"]
+  },
+  "coq10": {
+    "id": "coq10",
+    "name": "コエンザイムQ10",
+    "emoji": "🔋",
+    "effect": "細胞のエネルギー産生をサポートし、疲労感の軽減に役立つ可能性があります。",
+    "foods": ["イワシ", "牛肉", "豚肉", "ブロッコリー"],
+    "synergy": "ビタミンB群と一緒に摂るとエネルギー代謝をよりサポートします",
+    "body_parts": ["muscles", "brain"]
+  },
+  "carnitine": {
+    "id": "carnitine",
+    "name": "L-カルニチン",
+    "emoji": "🔥",
+    "effect": "脂肪をエネルギーに変換する働きをサポートする可能性があります。",
+    "foods": ["ラム肉", "牛肉", "豚肉"],
+    "synergy": "ビタミンCと組み合わせると合成をサポートします",
+    "body_parts": ["muscles"]
+  },
+  "glucosamine": {
+    "id": "glucosamine",
+    "name": "グルコサミン",
+    "emoji": "🦵",
+    "effect": "軟骨の材料として関節の健康維持をサポートする可能性があります。",
+    "foods": ["エビ", "カニ", "きのこ"],
+    "synergy": "コラーゲンやビタミンCと一緒に摂ると相乗効果が期待できます",
+    "body_parts": ["bones"]
+  },
+  "collagen": {
+    "id": "collagen",
+    "name": "コラーゲン",
+    "emoji": "✨",
+    "effect": "肌の弾力維持や関節・骨の健康をサポートする可能性があります。",
+    "foods": ["手羽先", "豚足", "フカヒレ", "ゼラチン"],
+    "synergy": "ビタミンCと一緒に摂るとコラーゲンの合成が促進されます",
+    "body_parts": ["skin", "bones"]
+  },
+  "beta_glucan": {
+    "id": "beta_glucan",
+    "name": "β-グルカン",
+    "emoji": "🍄",
+    "effect": "免疫機能のサポートや血糖値スパイクの抑制に役立つ可能性があります。",
+    "foods": ["きのこ類", "オートミール", "大麦"],
+    "synergy": "ビタミンD食品と組み合わせると免疫サポートが期待できます",
+    "body_parts": ["immune", "gut"]
+  },
+  "quercetin": {
+    "id": "quercetin",
+    "name": "ケルセチン",
+    "emoji": "🧅",
+    "effect": "抗酸化・抗炎症作用が期待され、免疫機能のサポートに役立つ可能性があります。",
+    "foods": ["玉ねぎ", "りんご", "ブロッコリー", "そば"],
+    "synergy": "ビタミンCと一緒に摂ると相乗効果が期待できます",
+    "body_parts": ["immune", "skin"]
+  }
+}

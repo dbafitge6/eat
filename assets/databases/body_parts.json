@@ -1,0 +1,82 @@
+{
+  "brain": {
+    "id": "brain",
+    "name": "脳",
+    "emoji": "🧠",
+    "related_nutrients": ["vitamin_b1", "dha", "iron", "magnesium"],
+    "related_ingredients": ["imidapeptide", "dha", "gaba", "coq10"],
+    "deficiency_message": "集中力が落ちやすい状態の可能性があります",
+    "sufficient_message": "脳が活性化している状態をサポートできています",
+    "tip": "DHA・イミダペプチドを意識して摂りましょう"
+  },
+  "eyes": {
+    "id": "eyes",
+    "name": "目",
+    "emoji": "👁",
+    "related_nutrients": ["vitamin_a", "dha"],
+    "related_ingredients": ["lutein", "astaxanthin", "dha"],
+    "deficiency_message": "目の疲れが出やすい状態の可能性があります",
+    "sufficient_message": "目のコンディションをサポートできています",
+    "tip": "ルテイン・ビタミンAを含む緑黄色野菜を意識しましょう"
+  },
+  "muscles": {
+    "id": "muscles",
+    "name": "筋肉",
+    "emoji": "💪",
+    "related_nutrients": ["vitamin_b1", "vitamin_b6", "zinc", "calcium", "potassium"],
+    "related_ingredients": ["imidapeptide", "epa", "carnitine", "coq10"],
+    "deficiency_message": "筋肉の回復サポートが不足している可能性があります",
+    "sufficient_message": "筋肉の維持・回復をサポートできています",
+    "tip": "たんぱく質・ビタミンB群を意識して摂りましょう"
+  },
+  "bones": {
+    "id": "bones",
+    "name": "骨",
+    "emoji": "🦴",
+    "related_nutrients": ["calcium", "vitamin_d", "vitamin_k", "magnesium"],
+    "related_ingredients": ["collagen", "glucosamine"],
+    "deficiency_message": "骨のサポートが不足している可能性があります",
+    "sufficient_message": "骨の健康をサポートできています",
+    "tip": "カルシウム・ビタミンDを意識して摂りましょう"
+  },
+  "immune": {
+    "id": "immune",
+    "name": "免疫",
+    "emoji": "🛡",
+    "related_nutrients": ["vitamin_c", "vitamin_d", "zinc", "iron"],
+    "related_ingredients": ["lactic_acid_bacteria", "beta_glucan", "quercetin", "catechin"],
+    "deficiency_message": "免疫機能のサポートが不足している可能性があります",
+    "sufficient_message": "免疫機能のサポートができています",
+    "tip": "ビタミンC・亜鉛・発酵食品を意識して摂りましょう"
+  },
+  "sleep": {
+    "id": "sleep",
+    "name": "睡眠",
+    "emoji": "😴",
+    "related_nutrients": ["magnesium", "vitamin_b6"],
+    "related_ingredients": ["gaba"],
+    "deficiency_message": "睡眠の質をサポートする成分が不足している可能性があります",
+    "sufficient_message": "睡眠の質のサポートができています",
+    "tip": "GABA・マグネシウムを含む食品を意識しましょう"
+  },
+  "skin": {
+    "id": "skin",
+    "name": "肌",
+    "emoji": "✨",
+    "related_nutrients": ["vitamin_a", "vitamin_c", "vitamin_e", "zinc"],
+    "related_ingredients": ["collagen", "lycopene", "astaxanthin", "quercetin"],
+    "deficiency_message": "肌のコンディションサポートが不足している可能性があります",
+    "sufficient_message": "肌のコンディションをサポートできています",
+    "tip": "ビタミンC・コラーゲン食材を意識して摂りましょう"
+  },
+  "gut": {
+    "id": "gut",
+    "name": "腸",
+    "emoji": "🌿",
+    "related_nutrients": [],
+    "related_ingredients": ["lactic_acid_bacteria", "beta_glucan", "catechin"],
+    "deficiency_message": "腸内環境のサポートが不足している可能性があります",
+    "sufficient_message": "腸内環境のサポートができています",
+    "tip": "発酵食品・食物繊維を積極的に摂りましょう"
+  }
+}

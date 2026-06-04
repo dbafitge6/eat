@@ -1,0 +1,66 @@
+{
+  "fatigue": {
+    "id": "fatigue",
+    "name": "疲れやすい",
+    "emoji": "😫",
+    "related_ingredients": ["imidapeptide", "coq10", "carnitine", "vitamin_b1"],
+    "message": "体の疲労回復が追いついていない可能性があります。エネルギー産生をサポートする成分を意識して摂りましょう。",
+    "foods": ["鶏むね肉", "イワシ", "玄米", "牛肉"]
+  },
+  "insomnia": {
+    "id": "insomnia",
+    "name": "眠れない・眠りが浅い",
+    "emoji": "🌙",
+    "related_ingredients": ["gaba", "magnesium"],
+    "message": "リラックスをサポートする成分が不足している可能性があります。夜の食事に意識を向けてみましょう。",
+    "foods": ["発芽玄米", "バナナ", "ナッツ", "緑茶"]
+  },
+  "eye_strain": {
+    "id": "eye_strain",
+    "name": "目が疲れる",
+    "emoji": "👀",
+    "related_ingredients": ["lutein", "astaxanthin", "dha"],
+    "message": "目の疲労回復をサポートする成分が不足している可能性があります。",
+    "foods": ["ほうれん草", "サーモン", "ブルーベリー", "卵"]
+  },
+  "skin_trouble": {
+    "id": "skin_trouble",
+    "name": "肌荒れが気になる",
+    "emoji": "😕",
+    "related_ingredients": ["collagen", "vitamin_c", "lycopene", "astaxanthin"],
+    "message": "肌のコンディションをサポートする成分が不足している可能性があります。",
+    "foods": ["レモン", "トマト", "サーモン", "手羽先"]
+  },
+  "poor_concentration": {
+    "id": "poor_concentration",
+    "name": "集中できない",
+    "emoji": "🤔",
+    "related_ingredients": ["dha", "imidapeptide", "gaba", "iron"],
+    "message": "脳の働きをサポートする成分が不足している可能性があります。",
+    "foods": ["サバ", "鶏むね肉", "ほうれん草", "卵"]
+  },
+  "cold_symptoms": {
+    "id": "cold_symptoms",
+    "name": "風邪をひきやすい",
+    "emoji": "🤧",
+    "related_ingredients": ["lactic_acid_bacteria", "vitamin_c", "beta_glucan", "zinc"],
+    "message": "免疫機能のサポートが不足している可能性があります。",
+    "foods": ["ヨーグルト", "レモン", "きのこ", "ブロッコリー"]
+  },
+  "edema": {
+    "id": "edema",
+    "name": "むくみが気になる",
+    "emoji": "💦",
+    "related_ingredients": ["potassium", "vitamin_b1"],
+    "message": "ミネラルバランスが乱れている可能性があります。カリウムを意識して摂りましょう。",
+    "foods": ["バナナ", "ほうれん草", "豆腐", "アボカド"]
+  },
+  "coldness": {
+    "id": "coldness",
+    "name": "冷えが気になる",
+    "emoji": "🥶",
+    "related_ingredients": ["epa", "iron", "carnitine"],
+    "message": "血流や体温調節のサポートが不足している可能性があります。",
+    "foods": ["青魚", "レバー", "ラム肉", "しょうが"]
+  }
+}

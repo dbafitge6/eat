@@ -1,0 +1,130 @@
+{
+  "vitamin_a": {
+    "id": "vitamin_a",
+    "name": "ビタミンA",
+    "unit": "μg",
+    "daily_target": 800,
+    "emoji": "👁",
+    "body_parts": ["eyes", "skin", "immune"]
+  },
+  "vitamin_b1": {
+    "id": "vitamin_b1",
+    "name": "ビタミンB1",
+    "unit": "mg",
+    "daily_target": 1.2,
+    "emoji": "⚡",
+    "body_parts": ["brain", "muscles"]
+  },
+  "vitamin_b2": {
+    "id": "vitamin_b2",
+    "name": "ビタミンB2",
+    "unit": "mg",
+    "daily_target": 1.4,
+    "emoji": "🔋",
+    "body_parts": ["skin", "muscles"]
+  },
+  "vitamin_b6": {
+    "id": "vitamin_b6",
+    "name": "ビタミンB6",
+    "unit": "mg",
+    "daily_target": 1.4,
+    "emoji": "🧬",
+    "body_parts": ["brain", "immune", "muscles"]
+  },
+  "vitamin_b12": {
+    "id": "vitamin_b12",
+    "name": "ビタミンB12",
+    "unit": "μg",
+    "daily_target": 2.4,
+    "emoji": "🔴",
+    "body_parts": ["brain", "immune"]
+  },
+  "vitamin_c": {
+    "id": "vitamin_c",
+    "name": "ビタミンC",
+    "unit": "mg",
+    "daily_target": 100,
+    "emoji": "🍋",
+    "body_parts": ["immune", "skin"]
+  },
+  "vitamin_d": {
+    "id": "vitamin_d",
+    "name": "ビタミンD",
+    "unit": "μg",
+    "daily_target": 8.5,
+    "emoji": "☀️",
+    "body_parts": ["bones", "immune"]
+  },
+  "vitamin_e": {
+    "id": "vitamin_e",
+    "name": "ビタミンE",
+    "unit": "mg",
+    "daily_target": 6.5,
+    "emoji": "🛡",
+    "body_parts": ["skin", "immune"]
+  },
+  "vitamin_k": {
+    "id": "vitamin_k",
+    "name": "ビタミンK",
+    "unit": "μg",
+    "daily_target": 150,
+    "emoji": "🦴",
+    "body_parts": ["bones"]
+  },
+  "iron": {
+    "id": "iron",
+    "name": "鉄",
+    "unit": "mg",
+    "daily_target": 7.5,
+    "emoji": "🔩",
+    "body_parts": ["brain", "immune", "muscles"]
+  },
+  "calcium": {
+    "id": "calcium",
+    "name": "カルシウム",
+    "unit": "mg",
+    "daily_target": 800,
+    "emoji": "🦷",
+    "body_parts": ["bones", "muscles"]
+  },
+  "zinc": {
+    "id": "zinc",
+    "name": "亜鉛",
+    "unit": "mg",
+    "daily_target": 10,
+    "emoji": "⚙️",
+    "body_parts": ["immune", "skin", "muscles"]
+  },
+  "magnesium": {
+    "id": "magnesium",
+    "name": "マグネシウム",
+    "unit": "mg",
+    "daily_target": 340,
+    "emoji": "💊",
+    "body_parts": ["brain", "muscles", "bones", "sleep"]
+  },
+  "potassium": {
+    "id": "potassium",
+    "name": "カリウム",
+    "unit": "mg",
+    "daily_target": 3000,
+    "emoji": "🍌",
+    "body_parts": ["muscles", "immune"]
+  },
+  "dha": {
+    "id": "dha",
+    "name": "DHA",
+    "unit": "mg",
+    "daily_target": 1000,
+    "emoji": "🧠",
+    "body_parts": ["brain", "eyes"]
+  },
+  "epa": {
+    "id": "epa",
+    "name": "EPA",
+    "unit": "mg",
+    "daily_target": 500,
+    "emoji": "❤️",
+    "body_parts": ["immune", "muscles"]
+  }
+}
