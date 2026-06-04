@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 // ─── Data Models ──────────────────────────────────────────────────────────────
@@ -177,14 +178,18 @@ class NutritionDbService {
 
   Future<void> load() async {
     if (_loaded) return;
-    await Future.wait([
-      _loadNutrients(),
-      _loadFunctionalIngredients(),
-      _loadFoodNutrientsMap(),
-      _loadBodyParts(),
-      _loadSymptoms(),
-      _loadCravings(),
-    ]);
+    try {
+      await Future.wait([
+        _loadNutrients(),
+        _loadFunctionalIngredients(),
+        _loadFoodNutrientsMap(),
+        _loadBodyParts(),
+        _loadSymptoms(),
+        _loadCravings(),
+      ]);
+    } catch (e) {
+      debugPrint('[NutritionDb] 初期化エラー（スキップ）: $e');
+    }
     _loaded = true;
   }
 
