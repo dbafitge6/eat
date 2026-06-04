@@ -7,6 +7,7 @@ import '../models/meal_entry.dart';
 import '../models/my_food.dart';
 import '../services/food_search_service.dart';
 import '../services/gemini_service.dart';
+import '../services/nutrition_scan_service.dart';
 import '../services/database_service.dart';
 import '../services/limit_service.dart';
 import '../services/purchase_service.dart';
@@ -592,6 +593,32 @@ class _BrowserTabContentState extends State<_BrowserTabContent> {
   final _carbCtrl = TextEditingController();
   final _gramsCtrl = TextEditingController(text: '100');
   bool _saveToMyFood = false;
+  bool _scanning = false;
+
+  Future<void> _scanLabel() async {
+    setState(() => _scanning = true);
+    try {
+      final nutrition = await NutritionScanService.instance.scanFromCamera();
+      if (!mounted) return;
+      if (nutrition != null && (nutrition['kcal'] ?? 0) > 0) {
+        setState(() {
+          _kcalCtrl.text = (nutrition['kcal'] ?? 0).round().toString();
+          final p = nutrition['protein'] ?? 0;
+          final f = nutrition['fat'] ?? 0;
+          final c = nutrition['carb'] ?? 0;
+          if (p > 0) _proteinCtrl.text = p.toStringAsFixed(1);
+          if (f > 0) _fatCtrl.text = f.toStringAsFixed(1);
+          if (c > 0) _carbCtrl.text = c.toStringAsFixed(1);
+        });
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('栄養成分を読み取れませんでした。明るい場所で試してください。')),
+        );
+      }
+    } finally {
+      if (mounted) setState(() => _scanning = false);
+    }
+  }
 
   @override
   void initState() {
@@ -681,11 +708,28 @@ class _BrowserTabContentState extends State<_BrowserTabContent> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                TextField(
-                  controller: _nameCtrl,
-                  decoration: const InputDecoration(
-                    labelText: '食品名', isDense: true, border: OutlineInputBorder(),
-                  ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: TextField(
+                        controller: _nameCtrl,
+                        decoration: const InputDecoration(
+                          labelText: '食品名', isDense: true, border: OutlineInputBorder(),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    SizedBox(
+                      height: 36,
+                      child: ElevatedButton.icon(
+                        onPressed: _scanning ? null : _scanLabel,
+                        icon: _scanning
+                            ? const SizedBox(width: 14, height: 14, child: CircularProgressIndicator(strokeWidth: 2))
+                            : const Icon(Icons.document_scanner, size: 16),
+                        label: const Text('ラベル読取', style: TextStyle(fontSize: 12)),
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(height: 8),
                 Row(children: [
@@ -898,6 +942,32 @@ class _WebSearchScreenState extends State<WebSearchScreen> {
   bool _saveToMyFood = false;
   bool _extracting = false;
 
+  Future<void> _scanLabel() async {
+    setState(() => _extracting = true);
+    try {
+      final nutrition = await NutritionScanService.instance.scanFromCamera();
+      if (!mounted) return;
+      if (nutrition != null && (nutrition['kcal'] ?? 0) > 0) {
+        setState(() {
+          _kcalCtrl.text = (nutrition['kcal'] ?? 0).round().toString();
+          final p = nutrition['protein'] ?? 0;
+          final f = nutrition['fat'] ?? 0;
+          final c = nutrition['carb'] ?? 0;
+          if (p > 0) _proteinCtrl.text = p.toStringAsFixed(1);
+          if (f > 0) _fatCtrl.text = f.toStringAsFixed(1);
+          if (c > 0) _carbCtrl.text = c.toStringAsFixed(1);
+          _aiPrefilled = true;
+        });
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('栄養成分を読み取れませんでした。明るい場所で試してください。')),
+        );
+      }
+    } finally {
+      if (mounted) setState(() => _extracting = false);
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -1076,6 +1146,11 @@ class _WebSearchScreenState extends State<WebSearchScreen> {
                   child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white)),
             )
           else ...[
+            IconButton(
+              icon: const Icon(Icons.document_scanner),
+              tooltip: '栄養成分ラベルをスキャン',
+              onPressed: _scanLabel,
+            ),
             IconButton(
               icon: const Icon(Icons.auto_awesome),
               tooltip: '食品名でAI推定',
