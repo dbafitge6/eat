@@ -597,28 +597,60 @@ class _BrowserTabContentState extends State<_BrowserTabContent> {
 
   Future<void> _scanLabel() async {
     setState(() => _scanning = true);
+    Map<String, double>? nutrition;
     try {
-      final nutrition = await NutritionScanService.instance.scanFromCamera();
-      if (!mounted) return;
-      if (nutrition != null && (nutrition['kcal'] ?? 0) > 0) {
-        setState(() {
-          _kcalCtrl.text = (nutrition['kcal'] ?? 0).round().toString();
-          final p = nutrition['protein'] ?? 0;
-          final f = nutrition['fat'] ?? 0;
-          final c = nutrition['carb'] ?? 0;
-          if (p > 0) _proteinCtrl.text = p.toStringAsFixed(1);
-          if (f > 0) _fatCtrl.text = f.toStringAsFixed(1);
-          if (c > 0) _carbCtrl.text = c.toStringAsFixed(1);
-        });
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('栄養成分を読み取れませんでした。明るい場所で試してください。')),
-        );
-      }
+      nutrition = await NutritionScanService.instance.scanFromCamera();
     } finally {
       if (mounted) setState(() => _scanning = false);
     }
+    if (!mounted) return;
+    if (nutrition == null || (nutrition['kcal'] ?? 0) == 0) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('栄養成分を読み取れませんでした。明るい場所でラベル全体を撮影してください。')),
+      );
+      return;
+    }
+    // 確認ダイアログを表示
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('読み取り結果'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text('以下の値をフォームに入力しますか？\n(100gあたり)', style: TextStyle(fontSize: 12, color: Colors.grey)),
+            const SizedBox(height: 12),
+            _scanResultRow('カロリー', '${(nutrition!['kcal'] ?? 0).round()} kcal'),
+            _scanResultRow('たんぱく質', '${(nutrition['protein'] ?? 0).toStringAsFixed(1)} g'),
+            _scanResultRow('脂質', '${(nutrition['fat'] ?? 0).toStringAsFixed(1)} g'),
+            _scanResultRow('炭水化物', '${(nutrition['carb'] ?? 0).toStringAsFixed(1)} g'),
+          ],
+        ),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('やり直す')),
+          ElevatedButton(onPressed: () => Navigator.pop(ctx, true), child: const Text('入力する')),
+        ],
+      ),
+    );
+    if (confirmed != true || !mounted) return;
+    setState(() {
+      _kcalCtrl.text = (nutrition!['kcal'] ?? 0).round().toString();
+      _proteinCtrl.text = (nutrition['protein'] ?? 0).toStringAsFixed(1);
+      _fatCtrl.text = (nutrition['fat'] ?? 0).toStringAsFixed(1);
+      _carbCtrl.text = (nutrition['carb'] ?? 0).toStringAsFixed(1);
+    });
   }
+
+  Widget _scanResultRow(String label, String value) => Padding(
+    padding: const EdgeInsets.symmetric(vertical: 3),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(label, style: const TextStyle(color: Colors.grey)),
+        Text(value, style: const TextStyle(fontWeight: FontWeight.bold)),
+      ],
+    ),
+  );
 
   @override
   void initState() {
@@ -944,29 +976,60 @@ class _WebSearchScreenState extends State<WebSearchScreen> {
 
   Future<void> _scanLabel() async {
     setState(() => _extracting = true);
+    Map<String, double>? nutrition;
     try {
-      final nutrition = await NutritionScanService.instance.scanFromCamera();
-      if (!mounted) return;
-      if (nutrition != null && (nutrition['kcal'] ?? 0) > 0) {
-        setState(() {
-          _kcalCtrl.text = (nutrition['kcal'] ?? 0).round().toString();
-          final p = nutrition['protein'] ?? 0;
-          final f = nutrition['fat'] ?? 0;
-          final c = nutrition['carb'] ?? 0;
-          if (p > 0) _proteinCtrl.text = p.toStringAsFixed(1);
-          if (f > 0) _fatCtrl.text = f.toStringAsFixed(1);
-          if (c > 0) _carbCtrl.text = c.toStringAsFixed(1);
-          _aiPrefilled = true;
-        });
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('栄養成分を読み取れませんでした。明るい場所で試してください。')),
-        );
-      }
+      nutrition = await NutritionScanService.instance.scanFromCamera();
     } finally {
       if (mounted) setState(() => _extracting = false);
     }
+    if (!mounted) return;
+    if (nutrition == null || (nutrition['kcal'] ?? 0) == 0) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('栄養成分を読み取れませんでした。明るい場所でラベル全体を撮影してください。')),
+      );
+      return;
+    }
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('読み取り結果'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text('以下の値をフォームに入力しますか？\n(100gあたり)', style: TextStyle(fontSize: 12, color: Colors.grey)),
+            const SizedBox(height: 12),
+            _buildRow('カロリー', '${(nutrition!['kcal'] ?? 0).round()} kcal'),
+            _buildRow('たんぱく質', '${(nutrition['protein'] ?? 0).toStringAsFixed(1)} g'),
+            _buildRow('脂質', '${(nutrition['fat'] ?? 0).toStringAsFixed(1)} g'),
+            _buildRow('炭水化物', '${(nutrition['carb'] ?? 0).toStringAsFixed(1)} g'),
+          ],
+        ),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('やり直す')),
+          ElevatedButton(onPressed: () => Navigator.pop(ctx, true), child: const Text('入力する')),
+        ],
+      ),
+    );
+    if (confirmed != true || !mounted) return;
+    setState(() {
+      _kcalCtrl.text = (nutrition!['kcal'] ?? 0).round().toString();
+      _proteinCtrl.text = (nutrition['protein'] ?? 0).toStringAsFixed(1);
+      _fatCtrl.text = (nutrition['fat'] ?? 0).toStringAsFixed(1);
+      _carbCtrl.text = (nutrition['carb'] ?? 0).toStringAsFixed(1);
+      _aiPrefilled = true;
+    });
   }
+
+  Widget _buildRow(String label, String value) => Padding(
+    padding: const EdgeInsets.symmetric(vertical: 3),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(label, style: const TextStyle(color: Colors.grey)),
+        Text(value, style: const TextStyle(fontWeight: FontWeight.bold)),
+      ],
+    ),
+  );
 
   @override
   void initState() {
