@@ -362,15 +362,42 @@ class NutritionDbService {
 
   // ─── Lookup Methods ───────────────────────────────────────────────────────
 
-  /// foods_all.jsonから食材エントリを検索（部分一致あり）
+  /// foods_all.jsonから食材エントリを検索（ファジーマッチ）
   FoodEntry? lookupFoodEntry(String foodName) {
+    // 完全一致
     if (_foodsAll.containsKey(foodName)) return _foodsAll[foodName];
+    // 部分一致（どちらかが含む）
     for (final entry in _foodsAll.entries) {
       if (foodName.contains(entry.key) || entry.key.contains(foodName)) {
         return entry.value;
       }
     }
-    return null;
+    // キーワードマッチ（文科省DB形式 "鶏肉 むね 皮なし 生" → "鶏むね肉" 等）
+    final queryTokens = _tokenize(foodName);
+    FoodEntry? bestMatch;
+    int bestScore = 0;
+    for (final entry in _foodsAll.entries) {
+      final keyTokens = _tokenize(entry.key);
+      int score = 0;
+      for (final t in queryTokens) {
+        if (keyTokens.any((k) => k.contains(t) || t.contains(k))) score++;
+      }
+      if (score >= 2 && score > bestScore) {
+        bestScore = score;
+        bestMatch = entry.value;
+      }
+    }
+    return bestMatch;
+  }
+
+  /// 食材名をトークン（意味のある2文字以上の部分）に分割
+  List<String> _tokenize(String name) {
+    // スペース・記号で分割し2文字以上を返す
+    final parts = name.split(RegExp(r'[\s　・（）\(\)/]'))
+        .where((s) => s.length >= 2)
+        .toList();
+    if (parts.isEmpty) return [name];
+    return parts;
   }
 
   /// Returns ingredient IDs + nutrient IDs present in a food name
