@@ -4294,7 +4294,7 @@
       ],
       "body_parts_effects": {
         "gut": {
-          "score_continuation": 0.7,
+          "score_contribution": 0.7,
           "reason": "フコイダン・食物繊維が腸をサポート"
         },
         "bones": {
