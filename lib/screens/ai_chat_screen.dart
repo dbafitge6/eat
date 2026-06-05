@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../models/meal_entry.dart';
 import '../models/user_profile.dart';
+import '../services/database_service.dart';
 import '../services/gemini_service.dart';
+import '../services/limit_service.dart';
+import '../services/purchase_service.dart';
 
 class AiChatScreen extends StatefulWidget {
   final List<MealEntry> todayMeals;
@@ -29,8 +32,11 @@ class _AiChatScreenState extends State<AiChatScreen> {
   bool _noApiKey = false;
   String _systemContext = '';
   int _todayCount = 0;
-  static const _maxDaily = 15;
   static const _countKeyPrefix = 'ai_chat_count_';
+
+  int get _maxDaily => PurchaseService.instance.isPremium
+      ? LimitService.premiumAIChatLimit
+      : LimitService.freeAIChatLimit;
 
   @override
   void initState() {
@@ -90,6 +96,29 @@ class _AiChatScreenState extends State<AiChatScreen> {
 - 今日の食事: ${widget.todayMeals.isEmpty ? 'まだ記録なし' : widget.todayMeals.map((m) => m.foodName).join('、')}
 ''';
 
+    // プレミアム: 過去の履歴を読み込む
+    if (PurchaseService.instance.isPremium) {
+      final dbMessages = await DatabaseService.instance.getChatMessages(limit: 100);
+      if (dbMessages.isNotEmpty) {
+        final msgs = dbMessages
+            .map((m) => _Msg(isUser: m['role'] == 'user', text: m['text'] as String))
+            .toList();
+        // API履歴は最新20件のみ使用
+        final historyRows = dbMessages.length > 20
+            ? dbMessages.sublist(dbMessages.length - 20)
+            : dbMessages;
+        for (final m in historyRows) {
+          _history.add({'role': m['role'] as String, 'text': m['text'] as String});
+        }
+        if (!mounted) return;
+        setState(() {
+          _apiKey = apiKey;
+          _messages.addAll(msgs);
+        });
+        return;
+      }
+    }
+
     setState(() {
       _apiKey = apiKey;
       _messages.add(_Msg(
@@ -130,6 +159,11 @@ class _AiChatScreenState extends State<AiChatScreen> {
       _history.add({'role': 'user', 'text': text});
       _history.add({'role': 'model', 'text': replyText});
       await _incrementCount();
+      // プレミアム: DB保存
+      if (PurchaseService.instance.isPremium) {
+        await DatabaseService.instance.insertChatMessage('user', text);
+        await DatabaseService.instance.insertChatMessage('model', replyText);
+      }
       setState(() => _messages.add(_Msg(isUser: false, text: replyText)));
     } catch (e) {
       setState(() => _messages.add(_Msg(isUser: false, text: 'エラーが発生しました: $e')));
@@ -157,6 +191,7 @@ class _AiChatScreenState extends State<AiChatScreen> {
     final secondary = Theme.of(context).colorScheme.secondary;
 
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         title: Row(
           children: [
@@ -261,11 +296,13 @@ class _AiChatScreenState extends State<AiChatScreen> {
                   ),
                   const SizedBox(height: 8),
                 ],
-                Container(
-                  padding: EdgeInsets.only(
+                SafeArea(
+                  top: false,
+                  child: Container(
+                  padding: const EdgeInsets.only(
                     left: 16,
                     right: 8,
-                    bottom: MediaQuery.of(context).viewInsets.bottom + 12,
+                    bottom: 12,
                     top: 8,
                   ),
                   decoration: BoxDecoration(
@@ -273,6 +310,7 @@ class _AiChatScreenState extends State<AiChatScreen> {
                     border: Border(top: BorderSide(color: Colors.white.withValues(alpha: 0.08))),
                   ),
                   child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Expanded(
                         child: TextField(
@@ -295,24 +333,30 @@ class _AiChatScreenState extends State<AiChatScreen> {
                         ),
                       ),
                       const SizedBox(width: 8),
-                      GestureDetector(
-                        onTap: _send,
-                        child: Container(
-                          width: 44,
-                          height: 44,
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(colors: [primary, secondary]),
-                            shape: BoxShape.circle,
+                      Material(
+                        color: Colors.transparent,
+                        shape: const CircleBorder(),
+                        clipBehavior: Clip.antiAlias,
+                        child: InkWell(
+                          onTap: _send,
+                          child: Ink(
+                            width: 44,
+                            height: 44,
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(colors: [primary, secondary]),
+                              shape: BoxShape.circle,
+                            ),
+                            child: _sending
+                                ? const Padding(
+                                    padding: EdgeInsets.all(12),
+                                    child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
+                                  )
+                                : const Icon(Icons.send_rounded, color: Colors.white, size: 20),
                           ),
-                          child: _sending
-                              ? const Padding(
-                                  padding: EdgeInsets.all(12),
-                                  child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
-                                )
-                              : const Icon(Icons.send_rounded, color: Colors.white, size: 20),
                         ),
                       ),
                     ],
+                  ),
                   ),
                 ),
               ],

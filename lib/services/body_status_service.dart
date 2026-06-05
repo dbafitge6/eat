@@ -29,24 +29,12 @@ class BodyStatusService {
     final coveredIngredients = analysis.ingredientIds;
     final coveredNutrients = analysis.nutrientIds;
 
+    // foods_all.jsonベースのスコア（直接スコア貢献値）
+    final directScores = db.getBodyEffectScores(foodNames);
+
     final scores = <BodyPartScore>[];
 
     for (final part in db.allBodyParts) {
-      final totalItems =
-          part.relatedIngredients.length + part.relatedNutrients.length;
-
-      if (totalItems == 0) {
-        scores.add(BodyPartScore(
-          partId: part.id,
-          score: 0.5,
-          coveredIngredientIds: [],
-          missingIngredientIds: [],
-          coveredNutrientIds: [],
-          missingNutrientIds: [],
-        ));
-        continue;
-      }
-
       final coveredIng = part.relatedIngredients
           .where((id) => coveredIngredients.contains(id))
           .toList();
@@ -60,12 +48,26 @@ class BodyStatusService {
           .where((id) => !coveredNutrients.contains(id))
           .toList();
 
-      final coveredCount = coveredIng.length + coveredNut.length;
-      final score = coveredCount / totalItems;
+      double score;
+      final directScore = directScores[part.id];
+      if (directScore != null && directScore > 0) {
+        // foods_all.jsonにデータがあればそちらを優先
+        score = directScore.clamp(0.0, 1.0);
+      } else {
+        // 従来のマッチングベース計算
+        final totalItems =
+            part.relatedIngredients.length + part.relatedNutrients.length;
+        if (totalItems == 0) {
+          score = 0.0;
+        } else {
+          final coveredCount = coveredIng.length + coveredNut.length;
+          score = (coveredCount / totalItems).clamp(0.0, 1.0);
+        }
+      }
 
       scores.add(BodyPartScore(
         partId: part.id,
-        score: score.clamp(0.0, 1.0),
+        score: score,
         coveredIngredientIds: coveredIng,
         missingIngredientIds: missingIng,
         coveredNutrientIds: coveredNut,

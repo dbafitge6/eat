@@ -12,6 +12,8 @@ class LimitService {
   static const freeMealLimit = 3;
   static const freeAISearchLimit = 5;
   static const freeRestaurantLimit = 3;
+  static const freeAIChatLimit = 3;
+  static const premiumAIChatLimit = 15;
 
   String _today() => DateTime.now().toIso8601String().substring(0, 10);
 

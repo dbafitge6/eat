@@ -1,0 +1,7361 @@
+{
+  "foods": [
+    {
+      "id": "chicken_breast",
+      "name": "鶏むね肉",
+      "name_reading": "とりむねにく",
+      "name_en": "Chicken Breast",
+      "category": "肉類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 116,
+        "protein_g": 23.3,
+        "fat_g": 1.9,
+        "carbs_g": 0,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 3,
+          "vitamin_d_ug": 0.1,
+          "vitamin_e_mg": 0.3,
+          "vitamin_k_ug": 17,
+          "vitamin_b1_mg": 0.1,
+          "vitamin_b2_mg": 0.1,
+          "vitamin_b6_mg": 0.64,
+          "vitamin_b12_ug": 0.3,
+          "vitamin_c_mg": 3,
+          "niacin_mg": 11.8,
+          "folate_ug": 8,
+          "pantothenic_acid_mg": 2.1,
+          "biotin_ug": 5.5
+        },
+        "minerals": {
+          "calcium_mg": 4,
+          "magnesium_mg": 27,
+          "potassium_mg": 350,
+          "sodium_mg": 42,
+          "phosphorus_mg": 220,
+          "iron_mg": 0.3,
+          "zinc_mg": 0.8,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 27,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "imidapeptide",
+          "name": "イミダペプチド",
+          "amount_per_100g": "約200mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "脳疲労回復",
+            "抗酸化",
+            "持久力向上"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "brain": {
+          "score_contribution": 0.8,
+          "reason": "イミダペプチドが脳疲労回復をサポート"
+        },
+        "muscles": {
+          "score_contribution": 0.9,
+          "reason": "高タンパクで筋肉修復をサポート"
+        },
+        "immune": {
+          "score_contribution": 0.4,
+          "reason": "セレンが免疫機能をサポート"
+        }
+      },
+      "combination_tips": [
+        {
+          "partner_food_example": "レモン・パプリカ",
+          "effect": "抗酸化効果が高まる可能性があります",
+          "reason": "ビタミンCがイミダペプチドの酸化を防ぐ"
+        }
+      ],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [
+        "加熱しすぎるとイミダペプチドが減少するため、さっと火を通す程度が最適"
+      ],
+      "tags": [
+        "高タンパク",
+        "低脂質",
+        "脳疲労",
+        "アスリート",
+        "ダイエット"
+      ]
+    },
+    {
+      "id": "chicken_thigh",
+      "name": "鶏もも肉",
+      "name_reading": "とりももにく",
+      "name_en": "Chicken Thigh",
+      "category": "肉類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 204,
+        "protein_g": 17.3,
+        "fat_g": 14.2,
+        "carbs_g": 0,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 40,
+          "vitamin_d_ug": 0.3,
+          "vitamin_e_mg": 0.5,
+          "vitamin_k_ug": 15,
+          "vitamin_b1_mg": 0.1,
+          "vitamin_b2_mg": 0.15,
+          "vitamin_b6_mg": 0.25,
+          "vitamin_b12_ug": 0.4,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 5,
+          "magnesium_mg": 20,
+          "potassium_mg": 270,
+          "sodium_mg": 75,
+          "phosphorus_mg": 170,
+          "iron_mg": 0.6,
+          "zinc_mg": 1.6,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 15,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "imidapeptide",
+          "name": "イミダペプチド",
+          "amount_per_100g": "約100mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "疲労回復",
+            "抗酸化"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "muscles": {
+          "score_contribution": 0.7,
+          "reason": "タンパク質が筋肉修復をサポート"
+        },
+        "brain": {
+          "score_contribution": 0.4,
+          "reason": "イミダペプチドが脳疲労をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "タンパク質",
+        "疲労回復"
+      ]
+    },
+    {
+      "id": "chicken_tenderloin",
+      "name": "鶏ささみ",
+      "name_reading": "とりささみ",
+      "name_en": "Chicken Tenderloin",
+      "category": "肉類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 98,
+        "protein_g": 23.0,
+        "fat_g": 0.8,
+        "carbs_g": 0,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0,
+          "vitamin_b2_mg": 0,
+          "vitamin_b6_mg": 0.6,
+          "vitamin_b12_ug": 0.2,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 10.5,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 3,
+          "magnesium_mg": 26,
+          "potassium_mg": 390,
+          "sodium_mg": 40,
+          "phosphorus_mg": 210,
+          "iron_mg": 0.3,
+          "zinc_mg": 0.6,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 20,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "imidapeptide",
+          "name": "イミダペプチド",
+          "amount_per_100g": "約150mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "脳疲労回復",
+            "持久力向上"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "brain": {
+          "score_contribution": 0.7,
+          "reason": "イミダペプチドが脳をサポート"
+        },
+        "muscles": {
+          "score_contribution": 0.9,
+          "reason": "最高純度のタンパク質で筋肉をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "超低脂質",
+        "高タンパク",
+        "ダイエット",
+        "アスリート"
+      ]
+    },
+    {
+      "id": "chicken_liver",
+      "name": "鶏レバー",
+      "name_reading": "とりればー",
+      "name_en": "Chicken Liver",
+      "category": "肉類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 111,
+        "protein_g": 18.9,
+        "fat_g": 3.1,
+        "carbs_g": 0.6,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 14000,
+          "vitamin_d_ug": 0.2,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0.38,
+          "vitamin_b2_mg": 1.8,
+          "vitamin_b6_mg": 0.65,
+          "vitamin_b12_ug": 44,
+          "vitamin_c_mg": 20,
+          "niacin_mg": 0,
+          "folate_ug": 1300,
+          "pantothenic_acid_mg": 7.7,
+          "biotin_ug": 232
+        },
+        "minerals": {
+          "calcium_mg": 5,
+          "magnesium_mg": 19,
+          "potassium_mg": 330,
+          "sodium_mg": 85,
+          "phosphorus_mg": 300,
+          "iron_mg": 9.0,
+          "zinc_mg": 3.3,
+          "copper_mg": 0.32,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 55,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "coq10",
+          "name": "コエンザイムQ10",
+          "amount_per_100g": "約13mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "エネルギー産生",
+            "抗酸化",
+            "心臓機能サポート"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "brain": {
+          "score_contribution": 0.9,
+          "reason": "鉄・ビタミンB12が脳機能をサポート"
+        },
+        "immune": {
+          "score_contribution": 0.9,
+          "reason": "ビタミンAが免疫機能を強力にサポート"
+        },
+        "skin": {
+          "score_contribution": 0.7,
+          "reason": "ビタミンAが肌の再生をサポート"
+        },
+        "eyes": {
+          "score_contribution": 0.9,
+          "reason": "ビタミンAが目の健康をサポート"
+        }
+      },
+      "combination_tips": [
+        {
+          "partner_food_example": "レモン汁",
+          "effect": "鉄の吸収率が向上する可能性があります",
+          "reason": "ビタミンCが非ヘム鉄の吸収を促進"
+        },
+        {
+          "partner_food_example": "ごま油炒め",
+          "effect": "ビタミンAの吸収率が高まる可能性があります",
+          "reason": "脂溶性ビタミンAは油と一緒に摂ると吸収される"
+        }
+      ],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "鉄分",
+        "ビタミンA",
+        "ビタミンB12",
+        "貧血",
+        "妊婦"
+      ]
+    },
+    {
+      "id": "pork_loin",
+      "name": "豚ロース",
+      "name_reading": "ぶたろーす",
+      "name_en": "Pork Loin",
+      "category": "肉類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 248,
+        "protein_g": 19.3,
+        "fat_g": 19.2,
+        "carbs_g": 0.2,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0.69,
+          "vitamin_b2_mg": 0.22,
+          "vitamin_b6_mg": 0.32,
+          "vitamin_b12_ug": 0.4,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 5.6,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 3,
+          "magnesium_mg": 21,
+          "potassium_mg": 310,
+          "sodium_mg": 45,
+          "phosphorus_mg": 180,
+          "iron_mg": 0.5,
+          "zinc_mg": 2.0,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 18,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [],
+      "body_parts_effects": {
+        "brain": {
+          "score_contribution": 0.6,
+          "reason": "ビタミンB1が脳のエネルギー代謝をサポート"
+        },
+        "muscles": {
+          "score_contribution": 0.7,
+          "reason": "タンパク質・亜鉛が筋肉をサポート"
+        }
+      },
+      "combination_tips": [
+        {
+          "partner_food_example": "にんにく",
+          "effect": "疲労回復効果が高まる可能性があります",
+          "reason": "アリシンがビタミンB1の吸収を促進"
+        }
+      ],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "ビタミンB1",
+        "疲労回復"
+      ]
+    },
+    {
+      "id": "pork_belly",
+      "name": "豚バラ",
+      "name_reading": "ぶたばら",
+      "name_en": "Pork Belly",
+      "category": "肉類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 395,
+        "protein_g": 14.4,
+        "fat_g": 35.4,
+        "carbs_g": 0.1,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0.51,
+          "vitamin_b2_mg": 0.13,
+          "vitamin_b6_mg": 0.23,
+          "vitamin_b12_ug": 0.4,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 3,
+          "magnesium_mg": 14,
+          "potassium_mg": 230,
+          "sodium_mg": 50,
+          "phosphorus_mg": 130,
+          "iron_mg": 0.5,
+          "zinc_mg": 1.5,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [],
+      "body_parts_effects": {
+        "brain": {
+          "score_contribution": 0.4,
+          "reason": "ビタミンB1が脳エネルギー代謝をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "高カロリー",
+        "ビタミンB1"
+      ]
+    },
+    {
+      "id": "pork_fillet",
+      "name": "豚ヒレ",
+      "name_reading": "ぶたひれ",
+      "name_en": "Pork Tenderloin",
+      "category": "肉類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 115,
+        "protein_g": 22.2,
+        "fat_g": 3.7,
+        "carbs_g": 0.3,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 1.32,
+          "vitamin_b2_mg": 0.25,
+          "vitamin_b6_mg": 0.54,
+          "vitamin_b12_ug": 0.5,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 7.6,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 4,
+          "magnesium_mg": 25,
+          "potassium_mg": 410,
+          "sodium_mg": 46,
+          "phosphorus_mg": 230,
+          "iron_mg": 1.0,
+          "zinc_mg": 2.2,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 18,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [],
+      "body_parts_effects": {
+        "brain": {
+          "score_contribution": 0.7,
+          "reason": "ビタミンB1が脳エネルギー代謝を強力にサポート"
+        },
+        "muscles": {
+          "score_contribution": 0.8,
+          "reason": "高タンパク・低脂質で筋肉修復をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "低脂質",
+        "高タンパク",
+        "ビタミンB1"
+      ]
+    },
+    {
+      "id": "pork_liver",
+      "name": "豚レバー",
+      "name_reading": "ぶたればー",
+      "name_en": "Pork Liver",
+      "category": "肉類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 114,
+        "protein_g": 20.4,
+        "fat_g": 3.4,
+        "carbs_g": 2.5,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 13000,
+          "vitamin_d_ug": 1.3,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0.34,
+          "vitamin_b2_mg": 3.6,
+          "vitamin_b6_mg": 0.61,
+          "vitamin_b12_ug": 25,
+          "vitamin_c_mg": 20,
+          "niacin_mg": 0,
+          "folate_ug": 810,
+          "pantothenic_acid_mg": 6.3,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 7,
+          "magnesium_mg": 20,
+          "potassium_mg": 290,
+          "sodium_mg": 55,
+          "phosphorus_mg": 340,
+          "iron_mg": 13.0,
+          "zinc_mg": 6.9,
+          "copper_mg": 0.47,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 67,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [],
+      "body_parts_effects": {
+        "brain": {
+          "score_contribution": 0.9,
+          "reason": "鉄・B12が脳に不可欠"
+        },
+        "immune": {
+          "score_contribution": 0.9,
+          "reason": "ビタミンAが免疫を強力サポート"
+        },
+        "eyes": {
+          "score_contribution": 1.0,
+          "reason": "ビタミンAが目の健康を強力サポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "最高鉄分",
+        "ビタミンA",
+        "B12",
+        "貧血"
+      ]
+    },
+    {
+      "id": "beef_loin",
+      "name": "牛ロース",
+      "name_reading": "ぎゅうろーす",
+      "name_en": "Beef Loin",
+      "category": "肉類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 380,
+        "protein_g": 14.3,
+        "fat_g": 36.1,
+        "carbs_g": 0.2,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0,
+          "vitamin_b2_mg": 0.16,
+          "vitamin_b6_mg": 0.29,
+          "vitamin_b12_ug": 1.8,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 4.1,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 4,
+          "magnesium_mg": 15,
+          "potassium_mg": 230,
+          "sodium_mg": 55,
+          "phosphorus_mg": 140,
+          "iron_mg": 1.0,
+          "zinc_mg": 3.0,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "carnitine",
+          "name": "カルニチン",
+          "amount_per_100g": "約70mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "脂肪燃焼サポート",
+            "エネルギー産生"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "muscles": {
+          "score_contribution": 0.8,
+          "reason": "タンパク質・亜鉛が筋肉をサポート"
+        },
+        "brain": {
+          "score_contribution": 0.5,
+          "reason": "B12が神経機能をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": true,
+        "message": "脂肪をエネルギーに変える力が落ちているサインかもしれません"
+      },
+      "cooking_tips": [],
+      "tags": [
+        "亜鉛",
+        "カルニチン",
+        "筋肉"
+      ]
+    },
+    {
+      "id": "beef_round",
+      "name": "牛もも",
+      "name_reading": "ぎゅうもも",
+      "name_en": "Beef Round",
+      "category": "肉類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 182,
+        "protein_g": 21.3,
+        "fat_g": 10.6,
+        "carbs_g": 0.5,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0,
+          "vitamin_b2_mg": 0.22,
+          "vitamin_b6_mg": 0.35,
+          "vitamin_b12_ug": 2.0,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 5.8,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 4,
+          "magnesium_mg": 22,
+          "potassium_mg": 330,
+          "sodium_mg": 48,
+          "phosphorus_mg": 190,
+          "iron_mg": 2.1,
+          "zinc_mg": 4.4,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 11,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [],
+      "body_parts_effects": {
+        "muscles": {
+          "score_contribution": 0.9,
+          "reason": "高タンパク・高亜鉛で筋肉修復を強力サポート"
+        },
+        "brain": {
+          "score_contribution": 0.6,
+          "reason": "B12・鉄が脳機能をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "高タンパク",
+        "亜鉛",
+        "鉄分"
+      ]
+    },
+    {
+      "id": "beef_liver",
+      "name": "牛レバー",
+      "name_reading": "ぎゅうればー",
+      "name_en": "Beef Liver",
+      "category": "肉類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 119,
+        "protein_g": 19.6,
+        "fat_g": 3.7,
+        "carbs_g": 3.7,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 1100,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0.22,
+          "vitamin_b2_mg": 3.0,
+          "vitamin_b6_mg": 0.89,
+          "vitamin_b12_ug": 52,
+          "vitamin_c_mg": 30,
+          "niacin_mg": 0,
+          "folate_ug": 1000,
+          "pantothenic_acid_mg": 8.8,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 5,
+          "magnesium_mg": 18,
+          "potassium_mg": 300,
+          "sodium_mg": 55,
+          "phosphorus_mg": 330,
+          "iron_mg": 4.0,
+          "zinc_mg": 3.3,
+          "copper_mg": 3.0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 28,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [],
+      "body_parts_effects": {
+        "brain": {
+          "score_contribution": 0.9,
+          "reason": "B12・葉酸・鉄が脳を強力サポート"
+        },
+        "immune": {
+          "score_contribution": 0.8,
+          "reason": "ビタミンAが免疫をサポート"
+        },
+        "eyes": {
+          "score_contribution": 0.9,
+          "reason": "ビタミンAが目をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "鉄分",
+        "B12",
+        "ビタミンA",
+        "貧血"
+      ]
+    },
+    {
+      "id": "lamb",
+      "name": "ラム肉",
+      "name_reading": "らむにく",
+      "name_en": "Lamb",
+      "category": "肉類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 235,
+        "protein_g": 19.8,
+        "fat_g": 17.1,
+        "carbs_g": 0.3,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0.15,
+          "vitamin_b2_mg": 0.27,
+          "vitamin_b6_mg": 0.26,
+          "vitamin_b12_ug": 2.9,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 5.8,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 9,
+          "magnesium_mg": 22,
+          "potassium_mg": 310,
+          "sodium_mg": 70,
+          "phosphorus_mg": 200,
+          "iron_mg": 2.0,
+          "zinc_mg": 3.5,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 7,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "carnitine",
+          "name": "カルニチン",
+          "amount_per_100g": "約200mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "脂肪燃焼サポート",
+            "エネルギー産生",
+            "持久力向上"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "muscles": {
+          "score_contribution": 0.8,
+          "reason": "カルニチン・タンパク質で筋肉エネルギーをサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": true,
+        "message": "脂肪をエネルギーに変える力が落ちているサインかもしれません。カルニチンが豊富です"
+      },
+      "cooking_tips": [],
+      "tags": [
+        "カルニチン",
+        "脂肪燃焼",
+        "鉄分"
+      ]
+    },
+    {
+      "id": "salmon",
+      "name": "サーモン",
+      "name_reading": "さーもん",
+      "name_en": "Salmon",
+      "category": "魚介類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 204,
+        "protein_g": 20.1,
+        "fat_g": 12.8,
+        "carbs_g": 0.1,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 11,
+          "vitamin_d_ug": 33,
+          "vitamin_e_mg": 3.6,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0.23,
+          "vitamin_b2_mg": 0.21,
+          "vitamin_b6_mg": 0.64,
+          "vitamin_b12_ug": 5.6,
+          "vitamin_c_mg": 4,
+          "niacin_mg": 7.3,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 1.6,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 14,
+          "magnesium_mg": 27,
+          "potassium_mg": 370,
+          "sodium_mg": 66,
+          "phosphorus_mg": 240,
+          "iron_mg": 0.5,
+          "zinc_mg": 0.5,
+          "copper_mg": 0.06,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 40,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "dha",
+          "name": "DHA",
+          "amount_per_100g": "約820mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "脳・神経機能維持",
+            "記憶力向上",
+            "中性脂肪低下"
+          ]
+        },
+        {
+          "id": "epa",
+          "name": "EPA",
+          "amount_per_100g": "約492mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "血液サラサラ",
+            "抗炎症",
+            "心疾患リスク低下"
+          ]
+        },
+        {
+          "id": "astaxanthin",
+          "name": "アスタキサンチン",
+          "amount_per_100g": "約3mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "強力抗酸化",
+            "目の疲れサポート",
+            "皮膚老化抑制"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "brain": {
+          "score_contribution": 0.9,
+          "reason": "DHAが脳機能・記憶力をサポート"
+        },
+        "eyes": {
+          "score_contribution": 0.8,
+          "reason": "アスタキサンチンが目の疲れをサポート"
+        },
+        "skin": {
+          "score_contribution": 0.7,
+          "reason": "アスタキサンチンが皮膚老化抑制をサポート"
+        },
+        "immune": {
+          "score_contribution": 0.6,
+          "reason": "EPAが抗炎症作用をサポート"
+        }
+      },
+      "combination_tips": [
+        {
+          "partner_food_example": "緑黄色野菜",
+          "effect": "DHAの酸化を防ぐ可能性があります",
+          "reason": "ビタミンEがDHAの酸化を防ぐ"
+        }
+      ],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "DHA",
+        "EPA",
+        "アスタキサンチン",
+        "脳",
+        "目",
+        "抗酸化"
+      ]
+    },
+    {
+      "id": "tuna",
+      "name": "マグロ",
+      "name_reading": "まぐろ",
+      "name_en": "Tuna",
+      "category": "魚介類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 125,
+        "protein_g": 26.4,
+        "fat_g": 1.4,
+        "carbs_g": 0.1,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 83,
+          "vitamin_d_ug": 4,
+          "vitamin_e_mg": 0.8,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0.1,
+          "vitamin_b2_mg": 0.05,
+          "vitamin_b6_mg": 0.85,
+          "vitamin_b12_ug": 1.3,
+          "vitamin_c_mg": 2,
+          "niacin_mg": 14.2,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0.9,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 5,
+          "magnesium_mg": 45,
+          "potassium_mg": 380,
+          "sodium_mg": 49,
+          "phosphorus_mg": 270,
+          "iron_mg": 1.1,
+          "zinc_mg": 0.4,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 110,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "imidapeptide",
+          "name": "イミダペプチド",
+          "amount_per_100g": "約100mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "疲労回復",
+            "抗酸化"
+          ]
+        },
+        {
+          "id": "dha",
+          "name": "DHA",
+          "amount_per_100g": "約115mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "脳機能維持",
+            "記憶力"
+          ]
+        },
+        {
+          "id": "epa",
+          "name": "EPA",
+          "amount_per_100g": "約27mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "血液サラサラ",
+            "抗炎症"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "brain": {
+          "score_contribution": 0.8,
+          "reason": "DHAとイミダペプチドが脳疲労をサポート"
+        },
+        "muscles": {
+          "score_contribution": 0.9,
+          "reason": "超高タンパクで筋肉をサポート"
+        },
+        "immune": {
+          "score_contribution": 0.6,
+          "reason": "セレンが免疫をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "高タンパク",
+        "DHA",
+        "EPA",
+        "疲労回復",
+        "アスリート"
+      ]
+    },
+    {
+      "id": "mackerel",
+      "name": "サバ",
+      "name_reading": "さば",
+      "name_en": "Mackerel",
+      "category": "魚介類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 211,
+        "protein_g": 20.7,
+        "fat_g": 16.8,
+        "carbs_g": 0.3,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 37,
+          "vitamin_d_ug": 11,
+          "vitamin_e_mg": 1.3,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0.21,
+          "vitamin_b2_mg": 0.31,
+          "vitamin_b6_mg": 0.44,
+          "vitamin_b12_ug": 12.9,
+          "vitamin_c_mg": 1,
+          "niacin_mg": 8.9,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 6,
+          "magnesium_mg": 30,
+          "potassium_mg": 320,
+          "sodium_mg": 140,
+          "phosphorus_mg": 220,
+          "iron_mg": 1.1,
+          "zinc_mg": 1.1,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 43,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "dha",
+          "name": "DHA",
+          "amount_per_100g": "約970mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "脳機能",
+            "記憶力",
+            "中性脂肪低下"
+          ]
+        },
+        {
+          "id": "epa",
+          "name": "EPA",
+          "amount_per_100g": "約690mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "血液サラサラ",
+            "抗炎症",
+            "コレステロール低下"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "brain": {
+          "score_contribution": 0.9,
+          "reason": "DHA・EPAが脳を強力サポート"
+        },
+        "immune": {
+          "score_contribution": 0.5,
+          "reason": "EPAが抗炎症をサポート"
+        },
+        "sleep": {
+          "score_contribution": 0.5,
+          "reason": "B12・マグネシウムが睡眠をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "DHA",
+        "EPA",
+        "脳",
+        "青魚",
+        "血液サラサラ"
+      ]
+    },
+    {
+      "id": "sardine",
+      "name": "イワシ",
+      "name_reading": "いわし",
+      "name_en": "Sardine",
+      "category": "魚介類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 169,
+        "protein_g": 19.2,
+        "fat_g": 9.2,
+        "carbs_g": 0.2,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 27,
+          "vitamin_d_ug": 32,
+          "vitamin_e_mg": 1.0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0.03,
+          "vitamin_b2_mg": 0.36,
+          "vitamin_b6_mg": 0.49,
+          "vitamin_b12_ug": 16,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 7.7,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 74,
+          "magnesium_mg": 30,
+          "potassium_mg": 270,
+          "sodium_mg": 150,
+          "phosphorus_mg": 230,
+          "iron_mg": 2.1,
+          "zinc_mg": 1.5,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 38,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "dha",
+          "name": "DHA",
+          "amount_per_100g": "約870mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "脳機能",
+            "記憶力"
+          ]
+        },
+        {
+          "id": "epa",
+          "name": "EPA",
+          "amount_per_100g": "約780mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "血液サラサラ",
+            "抗炎症"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "brain": {
+          "score_contribution": 0.9,
+          "reason": "DHAが脳機能を強力サポート"
+        },
+        "bones": {
+          "score_contribution": 0.7,
+          "reason": "カルシウム・ビタミンDが骨をサポート"
+        },
+        "immune": {
+          "score_contribution": 0.6,
+          "reason": "EPAが抗炎症をサポート"
+        }
+      },
+      "combination_tips": [
+        {
+          "partner_food_example": "大根おろし",
+          "effect": "消化を助ける可能性があります",
+          "reason": "大根の酵素が魚の脂質の消化をサポート"
+        }
+      ],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "DHA",
+        "EPA",
+        "カルシウム",
+        "骨",
+        "脳"
+      ]
+    },
+    {
+      "id": "bonito",
+      "name": "カツオ",
+      "name_reading": "かつお",
+      "name_en": "Bonito",
+      "category": "魚介類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 108,
+        "protein_g": 25.8,
+        "fat_g": 0.5,
+        "carbs_g": 0.1,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 5,
+          "vitamin_d_ug": 4,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0.13,
+          "vitamin_b2_mg": 0.17,
+          "vitamin_b6_mg": 0.76,
+          "vitamin_b12_ug": 8.4,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 19.0,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 11,
+          "magnesium_mg": 42,
+          "potassium_mg": 430,
+          "sodium_mg": 43,
+          "phosphorus_mg": 280,
+          "iron_mg": 1.9,
+          "zinc_mg": 0.8,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 100,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "imidapeptide",
+          "name": "イミダペプチド",
+          "amount_per_100g": "約200mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "脳疲労回復",
+            "抗酸化",
+            "持久力向上"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "brain": {
+          "score_contribution": 0.9,
+          "reason": "イミダペプチドが脳疲労を強力サポート"
+        },
+        "muscles": {
+          "score_contribution": 0.8,
+          "reason": "高タンパク・ナイアシンが筋肉をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "イミダペプチド",
+        "脳疲労",
+        "高タンパク",
+        "疲労回復"
+      ]
+    },
+    {
+      "id": "eel",
+      "name": "ウナギ",
+      "name_reading": "うなぎ",
+      "name_en": "Eel",
+      "category": "魚介類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 255,
+        "protein_g": 17.1,
+        "fat_g": 19.3,
+        "carbs_g": 0.3,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 2400,
+          "vitamin_d_ug": 18,
+          "vitamin_e_mg": 7.4,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0.75,
+          "vitamin_b2_mg": 0.74,
+          "vitamin_b6_mg": 0.13,
+          "vitamin_b12_ug": 5,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 130,
+          "magnesium_mg": 20,
+          "potassium_mg": 230,
+          "sodium_mg": 74,
+          "phosphorus_mg": 260,
+          "iron_mg": 0.5,
+          "zinc_mg": 1.4,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 22,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "dha",
+          "name": "DHA",
+          "amount_per_100g": "約742mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "脳機能",
+            "記憶力"
+          ]
+        },
+        {
+          "id": "epa",
+          "name": "EPA",
+          "amount_per_100g": "約742mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "血液サラサラ"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "brain": {
+          "score_contribution": 0.9,
+          "reason": "ビタミンB1・DHAが脳疲労をサポート"
+        },
+        "eyes": {
+          "score_contribution": 1.0,
+          "reason": "ビタミンAが目を強力サポート"
+        },
+        "skin": {
+          "score_contribution": 0.8,
+          "reason": "ビタミンA・Eが肌をサポート"
+        },
+        "bones": {
+          "score_contribution": 0.7,
+          "reason": "ビタミンD・カルシウムが骨をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "スタミナ",
+        "ビタミンA",
+        "DHA",
+        "目",
+        "肌"
+      ]
+    },
+    {
+      "id": "oyster",
+      "name": "カキ（牡蠣）",
+      "name_reading": "かき",
+      "name_en": "Oyster",
+      "category": "魚介類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 60,
+        "protein_g": 6.9,
+        "fat_g": 2.2,
+        "carbs_g": 4.9,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 30,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0.07,
+          "vitamin_b2_mg": 0.14,
+          "vitamin_b6_mg": 0.05,
+          "vitamin_b12_ug": 28,
+          "vitamin_c_mg": 3,
+          "niacin_mg": 0,
+          "folate_ug": 39,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 88,
+          "magnesium_mg": 65,
+          "potassium_mg": 190,
+          "sodium_mg": 530,
+          "phosphorus_mg": 100,
+          "iron_mg": 2.1,
+          "zinc_mg": 14.5,
+          "copper_mg": 1.04,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 34,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [],
+      "body_parts_effects": {
+        "brain": {
+          "score_contribution": 0.8,
+          "reason": "亜鉛・B12が脳神経をサポート"
+        },
+        "immune": {
+          "score_contribution": 0.9,
+          "reason": "亜鉛が免疫機能を強力サポート"
+        },
+        "skin": {
+          "score_contribution": 0.7,
+          "reason": "亜鉛が皮膚の再生をサポート"
+        }
+      },
+      "combination_tips": [
+        {
+          "partner_food_example": "レモン",
+          "effect": "亜鉛の吸収が高まる可能性があります",
+          "reason": "ビタミンCが亜鉛の吸収を促進"
+        }
+      ],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "亜鉛",
+        "B12",
+        "免疫",
+        "海のミルク"
+      ]
+    },
+    {
+      "id": "shijimi",
+      "name": "シジミ",
+      "name_reading": "しじみ",
+      "name_en": "Corbicula",
+      "category": "魚介類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 64,
+        "protein_g": 7.5,
+        "fat_g": 1.4,
+        "carbs_g": 4.5,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 330,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0.02,
+          "vitamin_b2_mg": 0.44,
+          "vitamin_b6_mg": 0.08,
+          "vitamin_b12_ug": 68,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 240,
+          "magnesium_mg": 11,
+          "potassium_mg": 83,
+          "sodium_mg": 180,
+          "phosphorus_mg": 120,
+          "iron_mg": 8.3,
+          "zinc_mg": 2.1,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [],
+      "body_parts_effects": {
+        "brain": {
+          "score_contribution": 0.8,
+          "reason": "B12・鉄が脳機能をサポート"
+        },
+        "gut": {
+          "score_contribution": 0.6,
+          "reason": "肝臓・腸の働きをサポートする可能性があります"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "B12",
+        "鉄分",
+        "肝臓",
+        "二日酔い"
+      ]
+    },
+    {
+      "id": "clam",
+      "name": "アサリ",
+      "name_reading": "あさり",
+      "name_en": "Clam",
+      "category": "魚介類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 27,
+        "protein_g": 6.0,
+        "fat_g": 0.6,
+        "carbs_g": 0.4,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 4,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0.02,
+          "vitamin_b2_mg": 0.16,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 52,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 1.5,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 66,
+          "magnesium_mg": 100,
+          "potassium_mg": 140,
+          "sodium_mg": 870,
+          "phosphorus_mg": 85,
+          "iron_mg": 3.8,
+          "zinc_mg": 1.0,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [],
+      "body_parts_effects": {
+        "brain": {
+          "score_contribution": 0.7,
+          "reason": "鉄・B12が脳機能をサポート"
+        },
+        "immune": {
+          "score_contribution": 0.5,
+          "reason": "鉄が免疫をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "鉄分",
+        "B12",
+        "マグネシウム"
+      ]
+    },
+    {
+      "id": "spinach",
+      "name": "ほうれん草",
+      "name_reading": "ほうれんそう",
+      "name_en": "Spinach",
+      "category": "野菜類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 18,
+        "protein_g": 2.2,
+        "fat_g": 0.4,
+        "carbs_g": 2.8,
+        "fiber_g": 2.8,
+        "vitamins": {
+          "vitamin_a_ug": 350,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 2.1,
+          "vitamin_k_ug": 270,
+          "vitamin_b1_mg": 0.11,
+          "vitamin_b2_mg": 0.2,
+          "vitamin_b6_mg": 0.14,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 35,
+          "niacin_mg": 0,
+          "folate_ug": 210,
+          "pantothenic_acid_mg": 0.57,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 49,
+          "magnesium_mg": 69,
+          "potassium_mg": 690,
+          "sodium_mg": 16,
+          "phosphorus_mg": 47,
+          "iron_mg": 2.0,
+          "zinc_mg": 0.7,
+          "copper_mg": 0.11,
+          "manganese_mg": 0.32,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "lutein",
+          "name": "ルテイン",
+          "amount_per_100g": "約12mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "目の黄斑保護",
+            "目の疲れサポート",
+            "抗酸化"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "eyes": {
+          "score_contribution": 0.9,
+          "reason": "ルテインが目の黄斑を強力サポート"
+        },
+        "brain": {
+          "score_contribution": 0.6,
+          "reason": "鉄・葉酸が脳機能をサポート"
+        },
+        "immune": {
+          "score_contribution": 0.5,
+          "reason": "ビタミンCが免疫をサポート"
+        },
+        "bones": {
+          "score_contribution": 0.6,
+          "reason": "ビタミンKがカルシウム代謝をサポート"
+        }
+      },
+      "combination_tips": [
+        {
+          "partner_food_example": "ごま油",
+          "effect": "ルテインの吸収が高まる可能性があります",
+          "reason": "ルテインは脂溶性で油と一緒に摂ると吸収される"
+        }
+      ],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "ルテイン",
+        "鉄分",
+        "葉酸",
+        "目",
+        "緑黄色野菜"
+      ]
+    },
+    {
+      "id": "komatsuna",
+      "name": "小松菜",
+      "name_reading": "こまつな",
+      "name_en": "Japanese Mustard Spinach",
+      "category": "野菜類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 13,
+        "protein_g": 1.5,
+        "fat_g": 0.2,
+        "carbs_g": 2.4,
+        "fiber_g": 1.9,
+        "vitamins": {
+          "vitamin_a_ug": 260,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0.9,
+          "vitamin_k_ug": 210,
+          "vitamin_b1_mg": 0.09,
+          "vitamin_b2_mg": 0.13,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 39,
+          "niacin_mg": 0,
+          "folate_ug": 110,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 170,
+          "magnesium_mg": 12,
+          "potassium_mg": 500,
+          "sodium_mg": 15,
+          "phosphorus_mg": 45,
+          "iron_mg": 2.8,
+          "zinc_mg": 0,
+          "copper_mg": 0,
+          "manganese_mg": 0.18,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [],
+      "body_parts_effects": {
+        "bones": {
+          "score_contribution": 0.8,
+          "reason": "カルシウムが豊富で骨をサポート"
+        },
+        "eyes": {
+          "score_contribution": 0.6,
+          "reason": "ビタミンAが目をサポート"
+        },
+        "immune": {
+          "score_contribution": 0.5,
+          "reason": "ビタミンCが免疫をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "カルシウム",
+        "鉄分",
+        "緑黄色野菜"
+      ]
+    },
+    {
+      "id": "kale",
+      "name": "ケール",
+      "name_reading": "けーる",
+      "name_en": "Kale",
+      "category": "野菜類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 28,
+        "protein_g": 2.1,
+        "fat_g": 0.4,
+        "carbs_g": 5.6,
+        "fiber_g": 3.7,
+        "vitamins": {
+          "vitamin_a_ug": 300,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 2.4,
+          "vitamin_k_ug": 210,
+          "vitamin_b1_mg": 0.06,
+          "vitamin_b2_mg": 0.15,
+          "vitamin_b6_mg": 0.16,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 81,
+          "niacin_mg": 0,
+          "folate_ug": 120,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 220,
+          "magnesium_mg": 44,
+          "potassium_mg": 420,
+          "sodium_mg": 60,
+          "phosphorus_mg": 45,
+          "iron_mg": 0.8,
+          "zinc_mg": 0.4,
+          "copper_mg": 0.07,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "quercetin",
+          "name": "ケルセチン",
+          "amount_per_100g": "約45mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "抗酸化",
+            "抗炎症",
+            "免疫サポート"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "immune": {
+          "score_contribution": 0.9,
+          "reason": "ビタミンC・ケルセチンが免疫を強力サポート"
+        },
+        "bones": {
+          "score_contribution": 0.8,
+          "reason": "カルシウム・ビタミンKが骨をサポート"
+        },
+        "eyes": {
+          "score_contribution": 0.7,
+          "reason": "ビタミンAが目をサポート"
+        },
+        "skin": {
+          "score_contribution": 0.6,
+          "reason": "ビタミンC・Eが肌をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "スーパーフード",
+        "カルシウム",
+        "ビタミンK",
+        "免疫"
+      ]
+    },
+    {
+      "id": "broccoli",
+      "name": "ブロッコリー",
+      "name_reading": "ぶろっこりー",
+      "name_en": "Broccoli",
+      "category": "野菜類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 37,
+        "protein_g": 4.3,
+        "fat_g": 0.5,
+        "carbs_g": 6.6,
+        "fiber_g": 4.4,
+        "vitamins": {
+          "vitamin_a_ug": 81,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 3.0,
+          "vitamin_k_ug": 160,
+          "vitamin_b1_mg": 0.17,
+          "vitamin_b2_mg": 0.23,
+          "vitamin_b6_mg": 0.3,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 120,
+          "niacin_mg": 0,
+          "folate_ug": 210,
+          "pantothenic_acid_mg": 1.4,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 50,
+          "magnesium_mg": 29,
+          "potassium_mg": 360,
+          "sodium_mg": 20,
+          "phosphorus_mg": 89,
+          "iron_mg": 1.3,
+          "zinc_mg": 0.8,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 3,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "quercetin",
+          "name": "ケルセチン",
+          "amount_per_100g": "約3mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "抗酸化",
+            "抗炎症"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "immune": {
+          "score_contribution": 0.9,
+          "reason": "ビタミンCが免疫を強力サポート"
+        },
+        "skin": {
+          "score_contribution": 0.7,
+          "reason": "ビタミンC・Eが肌をサポート"
+        },
+        "bones": {
+          "score_contribution": 0.5,
+          "reason": "ビタミンK・カルシウムが骨をサポート"
+        }
+      },
+      "combination_tips": [
+        {
+          "partner_food_example": "オリーブオイル",
+          "effect": "脂溶性ビタミンの吸収が高まる可能性があります",
+          "reason": "ビタミンKは脂溶性で油と合わせると吸収率UP"
+        }
+      ],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "ビタミンC",
+        "葉酸",
+        "免疫",
+        "緑黄色野菜"
+      ]
+    },
+    {
+      "id": "tomato",
+      "name": "トマト",
+      "name_reading": "とまと",
+      "name_en": "Tomato",
+      "category": "野菜類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 20,
+        "protein_g": 0.7,
+        "fat_g": 0.1,
+        "carbs_g": 4.7,
+        "fiber_g": 1.0,
+        "vitamins": {
+          "vitamin_a_ug": 45,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0.9,
+          "vitamin_k_ug": 4,
+          "vitamin_b1_mg": 0.05,
+          "vitamin_b2_mg": 0,
+          "vitamin_b6_mg": 0.09,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 15,
+          "niacin_mg": 0,
+          "folate_ug": 22,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 7,
+          "magnesium_mg": 9,
+          "potassium_mg": 210,
+          "sodium_mg": 3,
+          "phosphorus_mg": 26,
+          "iron_mg": 0.2,
+          "zinc_mg": 0,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "lycopene",
+          "name": "リコピン",
+          "amount_per_100g": "約3mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "強力抗酸化",
+            "心血管保護",
+            "皮膚老化抑制"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "skin": {
+          "score_contribution": 0.8,
+          "reason": "リコピンが皮膚の老化抑制をサポート"
+        },
+        "immune": {
+          "score_contribution": 0.5,
+          "reason": "リコピン・ビタミンCが免疫をサポート"
+        }
+      },
+      "combination_tips": [
+        {
+          "partner_food_example": "オリーブオイル",
+          "effect": "リコピンの吸収が10倍以上高まる可能性があります",
+          "reason": "リコピンは脂溶性で加熱・油調理で吸収率が大幅UP"
+        },
+        {
+          "partner_food_example": "加熱調理",
+          "effect": "リコピンが増加します",
+          "reason": "加熱するとリコピンの吸収率が向上"
+        }
+      ],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "リコピン",
+        "抗酸化",
+        "肌",
+        "心血管"
+      ]
+    },
+    {
+      "id": "carrot",
+      "name": "にんじん",
+      "name_reading": "にんじん",
+      "name_en": "Carrot",
+      "category": "野菜類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 39,
+        "protein_g": 0.7,
+        "fat_g": 0.2,
+        "carbs_g": 9.3,
+        "fiber_g": 2.8,
+        "vitamins": {
+          "vitamin_a_ug": 900,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0.5,
+          "vitamin_k_ug": 17,
+          "vitamin_b1_mg": 0.07,
+          "vitamin_b2_mg": 0,
+          "vitamin_b6_mg": 0.1,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 6,
+          "niacin_mg": 0,
+          "folate_ug": 23,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 28,
+          "magnesium_mg": 10,
+          "potassium_mg": 270,
+          "sodium_mg": 24,
+          "phosphorus_mg": 25,
+          "iron_mg": 0.2,
+          "zinc_mg": 0,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [],
+      "body_parts_effects": {
+        "eyes": {
+          "score_contribution": 0.9,
+          "reason": "βカロテン（ビタミンA）が目を強力サポート"
+        },
+        "skin": {
+          "score_contribution": 0.7,
+          "reason": "ビタミンAが肌の再生をサポート"
+        },
+        "immune": {
+          "score_contribution": 0.6,
+          "reason": "ビタミンAが免疫をサポート"
+        }
+      },
+      "combination_tips": [
+        {
+          "partner_food_example": "油炒め",
+          "effect": "βカロテンの吸収が4倍以上高まる可能性があります",
+          "reason": "βカロテンは脂溶性で油調理で吸収率大幅UP"
+        }
+      ],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "βカロテン",
+        "ビタミンA",
+        "目",
+        "肌",
+        "免疫"
+      ]
+    },
+    {
+      "id": "garlic",
+      "name": "にんにく",
+      "name_reading": "にんにく",
+      "name_en": "Garlic",
+      "category": "野菜類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 136,
+        "protein_g": 6.4,
+        "fat_g": 0.9,
+        "carbs_g": 27.5,
+        "fiber_g": 6.2,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0.19,
+          "vitamin_b2_mg": 0,
+          "vitamin_b6_mg": 1.53,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 10,
+          "niacin_mg": 0,
+          "folate_ug": 93,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 14,
+          "magnesium_mg": 25,
+          "potassium_mg": 530,
+          "sodium_mg": 8,
+          "phosphorus_mg": 150,
+          "iron_mg": 0.8,
+          "zinc_mg": 0.8,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "quercetin",
+          "name": "ケルセチン",
+          "amount_per_100g": "約3mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "抗酸化",
+            "抗炎症",
+            "免疫サポート"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "immune": {
+          "score_contribution": 0.9,
+          "reason": "アリシン・ケルセチンが免疫を強力サポート"
+        },
+        "brain": {
+          "score_contribution": 0.5,
+          "reason": "ビタミンB6が脳機能をサポート"
+        }
+      },
+      "combination_tips": [
+        {
+          "partner_food_example": "豚肉",
+          "effect": "ビタミンB1の吸収が高まる可能性があります",
+          "reason": "アリシンがビタミンB1の体内利用率を大幅UP"
+        }
+      ],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "アリシン",
+        "免疫",
+        "抗菌",
+        "抗酸化"
+      ]
+    },
+    {
+      "id": "ginger",
+      "name": "しょうが",
+      "name_reading": "しょうが",
+      "name_en": "Ginger",
+      "category": "野菜類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 30,
+        "protein_g": 0.9,
+        "fat_g": 0.3,
+        "carbs_g": 6.6,
+        "fiber_g": 2.1,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0,
+          "vitamin_b2_mg": 0,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 2,
+          "niacin_mg": 0,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 12,
+          "magnesium_mg": 27,
+          "potassium_mg": 270,
+          "sodium_mg": 6,
+          "phosphorus_mg": 25,
+          "iron_mg": 0.5,
+          "zinc_mg": 0,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "quercetin",
+          "name": "ショウガオール/ジンゲロール",
+          "amount_per_100g": "少量",
+          "amount_note": "参考値",
+          "body_effects": [
+            "抗酸化",
+            "抗炎症",
+            "体温上昇"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "immune": {
+          "score_contribution": 0.6,
+          "reason": "ジンゲロールが免疫・抗炎症をサポート"
+        },
+        "gut": {
+          "score_contribution": 0.5,
+          "reason": "消化器官の働きをサポートする可能性があります"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "抗炎症",
+        "体温",
+        "消化",
+        "冷え性"
+      ]
+    },
+    {
+      "id": "avocado",
+      "name": "アボカド",
+      "name_reading": "あぼかど",
+      "name_en": "Avocado",
+      "category": "果実類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 187,
+        "protein_g": 2.5,
+        "fat_g": 18.7,
+        "carbs_g": 7.9,
+        "fiber_g": 5.6,
+        "vitamins": {
+          "vitamin_a_ug": 7,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 3.3,
+          "vitamin_k_ug": 20,
+          "vitamin_b1_mg": 0.1,
+          "vitamin_b2_mg": 0.21,
+          "vitamin_b6_mg": 0.32,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 15,
+          "niacin_mg": 0,
+          "folate_ug": 83,
+          "pantothenic_acid_mg": 1.5,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 9,
+          "magnesium_mg": 33,
+          "potassium_mg": 720,
+          "sodium_mg": 7,
+          "phosphorus_mg": 55,
+          "iron_mg": 0.7,
+          "zinc_mg": 0,
+          "copper_mg": 0.24,
+          "manganese_mg": 0.16,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "quercetin",
+          "name": "ルテイン",
+          "amount_per_100g": "約0.3mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "目の健康サポート"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "brain": {
+          "score_contribution": 0.7,
+          "reason": "良質な脂質・葉酸が脳をサポート"
+        },
+        "skin": {
+          "score_contribution": 0.8,
+          "reason": "ビタミンE・良質脂質が肌をサポート"
+        },
+        "gut": {
+          "score_contribution": 0.7,
+          "reason": "食物繊維が腸内環境をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "健康的脂質",
+        "葉酸",
+        "食物繊維",
+        "肌",
+        "脳"
+      ]
+    },
+    {
+      "id": "sweet_potato",
+      "name": "さつまいも",
+      "name_reading": "さつまいも",
+      "name_en": "Sweet Potato",
+      "category": "いも類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 132,
+        "protein_g": 1.2,
+        "fat_g": 0.2,
+        "carbs_g": 30.3,
+        "fiber_g": 2.2,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 1.5,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0.1,
+          "vitamin_b2_mg": 0,
+          "vitamin_b6_mg": 0.26,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 29,
+          "niacin_mg": 0,
+          "folate_ug": 49,
+          "pantothenic_acid_mg": 0.9,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 36,
+          "magnesium_mg": 24,
+          "potassium_mg": 470,
+          "sodium_mg": 11,
+          "phosphorus_mg": 46,
+          "iron_mg": 0.5,
+          "zinc_mg": 0,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [],
+      "body_parts_effects": {
+        "gut": {
+          "score_contribution": 0.7,
+          "reason": "食物繊維・オリゴ糖が腸内環境をサポート"
+        },
+        "skin": {
+          "score_contribution": 0.5,
+          "reason": "ビタミンEが肌をサポート"
+        },
+        "immune": {
+          "score_contribution": 0.4,
+          "reason": "ビタミンCが免疫をサポート"
+        }
+      },
+      "combination_tips": [
+        {
+          "partner_food_example": "バター",
+          "effect": "ビタミンEの吸収が高まる可能性があります",
+          "reason": "脂溶性ビタミンEは脂質と一緒に吸収される"
+        }
+      ],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "食物繊維",
+        "腸活",
+        "エネルギー",
+        "ビタミンC"
+      ]
+    },
+    {
+      "id": "pumpkin",
+      "name": "かぼちゃ",
+      "name_reading": "かぼちゃ",
+      "name_en": "Pumpkin",
+      "category": "野菜類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 91,
+        "protein_g": 1.9,
+        "fat_g": 0.3,
+        "carbs_g": 20.6,
+        "fiber_g": 3.5,
+        "vitamins": {
+          "vitamin_a_ug": 330,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 4.9,
+          "vitamin_k_ug": 7,
+          "vitamin_b1_mg": 0.07,
+          "vitamin_b2_mg": 0,
+          "vitamin_b6_mg": 0.16,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 43,
+          "niacin_mg": 0,
+          "folate_ug": 75,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 15,
+          "magnesium_mg": 25,
+          "potassium_mg": 450,
+          "sodium_mg": 1,
+          "phosphorus_mg": 43,
+          "iron_mg": 0.5,
+          "zinc_mg": 0,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [],
+      "body_parts_effects": {
+        "eyes": {
+          "score_contribution": 0.8,
+          "reason": "βカロテンが目をサポート"
+        },
+        "skin": {
+          "score_contribution": 0.8,
+          "reason": "ビタミンE・Aが肌をサポート"
+        },
+        "immune": {
+          "score_contribution": 0.6,
+          "reason": "ビタミンC・Aが免疫をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "βカロテン",
+        "ビタミンE",
+        "目",
+        "肌",
+        "免疫"
+      ]
+    },
+    {
+      "id": "edamame",
+      "name": "枝豆",
+      "name_reading": "えだまめ",
+      "name_en": "Edamame",
+      "category": "豆類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 135,
+        "protein_g": 11.5,
+        "fat_g": 6.2,
+        "carbs_g": 8.8,
+        "fiber_g": 5.0,
+        "vitamins": {
+          "vitamin_a_ug": 25,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0.7,
+          "vitamin_k_ug": 29,
+          "vitamin_b1_mg": 0.24,
+          "vitamin_b2_mg": 0.15,
+          "vitamin_b6_mg": 0.1,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 27,
+          "niacin_mg": 0,
+          "folate_ug": 320,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 58,
+          "magnesium_mg": 62,
+          "potassium_mg": 490,
+          "sodium_mg": 1,
+          "phosphorus_mg": 170,
+          "iron_mg": 2.7,
+          "zinc_mg": 1.4,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [],
+      "body_parts_effects": {
+        "brain": {
+          "score_contribution": 0.6,
+          "reason": "葉酸・鉄が脳機能をサポート"
+        },
+        "muscles": {
+          "score_contribution": 0.7,
+          "reason": "植物性タンパク質・亜鉛が筋肉をサポート"
+        },
+        "gut": {
+          "score_contribution": 0.5,
+          "reason": "食物繊維が腸内環境をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "葉酸",
+        "植物性タンパク",
+        "亜鉛",
+        "鉄分"
+      ]
+    },
+    {
+      "id": "broccoli_sprouts",
+      "name": "ブロッコリースプラウト",
+      "name_reading": "ぶろっこりーすぷらうと",
+      "name_en": "Broccoli Sprouts",
+      "category": "野菜類",
+      "data_source": "reference",
+      "is_reference_value": true,
+      "per_100g": {
+        "calories": 21,
+        "protein_g": 2.1,
+        "fat_g": 0.3,
+        "carbs_g": 3.9,
+        "fiber_g": 1.8,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0,
+          "vitamin_b2_mg": 0,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 64,
+          "niacin_mg": 0,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 57,
+          "magnesium_mg": 26,
+          "potassium_mg": 100,
+          "sodium_mg": 0,
+          "phosphorus_mg": 72,
+          "iron_mg": 0.7,
+          "zinc_mg": 0,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "quercetin",
+          "name": "スルフォラファン",
+          "amount_per_100g": "高含有",
+          "amount_note": "参考値",
+          "body_effects": [
+            "解毒酵素活性化",
+            "抗酸化",
+            "免疫サポート"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "immune": {
+          "score_contribution": 1.0,
+          "reason": "スルフォラファンが解毒・免疫を強力サポート"
+        },
+        "gut": {
+          "score_contribution": 0.7,
+          "reason": "スルフォラファンが腸の解毒をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "スルフォラファン",
+        "デトックス",
+        "免疫",
+        "スーパーフード"
+      ]
+    },
+    {
+      "id": "banana",
+      "name": "バナナ",
+      "name_reading": "ばなな",
+      "name_en": "Banana",
+      "category": "果実類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 93,
+        "protein_g": 1.1,
+        "fat_g": 0.2,
+        "carbs_g": 21.4,
+        "fiber_g": 1.1,
+        "vitamins": {
+          "vitamin_a_ug": 5,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0.5,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0.05,
+          "vitamin_b2_mg": 0.04,
+          "vitamin_b6_mg": 0.34,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 16,
+          "niacin_mg": 0,
+          "folate_ug": 26,
+          "pantothenic_acid_mg": 0.44,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 6,
+          "magnesium_mg": 32,
+          "potassium_mg": 360,
+          "sodium_mg": 0,
+          "phosphorus_mg": 27,
+          "iron_mg": 0.3,
+          "zinc_mg": 0,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [],
+      "body_parts_effects": {
+        "brain": {
+          "score_contribution": 0.6,
+          "reason": "ビタミンB6・マグネシウムが脳機能をサポート"
+        },
+        "sleep": {
+          "score_contribution": 0.5,
+          "reason": "マグネシウム・トリプトファンが睡眠をサポート"
+        },
+        "muscles": {
+          "score_contribution": 0.5,
+          "reason": "カリウムが筋肉機能をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": true,
+        "message": "マグネシウムや炭水化物エネルギーが不足しているサインかもしれません"
+      },
+      "cooking_tips": [],
+      "tags": [
+        "エネルギー",
+        "B6",
+        "マグネシウム",
+        "カリウム",
+        "運動後"
+      ]
+    },
+    {
+      "id": "blueberry",
+      "name": "ブルーベリー",
+      "name_reading": "ぶるーべりー",
+      "name_en": "Blueberry",
+      "category": "果実類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 49,
+        "protein_g": 0.5,
+        "fat_g": 0.1,
+        "carbs_g": 12.5,
+        "fiber_g": 3.3,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 1.7,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0,
+          "vitamin_b2_mg": 0,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 9,
+          "niacin_mg": 0,
+          "folate_ug": 11,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 8,
+          "magnesium_mg": 5,
+          "potassium_mg": 70,
+          "sodium_mg": 0,
+          "phosphorus_mg": 9,
+          "iron_mg": 0,
+          "zinc_mg": 0,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "quercetin",
+          "name": "アントシアニン",
+          "amount_per_100g": "約165mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "目の疲れサポート",
+            "強力抗酸化",
+            "脳機能サポート"
+          ]
+        },
+        {
+          "id": "lutein",
+          "name": "ルテイン",
+          "amount_per_100g": "少量",
+          "amount_note": "参考値",
+          "body_effects": [
+            "目の黄斑保護"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "eyes": {
+          "score_contribution": 0.9,
+          "reason": "アントシアニンが目の疲れを強力サポート"
+        },
+        "brain": {
+          "score_contribution": 0.7,
+          "reason": "アントシアニンが脳の老化抑制をサポート"
+        },
+        "skin": {
+          "score_contribution": 0.6,
+          "reason": "強力抗酸化が肌の老化抑制をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "アントシアニン",
+        "目",
+        "脳",
+        "抗酸化",
+        "スーパーフード"
+      ]
+    },
+    {
+      "id": "strawberry",
+      "name": "いちご",
+      "name_reading": "いちご",
+      "name_en": "Strawberry",
+      "category": "果実類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 34,
+        "protein_g": 0.9,
+        "fat_g": 0.1,
+        "carbs_g": 8.5,
+        "fiber_g": 1.4,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0.4,
+          "vitamin_k_ug": 4,
+          "vitamin_b1_mg": 0.03,
+          "vitamin_b2_mg": 0.05,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 62,
+          "niacin_mg": 0,
+          "folate_ug": 90,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 17,
+          "magnesium_mg": 13,
+          "potassium_mg": 170,
+          "sodium_mg": 0,
+          "phosphorus_mg": 31,
+          "iron_mg": 0.3,
+          "zinc_mg": 0,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [],
+      "body_parts_effects": {
+        "immune": {
+          "score_contribution": 0.8,
+          "reason": "ビタミンCが免疫を強力サポート"
+        },
+        "skin": {
+          "score_contribution": 0.7,
+          "reason": "ビタミンCがコラーゲン生成をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "ビタミンC",
+        "葉酸",
+        "免疫",
+        "肌"
+      ]
+    },
+    {
+      "id": "lemon",
+      "name": "レモン",
+      "name_reading": "れもん",
+      "name_en": "Lemon",
+      "category": "果実類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 54,
+        "protein_g": 0.9,
+        "fat_g": 0.7,
+        "carbs_g": 12.5,
+        "fiber_g": 4.9,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 1.6,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0.07,
+          "vitamin_b2_mg": 0.07,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 100,
+          "niacin_mg": 0,
+          "folate_ug": 31,
+          "pantothenic_acid_mg": 0.4,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 67,
+          "magnesium_mg": 11,
+          "potassium_mg": 130,
+          "sodium_mg": 4,
+          "phosphorus_mg": 15,
+          "iron_mg": 0.2,
+          "zinc_mg": 0,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [],
+      "body_parts_effects": {
+        "immune": {
+          "score_contribution": 0.9,
+          "reason": "ビタミンCが免疫を強力サポート"
+        },
+        "skin": {
+          "score_contribution": 0.7,
+          "reason": "ビタミンCがコラーゲン合成をサポート"
+        }
+      },
+      "combination_tips": [
+        {
+          "partner_food_example": "鉄分食材（ほうれん草など）",
+          "effect": "鉄の吸収率が大幅に高まる可能性があります",
+          "reason": "ビタミンCが非ヘム鉄の吸収を大幅促進"
+        }
+      ],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "ビタミンC",
+        "免疫",
+        "肌",
+        "鉄吸収促進"
+      ]
+    },
+    {
+      "id": "acerola",
+      "name": "アセロラ",
+      "name_reading": "あせろら",
+      "name_en": "Acerola",
+      "category": "果実類",
+      "data_source": "reference",
+      "is_reference_value": true,
+      "per_100g": {
+        "calories": 36,
+        "protein_g": 0.7,
+        "fat_g": 0.1,
+        "carbs_g": 9.0,
+        "fiber_g": 1.9,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0,
+          "vitamin_b2_mg": 0,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 1700,
+          "niacin_mg": 0,
+          "folate_ug": 13,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 11,
+          "magnesium_mg": 10,
+          "potassium_mg": 130,
+          "sodium_mg": 0,
+          "phosphorus_mg": 0,
+          "iron_mg": 0.2,
+          "zinc_mg": 0,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [],
+      "body_parts_effects": {
+        "immune": {
+          "score_contribution": 1.0,
+          "reason": "ビタミンCを超大量含み免疫を最強サポート"
+        },
+        "skin": {
+          "score_contribution": 0.9,
+          "reason": "ビタミンCがコラーゲン生成を強力サポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "ビタミンC最高量",
+        "免疫",
+        "肌",
+        "スーパーフード"
+      ]
+    },
+    {
+      "id": "pomegranate",
+      "name": "ざくろ",
+      "name_reading": "ざくろ",
+      "name_en": "Pomegranate",
+      "category": "果実類",
+      "data_source": "reference",
+      "is_reference_value": true,
+      "per_100g": {
+        "calories": 83,
+        "protein_g": 1.7,
+        "fat_g": 0.6,
+        "carbs_g": 17.0,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0,
+          "vitamin_b2_mg": 0,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 10,
+          "niacin_mg": 0,
+          "folate_ug": 49,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 8,
+          "magnesium_mg": 13,
+          "potassium_mg": 290,
+          "sodium_mg": 0,
+          "phosphorus_mg": 0,
+          "iron_mg": 0.4,
+          "zinc_mg": 0,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "quercetin",
+          "name": "プニカラジン/エラグ酸",
+          "amount_per_100g": "高含有",
+          "amount_note": "参考値",
+          "body_effects": [
+            "強力抗酸化",
+            "抗炎症",
+            "腸内環境サポート"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "gut": {
+          "score_contribution": 0.7,
+          "reason": "ポリフェノールが腸内環境をサポート"
+        },
+        "skin": {
+          "score_contribution": 0.6,
+          "reason": "エラグ酸が肌の老化抑制をサポート"
+        },
+        "immune": {
+          "score_contribution": 0.5,
+          "reason": "抗酸化成分が免疫をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "エラグ酸",
+        "抗酸化",
+        "腸活",
+        "肌"
+      ]
+    },
+    {
+      "id": "natto",
+      "name": "納豆",
+      "name_reading": "なっとう",
+      "name_en": "Natto",
+      "category": "豆類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 200,
+        "protein_g": 16.5,
+        "fat_g": 10.0,
+        "carbs_g": 12.1,
+        "fiber_g": 6.7,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0.3,
+          "vitamin_k_ug": 870,
+          "vitamin_b1_mg": 0.07,
+          "vitamin_b2_mg": 0.56,
+          "vitamin_b6_mg": 0.24,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 120,
+          "pantothenic_acid_mg": 3.6,
+          "biotin_ug": 10
+        },
+        "minerals": {
+          "calcium_mg": 90,
+          "magnesium_mg": 100,
+          "potassium_mg": 660,
+          "sodium_mg": 2,
+          "phosphorus_mg": 190,
+          "iron_mg": 3.3,
+          "zinc_mg": 1.9,
+          "copper_mg": 0.55,
+          "manganese_mg": 1.73,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "lactic_acid_bacteria",
+          "name": "ナットウキナーゼ",
+          "amount_per_100g": "約2000FU",
+          "amount_note": "参考値",
+          "body_effects": [
+            "血液サラサラ",
+            "血栓溶解",
+            "腸内環境改善"
+          ]
+        },
+        {
+          "id": "beta_glucan",
+          "name": "イソフラボン",
+          "amount_per_100g": "約75mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "骨粗鬆症予防サポート",
+            "女性ホルモン様作用"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "gut": {
+          "score_contribution": 0.9,
+          "reason": "ナットウキナーゼ・食物繊維が腸を強力サポート"
+        },
+        "bones": {
+          "score_contribution": 0.8,
+          "reason": "ビタミンK2・カルシウムが骨をサポート"
+        },
+        "immune": {
+          "score_contribution": 0.6,
+          "reason": "腸内環境改善が免疫をサポート"
+        }
+      },
+      "combination_tips": [
+        {
+          "partner_food_example": "キムチ",
+          "effect": "腸内環境への効果が高まる可能性があります",
+          "reason": "善玉菌が相乗効果でさらに増える可能性あり"
+        }
+      ],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "ナットウキナーゼ",
+        "ビタミンK2",
+        "腸活",
+        "発酵食品",
+        "骨"
+      ]
+    },
+    {
+      "id": "tofu_firm",
+      "name": "木綿豆腐",
+      "name_reading": "もめんとうふ",
+      "name_en": "Firm Tofu",
+      "category": "豆類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 73,
+        "protein_g": 7.0,
+        "fat_g": 4.9,
+        "carbs_g": 1.5,
+        "fiber_g": 0.4,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0.1,
+          "vitamin_k_ug": 4,
+          "vitamin_b1_mg": 0.1,
+          "vitamin_b2_mg": 0.05,
+          "vitamin_b6_mg": 0.05,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 93,
+          "magnesium_mg": 57,
+          "potassium_mg": 110,
+          "sodium_mg": 2,
+          "phosphorus_mg": 99,
+          "iron_mg": 1.5,
+          "zinc_mg": 0.6,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "beta_glucan",
+          "name": "大豆イソフラボン",
+          "amount_per_100g": "約25mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "骨粗鬆症予防サポート",
+            "女性ホルモン様作用"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "bones": {
+          "score_contribution": 0.7,
+          "reason": "カルシウム・イソフラボンが骨をサポート"
+        },
+        "muscles": {
+          "score_contribution": 0.6,
+          "reason": "植物性タンパク質が筋肉をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "イソフラボン",
+        "カルシウム",
+        "植物性タンパク",
+        "骨"
+      ]
+    },
+    {
+      "id": "miso",
+      "name": "味噌",
+      "name_reading": "みそ",
+      "name_en": "Miso",
+      "category": "豆類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 186,
+        "protein_g": 12.5,
+        "fat_g": 6.0,
+        "carbs_g": 21.9,
+        "fiber_g": 4.9,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0.03,
+          "vitamin_b2_mg": 0.1,
+          "vitamin_b6_mg": 0.12,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 19,
+          "pantothenic_acid_mg": 0.53,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 100,
+          "magnesium_mg": 75,
+          "potassium_mg": 380,
+          "sodium_mg": 4900,
+          "phosphorus_mg": 170,
+          "iron_mg": 3.0,
+          "zinc_mg": 0.9,
+          "copper_mg": 0.36,
+          "manganese_mg": 1.3,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "lactic_acid_bacteria",
+          "name": "麹菌・乳酸菌",
+          "amount_per_100g": "豊富",
+          "amount_note": "参考値",
+          "body_effects": [
+            "腸内環境改善",
+            "免疫サポート",
+            "消化促進"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "gut": {
+          "score_contribution": 0.8,
+          "reason": "麹菌・乳酸菌が腸内環境をサポート"
+        },
+        "immune": {
+          "score_contribution": 0.6,
+          "reason": "腸内環境改善を通じて免疫をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "発酵食品",
+        "麹菌",
+        "腸活",
+        "免疫",
+        "塩分注意"
+      ]
+    },
+    {
+      "id": "yogurt",
+      "name": "ヨーグルト",
+      "name_reading": "よーぐると",
+      "name_en": "Yogurt",
+      "category": "乳類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 62,
+        "protein_g": 3.6,
+        "fat_g": 3.0,
+        "carbs_g": 4.9,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0.04,
+          "vitamin_b2_mg": 0.14,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0.4,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0.49,
+          "biotin_ug": 2.5
+        },
+        "minerals": {
+          "calcium_mg": 120,
+          "magnesium_mg": 12,
+          "potassium_mg": 170,
+          "sodium_mg": 48,
+          "phosphorus_mg": 100,
+          "iron_mg": 0,
+          "zinc_mg": 0,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "lactic_acid_bacteria",
+          "name": "乳酸菌",
+          "amount_per_100g": "豊富",
+          "amount_note": "参考値",
+          "body_effects": [
+            "腸内環境改善",
+            "免疫サポート",
+            "便秘改善"
+          ]
+        },
+        {
+          "id": "beta_glucan",
+          "name": "プロバイオティクス",
+          "amount_per_100g": "豊富",
+          "amount_note": "参考値",
+          "body_effects": [
+            "腸内フローラ改善"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "gut": {
+          "score_contribution": 0.9,
+          "reason": "乳酸菌が腸内環境を強力サポート"
+        },
+        "immune": {
+          "score_contribution": 0.7,
+          "reason": "腸内環境改善が免疫をサポート"
+        },
+        "bones": {
+          "score_contribution": 0.7,
+          "reason": "カルシウムが骨をサポート"
+        },
+        "sleep": {
+          "score_contribution": 0.4,
+          "reason": "トリプトファンが睡眠をサポートする可能性があります"
+        }
+      },
+      "combination_tips": [
+        {
+          "partner_food_example": "バナナ・はちみつ",
+          "effect": "乳酸菌が増えやすくなる可能性があります",
+          "reason": "オリゴ糖が善玉菌のエサになる"
+        }
+      ],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "乳酸菌",
+        "カルシウム",
+        "腸活",
+        "免疫",
+        "プロバイオティクス"
+      ]
+    },
+    {
+      "id": "kefir",
+      "name": "ケフィア",
+      "name_reading": "けふぃあ",
+      "name_en": "Kefir",
+      "category": "乳類",
+      "data_source": "reference",
+      "is_reference_value": true,
+      "per_100g": {
+        "calories": 65,
+        "protein_g": 3.8,
+        "fat_g": 3.5,
+        "carbs_g": 4.6,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0.04,
+          "vitamin_b2_mg": 0.16,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0.5,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 120,
+          "magnesium_mg": 14,
+          "potassium_mg": 150,
+          "sodium_mg": 50,
+          "phosphorus_mg": 95,
+          "iron_mg": 0,
+          "zinc_mg": 0,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "lactic_acid_bacteria",
+          "name": "乳酸菌・酵母菌",
+          "amount_per_100g": "超豊富",
+          "amount_note": "参考値",
+          "body_effects": [
+            "腸内環境改善",
+            "免疫強化",
+            "精神安定サポート"
+          ]
+        },
+        {
+          "id": "gaba",
+          "name": "GABA",
+          "amount_per_100g": "少量",
+          "amount_note": "参考値",
+          "body_effects": [
+            "ストレス緩和",
+            "睡眠サポート"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "gut": {
+          "score_contribution": 1.0,
+          "reason": "多種の乳酸菌・酵母が腸を最強サポート"
+        },
+        "immune": {
+          "score_contribution": 0.8,
+          "reason": "多様な菌が免疫を強力サポート"
+        },
+        "sleep": {
+          "score_contribution": 0.5,
+          "reason": "GABAが睡眠をサポートする可能性があります"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "スーパープロバイオティクス",
+        "腸活",
+        "免疫",
+        "発酵食品"
+      ]
+    },
+    {
+      "id": "shiitake",
+      "name": "しいたけ",
+      "name_reading": "しいたけ",
+      "name_en": "Shiitake Mushroom",
+      "category": "きのこ類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 34,
+        "protein_g": 3.0,
+        "fat_g": 0.4,
+        "carbs_g": 6.4,
+        "fiber_g": 4.2,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0.4,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0.1,
+          "vitamin_b2_mg": 0.22,
+          "vitamin_b6_mg": 0.1,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 3.8,
+          "folate_ug": 49,
+          "pantothenic_acid_mg": 1.54,
+          "biotin_ug": 21
+        },
+        "minerals": {
+          "calcium_mg": 2,
+          "magnesium_mg": 14,
+          "potassium_mg": 270,
+          "sodium_mg": 2,
+          "phosphorus_mg": 62,
+          "iron_mg": 0.3,
+          "zinc_mg": 0.5,
+          "copper_mg": 0.21,
+          "manganese_mg": 0.19,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "beta_glucan",
+          "name": "β-グルカン（レンチナン）",
+          "amount_per_100g": "豊富",
+          "amount_note": "参考値",
+          "body_effects": [
+            "免疫活性化",
+            "抗腫瘍サポート",
+            "腸内環境改善"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "immune": {
+          "score_contribution": 0.9,
+          "reason": "β-グルカンが免疫細胞を強力サポート"
+        },
+        "gut": {
+          "score_contribution": 0.6,
+          "reason": "食物繊維・β-グルカンが腸をサポート"
+        },
+        "bones": {
+          "score_contribution": 0.5,
+          "reason": "ビタミンDが骨をサポート（日光干しで増加）"
+        }
+      },
+      "combination_tips": [
+        {
+          "partner_food_example": "日光に当てる（干し椎茸）",
+          "effect": "ビタミンDが大幅増加します",
+          "reason": "紫外線でビタミンDが生成される"
+        }
+      ],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "β-グルカン",
+        "免疫",
+        "ビタミンD",
+        "腸活"
+      ]
+    },
+    {
+      "id": "maitake",
+      "name": "まいたけ",
+      "name_reading": "まいたけ",
+      "name_en": "Maitake Mushroom",
+      "category": "きのこ類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 22,
+        "protein_g": 2.0,
+        "fat_g": 0.5,
+        "carbs_g": 3.8,
+        "fiber_g": 3.5,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 4.9,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0.09,
+          "vitamin_b2_mg": 0.29,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 5.8,
+          "folate_ug": 59,
+          "pantothenic_acid_mg": 1.47,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 1,
+          "magnesium_mg": 10,
+          "potassium_mg": 230,
+          "sodium_mg": 0,
+          "phosphorus_mg": 54,
+          "iron_mg": 0,
+          "zinc_mg": 0,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "beta_glucan",
+          "name": "β-グルカン（Dフラクション）",
+          "amount_per_100g": "豊富",
+          "amount_note": "参考値",
+          "body_effects": [
+            "強力免疫活性化",
+            "血糖値サポート"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "immune": {
+          "score_contribution": 1.0,
+          "reason": "Dフラクションが免疫を最強サポート"
+        },
+        "gut": {
+          "score_contribution": 0.6,
+          "reason": "食物繊維が腸をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "β-グルカン",
+        "免疫",
+        "Dフラクション",
+        "ダイエット"
+      ]
+    },
+    {
+      "id": "lions_mane",
+      "name": "ヤマブシタケ",
+      "name_reading": "やまぶしたけ",
+      "name_en": "Lion's Mane Mushroom",
+      "category": "きのこ類",
+      "data_source": "reference",
+      "is_reference_value": true,
+      "per_100g": {
+        "calories": 27,
+        "protein_g": 2.2,
+        "fat_g": 0.4,
+        "carbs_g": 5.0,
+        "fiber_g": 4.4,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0,
+          "vitamin_b2_mg": 0,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 0,
+          "magnesium_mg": 0,
+          "potassium_mg": 0,
+          "sodium_mg": 0,
+          "phosphorus_mg": 0,
+          "iron_mg": 0,
+          "zinc_mg": 0,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "beta_glucan",
+          "name": "ヘリセノン・エリナシン",
+          "amount_per_100g": "豊富",
+          "amount_note": "参考値",
+          "body_effects": [
+            "神経成長因子産生サポート",
+            "記憶力サポート",
+            "認知機能サポート"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "brain": {
+          "score_contribution": 1.0,
+          "reason": "ヘリセノンが神経成長因子産生をサポートし記憶力をサポート"
+        },
+        "gut": {
+          "score_contribution": 0.5,
+          "reason": "食物繊維が腸をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "神経成長因子",
+        "記憶力",
+        "脳",
+        "スーパーフード"
+      ]
+    },
+    {
+      "id": "reishi",
+      "name": "霊芝",
+      "name_reading": "れいし",
+      "name_en": "Reishi Mushroom",
+      "category": "きのこ類",
+      "data_source": "reference",
+      "is_reference_value": true,
+      "per_100g": {
+        "calories": 0,
+        "protein_g": 0,
+        "fat_g": 0,
+        "carbs_g": 0,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0,
+          "vitamin_b2_mg": 0,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 0,
+          "magnesium_mg": 0,
+          "potassium_mg": 0,
+          "sodium_mg": 0,
+          "phosphorus_mg": 0,
+          "iron_mg": 0,
+          "zinc_mg": 0,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "beta_glucan",
+          "name": "ガノデルマン酸",
+          "amount_per_100g": "豊富",
+          "amount_note": "参考値",
+          "body_effects": [
+            "免疫調整",
+            "ストレス耐性サポート",
+            "抗酸化"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "immune": {
+          "score_contribution": 0.9,
+          "reason": "トリテルペンが免疫調整をサポート"
+        },
+        "sleep": {
+          "score_contribution": 0.7,
+          "reason": "ストレス緩和を通じて睡眠をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "免疫調整",
+        "アダプトゲン",
+        "睡眠",
+        "抗酸化"
+      ]
+    },
+    {
+      "id": "chaga",
+      "name": "チャーガ",
+      "name_reading": "ちゃーが",
+      "name_en": "Chaga Mushroom",
+      "category": "きのこ類",
+      "data_source": "reference",
+      "is_reference_value": true,
+      "per_100g": {
+        "calories": 0,
+        "protein_g": 0,
+        "fat_g": 0,
+        "carbs_g": 0,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0,
+          "vitamin_b2_mg": 0,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 0,
+          "magnesium_mg": 0,
+          "potassium_mg": 0,
+          "sodium_mg": 0,
+          "phosphorus_mg": 0,
+          "iron_mg": 0,
+          "zinc_mg": 0,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "beta_glucan",
+          "name": "β-グルカン・ベツリン酸",
+          "amount_per_100g": "超豊富",
+          "amount_note": "参考値",
+          "body_effects": [
+            "強力抗酸化",
+            "免疫サポート"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "immune": {
+          "score_contribution": 0.9,
+          "reason": "ベツリン酸・β-グルカンが免疫をサポート"
+        },
+        "skin": {
+          "score_contribution": 0.6,
+          "reason": "SOD（抗酸化酵素）が肌の老化抑制をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "抗酸化王",
+        "免疫",
+        "スーパーフード"
+      ]
+    },
+    {
+      "id": "hijiki",
+      "name": "ひじき",
+      "name_reading": "ひじき",
+      "name_en": "Hijiki Seaweed",
+      "category": "藻類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 180,
+        "protein_g": 10.6,
+        "fat_g": 1.3,
+        "carbs_g": 58.4,
+        "fiber_g": 54.9,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0,
+          "vitamin_b2_mg": 0.18,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 1400,
+          "magnesium_mg": 620,
+          "potassium_mg": 4400,
+          "sodium_mg": 1800,
+          "phosphorus_mg": 93,
+          "iron_mg": 58.2,
+          "zinc_mg": 1.0,
+          "copper_mg": 0.2,
+          "manganese_mg": 0,
+          "iodine_ug": 45000,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [],
+      "body_parts_effects": {
+        "bones": {
+          "score_contribution": 0.9,
+          "reason": "カルシウム・マグネシウムが骨を強力サポート"
+        },
+        "gut": {
+          "score_contribution": 0.8,
+          "reason": "豊富な食物繊維が腸をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "カルシウム",
+        "鉄分",
+        "ミネラル",
+        "腸活",
+        "骨"
+      ]
+    },
+    {
+      "id": "wakame",
+      "name": "わかめ",
+      "name_reading": "わかめ",
+      "name_en": "Wakame Seaweed",
+      "category": "藻類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 16,
+        "protein_g": 1.9,
+        "fat_g": 0.2,
+        "carbs_g": 2.0,
+        "fiber_g": 3.6,
+        "vitamins": {
+          "vitamin_a_ug": 56,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0,
+          "vitamin_b2_mg": 0.18,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 100,
+          "magnesium_mg": 110,
+          "potassium_mg": 730,
+          "sodium_mg": 610,
+          "phosphorus_mg": 35,
+          "iron_mg": 0.7,
+          "zinc_mg": 0,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 3500,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "quercetin",
+          "name": "フコキサンチン",
+          "amount_per_100g": "少量",
+          "amount_note": "参考値",
+          "body_effects": [
+            "脂肪燃焼サポート",
+            "抗酸化",
+            "抗炎症"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "gut": {
+          "score_continuation": 0.7,
+          "reason": "フコイダン・食物繊維が腸をサポート"
+        },
+        "bones": {
+          "score_contribution": 0.6,
+          "reason": "カルシウム・マグネシウムが骨をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "フコイダン",
+        "カルシウム",
+        "腸活",
+        "ダイエット"
+      ]
+    },
+    {
+      "id": "nori",
+      "name": "焼き海苔",
+      "name_reading": "やきのり",
+      "name_en": "Dried Nori Seaweed",
+      "category": "藻類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 188,
+        "protein_g": 41.4,
+        "fat_g": 3.7,
+        "carbs_g": 44.3,
+        "fiber_g": 36.0,
+        "vitamins": {
+          "vitamin_a_ug": 2300,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 4.6,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0.69,
+          "vitamin_b2_mg": 2.68,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 57.6,
+          "vitamin_c_mg": 210,
+          "niacin_mg": 0,
+          "folate_ug": 1900,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 280,
+          "magnesium_mg": 300,
+          "potassium_mg": 2400,
+          "sodium_mg": 610,
+          "phosphorus_mg": 700,
+          "iron_mg": 11.4,
+          "zinc_mg": 3.6,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 2100,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [],
+      "body_parts_effects": {
+        "brain": {
+          "score_contribution": 0.8,
+          "reason": "B12・葉酸が脳機能をサポート"
+        },
+        "immune": {
+          "score_contribution": 0.7,
+          "reason": "ビタミンC・Aが免疫をサポート"
+        },
+        "bones": {
+          "score_contribution": 0.6,
+          "reason": "カルシウム・マグネシウムが骨をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "B12",
+        "葉酸",
+        "ビタミンC",
+        "鉄分",
+        "ミネラル"
+      ]
+    },
+    {
+      "id": "almond",
+      "name": "アーモンド",
+      "name_reading": "あーもんど",
+      "name_en": "Almond",
+      "category": "種実類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 608,
+        "protein_g": 19.6,
+        "fat_g": 51.8,
+        "carbs_g": 19.7,
+        "fiber_g": 10.1,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 28.8,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0.24,
+          "vitamin_b2_mg": 0.92,
+          "vitamin_b6_mg": 0.06,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 49,
+          "pantothenic_acid_mg": 0.47,
+          "biotin_ug": 8.4
+        },
+        "minerals": {
+          "calcium_mg": 250,
+          "magnesium_mg": 270,
+          "potassium_mg": 740,
+          "sodium_mg": 0,
+          "phosphorus_mg": 480,
+          "iron_mg": 4.7,
+          "zinc_mg": 3.1,
+          "copper_mg": 1.12,
+          "manganese_mg": 2.5,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [],
+      "body_parts_effects": {
+        "skin": {
+          "score_contribution": 0.9,
+          "reason": "ビタミンEが肌の老化抑制を強力サポート"
+        },
+        "bones": {
+          "score_contribution": 0.7,
+          "reason": "カルシウム・マグネシウムが骨をサポート"
+        },
+        "brain": {
+          "score_contribution": 0.5,
+          "reason": "マグネシウムが脳神経をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "ビタミンE",
+        "マグネシウム",
+        "カルシウム",
+        "肌",
+        "骨"
+      ]
+    },
+    {
+      "id": "walnut",
+      "name": "くるみ",
+      "name_reading": "くるみ",
+      "name_en": "Walnut",
+      "category": "種実類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 713,
+        "protein_g": 14.6,
+        "fat_g": 68.8,
+        "carbs_g": 11.7,
+        "fiber_g": 7.5,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 1.2,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0.26,
+          "vitamin_b2_mg": 0.15,
+          "vitamin_b6_mg": 0.49,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 91,
+          "pantothenic_acid_mg": 0.67,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 85,
+          "magnesium_mg": 150,
+          "potassium_mg": 540,
+          "sodium_mg": 4,
+          "phosphorus_mg": 280,
+          "iron_mg": 2.6,
+          "zinc_mg": 2.6,
+          "copper_mg": 1.07,
+          "manganese_mg": 3.44,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "dha",
+          "name": "ALA（オメガ3前駆体）",
+          "amount_per_100g": "約9000mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "脳機能サポート",
+            "抗炎症",
+            "心血管サポート"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "brain": {
+          "score_contribution": 0.9,
+          "reason": "オメガ3脂肪酸が脳を強力サポート"
+        },
+        "immune": {
+          "score_contribution": 0.5,
+          "reason": "オメガ3の抗炎症作用が免疫をサポート"
+        },
+        "sleep": {
+          "score_contribution": 0.4,
+          "reason": "マグネシウムが睡眠をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "オメガ3",
+        "脳",
+        "抗酸化",
+        "マグネシウム"
+      ]
+    },
+    {
+      "id": "chia_seed",
+      "name": "チアシード",
+      "name_reading": "ちあしーど",
+      "name_en": "Chia Seed",
+      "category": "種実類",
+      "data_source": "reference",
+      "is_reference_value": true,
+      "per_100g": {
+        "calories": 486,
+        "protein_g": 16.5,
+        "fat_g": 30.7,
+        "carbs_g": 42.1,
+        "fiber_g": 34.4,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0.5,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0,
+          "vitamin_b2_mg": 0,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 1.6,
+          "niacin_mg": 0,
+          "folate_ug": 49,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 631,
+          "magnesium_mg": 335,
+          "potassium_mg": 407,
+          "sodium_mg": 16,
+          "phosphorus_mg": 860,
+          "iron_mg": 7.7,
+          "zinc_mg": 4.6,
+          "copper_mg": 0.92,
+          "manganese_mg": 2.72,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "dha",
+          "name": "ALA（オメガ3）",
+          "amount_per_100g": "約17500mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "脳・心血管サポート",
+            "抗炎症"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "gut": {
+          "score_contribution": 0.9,
+          "reason": "豊富な食物繊維が腸を強力サポート"
+        },
+        "bones": {
+          "score_contribution": 0.8,
+          "reason": "カルシウム・マグネシウムが骨をサポート"
+        },
+        "brain": {
+          "score_contribution": 0.7,
+          "reason": "オメガ3が脳をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "オメガ3",
+        "食物繊維",
+        "カルシウム",
+        "スーパーフード",
+        "腸活"
+      ]
+    },
+    {
+      "id": "hemp_seed",
+      "name": "ヘンプシード",
+      "name_reading": "へんぷしーど",
+      "name_en": "Hemp Seed",
+      "category": "種実類",
+      "data_source": "reference",
+      "is_reference_value": true,
+      "per_100g": {
+        "calories": 553,
+        "protein_g": 31.6,
+        "fat_g": 49.4,
+        "carbs_g": 8.7,
+        "fiber_g": 4.0,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0,
+          "vitamin_b2_mg": 0,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 70,
+          "magnesium_mg": 700,
+          "potassium_mg": 1200,
+          "sodium_mg": 0,
+          "phosphorus_mg": 1160,
+          "iron_mg": 8.0,
+          "zinc_mg": 9.9,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "dha",
+          "name": "GLA（ガンマリノレン酸）",
+          "amount_per_100g": "約870mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "抗炎症",
+            "PMS緩和サポート"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "muscles": {
+          "score_contribution": 0.8,
+          "reason": "完全植物性タンパク（9種必須アミノ酸）が筋肉をサポート"
+        },
+        "immune": {
+          "score_contribution": 0.6,
+          "reason": "GLAが抗炎症をサポート"
+        },
+        "brain": {
+          "score_contribution": 0.5,
+          "reason": "オメガ3/6バランスが脳をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "完全タンパク",
+        "GLA",
+        "マグネシウム",
+        "スーパーフード"
+      ]
+    },
+    {
+      "id": "brazil_nut",
+      "name": "ブラジルナッツ",
+      "name_reading": "ぶらじるなっつ",
+      "name_en": "Brazil Nut",
+      "category": "種実類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 700,
+        "protein_g": 14.5,
+        "fat_g": 66.9,
+        "carbs_g": 12.3,
+        "fiber_g": 7.5,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 5.7,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0.62,
+          "vitamin_b2_mg": 0,
+          "vitamin_b6_mg": 0.1,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 22,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 160,
+          "magnesium_mg": 376,
+          "potassium_mg": 597,
+          "sodium_mg": 0,
+          "phosphorus_mg": 725,
+          "iron_mg": 2.4,
+          "zinc_mg": 4.1,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 1917,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [],
+      "body_parts_effects": {
+        "immune": {
+          "score_contribution": 0.9,
+          "reason": "超高濃度セレンが免疫・甲状腺をサポート"
+        },
+        "skin": {
+          "score_contribution": 0.7,
+          "reason": "セレン・ビタミンEが肌をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [
+        "1日2粒が目安。食べすぎるとセレン過剰になる可能性があります"
+      ],
+      "tags": [
+        "セレン最高量",
+        "免疫",
+        "甲状腺",
+        "ナッツ"
+      ]
+    },
+    {
+      "id": "sesame",
+      "name": "ごま（白）",
+      "name_reading": "ごましろ",
+      "name_en": "White Sesame",
+      "category": "種実類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 605,
+        "protein_g": 20.3,
+        "fat_g": 53.8,
+        "carbs_g": 18.5,
+        "fiber_g": 10.8,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0.49,
+          "vitamin_b2_mg": 0.23,
+          "vitamin_b6_mg": 0.64,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 93,
+          "pantothenic_acid_mg": 0.51,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 1200,
+          "magnesium_mg": 360,
+          "potassium_mg": 400,
+          "sodium_mg": 3,
+          "phosphorus_mg": 540,
+          "iron_mg": 9.9,
+          "zinc_mg": 5.9,
+          "copper_mg": 1.21,
+          "manganese_mg": 2.14,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "collagen",
+          "name": "セサミン",
+          "amount_per_100g": "約800mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "強力抗酸化",
+            "肝臓保護サポート",
+            "コレステロール管理サポート"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "bones": {
+          "score_contribution": 0.9,
+          "reason": "カルシウムが骨を強力サポート"
+        },
+        "skin": {
+          "score_contribution": 0.6,
+          "reason": "セサミン・ビタミンEが肌をサポート"
+        },
+        "gut": {
+          "score_contribution": 0.5,
+          "reason": "食物繊維が腸をサポート"
+        }
+      },
+      "combination_tips": [
+        {
+          "partner_food_example": "すりごま",
+          "effect": "栄養素の吸収率が大幅に高まります",
+          "reason": "殻を砕くと内部の栄養素が吸収される"
+        }
+      ],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "カルシウム",
+        "セサミン",
+        "鉄分",
+        "骨",
+        "抗酸化"
+      ]
+    },
+    {
+      "id": "flaxseed",
+      "name": "亜麻仁（フラックスシード）",
+      "name_reading": "あまにふらっくすしーど",
+      "name_en": "Flaxseed",
+      "category": "種実類",
+      "data_source": "reference",
+      "is_reference_value": true,
+      "per_100g": {
+        "calories": 534,
+        "protein_g": 18.3,
+        "fat_g": 42.7,
+        "carbs_g": 28.9,
+        "fiber_g": 27.3,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 1.64,
+          "vitamin_b2_mg": 0.16,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 87,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 255,
+          "magnesium_mg": 392,
+          "potassium_mg": 813,
+          "sodium_mg": 0,
+          "phosphorus_mg": 642,
+          "iron_mg": 5.7,
+          "zinc_mg": 4.3,
+          "copper_mg": 0,
+          "manganese_mg": 2.48,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "dha",
+          "name": "ALA（オメガ3）",
+          "amount_per_100g": "約22800mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "脳・心血管サポート",
+            "抗炎症",
+            "ホルモンバランスサポート"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "brain": {
+          "score_contribution": 0.8,
+          "reason": "オメガ3が脳をサポート"
+        },
+        "gut": {
+          "score_contribution": 0.8,
+          "reason": "豊富な食物繊維が腸をサポート"
+        },
+        "immune": {
+          "score_contribution": 0.5,
+          "reason": "オメガ3の抗炎症が免疫をサポート"
+        }
+      },
+      "combination_tips": [
+        {
+          "partner_food_example": "すり潰して摂取",
+          "effect": "栄養吸収率が大幅UP",
+          "reason": "そのままでは消化されにくいため粉砕が推奨"
+        }
+      ],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "オメガ3最高量",
+        "食物繊維",
+        "脳",
+        "腸活",
+        "スーパーフード"
+      ]
+    },
+    {
+      "id": "spirulina",
+      "name": "スピルリナ",
+      "name_reading": "すぴるりな",
+      "name_en": "Spirulina",
+      "category": "藻類",
+      "data_source": "reference",
+      "is_reference_value": true,
+      "per_100g": {
+        "calories": 290,
+        "protein_g": 57.0,
+        "fat_g": 8.0,
+        "carbs_g": 24.0,
+        "fiber_g": 8.0,
+        "vitamins": {
+          "vitamin_a_ug": 342,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 5.0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0.35,
+          "vitamin_b2_mg": 3.67,
+          "vitamin_b6_mg": 0.36,
+          "vitamin_b12_ug": 0.2,
+          "vitamin_c_mg": 10,
+          "niacin_mg": 0,
+          "folate_ug": 94,
+          "pantothenic_acid_mg": 3.46,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 120,
+          "magnesium_mg": 192,
+          "potassium_mg": 1363,
+          "sodium_mg": 0,
+          "phosphorus_mg": 0,
+          "iron_mg": 28.5,
+          "zinc_mg": 2.0,
+          "copper_mg": 0.61,
+          "manganese_mg": 1.9,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "beta_glucan",
+          "name": "フィコシアニン",
+          "amount_per_100g": "豊富",
+          "amount_note": "参考値",
+          "body_effects": [
+            "強力抗酸化",
+            "免疫活性化",
+            "抗炎症サポート"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "immune": {
+          "score_contribution": 0.9,
+          "reason": "フィコシアニン・β-カロテンが免疫を強力サポート"
+        },
+        "brain": {
+          "score_contribution": 0.6,
+          "reason": "B12・鉄が脳機能をサポート"
+        },
+        "muscles": {
+          "score_contribution": 0.7,
+          "reason": "高タンパク・鉄が筋肉をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "スーパーフード",
+        "タンパク",
+        "鉄分",
+        "フィコシアニン",
+        "免疫"
+      ]
+    },
+    {
+      "id": "maca",
+      "name": "マカ",
+      "name_reading": "まか",
+      "name_en": "Maca",
+      "category": "スーパーフード",
+      "data_source": "reference",
+      "is_reference_value": true,
+      "per_100g": {
+        "calories": 325,
+        "protein_g": 14.0,
+        "fat_g": 2.2,
+        "carbs_g": 71.0,
+        "fiber_g": 8.5,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0,
+          "vitamin_b2_mg": 0,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 450,
+          "magnesium_mg": 104,
+          "potassium_mg": 2050,
+          "sodium_mg": 0,
+          "phosphorus_mg": 440,
+          "iron_mg": 25.0,
+          "zinc_mg": 3.8,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [],
+      "body_parts_effects": {
+        "muscles": {
+          "score_contribution": 0.6,
+          "reason": "ミネラルが筋肉機能をサポート"
+        },
+        "sleep": {
+          "score_contribution": 0.5,
+          "reason": "ストレス耐性サポートを通じて睡眠をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": true,
+        "message": "エネルギーや性ホルモンバランスのサポートが必要なサインかもしれません"
+      },
+      "cooking_tips": [],
+      "tags": [
+        "アダプトゲン",
+        "スタミナ",
+        "ホルモンバランス",
+        "スーパーフード"
+      ]
+    },
+    {
+      "id": "goji_berry",
+      "name": "ゴジベリー（クコの実）",
+      "name_reading": "ごじべりー",
+      "name_en": "Goji Berry",
+      "category": "果実類",
+      "data_source": "reference",
+      "is_reference_value": true,
+      "per_100g": {
+        "calories": 349,
+        "protein_g": 14.3,
+        "fat_g": 0.4,
+        "carbs_g": 77.1,
+        "fiber_g": 7.0,
+        "vitamins": {
+          "vitamin_a_ug": 1625,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0,
+          "vitamin_b2_mg": 0,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 48,
+          "niacin_mg": 0,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 112,
+          "magnesium_mg": 96,
+          "potassium_mg": 1132,
+          "sodium_mg": 0,
+          "phosphorus_mg": 0,
+          "iron_mg": 6.8,
+          "zinc_mg": 1.98,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "quercetin",
+          "name": "ゼアキサンチン",
+          "amount_per_100g": "約2000μg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "目の黄斑保護",
+            "強力抗酸化"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "eyes": {
+          "score_contribution": 1.0,
+          "reason": "ゼアキサンチンが目の黄斑を最強サポート"
+        },
+        "immune": {
+          "score_contribution": 0.8,
+          "reason": "ビタミンA・Cが免疫をサポート"
+        },
+        "skin": {
+          "score_contribution": 0.6,
+          "reason": "抗酸化成分が肌をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "ゼアキサンチン",
+        "目",
+        "スーパーフード",
+        "抗酸化"
+      ]
+    },
+    {
+      "id": "cacao_nibs",
+      "name": "カカオニブ",
+      "name_reading": "かかおにぶ",
+      "name_en": "Cacao Nibs",
+      "category": "スーパーフード",
+      "data_source": "reference",
+      "is_reference_value": true,
+      "per_100g": {
+        "calories": 456,
+        "protein_g": 13.0,
+        "fat_g": 46.0,
+        "carbs_g": 34.0,
+        "fiber_g": 14.0,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0.3,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0,
+          "vitamin_b2_mg": 0,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 128,
+          "magnesium_mg": 499,
+          "potassium_mg": 1524,
+          "sodium_mg": 0,
+          "phosphorus_mg": 734,
+          "iron_mg": 6.3,
+          "zinc_mg": 3.3,
+          "copper_mg": 1.76,
+          "manganese_mg": 3.84,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "quercetin",
+          "name": "テオブロミン・フラボノール",
+          "amount_per_100g": "豊富",
+          "amount_note": "参考値",
+          "body_effects": [
+            "抗酸化",
+            "気分向上サポート",
+            "心血管サポート"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "brain": {
+          "score_contribution": 0.7,
+          "reason": "テオブロミン・マグネシウムが脳をサポート"
+        },
+        "muscles": {
+          "score_contribution": 0.5,
+          "reason": "マグネシウムが筋肉をサポート"
+        },
+        "immune": {
+          "score_contribution": 0.5,
+          "reason": "抗酸化フラボノールが免疫をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": true,
+        "message": "マグネシウム不足やストレス・疲労のサインかもしれません"
+      },
+      "cooking_tips": [],
+      "tags": [
+        "マグネシウム",
+        "抗酸化",
+        "テオブロミン",
+        "脳",
+        "スーパーフード"
+      ]
+    },
+    {
+      "id": "moringa",
+      "name": "モリンガ",
+      "name_reading": "もりんが",
+      "name_en": "Moringa",
+      "category": "スーパーフード",
+      "data_source": "reference",
+      "is_reference_value": true,
+      "per_100g": {
+        "calories": 64,
+        "protein_g": 9.4,
+        "fat_g": 1.4,
+        "carbs_g": 8.3,
+        "fiber_g": 2.0,
+        "vitamins": {
+          "vitamin_a_ug": 378,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0,
+          "vitamin_b2_mg": 0,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 51,
+          "niacin_mg": 0,
+          "folate_ug": 40,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 185,
+          "magnesium_mg": 42,
+          "potassium_mg": 337,
+          "sodium_mg": 0,
+          "phosphorus_mg": 112,
+          "iron_mg": 4.0,
+          "zinc_mg": 0.6,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [],
+      "body_parts_effects": {
+        "immune": {
+          "score_contribution": 0.8,
+          "reason": "豊富なビタミン・ミネラルが免疫をサポート"
+        },
+        "eyes": {
+          "score_contribution": 0.7,
+          "reason": "ビタミンAが目をサポート"
+        },
+        "bones": {
+          "score_contribution": 0.6,
+          "reason": "カルシウムが骨をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "スーパーフード",
+        "栄養密度",
+        "ビタミンA",
+        "免疫"
+      ]
+    },
+    {
+      "id": "ashwagandha",
+      "name": "アシュワガンダ",
+      "name_reading": "あしゅわがんだ",
+      "name_en": "Ashwagandha",
+      "category": "ハーブ類",
+      "data_source": "reference",
+      "is_reference_value": true,
+      "per_100g": {
+        "calories": 0,
+        "protein_g": 0,
+        "fat_g": 0,
+        "carbs_g": 0,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0,
+          "vitamin_b2_mg": 0,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 0,
+          "magnesium_mg": 0,
+          "potassium_mg": 0,
+          "sodium_mg": 0,
+          "phosphorus_mg": 0,
+          "iron_mg": 0,
+          "zinc_mg": 0,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "quercetin",
+          "name": "ウィサノライド",
+          "amount_per_100g": "豊富",
+          "amount_note": "参考値",
+          "body_effects": [
+            "ストレス耐性サポート",
+            "コルチゾール低下",
+            "睡眠改善サポート",
+            "筋力向上サポート"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "sleep": {
+          "score_contribution": 0.9,
+          "reason": "ウィサノライドがストレス・睡眠を強力サポート"
+        },
+        "muscles": {
+          "score_contribution": 0.7,
+          "reason": "テストステロン様作用で筋力をサポートする可能性があります"
+        },
+        "brain": {
+          "score_contribution": 0.6,
+          "reason": "ストレス耐性サポートが脳機能をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "アダプトゲン",
+        "ストレス",
+        "睡眠",
+        "筋力",
+        "抗不安"
+      ]
+    },
+    {
+      "id": "chamomile",
+      "name": "カモミール",
+      "name_reading": "かもみーる",
+      "name_en": "Chamomile",
+      "category": "ハーブ類",
+      "data_source": "reference",
+      "is_reference_value": true,
+      "per_100g": {
+        "calories": 0,
+        "protein_g": 0,
+        "fat_g": 0,
+        "carbs_g": 0,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0,
+          "vitamin_b2_mg": 0,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 0,
+          "magnesium_mg": 0,
+          "potassium_mg": 0,
+          "sodium_mg": 0,
+          "phosphorus_mg": 0,
+          "iron_mg": 0,
+          "zinc_mg": 0,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "gaba",
+          "name": "アピゲニン",
+          "amount_per_100g": "豊富",
+          "amount_note": "参考値",
+          "body_effects": [
+            "リラックスサポート",
+            "睡眠誘導サポート",
+            "抗不安"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "sleep": {
+          "score_contribution": 0.9,
+          "reason": "アピゲニンがGABA受容体に作用し睡眠をサポート"
+        },
+        "gut": {
+          "score_contribution": 0.5,
+          "reason": "消化器官の炎症を鎮めるサポートをする可能性があります"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "睡眠",
+        "リラックス",
+        "不安",
+        "腸"
+      ]
+    },
+    {
+      "id": "elderberry",
+      "name": "エルダーベリー",
+      "name_reading": "えるだーべりー",
+      "name_en": "Elderberry",
+      "category": "ハーブ類",
+      "data_source": "reference",
+      "is_reference_value": true,
+      "per_100g": {
+        "calories": 73,
+        "protein_g": 0.7,
+        "fat_g": 0.5,
+        "carbs_g": 18.4,
+        "fiber_g": 7.0,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0,
+          "vitamin_b2_mg": 0,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 36,
+          "niacin_mg": 0,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 38,
+          "magnesium_mg": 0,
+          "potassium_mg": 0,
+          "sodium_mg": 0,
+          "phosphorus_mg": 39,
+          "iron_mg": 1.6,
+          "zinc_mg": 0,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "quercetin",
+          "name": "アントシアニン・フラボノイド",
+          "amount_per_100g": "超豊富",
+          "amount_note": "参考値",
+          "body_effects": [
+            "抗ウイルスサポート",
+            "免疫強化",
+            "抗炎症"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "immune": {
+          "score_contribution": 1.0,
+          "reason": "抗ウイルス・免疫活性化を強力サポート"
+        },
+        "skin": {
+          "score_contribution": 0.6,
+          "reason": "抗酸化成分が肌をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "免疫最強",
+        "抗ウイルス",
+        "アントシアニン",
+        "風邪予防"
+      ]
+    },
+    {
+      "id": "turmeric",
+      "name": "ターメリック（ウコン）",
+      "name_reading": "たーめりっく",
+      "name_en": "Turmeric",
+      "category": "スパイス類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 354,
+        "protein_g": 8.5,
+        "fat_g": 4.7,
+        "carbs_g": 72.0,
+        "fiber_g": 21.1,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0,
+          "vitamin_b2_mg": 0,
+          "vitamin_b6_mg": 1.8,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 183,
+          "magnesium_mg": 193,
+          "potassium_mg": 2525,
+          "sodium_mg": 0,
+          "phosphorus_mg": 268,
+          "iron_mg": 41.4,
+          "zinc_mg": 0,
+          "copper_mg": 0,
+          "manganese_mg": 7.83,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "quercetin",
+          "name": "クルクミン",
+          "amount_per_100g": "約3%",
+          "amount_note": "参考値",
+          "body_effects": [
+            "強力抗炎症",
+            "抗酸化",
+            "肝臓保護サポート",
+            "脳機能サポート"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "gut": {
+          "score_contribution": 0.8,
+          "reason": "クルクミンが腸の炎症抑制をサポート"
+        },
+        "brain": {
+          "score_contribution": 0.7,
+          "reason": "クルクミンが脳の炎症抑制・記憶力をサポート"
+        },
+        "immune": {
+          "score_contribution": 0.7,
+          "reason": "抗炎症作用が免疫をサポート"
+        },
+        "skin": {
+          "score_contribution": 0.5,
+          "reason": "抗酸化が肌をサポート"
+        }
+      },
+      "combination_tips": [
+        {
+          "partner_food_example": "ブラックペッパー",
+          "effect": "クルクミンの吸収率が2000%向上する可能性があります",
+          "reason": "ピペリンがクルクミンの吸収を劇的に促進"
+        },
+        {
+          "partner_food_example": "油",
+          "effect": "脂溶性クルクミンの吸収が高まる可能性があります",
+          "reason": "クルクミンは脂溶性で油と摂ると効果的"
+        }
+      ],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "クルクミン",
+        "抗炎症",
+        "抗酸化",
+        "脳",
+        "腸"
+      ]
+    },
+    {
+      "id": "brown_rice",
+      "name": "玄米",
+      "name_reading": "げんまい",
+      "name_en": "Brown Rice",
+      "category": "穀類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 165,
+        "protein_g": 2.8,
+        "fat_g": 1.0,
+        "carbs_g": 35.6,
+        "fiber_g": 1.4,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0.9,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0.16,
+          "vitamin_b2_mg": 0.02,
+          "vitamin_b6_mg": 0.21,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 2.9,
+          "folate_ug": 10,
+          "pantothenic_acid_mg": 0.65,
+          "biotin_ug": 2.5
+        },
+        "minerals": {
+          "calcium_mg": 7,
+          "magnesium_mg": 49,
+          "potassium_mg": 95,
+          "sodium_mg": 1,
+          "phosphorus_mg": 130,
+          "iron_mg": 0.6,
+          "zinc_mg": 0.8,
+          "copper_mg": 0.13,
+          "manganese_mg": 1.73,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "gaba",
+          "name": "GABA",
+          "amount_per_100g": "約10mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "ストレス緩和",
+            "血圧サポート",
+            "睡眠サポート"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "brain": {
+          "score_contribution": 0.6,
+          "reason": "ビタミンB1・GABAが脳エネルギー代謝をサポート"
+        },
+        "gut": {
+          "score_contribution": 0.5,
+          "reason": "食物繊維が腸をサポート"
+        },
+        "sleep": {
+          "score_contribution": 0.4,
+          "reason": "GABAが睡眠をサポートする可能性があります"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "GABA",
+        "ビタミンB1",
+        "食物繊維",
+        "全粒穀物"
+      ]
+    },
+    {
+      "id": "oatmeal",
+      "name": "オートミール",
+      "name_reading": "おーとみーる",
+      "name_en": "Oatmeal",
+      "category": "穀類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 350,
+        "protein_g": 13.7,
+        "fat_g": 5.7,
+        "carbs_g": 69.1,
+        "fiber_g": 9.4,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0.35,
+          "vitamin_b2_mg": 0.1,
+          "vitamin_b6_mg": 0.13,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 30,
+          "pantothenic_acid_mg": 0.96,
+          "biotin_ug": 24
+        },
+        "minerals": {
+          "calcium_mg": 47,
+          "magnesium_mg": 100,
+          "potassium_mg": 260,
+          "sodium_mg": 3,
+          "phosphorus_mg": 370,
+          "iron_mg": 3.9,
+          "zinc_mg": 3.0,
+          "copper_mg": 0.26,
+          "manganese_mg": 3.9,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "beta_glucan",
+          "name": "β-グルカン",
+          "amount_per_100g": "約4g/100g",
+          "amount_note": "参考値",
+          "body_effects": [
+            "腸内環境改善",
+            "血糖値サポート",
+            "コレステロール低下サポート"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "gut": {
+          "score_contribution": 0.9,
+          "reason": "β-グルカンが腸を強力サポート"
+        },
+        "bones": {
+          "score_contribution": 0.5,
+          "reason": "カルシウム・マグネシウムが骨をサポート"
+        },
+        "muscles": {
+          "score_contribution": 0.6,
+          "reason": "タンパク質・亜鉛が筋肉をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "β-グルカン",
+        "食物繊維",
+        "腸活",
+        "血糖値"
+      ]
+    },
+    {
+      "id": "quinoa",
+      "name": "キヌア",
+      "name_reading": "きぬあ",
+      "name_en": "Quinoa",
+      "category": "穀類",
+      "data_source": "reference",
+      "is_reference_value": true,
+      "per_100g": {
+        "calories": 368,
+        "protein_g": 13.4,
+        "fat_g": 6.3,
+        "carbs_g": 64.2,
+        "fiber_g": 7.0,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 2.4,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0.36,
+          "vitamin_b2_mg": 0.32,
+          "vitamin_b6_mg": 0.49,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 184,
+          "pantothenic_acid_mg": 0.77,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 60,
+          "magnesium_mg": 210,
+          "potassium_mg": 740,
+          "sodium_mg": 0,
+          "phosphorus_mg": 457,
+          "iron_mg": 4.6,
+          "zinc_mg": 3.1,
+          "copper_mg": 0.59,
+          "manganese_mg": 2.0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [],
+      "body_parts_effects": {
+        "muscles": {
+          "score_contribution": 0.8,
+          "reason": "完全タンパク（全必須アミノ酸）が筋肉をサポート"
+        },
+        "gut": {
+          "score_contribution": 0.6,
+          "reason": "食物繊維が腸をサポート"
+        },
+        "bones": {
+          "score_contribution": 0.5,
+          "reason": "マグネシウム・カルシウムが骨をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "完全タンパク",
+        "マグネシウム",
+        "グルテンフリー",
+        "スーパーグレイン"
+      ]
+    },
+    {
+      "id": "egg",
+      "name": "鶏卵",
+      "name_reading": "けいらん",
+      "name_en": "Egg",
+      "category": "卵類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 151,
+        "protein_g": 12.3,
+        "fat_g": 10.3,
+        "carbs_g": 0.3,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 150,
+          "vitamin_d_ug": 2.5,
+          "vitamin_e_mg": 1.0,
+          "vitamin_k_ug": 11,
+          "vitamin_b1_mg": 0.06,
+          "vitamin_b2_mg": 0.43,
+          "vitamin_b6_mg": 0.08,
+          "vitamin_b12_ug": 1.1,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 49,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 25
+        },
+        "minerals": {
+          "calcium_mg": 51,
+          "magnesium_mg": 10,
+          "potassium_mg": 130,
+          "sodium_mg": 140,
+          "phosphorus_mg": 180,
+          "iron_mg": 1.8,
+          "zinc_mg": 1.3,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 33,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "lutein",
+          "name": "ルテイン・ゼアキサンチン",
+          "amount_per_100g": "約252μg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "目の黄斑保護",
+            "目の疲れサポート"
+          ]
+        },
+        {
+          "id": "collagen",
+          "name": "コリン",
+          "amount_per_100g": "約251mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "脳機能・記憶力サポート",
+            "肝臓健康サポート"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "brain": {
+          "score_contribution": 0.8,
+          "reason": "コリン・B12が脳機能を強力サポート"
+        },
+        "eyes": {
+          "score_contribution": 0.7,
+          "reason": "ルテインが目をサポート"
+        },
+        "muscles": {
+          "score_contribution": 0.7,
+          "reason": "完全タンパクが筋肉修復をサポート"
+        }
+      },
+      "combination_tips": [
+        {
+          "partner_food_example": "ビタミンC食材",
+          "effect": "鉄の吸収率が高まる可能性があります",
+          "reason": "ビタミンCが卵の非ヘム鉄吸収を促進"
+        }
+      ],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "完全栄養食",
+        "コリン",
+        "ルテイン",
+        "脳",
+        "筋肉"
+      ]
+    },
+    {
+      "id": "milk",
+      "name": "牛乳",
+      "name_reading": "ぎゅうにゅう",
+      "name_en": "Cow's Milk",
+      "category": "乳類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 67,
+        "protein_g": 3.3,
+        "fat_g": 3.8,
+        "carbs_g": 4.8,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 39,
+          "vitamin_d_ug": 0.3,
+          "vitamin_e_mg": 0.1,
+          "vitamin_k_ug": 2,
+          "vitamin_b1_mg": 0.04,
+          "vitamin_b2_mg": 0.15,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0.3,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0.55,
+          "biotin_ug": 2
+        },
+        "minerals": {
+          "calcium_mg": 110,
+          "magnesium_mg": 10,
+          "potassium_mg": 150,
+          "sodium_mg": 41,
+          "phosphorus_mg": 93,
+          "iron_mg": 0,
+          "zinc_mg": 0.4,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 17,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [],
+      "body_parts_effects": {
+        "bones": {
+          "score_contribution": 0.8,
+          "reason": "カルシウム・ビタミンDが骨をサポート"
+        },
+        "sleep": {
+          "score_contribution": 0.5,
+          "reason": "トリプトファン・カルシウムが睡眠をサポートする可能性があります"
+        },
+        "muscles": {
+          "score_contribution": 0.5,
+          "reason": "タンパク質が筋肉をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": true,
+        "message": "カルシウム・ビタミンD不足のサインかもしれません"
+      },
+      "cooking_tips": [],
+      "tags": [
+        "カルシウム",
+        "タンパク",
+        "ビタミンD",
+        "骨",
+        "睡眠"
+      ]
+    },
+    {
+      "id": "kimchi",
+      "name": "キムチ",
+      "name_reading": "きむち",
+      "name_en": "Kimchi",
+      "category": "発酵食品類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 29,
+        "protein_g": 2.5,
+        "fat_g": 0.5,
+        "carbs_g": 4.9,
+        "fiber_g": 2.7,
+        "vitamins": {
+          "vitamin_a_ug": 65,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0,
+          "vitamin_b2_mg": 0,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 19,
+          "niacin_mg": 0,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 71,
+          "magnesium_mg": 18,
+          "potassium_mg": 370,
+          "sodium_mg": 870,
+          "phosphorus_mg": 53,
+          "iron_mg": 0.7,
+          "zinc_mg": 0,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "lactic_acid_bacteria",
+          "name": "乳酸菌（ラクトバチルス）",
+          "amount_per_100g": "超豊富",
+          "amount_note": "参考値",
+          "body_effects": [
+            "腸内フローラ改善",
+            "免疫強化",
+            "便秘改善サポート"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "gut": {
+          "score_contribution": 1.0,
+          "reason": "豊富な乳酸菌が腸を最強サポート"
+        },
+        "immune": {
+          "score_contribution": 0.8,
+          "reason": "乳酸菌・カプサイシンが免疫をサポート"
+        },
+        "skin": {
+          "score_contribution": 0.4,
+          "reason": "ビタミンCが肌をサポート"
+        }
+      },
+      "combination_tips": [
+        {
+          "partner_food_example": "納豆",
+          "effect": "腸内環境への効果がさらに高まる可能性があります",
+          "reason": "異なる善玉菌が相乗効果"
+        }
+      ],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "乳酸菌",
+        "腸活",
+        "発酵食品",
+        "免疫",
+        "プロバイオティクス"
+      ]
+    },
+    {
+      "id": "kombucha",
+      "name": "コンブチャ",
+      "name_reading": "こんぶちゃ",
+      "name_en": "Kombucha",
+      "category": "発酵食品類",
+      "data_source": "reference",
+      "is_reference_value": true,
+      "per_100g": {
+        "calories": 16,
+        "protein_g": 0.2,
+        "fat_g": 0,
+        "carbs_g": 3.5,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0,
+          "vitamin_b2_mg": 0,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 0,
+          "magnesium_mg": 0,
+          "potassium_mg": 0,
+          "sodium_mg": 0,
+          "phosphorus_mg": 0,
+          "iron_mg": 0,
+          "zinc_mg": 0,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "lactic_acid_bacteria",
+          "name": "有機酸・プロバイオティクス",
+          "amount_per_100g": "豊富",
+          "amount_note": "参考値",
+          "body_effects": [
+            "腸内環境改善",
+            "解毒サポート",
+            "免疫サポート"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "gut": {
+          "score_contribution": 0.8,
+          "reason": "プロバイオティクス・有機酸が腸をサポート"
+        },
+        "immune": {
+          "score_contribution": 0.6,
+          "reason": "腸内環境改善が免疫をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "発酵食品",
+        "腸活",
+        "デトックス",
+        "プロバイオティクス"
+      ]
+    },
+    {
+      "id": "sake_lees",
+      "name": "酒粕",
+      "name_reading": "さけかす",
+      "name_en": "Sake Lees",
+      "category": "発酵食品類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 227,
+        "protein_g": 14.9,
+        "fat_g": 1.5,
+        "carbs_g": 23.8,
+        "fiber_g": 5.2,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0.03,
+          "vitamin_b2_mg": 0.26,
+          "vitamin_b6_mg": 0.08,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 170,
+          "pantothenic_acid_mg": 3.1,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 8,
+          "magnesium_mg": 18,
+          "potassium_mg": 28,
+          "sodium_mg": 5,
+          "phosphorus_mg": 100,
+          "iron_mg": 0.8,
+          "zinc_mg": 2.1,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "lactic_acid_bacteria",
+          "name": "レジスタントプロテイン",
+          "amount_per_100g": "豊富",
+          "amount_note": "参考値",
+          "body_effects": [
+            "腸内環境改善",
+            "脂肪吸収抑制サポート"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "gut": {
+          "score_contribution": 0.7,
+          "reason": "食物繊維・レジスタントプロテインが腸をサポート"
+        },
+        "skin": {
+          "score_contribution": 0.5,
+          "reason": "アミノ酸が肌をサポートする可能性があります"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "発酵食品",
+        "腸活",
+        "葉酸",
+        "肌"
+      ]
+    },
+    {
+      "id": "olive_oil",
+      "name": "オリーブオイル",
+      "name_reading": "おりーぶおいる",
+      "name_en": "Olive Oil",
+      "category": "油脂類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 921,
+        "protein_g": 0,
+        "fat_g": 100,
+        "carbs_g": 0,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 7.4,
+          "vitamin_k_ug": 62,
+          "vitamin_b1_mg": 0,
+          "vitamin_b2_mg": 0,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 0,
+          "magnesium_mg": 0,
+          "potassium_mg": 0,
+          "sodium_mg": 0,
+          "phosphorus_mg": 0,
+          "iron_mg": 0,
+          "zinc_mg": 0,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "quercetin",
+          "name": "オレオカンタール・ポリフェノール",
+          "amount_per_100g": "豊富",
+          "amount_note": "参考値",
+          "body_effects": [
+            "強力抗炎症",
+            "抗酸化",
+            "心血管保護サポート"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "skin": {
+          "score_contribution": 0.7,
+          "reason": "ビタミンE・ポリフェノールが肌をサポート"
+        },
+        "immune": {
+          "score_contribution": 0.6,
+          "reason": "抗炎症成分が免疫をサポート"
+        },
+        "brain": {
+          "score_contribution": 0.5,
+          "reason": "良質な脂質・ポリフェノールが脳をサポート"
+        }
+      },
+      "combination_tips": [
+        {
+          "partner_food_example": "緑黄色野菜",
+          "effect": "脂溶性ビタミンの吸収率が大幅UP",
+          "reason": "油が脂溶性ビタミンの吸収を助ける"
+        }
+      ],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "オメガ9",
+        "抗炎症",
+        "抗酸化",
+        "心血管",
+        "地中海食"
+      ]
+    },
+    {
+      "id": "mct_oil",
+      "name": "MCTオイル",
+      "name_reading": "えむしーてぃーおいる",
+      "name_en": "MCT Oil",
+      "category": "油脂類",
+      "data_source": "reference",
+      "is_reference_value": true,
+      "per_100g": {
+        "calories": 860,
+        "protein_g": 0,
+        "fat_g": 99,
+        "carbs_g": 0,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0,
+          "vitamin_b2_mg": 0,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 0,
+          "magnesium_mg": 0,
+          "potassium_mg": 0,
+          "sodium_mg": 0,
+          "phosphorus_mg": 0,
+          "iron_mg": 0,
+          "zinc_mg": 0,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "coq10",
+          "name": "中鎖脂肪酸（MCT）",
+          "amount_per_100g": "99g",
+          "amount_note": "参考値",
+          "body_effects": [
+            "素早いエネルギー産生",
+            "ケトン体産生",
+            "脳エネルギーサポート"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "brain": {
+          "score_contribution": 0.8,
+          "reason": "ケトン体が脳のクリーンエネルギーをサポート"
+        },
+        "muscles": {
+          "score_contribution": 0.5,
+          "reason": "素早いエネルギー補給が筋肉をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "ケトジェニック",
+        "脳エネルギー",
+        "ケトン体",
+        "スポーツ"
+      ]
+    },
+    {
+      "id": "egoma_oil",
+      "name": "えごま油",
+      "name_reading": "えごまあぶら",
+      "name_en": "Perilla Oil",
+      "category": "油脂類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 921,
+        "protein_g": 0,
+        "fat_g": 100,
+        "carbs_g": 0,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0,
+          "vitamin_b2_mg": 0,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 0,
+          "magnesium_mg": 0,
+          "potassium_mg": 0,
+          "sodium_mg": 0,
+          "phosphorus_mg": 0,
+          "iron_mg": 0,
+          "zinc_mg": 0,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "dha",
+          "name": "ALA（α-リノレン酸）",
+          "amount_per_100g": "約60g",
+          "amount_note": "参考値",
+          "body_effects": [
+            "脳機能サポート",
+            "抗炎症",
+            "心血管サポート"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "brain": {
+          "score_contribution": 0.9,
+          "reason": "ALA（オメガ3前駆体）が脳をサポート"
+        },
+        "immune": {
+          "score_contribution": 0.5,
+          "reason": "抗炎症作用が免疫をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [
+        "熱に弱いため生食（サラダ・かけ油）推奨",
+        "加熱すると酸化するため非加熱で"
+      ],
+      "tags": [
+        "オメガ3",
+        "脳",
+        "抗炎症",
+        "非加熱推奨"
+      ]
+    },
+    {
+      "id": "coconut_oil",
+      "name": "ココナッツオイル",
+      "name_reading": "ここなっつおいる",
+      "name_en": "Coconut Oil",
+      "category": "油脂類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 862,
+        "protein_g": 0,
+        "fat_g": 99.1,
+        "carbs_g": 0,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0.6,
+          "vitamin_k_ug": 0.6,
+          "vitamin_b1_mg": 0,
+          "vitamin_b2_mg": 0,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 0,
+          "magnesium_mg": 0,
+          "potassium_mg": 0,
+          "sodium_mg": 0,
+          "phosphorus_mg": 0,
+          "iron_mg": 0,
+          "zinc_mg": 0,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "coq10",
+          "name": "中鎖脂肪酸（ラウリン酸）",
+          "amount_per_100g": "約50g",
+          "amount_note": "参考値",
+          "body_effects": [
+            "抗菌・抗ウイルスサポート",
+            "エネルギー産生",
+            "腸内環境サポート"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "immune": {
+          "score_contribution": 0.7,
+          "reason": "ラウリン酸が抗菌・免疫をサポート"
+        },
+        "brain": {
+          "score_contribution": 0.5,
+          "reason": "中鎖脂肪酸が脳エネルギーをサポート"
+        },
+        "gut": {
+          "score_contribution": 0.5,
+          "reason": "抗菌作用が腸内環境をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "ラウリン酸",
+        "抗菌",
+        "中鎖脂肪酸",
+        "ケトジェニック"
+      ]
+    },
+    {
+      "id": "honey",
+      "name": "はちみつ",
+      "name_reading": "はちみつ",
+      "name_en": "Honey",
+      "category": "甘味類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 303,
+        "protein_g": 0.2,
+        "fat_g": 0,
+        "carbs_g": 80.0,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0,
+          "vitamin_b2_mg": 0.01,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 2,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 2,
+          "magnesium_mg": 1,
+          "potassium_mg": 65,
+          "sodium_mg": 7,
+          "phosphorus_mg": 4,
+          "iron_mg": 0.2,
+          "zinc_mg": 0,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "quercetin",
+          "name": "ポリフェノール・抗菌成分",
+          "amount_per_100g": "少量",
+          "amount_note": "参考値",
+          "body_effects": [
+            "抗菌サポート",
+            "抗酸化",
+            "喉のケアサポート"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "immune": {
+          "score_contribution": 0.6,
+          "reason": "ポリフェノール・抗菌成分が免疫をサポート"
+        },
+        "gut": {
+          "score_contribution": 0.5,
+          "reason": "プレバイオティクス効果で腸をサポートする可能性があります"
+        },
+        "sleep": {
+          "score_contribution": 0.4,
+          "reason": "血糖の緩やかな上昇が睡眠をサポートする可能性があります"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "抗菌",
+        "ポリフェノール",
+        "喉",
+        "エネルギー"
+      ]
+    },
+    {
+      "id": "green_tea",
+      "name": "抹茶",
+      "name_reading": "まっちゃ",
+      "name_en": "Matcha",
+      "category": "し好飲料類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 324,
+        "protein_g": 29.6,
+        "fat_g": 5.3,
+        "carbs_g": 39.5,
+        "fiber_g": 38.5,
+        "vitamins": {
+          "vitamin_a_ug": 2900,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 28.1,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0.6,
+          "vitamin_b2_mg": 1.35,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 60,
+          "niacin_mg": 0,
+          "folate_ug": 1200,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 420,
+          "magnesium_mg": 230,
+          "potassium_mg": 2700,
+          "sodium_mg": 0,
+          "phosphorus_mg": 350,
+          "iron_mg": 17.0,
+          "zinc_mg": 3.3,
+          "copper_mg": 0.65,
+          "manganese_mg": 23.5,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "catechin",
+          "name": "カテキン（EGCG）",
+          "amount_per_100g": "約300mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "強力抗酸化",
+            "脂肪燃焼サポート",
+            "抗菌",
+            "リラックスサポート"
+          ]
+        },
+        {
+          "id": "gaba",
+          "name": "テアニン",
+          "amount_per_100g": "約45mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "集中力向上サポート",
+            "リラックス",
+            "睡眠質向上サポート"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "brain": {
+          "score_contribution": 0.9,
+          "reason": "テアニン・カテキンが脳の集中力・リラックスをサポート"
+        },
+        "immune": {
+          "score_contribution": 0.8,
+          "reason": "カテキンが免疫・抗菌をサポート"
+        },
+        "skin": {
+          "score_contribution": 0.7,
+          "reason": "抗酸化カテキンが肌をサポート"
+        },
+        "sleep": {
+          "score_contribution": 0.6,
+          "reason": "テアニンが睡眠の質をサポートする可能性があります"
+        }
+      },
+      "combination_tips": [
+        {
+          "partner_food_example": "ビタミンC食材",
+          "effect": "カテキンの吸収が高まる可能性があります",
+          "reason": "ビタミンCがカテキンの酸化を防ぐ"
+        }
+      ],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "テアニン",
+        "カテキン",
+        "抗酸化",
+        "集中力",
+        "脳"
+      ]
+    },
+    {
+      "id": "chicken_cartilage",
+      "name": "鶏軟骨",
+      "name_reading": "とりなんこつ",
+      "name_en": "Chicken Cartilage",
+      "category": "肉類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 54,
+        "protein_g": 8.5,
+        "fat_g": 1.5,
+        "carbs_g": 2.7,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0,
+          "vitamin_b2_mg": 0,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 100,
+          "magnesium_mg": 0,
+          "potassium_mg": 0,
+          "sodium_mg": 0,
+          "phosphorus_mg": 90,
+          "iron_mg": 0,
+          "zinc_mg": 0,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "collagen",
+          "name": "コラーゲン（II型）",
+          "amount_per_100g": "豊富",
+          "amount_note": "参考値",
+          "body_effects": [
+            "関節サポート",
+            "肌弾力サポート",
+            "軟骨保護"
+          ]
+        },
+        {
+          "id": "glucosamine",
+          "name": "グルコサミン",
+          "amount_per_100g": "豊富",
+          "amount_note": "参考値",
+          "body_effects": [
+            "関節の柔軟性サポート",
+            "軟骨健康サポート"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "skin": {
+          "score_contribution": 0.8,
+          "reason": "コラーゲンが肌の弾力をサポート"
+        },
+        "bones": {
+          "score_contribution": 0.7,
+          "reason": "グルコサミン・コラーゲンが関節・軟骨をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "コラーゲン",
+        "グルコサミン",
+        "関節",
+        "肌",
+        "軟骨"
+      ]
+    },
+    {
+      "id": "pigs_foot",
+      "name": "豚足",
+      "name_reading": "ぶたあし",
+      "name_en": "Pig's Trotter",
+      "category": "肉類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 230,
+        "protein_g": 19.4,
+        "fat_g": 16.5,
+        "carbs_g": 0,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0,
+          "vitamin_b2_mg": 0,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 48,
+          "magnesium_mg": 0,
+          "potassium_mg": 0,
+          "sodium_mg": 0,
+          "phosphorus_mg": 100,
+          "iron_mg": 1.5,
+          "zinc_mg": 0,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "collagen",
+          "name": "コラーゲン",
+          "amount_per_100g": "超豊富",
+          "amount_note": "参考値",
+          "body_effects": [
+            "肌弾力サポート",
+            "関節サポート",
+            "骨強化サポート"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "skin": {
+          "score_contribution": 1.0,
+          "reason": "コラーゲン超豊富で肌を最強サポート"
+        },
+        "bones": {
+          "score_contribution": 0.7,
+          "reason": "コラーゲンが骨・関節をサポート"
+        }
+      },
+      "combination_tips": [
+        {
+          "partner_food_example": "ビタミンC（レモンなど）",
+          "effect": "コラーゲン合成が促進される可能性があります",
+          "reason": "ビタミンCがコラーゲン生成に必要"
+        }
+      ],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "コラーゲン",
+        "肌",
+        "関節",
+        "美容"
+      ]
+    },
+    {
+      "id": "salmon_roe",
+      "name": "イクラ",
+      "name_reading": "いくら",
+      "name_en": "Salmon Roe",
+      "category": "魚介類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 272,
+        "protein_g": 32.6,
+        "fat_g": 15.6,
+        "carbs_g": 0.2,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 330,
+          "vitamin_d_ug": 44,
+          "vitamin_e_mg": 9.1,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0.42,
+          "vitamin_b2_mg": 0.44,
+          "vitamin_b6_mg": 0.31,
+          "vitamin_b12_ug": 5.9,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 94,
+          "magnesium_mg": 95,
+          "potassium_mg": 210,
+          "sodium_mg": 910,
+          "phosphorus_mg": 530,
+          "iron_mg": 2.0,
+          "zinc_mg": 2.4,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 130,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "dha",
+          "name": "DHA",
+          "amount_per_100g": "約1580mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "脳機能最強サポート",
+            "記憶力"
+          ]
+        },
+        {
+          "id": "epa",
+          "name": "EPA",
+          "amount_per_100g": "約750mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "血液サラサラ",
+            "抗炎症"
+          ]
+        },
+        {
+          "id": "astaxanthin",
+          "name": "アスタキサンチン",
+          "amount_per_100g": "約0.4mg",
+          "amount_note": "参考値",
+          "body_effects": [
+            "抗酸化",
+            "目の疲れサポート"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "brain": {
+          "score_contribution": 1.0,
+          "reason": "DHA超豊富で脳を最強サポート"
+        },
+        "eyes": {
+          "score_contribution": 0.8,
+          "reason": "アスタキサンチン・ビタミンDが目をサポート"
+        },
+        "immune": {
+          "score_contribution": 0.7,
+          "reason": "ビタミンD・EPAが免疫をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "DHA最高量",
+        "脳",
+        "目",
+        "ビタミンD"
+      ]
+    },
+    {
+      "id": "apple_vinegar",
+      "name": "りんご酢",
+      "name_reading": "りんごず",
+      "name_en": "Apple Cider Vinegar",
+      "category": "調味料類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 26,
+        "protein_g": 0.1,
+        "fat_g": 0,
+        "carbs_g": 9.3,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0,
+          "vitamin_b2_mg": 0,
+          "vitamin_b6_mg": 0,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 0,
+          "magnesium_mg": 0,
+          "potassium_mg": 0,
+          "sodium_mg": 0,
+          "phosphorus_mg": 0,
+          "iron_mg": 0,
+          "zinc_mg": 0,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [
+        {
+          "id": "lactic_acid_bacteria",
+          "name": "酢酸・ポリフェノール",
+          "amount_per_100g": "豊富",
+          "amount_note": "参考値",
+          "body_effects": [
+            "血糖値サポート",
+            "腸内環境改善",
+            "消化促進"
+          ]
+        }
+      ],
+      "body_parts_effects": {
+        "gut": {
+          "score_contribution": 0.7,
+          "reason": "酢酸が腸内環境をサポート"
+        },
+        "immune": {
+          "score_contribution": 0.4,
+          "reason": "ポリフェノールが免疫をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "血糖値",
+        "腸活",
+        "消化",
+        "デトックス"
+      ]
+    },
+    {
+      "id": "black_sugar",
+      "name": "黒糖",
+      "name_reading": "こくとう",
+      "name_en": "Black Sugar",
+      "category": "砂糖類",
+      "data_source": "mext_2023",
+      "is_reference_value": false,
+      "per_100g": {
+        "calories": 356,
+        "protein_g": 1.7,
+        "fat_g": 0.2,
+        "carbs_g": 89.9,
+        "fiber_g": 0,
+        "vitamins": {
+          "vitamin_a_ug": 0,
+          "vitamin_d_ug": 0,
+          "vitamin_e_mg": 0,
+          "vitamin_k_ug": 0,
+          "vitamin_b1_mg": 0.05,
+          "vitamin_b2_mg": 0.03,
+          "vitamin_b6_mg": 0.08,
+          "vitamin_b12_ug": 0,
+          "vitamin_c_mg": 0,
+          "niacin_mg": 0,
+          "folate_ug": 0,
+          "pantothenic_acid_mg": 0,
+          "biotin_ug": 0
+        },
+        "minerals": {
+          "calcium_mg": 240,
+          "magnesium_mg": 31,
+          "potassium_mg": 1100,
+          "sodium_mg": 0,
+          "phosphorus_mg": 0,
+          "iron_mg": 4.7,
+          "zinc_mg": 0,
+          "copper_mg": 0,
+          "manganese_mg": 0,
+          "iodine_ug": 0,
+          "selenium_ug": 0,
+          "chromium_ug": 0,
+          "molybdenum_ug": 0
+        }
+      },
+      "functional_ingredients": [],
+      "body_parts_effects": {
+        "bones": {
+          "score_contribution": 0.5,
+          "reason": "カルシウムが骨をサポート"
+        }
+      },
+      "combination_tips": [],
+      "craving_signal": {
+        "has_signal": false,
+        "message": null
+      },
+      "cooking_tips": [],
+      "tags": [
+        "カルシウム",
+        "ミネラル",
+        "鉄分",
+        "自然甘味料"
+      ]
+    }
+  ],
+  "total": 88
+}

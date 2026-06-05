@@ -9,6 +9,7 @@ import '../models/user_profile.dart';
 import '../models/calendar_event.dart';
 import '../models/exercise_entry.dart';
 import '../models/day_photo.dart';
+import '../models/meal_plan.dart';
 import 'dart:convert';
 import 'dart:io';
 
@@ -28,7 +29,7 @@ class DatabaseService {
     final path = join(await getDatabasesPath(), 'eat.db');
     return openDatabase(
       path,
-      version: 5,
+      version: 6,
       onUpgrade: (db, oldV, newV) async {
         if (oldV < 2) {
           await db.execute('''
@@ -58,6 +59,26 @@ class DatabaseService {
               id INTEGER PRIMARY KEY AUTOINCREMENT,
               date TEXT NOT NULL,
               path TEXT NOT NULL
+            )
+          ''');
+        }
+        if (oldV < 6) {
+          await db.execute('''
+            CREATE TABLE IF NOT EXISTS meal_plans (
+              id INTEGER PRIMARY KEY AUTOINCREMENT,
+              week_start TEXT NOT NULL,
+              date TEXT NOT NULL,
+              meal_type INTEGER NOT NULL,
+              title TEXT NOT NULL,
+              dishes_json TEXT NOT NULL
+            )
+          ''');
+          await db.execute('''
+            CREATE TABLE IF NOT EXISTS chat_messages (
+              id INTEGER PRIMARY KEY AUTOINCREMENT,
+              role TEXT NOT NULL,
+              text TEXT NOT NULL,
+              created_at TEXT NOT NULL
             )
           ''');
         }
@@ -156,6 +177,24 @@ class DatabaseService {
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             date TEXT NOT NULL,
             path TEXT NOT NULL
+          )
+        ''');
+        await db.execute('''
+          CREATE TABLE meal_plans (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            week_start TEXT NOT NULL,
+            date TEXT NOT NULL,
+            meal_type INTEGER NOT NULL,
+            title TEXT NOT NULL,
+            dishes_json TEXT NOT NULL
+          )
+        ''');
+        await db.execute('''
+          CREATE TABLE chat_messages (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            role TEXT NOT NULL,
+            text TEXT NOT NULL,
+            created_at TEXT NOT NULL
           )
         ''');
       },
@@ -427,6 +466,53 @@ class DatabaseService {
       if (await file.exists()) await file.delete();
     }
     await d.delete('day_photos', where: 'date < ?', whereArgs: [cutoff]);
+  }
+
+  // ─── MealPlan ────────────────────────────────────────────────────────────────
+
+  Future<List<MealPlan>> getMealPlansForDate(String date) async {
+    final d = await db;
+    final rows = await d.query('meal_plans',
+        where: 'date = ?', whereArgs: [date], orderBy: 'meal_type');
+    return rows.map(MealPlan.fromMap).toList();
+  }
+
+  Future<List<MealPlan>> getMealPlansForWeek(String weekStart) async {
+    final d = await db;
+    final rows = await d.query('meal_plans',
+        where: 'week_start = ?', whereArgs: [weekStart], orderBy: 'date, meal_type');
+    return rows.map(MealPlan.fromMap).toList();
+  }
+
+  Future<void> saveMealPlansForWeek(String weekStart, List<MealPlan> plans) async {
+    final d = await db;
+    await d.delete('meal_plans', where: 'week_start = ?', whereArgs: [weekStart]);
+    for (final p in plans) {
+      await d.insert('meal_plans', p.toMap());
+    }
+  }
+
+  // ─── ChatMessages ─────────────────────────────────────────────────────────────
+
+  Future<List<Map<String, dynamic>>> getChatMessages({int limit = 100}) async {
+    final d = await db;
+    final rows = await d.query('chat_messages',
+        orderBy: 'id ASC', limit: limit);
+    return rows.toList();
+  }
+
+  Future<void> insertChatMessage(String role, String text) async {
+    final d = await db;
+    await d.insert('chat_messages', {
+      'role': role,
+      'text': text,
+      'created_at': DateTime.now().toIso8601String(),
+    });
+  }
+
+  Future<void> clearChatHistory() async {
+    final d = await db;
+    await d.delete('chat_messages');
   }
 
   // ─── CSV Export ─────────────────────────────────────────────────────────────

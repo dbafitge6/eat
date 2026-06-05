@@ -11,7 +11,7 @@ class PurchaseService {
   static const _premiumKey = 'is_premium';
 
   bool _isPremium = false;
-  bool get isPremium => _isPremium;
+  bool get isPremium => true; // TODO: テスト用 - リリース前に削除
 
   StreamSubscription<List<PurchaseDetails>>? _sub;
 

@@ -21,6 +21,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   int _activityLevel = 1;
   int _goal = 0;
 
+  // 0-2: philosophy slides, 3-5: profile setup
+  static const _totalPages = 6;
+  static const _profileStartPage = 3;
+
+  void _skipIntro() {
+    _pageController.animateToPage(_profileStartPage,
+        duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
+  }
+
   @override
   Widget build(BuildContext context) {
     final color = Theme.of(context).colorScheme.primary;
@@ -28,17 +37,56 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            LinearProgressIndicator(
-              value: (_page + 1) / 4,
-              backgroundColor: Colors.grey[300],
-              valueColor: AlwaysStoppedAnimation(color),
-            ),
+            if (_page >= _profileStartPage)
+              LinearProgressIndicator(
+                value: (_page - _profileStartPage + 1) / (_totalPages - _profileStartPage),
+                backgroundColor: Colors.grey[300],
+                valueColor: AlwaysStoppedAnimation(color),
+              )
+            else
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 6),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(
+                    _profileStartPage,
+                    (i) => AnimatedContainer(
+                      duration: const Duration(milliseconds: 200),
+                      width: _page == i ? 20 : 6,
+                      height: 6,
+                      margin: const EdgeInsets.symmetric(horizontal: 3),
+                      decoration: BoxDecoration(
+                        color: _page == i ? color : Colors.grey[300],
+                        borderRadius: BorderRadius.circular(3),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             Expanded(
               child: PageView(
                 controller: _pageController,
                 physics: const NeverScrollableScrollPhysics(),
                 onPageChanged: (i) => setState(() => _page = i),
                 children: [
+                  _PhilosophyPage(
+                    index: 0,
+                    text: 'eat.は引き算のアプリです。プロテインバーも加工食品も入っていません。本当に必要な食材だけで、綺麗になれると信じているから。',
+                    onNext: _next,
+                    onSkip: _skipIntro,
+                  ),
+                  _PhilosophyPage(
+                    index: 1,
+                    text: 'まず、撮るだけでいい。食べたものを記録するうちに、自然と食への興味が生まれてきます。',
+                    onNext: _next,
+                    onSkip: _skipIntro,
+                  ),
+                  _PhilosophyPage(
+                    index: 2,
+                    text: '文科省DBにない食品もAI検索で記録できます。でも基本は本物の食材を食べてほしい。',
+                    onNext: _next,
+                    onSkip: _skipIntro,
+                  ),
                   _WelcomePage(onNext: _next),
                   _BodyPage(
                     height: _height,
@@ -96,6 +144,63 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     );
     await DatabaseService.instance.saveUserProfile(profile);
     await widget.onComplete();
+  }
+}
+
+class _PhilosophyPage extends StatelessWidget {
+  final int index;
+  final String text;
+  final VoidCallback onNext;
+  final VoidCallback onSkip;
+
+  const _PhilosophyPage({
+    required this.index,
+    required this.text,
+    required this.onNext,
+    required this.onSkip,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final color = Theme.of(context).colorScheme.primary;
+    return Padding(
+      padding: const EdgeInsets.all(36),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Spacer(),
+          Text(
+            'eat.',
+            style: TextStyle(
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
+              color: color,
+            ),
+          ),
+          const SizedBox(height: 24),
+          Text(
+            text,
+            style: const TextStyle(fontSize: 18, height: 1.8),
+          ),
+          const Spacer(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              TextButton(
+                onPressed: onSkip,
+                child: const Text('スキップ',
+                    style: TextStyle(color: Colors.grey)),
+              ),
+              ElevatedButton(
+                onPressed: onNext,
+                child: const Text('次へ'),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+        ],
+      ),
+    );
   }
 }
 

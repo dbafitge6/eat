@@ -161,6 +161,87 @@ class CravingInfo {
       );
 }
 
+// ─── foods_all.json モデル ────────────────────────────────────────────────────
+
+class FoodEntry {
+  final String id;
+  final String name;
+  final String category;
+  final bool isReferenceValue;
+  final double calories;
+  final double proteinG;
+  final double fatG;
+  final double carbsG;
+  final double fiberG;
+  final List<String> functionalIngredientIds;
+  final Map<String, double> bodyPartsEffects; // partId → score_contribution
+  final List<String> combinationTips;
+  final bool hasCravingSignal;
+  final String? cravingMessage;
+  final List<String> tags;
+  final List<String> cookingTips;
+
+  const FoodEntry({
+    required this.id,
+    required this.name,
+    required this.category,
+    required this.isReferenceValue,
+    required this.calories,
+    required this.proteinG,
+    required this.fatG,
+    required this.carbsG,
+    required this.fiberG,
+    required this.functionalIngredientIds,
+    required this.bodyPartsEffects,
+    required this.combinationTips,
+    required this.hasCravingSignal,
+    this.cravingMessage,
+    required this.tags,
+    required this.cookingTips,
+  });
+
+  factory FoodEntry.fromJson(Map<String, dynamic> j) {
+    final per = j['per_100g'] as Map<String, dynamic>? ?? {};
+    final funcList = (j['functional_ingredients'] as List? ?? [])
+        .map((f) => (f as Map<String, dynamic>)['id']?.toString() ?? '')
+        .where((s) => s.isNotEmpty)
+        .toList();
+    final effects = <String, double>{};
+    final bpe = j['body_parts_effects'] as Map<String, dynamic>? ?? {};
+    for (final e in bpe.entries) {
+      final v = (e.value as Map<String, dynamic>?)?['score_contribution'];
+      if (v != null) effects[e.key] = (v as num).toDouble();
+    }
+    final tips = (j['combination_tips'] as List? ?? [])
+        .map((t) {
+          final m = t as Map<String, dynamic>;
+          final partner = m['partner_food_example']?.toString() ?? '';
+          final effect = m['effect']?.toString() ?? '';
+          return '$partner：$effect';
+        })
+        .toList();
+    final craving = j['craving_signal'] as Map<String, dynamic>?;
+    return FoodEntry(
+      id: j['id']?.toString() ?? '',
+      name: j['name']?.toString() ?? '',
+      category: j['category']?.toString() ?? '',
+      isReferenceValue: j['is_reference_value'] as bool? ?? false,
+      calories: (per['calories'] as num? ?? 0).toDouble(),
+      proteinG: (per['protein_g'] as num? ?? 0).toDouble(),
+      fatG: (per['fat_g'] as num? ?? 0).toDouble(),
+      carbsG: (per['carbs_g'] as num? ?? 0).toDouble(),
+      fiberG: (per['fiber_g'] as num? ?? 0).toDouble(),
+      functionalIngredientIds: funcList,
+      bodyPartsEffects: effects,
+      combinationTips: tips,
+      hasCravingSignal: craving?['has_signal'] as bool? ?? false,
+      cravingMessage: craving?['message']?.toString(),
+      tags: List<String>.from(j['tags'] as List? ?? []),
+      cookingTips: List<String>.from(j['cooking_tips'] as List? ?? []),
+    );
+  }
+}
+
 // ─── Service ──────────────────────────────────────────────────────────────────
 
 class NutritionDbService {
@@ -173,6 +254,7 @@ class NutritionDbService {
   Map<String, BodyPartInfo> _bodyParts = {};
   Map<String, SymptomInfo> _symptoms = {};
   Map<String, CravingInfo> _cravings = {};
+  Map<String, FoodEntry> _foodsAll = {};
 
   bool _loaded = false;
 
@@ -186,6 +268,7 @@ class NutritionDbService {
         _loadBodyParts(),
         _loadSymptoms(),
         _loadCravings(),
+        _loadFoodsAll(),
       ]);
     } catch (e) {
       debugPrint('[NutritionDb] 初期化エラー（スキップ）: $e');
@@ -248,6 +331,20 @@ class NutritionDbService {
     );
   }
 
+  Future<void> _loadFoodsAll() async {
+    try {
+      final raw = await rootBundle.loadString('assets/databases/foods_all.json');
+      final data = jsonDecode(raw) as Map<String, dynamic>;
+      final list = data['foods'] as List? ?? [];
+      for (final item in list) {
+        final entry = FoodEntry.fromJson(item as Map<String, dynamic>);
+        if (entry.name.isNotEmpty) _foodsAll[entry.name] = entry;
+      }
+    } catch (e) {
+      debugPrint('[NutritionDb] foods_all.json 読み込みエラー: $e');
+    }
+  }
+
   // ─── Getters ──────────────────────────────────────────────────────────────
 
   Map<String, NutrientInfo> get nutrients => _nutrients;
@@ -265,19 +362,66 @@ class NutritionDbService {
 
   // ─── Lookup Methods ───────────────────────────────────────────────────────
 
-  /// Returns ingredient IDs + nutrient IDs present in a food name
-  FoodNutrientsEntry? lookupFood(String foodName) {
-    // Exact match first
-    if (_foodNutrientsMap.containsKey(foodName)) {
-      return _foodNutrientsMap[foodName];
-    }
-    // Partial match
-    for (final entry in _foodNutrientsMap.entries) {
+  /// foods_all.jsonから食材エントリを検索（部分一致あり）
+  FoodEntry? lookupFoodEntry(String foodName) {
+    if (_foodsAll.containsKey(foodName)) return _foodsAll[foodName];
+    for (final entry in _foodsAll.entries) {
       if (foodName.contains(entry.key) || entry.key.contains(foodName)) {
         return entry.value;
       }
     }
     return null;
+  }
+
+  /// Returns ingredient IDs + nutrient IDs present in a food name
+  FoodNutrientsEntry? lookupFood(String foodName) {
+    if (_foodNutrientsMap.containsKey(foodName)) {
+      return _foodNutrientsMap[foodName];
+    }
+    for (final entry in _foodNutrientsMap.entries) {
+      if (foodName.contains(entry.key) || entry.key.contains(foodName)) {
+        return entry.value;
+      }
+    }
+    // foods_all.jsonからもフォールバック検索
+    final fe = lookupFoodEntry(foodName);
+    if (fe != null) {
+      return FoodNutrientsEntry(
+        functionalIngredients: fe.functionalIngredientIds,
+        nutrients: [],
+      );
+    }
+    return null;
+  }
+
+  /// foods_all.jsonのbody_parts_effectsからスコアを取得
+  double getBodyEffect(String foodName, String partId) {
+    final entry = lookupFoodEntry(foodName);
+    return entry?.bodyPartsEffects[partId] ?? 0.0;
+  }
+
+  /// 食材リストの体の部位スコアをfoods_all.jsonベースで集計
+  Map<String, double> getBodyEffectScores(List<String> foodNames) {
+    final scores = <String, double>{};
+    for (final name in foodNames) {
+      final entry = lookupFoodEntry(name);
+      if (entry == null) continue;
+      for (final e in entry.bodyPartsEffects.entries) {
+        scores[e.key] = (scores[e.key] ?? 0.0) + e.value;
+      }
+    }
+    // 0.0〜1.0にクランプ
+    return scores.map((k, v) => MapEntry(k, v.clamp(0.0, 1.0)));
+  }
+
+  /// 今日食べた食材の調理Tipsを収集
+  List<String> getCookingTips(List<String> foodNames) {
+    final tips = <String>[];
+    for (final name in foodNames) {
+      final entry = lookupFoodEntry(name);
+      if (entry != null) tips.addAll(entry.cookingTips);
+    }
+    return tips;
   }
 
   /// Given a list of food names, compute which ingredient IDs and nutrient IDs
