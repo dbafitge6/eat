@@ -21,6 +21,7 @@ import 'photo_filter_screen.dart';
 import '../services/ad_service.dart';
 import '../models/exercise_entry.dart';
 import '../services/functional_ingredient_service.dart';
+import '../services/nutrition_db_service.dart';
 import '../widgets/body_status_widget.dart';
 import '../widgets/missing_nutrients_widget.dart';
 import 'ai_chat_screen.dart';
@@ -315,15 +316,17 @@ class _TodayScreenState extends State<TodayScreen> {
                   const SizedBox(height: 12),
 
                   // Body status widget
-                  BodyStatusWidget(
-                    foodNames: _meals.map((m) => m.foodName).toList(),
-                  ),
+                  if (NutritionDbService.instance.allBodyParts.isNotEmpty)
+                    BodyStatusWidget(
+                      foodNames: _meals.map((m) => m.foodName).toList(),
+                    ),
                   const SizedBox(height: 12),
 
                   // Missing nutrients widget
-                  MissingNutrientsWidget(
-                    todayFoodNames: _meals.map((m) => m.foodName).toList(),
-                  ),
+                  if (NutritionDbService.instance.functionalIngredients.isNotEmpty)
+                    MissingNutrientsWidget(
+                      todayFoodNames: _meals.map((m) => m.foodName).toList(),
+                    ),
                   const SizedBox(height: 28),
 
                   // Meals section header
