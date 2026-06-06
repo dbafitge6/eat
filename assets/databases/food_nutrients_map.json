@@ -275,21 +275,20 @@
   "緑茶": {
     "functional_ingredients": [
       "catechin",
-      "gaba"
+      "theanine"
     ],
     "nutrients": [
-      "vitamin_c",
-      "vitamin_k"
+      "vitamin_c"
     ]
   },
   "抹茶": {
     "functional_ingredients": [
-      "catechin"
+      "catechin",
+      "theanine"
     ],
     "nutrients": [
       "vitamin_c",
-      "vitamin_k",
-      "iron"
+      "vitamin_k"
     ]
   },
   "しいたけ": {
@@ -402,11 +401,11 @@
   },
   "ブルーベリー": {
     "functional_ingredients": [
+      "anthocyanin",
       "lutein"
     ],
     "nutrients": [
-      "vitamin_c",
-      "vitamin_e"
+      "vitamin_c"
     ]
   },
   "りんご": {
@@ -722,5 +721,146 @@
       "iron",
       "zinc"
     ]
+  },
+  "そば": {
+    "functional_ingredients": [
+      "rutin"
+    ],
+    "nutrients": [
+      "vitamin_b1",
+      "magnesium"
+    ]
+  },
+  "そば ゆで": {
+    "functional_ingredients": [
+      "rutin"
+    ],
+    "nutrients": [
+      "vitamin_b1",
+      "magnesium"
+    ]
+  },
+  "干しそば ゆで": {
+    "functional_ingredients": [
+      "rutin"
+    ],
+    "nutrients": [
+      "vitamin_b1",
+      "magnesium"
+    ]
+  },
+  "ざるそば": {
+    "functional_ingredients": [
+      "rutin"
+    ],
+    "nutrients": [
+      "vitamin_b1",
+      "magnesium"
+    ]
+  },
+  "玉露": {
+    "functional_ingredients": [
+      "theanine",
+      "catechin"
+    ],
+    "nutrients": [
+      "vitamin_c"
+    ]
+  },
+  "ほうじ茶": {
+    "functional_ingredients": [
+      "catechin"
+    ],
+    "nutrients": []
+  },
+  "ブロッコリースプラウト": {
+    "functional_ingredients": [
+      "sulforaphane"
+    ],
+    "nutrients": [
+      "vitamin_c"
+    ]
+  },
+  "もずく": {
+    "functional_ingredients": [
+      "fucoidan"
+    ],
+    "nutrients": []
+  },
+  "めかぶ": {
+    "functional_ingredients": [
+      "fucoidan"
+    ],
+    "nutrients": []
+  },
+  "豆乳": {
+    "functional_ingredients": [
+      "isoflavone"
+    ],
+    "nutrients": [
+      "calcium"
+    ]
+  },
+  "ターメリック": {
+    "functional_ingredients": [
+      "curcumin"
+    ],
+    "nutrients": []
+  },
+  "ウコン": {
+    "functional_ingredients": [
+      "curcumin"
+    ],
+    "nutrients": []
+  },
+  "なす": {
+    "functional_ingredients": [
+      "anthocyanin"
+    ],
+    "nutrients": [
+      "vitamin_b6"
+    ]
+  },
+  "黒豆": {
+    "functional_ingredients": [
+      "anthocyanin",
+      "isoflavone"
+    ],
+    "nutrients": [
+      "iron",
+      "calcium"
+    ]
+  },
+  "ぶどう": {
+    "functional_ingredients": [
+      "anthocyanin"
+    ],
+    "nutrients": [
+      "vitamin_c"
+    ]
+  },
+  "アスパラガス": {
+    "functional_ingredients": [
+      "rutin"
+    ],
+    "nutrients": [
+      "folate",
+      "vitamin_b1"
+    ]
+  },
+  "ごま": {
+    "functional_ingredients": [
+      "sesamin"
+    ],
+    "nutrients": [
+      "calcium",
+      "iron"
+    ]
+  },
+  "ごま油": {
+    "functional_ingredients": [
+      "sesamin"
+    ],
+    "nutrients": []
   }
 }
